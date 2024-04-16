@@ -22,17 +22,27 @@ function show(io::IO, year::LiturgicalYear)
     write(io, string(year.starts_in,"-",year.ends_in))
 end
 
-
+"""Rules for finding lectionary year cycle,
+as a Dict."""
 const lectionary_year_dict = Dict(
     0 => "A",
     1 => "B",
     2 => "C"
 )
+
+
+"""Find lectionary year cycle for a given year.
+$(SIGNATURES)
+"""
 function lectionary_year(yr::Int)
     remainder = mod(yr, 3)
     lectionary_year_dict[remainder]
 end
 
+
+"""Find lectionary year cycle for a given liturgical year.
+$(SIGNATURES)
+"""
 function lectionary_year(lityear::LiturgicalYear)
     lectionary_year(lityear.starts_in)
 end
