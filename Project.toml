@@ -1,0 +1,10 @@
+name = "Lectionary"
+uuid = "6244d477-9cf0-4e07-8f6b-f8ee26bc0292"
+authors = ["Neel Smith  <dnsmith.neel@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
+DocStringExtensions = "ffbed154-4ef7-542d-bbb7-c09d3a79fcae"
+Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
