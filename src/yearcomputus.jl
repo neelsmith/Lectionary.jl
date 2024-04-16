@@ -57,7 +57,7 @@ function christmas_sundays(lityr::LiturgicalYear)
             push!(sundays, prev)
         end
     end
-    sundays
+    sundays |> reverse
 end
 
 """Find date of a given week of Christmas in a given year.
@@ -106,6 +106,11 @@ function ash_wednesday(yr::Int)
     lent(1, yr) - Dates.Day(4)
 end
 
+function palmsunday(lityr::LiturgicalYear)
+    palmsunday(lityr.ends_in)
+end
+
+
 """Find date of Palm Sunday for a given year.
 $(SIGNATURES)
 """
@@ -114,23 +119,59 @@ function palmsunday(yr::Int)
 end
 
 
+
+## THIS IS BROKEN!
 """Find date of a given week of Advent in a given year.
 $(SIGNATURES)
 """
 function lent(sunday::Int, yr::Int)
     sundaystofind = 7 - sunday
-    @info("Look back $(sundaystofind) Sundays")
-    dayrecord = easter(yr)
+    easter(yr) - Dates.Day(sundaystofind * 7)
+end
 
-    sundaysfound = 0
-    while sundaysfound < sundaystofind 
-        @debug("found: $(sundaysfound) / $(sundaystofind)")
-        dayrecord = dayrecord - Dates.Day(1)
-        @debug("Look at $(dayrecord): $(dayname(dayrecord))")
-        if dayname(dayrecord) == "Sunday"
-            sundaysfound = sundaysfound + 1
+
+function eastertide(sunday::Int, yr::Int)
+    @assert sunday < 8
+    easter(yr) + Dates.Day(sunday * 7)
+end
+
+function epiphany(lityr::LiturgicalYear)
+    epiphany(lityr.ends_in)
+end
+
+function epiphany(yr::Int)
+
+    endpoint = ash_wednesday(yr)
+    epiph = Dates.Date(yr, 1, 6)
+   
+    
+    prev = endpoint
+    sundays = []
+    while prev > epiph
+        prev = prev  - Dates.Day(1)
+        if dayname(prev) == "Sunday"
+            push!(sundays, prev)
         end
-        
     end
-    dayrecord
+    sundays |> reverse
+
+   
+end
+
+
+function adventseason(yr::Int)
+    adventseason(LiturgicalYear(yr))
+end
+
+function adventseason(lityear::LiturgicalYear)
+    [advent(sunday, lityear.starts_in) for sunday in 1:4] 
+end
+
+
+function lentseason(yr::Int)
+    lentseason(LiturgicalYear(yr))
+end
+
+function lentseason(lityear::LiturgicalYear)
+    [lent(sunday, lityear.ends_in) for sunday in 1:5] 
 end

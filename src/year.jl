@@ -46,3 +46,16 @@ $(SIGNATURES)
 function lectionary_year(lityear::LiturgicalYear)
     lectionary_year(lityear.starts_in)
 end
+
+
+function sundays(lityear::LiturgicalYear)
+    
+   vcat(
+        adventseason(lityear), 
+        christmas_sundays(lityear), 
+        epiphany(lityear),
+        lentseason(lityear),
+        palmsunday(lityear),
+        easter(lityear)
+    )
+end

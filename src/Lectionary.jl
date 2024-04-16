@@ -7,12 +7,14 @@ using Documenter, DocStringExtensions
 import Base: show
 import Base: ==
 
-export LiturgicalYear, lectionary_year
+export LiturgicalYear, lectionary_year, sundays
 
 export advent, christmas
 export  christmasday, epiphanyday
+export epiphany
 export easter
-export ash_wednesday, lent, palmsunday
+export ash_wednesday, lent, palmsunday, eastertide
+export lentseason
 
 include("year.jl")
 include("yearcomputus.jl")
