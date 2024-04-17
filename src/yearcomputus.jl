@@ -281,7 +281,7 @@ function pentecost(sunday::Int, yr::Int)
     endpoint = advent(1, yr).dt
     startpoint = trinity(yr).dt
 
-    @info("Date range is $(startpoint) - $(endpoint)")
+    @debug("Date range is $(startpoint) - $(endpoint)")
     sundaystofind = sunday - 1
 
     @debug("Look back $(sundaystofind) Sundays")
@@ -289,17 +289,17 @@ function pentecost(sunday::Int, yr::Int)
 
     sundaysfound = 0
     prev = startpoint
-    while sundaysfound < sundaystofind && prev < endpoint
-
+    while sundaysfound < sundaystofind
         @debug("found: $(sundaysfound) / $(sundaystofind)")
         prev = prev + Dates.Day(1)
         @debug("Look at $(prev): $(dayname(prev))")
         if dayname(prev) == "Sunday"
             sundaysfound = sundaysfound + 1
         end
-        
+
     end
-    sundaysfound == 0 ? nothing : Sunday(prev, PENTECOST  + sunday)
+
+    sundaysfound > 0 && prev < endpoint ? Sunday(prev, PENTECOST  + sunday) : nothing
 end
 
 
@@ -310,8 +310,11 @@ end
 
 function pentecost_season(yr::Int)
     sundayslist = []
-    for i in 2:29
-
-
+    for i in 2:28
+        sunday = pentecost(i, yr)
+        if ! isnothing(sunday)
+            push!(sundayslist, sunday)
+        end
     end
+    sundayslist
 end
