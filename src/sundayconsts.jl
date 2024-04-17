@@ -25,7 +25,7 @@ const LENT_4 = 20
 const LENT_5 = 21
 const PALM_SUNDAY = 22
 
-const EASTER_DAY = 23
+const EASTER_SUNDAY = 23
 const EASTER_2 = 24
 const EASTER_3 = 25
 const EASTER_4 = 26
@@ -91,7 +91,7 @@ const sunday_names = Dict(
     LENT_5 => "the fifth Sunday in Lent",
     PALM_SUNDAY => "Palm Sunday",
 
-    EASTER_DAY => "Easter Day",
+    EASTER_SUNDAY => "Easter Day",
     EASTER_2 => "the second Sunday of Easter",
     EASTER_3 => "the third Sunday of Easter",
     EASTER_4 => "the fourth Sunday of Easter",

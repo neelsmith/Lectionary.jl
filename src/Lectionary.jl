@@ -15,9 +15,10 @@ export advent, christmas
 export advent_season
 export  christmasday, epiphanyday
 export epiphany
-export easter
-export ash_wednesday, lent, palmsunday, eastertide
+export easter_sunday
+export ash_wednesday, lent, palm_sunday, eastertide
 export lent_season, easter_season
+export pentecost
 
 
 

@@ -158,7 +158,7 @@ $(SIGNATURES)
 """
 function lent(sunday::Int, yr::Int)
     sundaystofind = 7 - sunday
-    sunday_date = easter(yr).dt - Dates.Day(sundaystofind * 7)
+    sunday_date = easter_sunday(yr).dt - Dates.Day(sundaystofind * 7)
 
     predecessor = LENT_1 - 1
     Sunday(sunday_date, predecessor + sunday)
@@ -168,16 +168,16 @@ end
 """Find date of Palm Sunday for a given liturgical year.
 $(SIGNATURES)
 """
-function palmsunday(lityr::LiturgicalYear)
-    palmsunday(lityr.ends_in)
+function palm_sunday(lityr::LiturgicalYear)
+    palm_sunday(lityr.ends_in)
 end
 
 
 """Find date of Palm Sunday for a given year.
 $(SIGNATURES)
 """
-function palmsunday(yr::Int)
-    dt = easter(yr).dt - Dates.Day(7)
+function palm_sunday(yr::Int)
+    dt = easter_sunday(yr).dt - Dates.Day(7)
     Sunday(dt, PALM_SUNDAY)
 end
 
@@ -204,14 +204,14 @@ end
 """Find date of Easter in a given liturgical year.
 $(SIGNATURES)
 """
-function easter(lityr::LiturgicalYear)
-    easter(lityr.ends_in)
+function easter_sunday(lityr::LiturgicalYear)
+    easter_sunday(lityr.ends_in)
 end
 
 """Find date of Easter in a given year.
 $(SIGNATURES)
 """
-function easter(yr::Int)
+function easter_sunday(yr::Int)
     hr = Dates.DateTime(yr, 3, 21) 
     while mphase(jdcnv(hr)) < 0.99
         hr = hr + Dates.Hour(1)
@@ -221,23 +221,21 @@ function easter(yr::Int)
     while dayname(nxtday) != "Sunday"
         nxtday = nxtday + Dates.Day(1)
     end
-    Sunday(nxtday, EASTER_DAY)
+    Sunday(nxtday, easter_sunday)
 end
-
-
 
 """Find date of a given week of Easter season in a given year.
 $(SIGNATURES)
 """
 function eastertide(sunday::Int, yr::Int)
     @assert sunday < 8 && sunday > 1
-    #predecessor = easter(yr).dt - Dates.Day(1)
+    #predecessor = easter_sunday(yr).dt - Dates.Day(1)
     @info("Find sunday $(sunday) in $(yr)")
-    @info("Easter is $(easter(yr).dt)")
-    thesunday =  easter(yr).dt + Dates.Day((sunday - 1) * 7)
+    @info("Easter is $(easter_sunday(yr).dt)")
+    thesunday =  easter_sunday(yr).dt + Dates.Day((sunday - 1) * 7)
 
 
-    Sunday(thesunday, EASTER_DAY + (sunday - 1))
+    Sunday(thesunday, easter_sunday + (sunday - 1))
 end
 
 function easter_season(lityr::LiturgicalYear)
@@ -250,3 +248,14 @@ end
 
 
 
+#
+# Pentecost
+#
+function pentecost(lityr::LiturgicalYear)
+    pentecost(lityr.ends_in)
+end
+
+
+function pentecost(yr::Int)
+    easter_season(yr)[end]
+end
