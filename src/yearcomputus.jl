@@ -184,14 +184,14 @@ end
 """Find Sundays of Lent in a given liturgical year.
 $(SIGNATURES)
 """
-function lentseason(yr::Int)
-    lentseason(LiturgicalYear(yr))
+function lent_season(yr::Int)
+    lent_season(LiturgicalYear(yr))
 end
 
 """Find Sundays of Lent in a given liturgical year.
 $(SIGNATURES)
 """
-function lentseason(lityear::LiturgicalYear)
+function lent_season(lityear::LiturgicalYear)
     [lent(sunday, lityear.ends_in) for sunday in 1:5] 
 end
 
@@ -231,9 +231,21 @@ $(SIGNATURES)
 """
 function eastertide(sunday::Int, yr::Int)
     @assert sunday < 8 && sunday > 1
-    predecessor = EASTER_DAY - 1
-    thesunday = easter(yr).dt + Dates.Day(sunday * 7)
-    Sunday(thesunday, predecessor + sunday)
+    #predecessor = easter(yr).dt - Dates.Day(1)
+    @info("Find sunday $(sunday) in $(yr)")
+    @info("Easter is $(easter(yr).dt)")
+    thesunday =  easter(yr).dt + Dates.Day((sunday - 1) * 7)
+
+
+    Sunday(thesunday, EASTER_DAY + (sunday - 1))
+end
+
+function easter_season(lityr::LiturgicalYear)
+    easter_season(lityr.ends_in)
+end
+
+function easter_season(yr::Int)
+    [eastertide(sunday, yr) for sunday in 2:7] 
 end
 
 

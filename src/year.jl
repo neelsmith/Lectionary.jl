@@ -22,6 +22,19 @@ function show(io::IO, year::LiturgicalYear)
     write(io, string(year.starts_in,"-",year.ends_in))
 end
 
+#=
+function liturgical_year(dt::Date)
+    if dt > advent(1, year(dt))
+        LiturgicalYear(year(dt))
+    else
+        LiturgicalYear(year(dt))
+    end
+end
+=#
+
+
+
+
 """Rules for finding lectionary year cycle,
 as a Dict."""
 const lectionary_year_dict = Dict(
@@ -29,8 +42,6 @@ const lectionary_year_dict = Dict(
     1 => "B",
     2 => "C"
 )
-
-
 
 """Find lectionary year cycle for a given liturgical year.
 $(SIGNATURES)
@@ -73,7 +84,8 @@ function sundays(lityear::LiturgicalYear)
         advent_season(lityear), 
         christmas_sundays(lityear), 
         epiphany(lityear),
-        lentseason(lityear),
-        [palmsunday(lityear), easter(lityear)]
+        lent_season(lityear),
+        [palmsunday(lityear), easter(lityear)],
+        easter_season(lityear)
     )
 end

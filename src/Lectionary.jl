@@ -17,7 +17,7 @@ export  christmasday, epiphanyday
 export epiphany
 export easter
 export ash_wednesday, lent, palmsunday, eastertide
-export lentseason
+export lent_season, easter_season
 
 
 
