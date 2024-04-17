@@ -34,14 +34,14 @@ end
 """Find Sundays of Advent in a given year.
 $(SIGNATURES)
 """
-function adventseason(yr::Int)
-    adventseason(LiturgicalYear(yr))
+function advent_season(yr::Int)
+    advent_season(LiturgicalYear(yr))
 end
 
 """Find Sundays of Advent in a given liturgical year.
 $(SIGNATURES)
 """
-function adventseason(lityear::LiturgicalYear)
+function advent_season(lityear::LiturgicalYear)
     [advent(sunday, lityear.starts_in) for sunday in 1:4] 
 end
 
@@ -117,6 +117,7 @@ end
 $(SIGNATURES)
 """
 function epiphany(yr::Int)
+    @info("Get ash wed for year $(yr)")
     endpoint = ash_wednesday(yr)
     epiph = Dates.Date(yr, 1, 6)
     
@@ -128,10 +129,77 @@ function epiphany(yr::Int)
             push!(sundays, prev)
         end
     end
-    sundays |> reverse
+    ordered = sundays |> reverse
+
+    sundaylist = []
+    predecessor  = EPIPHANY  - 1
+    for (i, sday) in enumerate(ordered)
+        push!(sundaylist, Sunday(sday, predecessor + i))
+    end
+    sundaylist
 end
 
 
+#
+# Lent
+#
+"""Find date of Ash Wednesday for a given year.
+$(SIGNATURES)
+"""
+function ash_wednesday(yr::Int)
+
+    lent(1, yr).dt - Dates.Day(4)
+end
+
+
+## THIS IS BROKEN!
+"""Find date of a given week of Lent in a given year.
+$(SIGNATURES)
+"""
+function lent(sunday::Int, yr::Int)
+    sundaystofind = 7 - sunday
+    sunday_date = easter(yr) - Dates.Day(sundaystofind * 7)
+
+    predecessor = LENT_1 - 1
+    Sunday(sunday_date, predecessor + sunday)
+end
+
+
+"""Find date of Palm Sunday for a given liturgical year.
+$(SIGNATURES)
+"""
+function palmsunday(lityr::LiturgicalYear)
+    palmsunday(lityr.ends_in)
+end
+
+
+"""Find date of Palm Sunday for a given year.
+$(SIGNATURES)
+"""
+function palmsunday(yr::Int)
+    dt = easter(yr) - Dates.Day(7)
+    Sunday(dt, PALM_SUNDAY)
+end
+
+"""Find Sundays of Lent in a given liturgical year.
+$(SIGNATURES)
+"""
+function lentseason(yr::Int)
+    lentseason(LiturgicalYear(yr))
+end
+
+"""Find Sundays of Lent in a given liturgical year.
+$(SIGNATURES)
+"""
+function lentseason(lityear::LiturgicalYear)
+    [lent(sunday, lityear.ends_in) for sunday in 1:5] 
+end
+
+
+
+#
+# EASTER AND EASTERTIDE
+#
 
 """Find date of Easter in a given liturgical year.
 $(SIGNATURES)
@@ -157,37 +225,6 @@ function easter(yr::Int)
 end
 
 
-"""Find date of Ash Wednesday for a given year.
-$(SIGNATURES)
-"""
-function ash_wednesday(yr::Int)
-    lent(1, yr) - Dates.Day(4)
-end
-
-
-"""Find date of Palm Sunday for a given liturgical year.
-$(SIGNATURES)
-"""
-function palmsunday(lityr::LiturgicalYear)
-    palmsunday(lityr.ends_in)
-end
-
-
-"""Find date of Palm Sunday for a given year.
-$(SIGNATURES)
-"""
-function palmsunday(yr::Int)
-    easter(yr) - Dates.Day(7)
-end
-
-## THIS IS BROKEN!
-"""Find date of a given week of Lent in a given year.
-$(SIGNATURES)
-"""
-function lent(sunday::Int, yr::Int)
-    sundaystofind = 7 - sunday
-    easter(yr) - Dates.Day(sundaystofind * 7)
-end
 
 """Find date of a given week of Easter season in a given year.
 $(SIGNATURES)
@@ -199,18 +236,3 @@ end
 
 
 
-
-
-"""Find Sundays of Lent in a given liturgical year.
-$(SIGNATURES)
-"""
-function lentseason(yr::Int)
-    lentseason(LiturgicalYear(yr))
-end
-
-"""Find Sundays of Lent in a given liturgical year.
-$(SIGNATURES)
-"""
-function lentseason(lityear::LiturgicalYear)
-    [lent(sunday, lityear.ends_in) for sunday in 1:5] 
-end

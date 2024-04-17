@@ -12,6 +12,7 @@ export sundays
 export Sunday
 
 export advent, christmas
+export advent_season
 export  christmasday, epiphanyday
 export epiphany
 export easter

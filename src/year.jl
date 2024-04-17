@@ -62,12 +62,6 @@ function daily_office_year(yr::Int)
     mod(yr, 2) + 1 
 end
 
-"""Find lectionary year cycle for a given liturgical year.
-$(SIGNATURES)
-"""
-function lectionary_year(lityear::LiturgicalYear)
-    lectionary_year(lityear.starts_in)
-end
 
 
 """Find Sundays in a give liturgical year.
@@ -76,11 +70,11 @@ $(SIGNATURES)
 function sundays(lityear::LiturgicalYear)
     
    vcat(
-        adventseason(lityear), 
+        advent_season(lityear), 
         christmas_sundays(lityear), 
         epiphany(lityear),
         lentseason(lityear),
         palmsunday(lityear),
-        easter(lityear)
+        #easter(lityear)
     )
 end
