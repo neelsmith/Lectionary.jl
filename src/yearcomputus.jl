@@ -221,7 +221,7 @@ function easter_sunday(yr::Int)
     while dayname(nxtday) != "Sunday"
         nxtday = nxtday + Dates.Day(1)
     end
-    Sunday(nxtday, easter_sunday)
+    Sunday(nxtday, EASTER_SUNDAY)
 end
 
 """Find date of a given week of Easter season in a given year.
@@ -230,12 +230,12 @@ $(SIGNATURES)
 function eastertide(sunday::Int, yr::Int)
     @assert sunday < 8 && sunday > 1
     #predecessor = easter_sunday(yr).dt - Dates.Day(1)
-    @info("Find sunday $(sunday) in $(yr)")
-    @info("Easter is $(easter_sunday(yr).dt)")
+    @debug("Find sunday $(sunday) in $(yr)")
+    @debug("Easter is $(easter_sunday(yr).dt)")
     thesunday =  easter_sunday(yr).dt + Dates.Day((sunday - 1) * 7)
 
 
-    Sunday(thesunday, easter_sunday + (sunday - 1))
+    Sunday(thesunday, EASTER_SUNDAY + (sunday - 1))
 end
 
 function easter_season(lityr::LiturgicalYear)
@@ -254,8 +254,16 @@ end
 function pentecost(lityr::LiturgicalYear)
     pentecost(lityr.ends_in)
 end
-
-
 function pentecost(yr::Int)
-    easter_season(yr)[end]
+    dt = easter_season(yr)[end].dt + Dates.Day(7)
+    Sunday(dt, PENTECOST)
+end
+
+
+function trinity(lityr::LiturgicalYear)
+    trinity(lityr.ends_in)
+end
+function trinity(yr::Int)
+    dt = pentecost(yr).dt + Dates.Day(7)
+    Sunday(dt, TRINITY_SUNDAY)
 end
