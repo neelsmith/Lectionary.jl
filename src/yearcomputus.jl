@@ -1,6 +1,14 @@
 #
 # Advent
 #
+
+"""Find date of a given week of Advent in a given liturgical year.
+$(SIGNATURES)
+"""
+function advent(sunday::Int, lityr::LiturgicalYear)
+    advent(sunday, lityr.starts_in)
+end
+
 """Find date of a given week of Advent in a given year.
 $(SIGNATURES)
 """
@@ -20,7 +28,7 @@ function advent(sunday::Int, yr::Int)
         end
         
     end
-    prev
+    Sunday(prev, sunday)
 end
 
 """Find Sundays of Advent in a given year.

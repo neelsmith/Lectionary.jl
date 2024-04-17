@@ -31,6 +31,15 @@ const lectionary_year_dict = Dict(
 )
 
 
+
+"""Find lectionary year cycle for a given liturgical year.
+$(SIGNATURES)
+"""
+function lectionary_year(lityr::LiturgicalYear)
+    lectionary_year(lityr.starts_in)
+end
+
+
 """Find lectionary year cycle for a given year.
 $(SIGNATURES)
 """
@@ -39,6 +48,19 @@ function lectionary_year(yr::Int)
     lectionary_year_dict[remainder]
 end
 
+"""Find daily office year cycle for a given liturgical year.
+$(SIGNATURES)
+"""
+function daily_office_year(lityr::LiturgicalYear)
+    daily_office_year(lityr.starts_in)
+end
+
+"""Find daily office year cycle for a given year.
+$(SIGNATURES)
+"""
+function daily_office_year(yr::Int)
+    mod(yr, 2) + 1 
+end
 
 """Find lectionary year cycle for a given liturgical year.
 $(SIGNATURES)
@@ -48,6 +70,9 @@ function lectionary_year(lityear::LiturgicalYear)
 end
 
 
+"""Find Sundays in a give liturgical year.
+$(SIGNATURES)
+"""
 function sundays(lityear::LiturgicalYear)
     
    vcat(
