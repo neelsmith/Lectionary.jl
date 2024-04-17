@@ -2,4 +2,4 @@
 title: "Lectionary"
 ---
 
-Concepts and implementation in a Julia interface.
+`Lectionary.jl` is a Julia package for working with the Revised Common Lectionary.
