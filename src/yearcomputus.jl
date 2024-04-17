@@ -46,8 +46,6 @@ function adventseason(lityear::LiturgicalYear)
 end
 
 
-
-
 #
 # Christmas
 #
@@ -58,14 +56,26 @@ function christmas_sundays(lityr::LiturgicalYear)
     epiphany = Date(lityr.ends_in, 1, 6)
     xmas = Date(lityr.starts_in, 12, 25)
     prev = epiphany
+    sundaycount = 0
     sundays = []
     while prev > xmas
+        @debug("Look at date $(prev): $(dayname(prev))")
         prev = prev  - Dates.Day(1)
         if dayname(prev) == "Sunday"
+            sundaycount = sundaycount + 1
+            @debug("Found Sunday $(sundaycount) on $(prev)")
             push!(sundays, prev)
         end
     end
-    sundays |> reverse
+    ordered = sundays |> reverse
+    if length(ordered) == 2
+        [Sunday(ordered[1], CHRISTMAS_1),
+        Sunday(ordered[2], CHRISTMAS_2)
+        ]
+    else
+        [Sunday(ordered[1], CHRISTMAS_1)]
+    end
+
 end
 
 """Find all Sundays in season of Christmas in a given year.

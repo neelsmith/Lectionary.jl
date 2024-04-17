@@ -15,7 +15,9 @@ end
 $(SIGNATURES)
 """
 function show(io::IO, sday::Sunday)
-    formatteddate = Dates.format(sday.dt,"U y, yyyy")
+    # This formatting is wrong:
+    #formatteddate = Dates.format(sday.dt,"U yy, yyyy")
+    formatteddate = sday.dt
     write(io, string(formatteddate,", ", name(sday) ))
 end
 
