@@ -16,7 +16,12 @@ export easter
 export ash_wednesday, lent, palmsunday, eastertide
 export lentseason
 
+
+
+include("sundayconsts.jl")
+include("fixeddates.jl")
 include("year.jl")
 include("yearcomputus.jl")
+
 
 end # module Lectionary
