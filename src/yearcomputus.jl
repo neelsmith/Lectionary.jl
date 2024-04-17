@@ -158,7 +158,7 @@ $(SIGNATURES)
 """
 function lent(sunday::Int, yr::Int)
     sundaystofind = 7 - sunday
-    sunday_date = easter(yr) - Dates.Day(sundaystofind * 7)
+    sunday_date = easter(yr).dt - Dates.Day(sundaystofind * 7)
 
     predecessor = LENT_1 - 1
     Sunday(sunday_date, predecessor + sunday)
@@ -177,7 +177,7 @@ end
 $(SIGNATURES)
 """
 function palmsunday(yr::Int)
-    dt = easter(yr) - Dates.Day(7)
+    dt = easter(yr).dt - Dates.Day(7)
     Sunday(dt, PALM_SUNDAY)
 end
 
@@ -221,7 +221,7 @@ function easter(yr::Int)
     while dayname(nxtday) != "Sunday"
         nxtday = nxtday + Dates.Day(1)
     end
-    nxtday
+    Sunday(nxtday, EASTER_DAY)
 end
 
 
@@ -230,8 +230,10 @@ end
 $(SIGNATURES)
 """
 function eastertide(sunday::Int, yr::Int)
-    @assert sunday < 8
-    easter(yr) + Dates.Day(sunday * 7)
+    @assert sunday < 8 && sunday > 1
+    predecessor = EASTER_DAY - 1
+    thesunday = easter(yr).dt + Dates.Day(sunday * 7)
+    Sunday(thesunday, predecessor + sunday)
 end
 
 
