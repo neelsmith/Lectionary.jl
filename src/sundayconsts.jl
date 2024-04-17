@@ -61,7 +61,7 @@ const PENTECOST_24 = 54
 const PENTECOST_25 = 55
 const PENTECOST_26 = 56
 const PENTECOST_27 = 57
-
+const PENTECOST_28 = 58
 
 const sunday_names = Dict(
 
@@ -127,4 +127,5 @@ const sunday_names = Dict(
     PENTECOST_25 => "the twenty-fifth Sunday after Pentecost",
     PENTECOST_26 => "the twenty-sixth Sunday after Pentecost",
     PENTECOST_27 => "the twenty-seventh Sunday after Pentecost",
+    PENTECOST_28 => "the twenty-eighth Sunday after Pentecost",
 )

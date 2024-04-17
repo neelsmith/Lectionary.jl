@@ -117,7 +117,7 @@ end
 $(SIGNATURES)
 """
 function epiphany(yr::Int)
-    @info("Get ash wed for year $(yr)")
+    @debug("Get ash wed for year $(yr)")
     endpoint = ash_wednesday(yr)
     epiph = Dates.Date(yr, 1, 6)
     
@@ -260,10 +260,58 @@ function pentecost(yr::Int)
 end
 
 
+
 function trinity(lityr::LiturgicalYear)
     trinity(lityr.ends_in)
 end
 function trinity(yr::Int)
     dt = pentecost(yr).dt + Dates.Day(7)
     Sunday(dt, TRINITY_SUNDAY)
+end
+
+
+
+function pentecost(sunday::Int, lityr::LiturgicalYear)
+    pentecost(sunday, lityr.ends_in)
+end
+
+
+function pentecost(sunday::Int, yr::Int)
+    @assert sunday > 1 && sunday < 30
+    endpoint = advent(1, yr).dt
+    startpoint = trinity(yr).dt
+
+    @info("Date range is $(startpoint) - $(endpoint)")
+    sundaystofind = sunday - 1
+
+    @debug("Look back $(sundaystofind) Sundays")
+    
+
+    sundaysfound = 0
+    prev = startpoint
+    while sundaysfound < sundaystofind && prev < endpoint
+
+        @debug("found: $(sundaysfound) / $(sundaystofind)")
+        prev = prev + Dates.Day(1)
+        @debug("Look at $(prev): $(dayname(prev))")
+        if dayname(prev) == "Sunday"
+            sundaysfound = sundaysfound + 1
+        end
+        
+    end
+    sundaysfound == 0 ? nothing : Sunday(prev, PENTECOST  + sunday)
+end
+
+
+
+function pentecost_season(lityr::LiturgicalYear)
+    pentecost_season(lityr.ends_in)
+end
+
+function pentecost_season(yr::Int)
+    sundayslist = []
+    for i in 2:29
+
+
+    end
 end
