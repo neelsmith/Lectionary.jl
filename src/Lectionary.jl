@@ -19,12 +19,14 @@ export liturgical_year, liturgical_day
 export advent, christmas
 export advent_season
 export christmasday, epiphanyday
-export epiphany
+export epiphany_season
 export easter_sunday
 export ash_wednesday, lent, palm_sunday, eastertide
 export lent_season, easter_season
 export ascension
 export pentecost, trinity, pentecost_season
+
+export Reading, readings, ot, nt, psalm, gospel
 
 
 include("lectio.jl")
@@ -38,6 +40,8 @@ include("otherdays.jl")
 
 include("year.jl")
 include("seasons.jl")
+
+include("reading.jl")
 
 
 end # module Lectionary

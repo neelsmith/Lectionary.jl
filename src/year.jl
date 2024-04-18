@@ -58,9 +58,9 @@ end
 """Rules for finding lectionary year cycle,
 as a Dict."""
 const lectionary_year_dict = Dict(
-    0 => "A",
-    1 => "B",
-    2 => "C"
+    0 => 'A',
+    1 => 'B',
+    2 => 'C'
 )
 
 """Find lectionary year cycle for a given liturgical year.
@@ -103,7 +103,7 @@ function sundays(lityear::LiturgicalYear)
    vcat(
         advent_season(lityear), 
         christmas_sundays(lityear), 
-        epiphany(lityear),
+        epiphany_season(lityear),
         lent_season(lityear),
         [palm_sunday(lityear), easter_sunday(lityear)],
         easter_season(lityear),

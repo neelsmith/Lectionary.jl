@@ -26,3 +26,35 @@ end
 function civildate(sday::Sunday)
     sday.dt
 end
+
+function readings(sday::Sunday, lectionaryyr::Char) 
+    if lectionaryyr == 'A'
+        if haskey(readingselectionsA, sday.calendar_day)
+            readingselectionsA[sday.calendar_day]
+        else
+            @warn("Could not find reading for $(sday) in year $(lectionaryyr)")
+            nothing
+        end
+
+    elseif lectionaryyr == 'B'
+        if haskey(readingselectionsB, sday.calendar_day)
+            readingselectionsB[sday.calendar_day]
+        else
+            @warn("Could not find reading for $(sday) in year $(lectionaryyr)")
+            nothing
+        end
+    
+    elseif lectionaryyr == 'C'
+        if haskey(readingselectionsC, sday.calendar_day)
+            readingselectionsC[sday.calendar_day]
+        else
+            @warn("Could not find reading for $(sday) in year $(lectionaryyr)")
+            nothing
+        end
+
+    else
+        @warn("Invalid value for lectionary year: $(lectionaryyr)")
+        nothing
+    end     
+   
+end

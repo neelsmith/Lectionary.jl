@@ -107,15 +107,15 @@ end
 """Find sundays of Epiphany season in a given liturgical year.
 $(SIGNATURES)
 """
-function epiphany(lityr::LiturgicalYear)
-    epiphany(lityr.ends_in)
+function epiphany_season(lityr::LiturgicalYear)
+    epiphany_season(lityr.ends_in)
 end
 
 
 """Find sundays of Epiphany season in a given year.
 $(SIGNATURES)
 """
-function epiphany(yr::Int)
+function epiphany_season(yr::Int)
     @debug("Get ash wed for year $(yr)")
     endpoint = ash_wednesday(yr)
     epiph = Dates.Date(yr, 1, 6)
@@ -137,6 +137,16 @@ function epiphany(yr::Int)
     end
     sundaylist
 end
+
+
+function epiphany(lityr::LiturgicalYear)
+    epiphany(lityr.ends_in)
+end
+function epiphany(yr::Int)
+    #Sunday(Date(yr, 1, 6), EPIPHANY)
+    epiphany_season(yr)[1]
+end
+
 
 
 #
