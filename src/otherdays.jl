@@ -14,7 +14,9 @@ function name(other::OtherDay)
    string(dayname(other.dt), " of (TBD in litrugical calendar...) ", backwardday)
 end
 
-
+"""Find date in civil calendar for a day in the liturgical year.
+$(SIGNATURES)
+"""
 function civildate(other::OtherDay)
     other.dt
 end

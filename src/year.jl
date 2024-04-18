@@ -22,16 +22,39 @@ function show(io::IO, year::LiturgicalYear)
     write(io, string(year.starts_in,"-",year.ends_in))
 end
 
-#=
+"""Find correct liturgical year for a given date.
+$(SIGNATURES)
+"""
 function liturgical_year(dt::Date)
-    if dt > advent(1, year(dt))
+    if dt > advent(1, year(dt)).dt
         LiturgicalYear(year(dt))
     else
-        LiturgicalYear(year(dt))
+        LiturgicalYear(year(dt) - 1)
     end
 end
-=#
 
+function liturgical_day(dt::Date)
+    lityr = liturgical_year(dt)
+    feastlist = principalfeasts(lityr) #.|> civildate
+    feastmatch = findfirst(f -> civildate(f) == dt, feastlist)
+
+
+    sundaylist = sundays(lityr) #.|> civildate
+    sundaymatch = findfirst(f -> civildate(f) == dt, sundaylist) 
+
+
+    
+    if ! isnothing(feastmatch)
+        feastlist[feastmatch]
+    elseif ! isnothing(sundaymatch)
+        sundaylist[sundaymatch]
+    else        
+        "nope"
+    end
+    #sundaydates = sundays(lityr) .|> civildate
+    #sundaymatch = ""
+
+end
 
 
 

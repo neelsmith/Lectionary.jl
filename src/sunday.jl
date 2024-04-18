@@ -16,7 +16,7 @@ $(SIGNATURES)
 """
 function show(io::IO, sday::Sunday)
     formatteddate = string(monthname(sday.dt), " ",  dayofmonth(sday.dt), ", ", year(sday.dt))
-    write(io, "Sunday, " * formatteddate)
+    write(io, name(sday) * ", " * formatteddate)
 end
 
 function name(sday::Sunday)
