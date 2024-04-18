@@ -104,7 +104,7 @@ md"""*Choose a year and month*: $(@bind yr  NumberField(2000:2050, default=year(
 
 # ╔═╡ 5a1e04c5-20d6-4f0b-9207-80d8368b7670
 if mo > 0
-	md"""*Choose a day*: $(@bind dayofmonth NumberField(1:daysinmonth(yr, mo)))"""
+	md"""*Choose a day*: $(@bind dayofmonth NumberField(1:daysincalmonth(yr, mo)))"""
 end
 	
 
@@ -138,7 +138,7 @@ function weekvector(yr,mo,daynum)
 
 		while currday <= lastday && ! done 
 			idx = dayslots[dayname(currday)]
-			rowvals[idx] = day(currday)
+			rowvals[idx] = calday(currday)
 			#@debug("Date $(currday) is $(dayname(currday))")
 			currday = currday + Dates.Day(1)
 			if dayname(currday) == "Sunday"

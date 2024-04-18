@@ -211,7 +211,7 @@ end
 $(SIGNATURES)
 """
 function easter_sunday(yr::Int)
-    hr = Dates.DateTime(yr, 3, 21) 
+    hr = Dates.DateTime(yr, 3, 21)
     while mphase(jdcnv(hr)) < 0.99
         hr = hr + Dates.Hour(1)
     end
@@ -316,4 +316,14 @@ function pentecost_season(yr::Int)
         end
     end
     sundayslist
+end
+
+
+
+function ascension(lityr::LiturgicalYear)
+    ascension(lityr.ends_in)
+end
+
+function ascension(yr::Int)
+    easter(yr)+ Dates.Day(40)
 end

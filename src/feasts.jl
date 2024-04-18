@@ -18,6 +18,7 @@ const feast_names = Dict(
 
 struct PrincipalFeast <: LiturgicalDay
     feastid::Int
+    yr::Int
 end
 
 function name(pf::PrincipalFeast)

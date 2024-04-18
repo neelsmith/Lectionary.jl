@@ -1,4 +1,4 @@
-    struct Sunday <: LiturgicalDay
+struct Sunday <: LiturgicalDay
     dt::Date
     calendar_day::Int
 end
@@ -15,10 +15,14 @@ end
 $(SIGNATURES)
 """
 function show(io::IO, sday::Sunday)
-    formatteddate = string(monthname(sday.dt), " ", dayofmonth(sday.dt), ", ", year(sday.dt))
+    formatteddate = string(monthname(sday.dt), " ",  dayofmonth(sday.dt), ", ", year(sday.dt))
     write(io, "Sunday, " * formatteddate)
 end
 
 function name(sday::Sunday)
     sunday_names[sday.calendar_day]
+end
+
+function civildate(sday::Sunday)
+    sday.dt
 end
