@@ -325,5 +325,5 @@ function ascension(lityr::LiturgicalYear)
 end
 
 function ascension(yr::Int)
-    easter(yr)+ Dates.Day(40)
+    easter_sunday(yr).dt + Dates.Day(40)
 end

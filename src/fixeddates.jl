@@ -11,7 +11,7 @@ function calday(fd::FixedDate)
     fd.day
 end
 
-function fixeddate(fd::FixedDate, yr::Int)
+function caldate(fd::FixedDate, yr::Int)
     Date(yr, calmonth(fd), calday(fd))
 end
 

@@ -15,8 +15,6 @@ export Sunday, PrincipalFeast, HolyDay, OtherDay
 export LiturgicalYear, lectionary_year, daily_office_year
 export sundays
 
-
-
 export advent, christmas
 export advent_season
 export  christmasday, epiphanyday
@@ -30,11 +28,11 @@ export pentecost, trinity, pentecost_season
 
 
 include("sundayconsts.jl")
-#include("feastconstants.jl")
+include("fixeddates.jl")
 include("days.jl")
 include("feasts.jl")
 include("sunday.jl")
-include("fixeddates.jl")
+
 include("year.jl")
 include("seasons.jl")
 
