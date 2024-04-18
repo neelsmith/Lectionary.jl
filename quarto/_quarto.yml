@@ -5,7 +5,7 @@ theme: spacelab
 execute:
   freeze: auto
 date: last-modified  
-margin-header: "⚠️ *Draft release.*"
+margin-header: "⚠️ *Pre-release draft.*"
 format:
   html: 
     toc: true
@@ -36,6 +36,7 @@ website:
     - title: "Tutorials"
       contents: 
         - tutorials/index.qmd
+        - tutorials/calendar.qmd
 
     - title: "Guides"
       contents:
@@ -48,6 +49,7 @@ website:
     - title: "Concepts"
       contents: 
         - concepts/index.qmd
+        - concepts/liturgicalyear/index.qmd
 
         
 

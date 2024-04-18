@@ -1,0 +1,14 @@
+---
+title: "Calendar basics"
+---
+
+
+```{julia}
+pwd()
+```
+
+```{julia}
+#| output: false
+#using Dates
+#using Lectionary
+```
