@@ -14,10 +14,11 @@ export Sunday, PrincipalFeast, HolyDay, OtherDay
 
 export LiturgicalYear, lectionary_year, daily_office_year
 export sundays, principalfeasts
+export liturgical_year, liturgical_day
 
 export advent, christmas
 export advent_season
-export  christmasday, epiphanyday
+export christmasday, epiphanyday
 export epiphany
 export easter_sunday
 export ash_wednesday, lent, palm_sunday, eastertide
