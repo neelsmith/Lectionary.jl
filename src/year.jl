@@ -91,3 +91,16 @@ function sundays(lityear::LiturgicalYear)
         pentecost_season(lityear)
     )
 end
+
+
+function principalfeasts(lityear::LiturgicalYear)
+    [
+        PrincipalFeast(FEAST_CHRISTMAS, lityear.starts_in),
+        PrincipalFeast(FEAST_EPIPHANY, lityear.ends_in),
+        PrincipalFeast(FEAST_EASTER, lityear.ends_in),
+        PrincipalFeast(FEAST_ASCENSION, lityear.ends_in),
+        PrincipalFeast(FEAST_PENTECOST, lityear.ends_in),
+        PrincipalFeast(FEAST_TRINITY, lityear.ends_in),
+        PrincipalFeast(FEAST_ALL_SAINTS, lityear.ends_in)
+    ]
+end

@@ -48,9 +48,9 @@ function civildate(pf::PrincipalFeast)
     elseif pf.feastid == FEAST_ASCENSION
         ascension(pf.yr)
     elseif pf.feastid == FEAST_PENTECOST
-        pentecost(pf.yr)
+        pentecost(pf.yr).dt
     elseif pf.feastid == FEAST_TRINITY
-        trinity(pf.yr)
+        trinity(pf.yr).dt
     else
         @warn("Not yet imlemented...")
         nothing

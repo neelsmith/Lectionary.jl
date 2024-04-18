@@ -13,7 +13,7 @@ export Sunday, PrincipalFeast, HolyDay, OtherDay
 
 
 export LiturgicalYear, lectionary_year, daily_office_year
-export sundays
+export sundays, principalfeasts
 
 export advent, christmas
 export advent_season
@@ -26,7 +26,7 @@ export ascension
 export pentecost, trinity, pentecost_season
 
 
-
+include("lectio.jl")
 include("sundayconsts.jl")
 include("fixeddates.jl")
 include("days.jl")
