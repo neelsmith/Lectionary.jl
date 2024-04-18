@@ -32,6 +32,8 @@ include("fixeddates.jl")
 include("days.jl")
 include("feasts.jl")
 include("sunday.jl")
+include("holydays.jl")
+include("otherdays.jl")
 
 include("year.jl")
 include("seasons.jl")
