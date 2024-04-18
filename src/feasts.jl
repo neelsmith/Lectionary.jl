@@ -56,3 +56,39 @@ function civildate(pf::PrincipalFeast)
         nothing
     end
 end
+
+
+function feastreadings(feast::PrincipalFeast, lectionaryyr::Char; as_urn = false) 
+    if as_urn
+        @warn("Support for URN references not implemented yet.")
+    end
+    if lectionaryyr == 'A'
+        if haskey(feastselectionsA, feast.feastid)
+            feastselectionsA[feast.feastid]
+        else
+            @warn("Could not find reading for $(feast) in year $(lectionaryyr)")
+            nothing
+        end
+
+    elseif lectionaryyr == 'B'
+        if haskey(feastselectionsB, feast.feastid)
+            feastselectionsB[feast.feastid]
+        else
+            @warn("Could not find reading for $(feast) in year $(lectionaryyr)")
+            nothing
+        end
+    
+    elseif lectionaryyr == 'C'
+        if haskey(feastselectionsC, feast.feastid)
+            feastselectionsC[feast.feastid]
+        else
+            @warn("Could not find reading for $(faste) in year $(lectionaryyr)")
+            nothing
+        end
+
+    else
+        @warn("Invalid value for lectionary year: $(lectionaryyr)")
+        nothing
+    end     
+   
+end

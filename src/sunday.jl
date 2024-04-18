@@ -32,24 +32,24 @@ function sundayreadings(sday::Sunday, lectionaryyr::Char; as_urn = false)
         @warn("Support for URN references not implemented yet.")
     end
     if lectionaryyr == 'A'
-        if haskey(readingselectionsA, sday.calendar_day)
-            readingselectionsA[sday.calendar_day]
+        if haskey(sundayselectionsA, sday.calendar_day)
+            sundayselectionsA[sday.calendar_day]
         else
             @warn("Could not find reading for $(sday) in year $(lectionaryyr)")
             nothing
         end
 
     elseif lectionaryyr == 'B'
-        if haskey(readingselectionsB, sday.calendar_day)
-            readingselectionsB[sday.calendar_day]
+        if haskey(sundayselectionsB, sday.calendar_day)
+            sundayselectionsB[sday.calendar_day]
         else
             @warn("Could not find reading for $(sday) in year $(lectionaryyr)")
             nothing
         end
     
     elseif lectionaryyr == 'C'
-        if haskey(readingselectionsC, sday.calendar_day)
-            readingselectionsC[sday.calendar_day]
+        if haskey(sundayselectionsC, sday.calendar_day)
+            sundayselectionsC[sday.calendar_day]
         else
             @warn("Could not find reading for $(sday) in year $(lectionaryyr)")
             nothing

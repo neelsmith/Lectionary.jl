@@ -29,7 +29,6 @@ export pentecost, trinity, pentecost_season
 export Reading, readings, ot, nt, psalm, gospel
 
 
-include("lectio.jl")
 include("sundayconsts.jl")
 include("fixeddates.jl")
 include("days.jl")

@@ -27,7 +27,6 @@ function ot(rdg::Reading; as_urn = false)
     formatreadingstring(rdg.ot_string)
 end
 
-
 """Get readings of New Testament.
 $(SIGNATURES)
 """
@@ -37,8 +36,6 @@ function nt(rdg::Reading; as_urn = false)
     end
     formatreadingstring(rdg.nt_string)
 end
-
-
 
 """Get readings of Gospel.
 $(SIGNATURES)
@@ -50,9 +47,6 @@ function gospel(rdg::Reading; as_urn = false)
     formatreadingstring(rdg.gospel_string)
 end
 
-
-
-
 """Get readings of Psalm.
 $(SIGNATURES)
 """
@@ -63,12 +57,15 @@ function psalm(rdg::Reading; as_urn = false)
     formatreadingstring(rdg.psalm_string)
 end
 
+#
+# Sunday reading selections
+#
 
-readingselectionsA = Dict()
+sundayselectionsA = Dict()
 
 # Paste in from
 # https://lectionary.library.vanderbilt.edu/downloads/Year%20B%202023-2024.pdf
-readingselectionsB = Dict(
+sundayselectionsB = Dict(
     
     ADVENT_1 =>  Reading(
                "Isaiah 64.1-64.9","1_Corinthians 1.3-1.9","Mark 13.24-13.37","Psalm 80:1-80.7, Psalm 80.16-80.18"),
@@ -116,4 +113,25 @@ readingselectionsB = Dict(
     )
 
 )
-readingselectionsC = Dict()
+sundayselectionsC = Dict()
+
+
+
+
+#
+# Reading selections for feast days
+#
+feastselectionsA = Dict()
+
+feastselectionsB = Dict(
+    FEAST_EPIPHANY => Reading(  
+        "Isaiah 60.1-60.6",
+        "Ephesians 3.1-3.12",
+        "Matthew 2.1-2.12",
+        "Psalm 72.1-72.7, Psalm 72.10-72.14",
+    )
+
+)
+
+
+feastselectionsC = Dict()
