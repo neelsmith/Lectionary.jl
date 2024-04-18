@@ -30,6 +30,7 @@ export pentecost, trinity, pentecost_season
 
 
 include("sundayconsts.jl")
+include("feastconsts.jl")
 include("days.jl")
 include("feasts.jl")
 include("sunday.jl")
