@@ -14,21 +14,23 @@ $(SIGNATURES)
 """
 function advent(sunday::Int, yr::Int)
     sundaystofind = 5 - sunday
-    @debug("Look back $(sundaystofind) Sundays")
+    @info("Look back $(sundaystofind) Sundays")
     xmas = Date(yr, 12, 25)
 
     sundaysfound = 0
     prev = xmas
     while sundaysfound < sundaystofind #&& Dates.dayname(prev) != "Sunday"
-        @debug("found: $(sundaysfound) / $(sundaystofind)")
+        @info("found: $(sundaysfound) / $(sundaystofind)")
         prev = prev - Dates.Day(1)
-        @debug("Look at $(prev): $(dayname(prev))")
+        @info("Look at $(prev): $(dayname(prev))")
         if dayname(prev) == "Sunday"
             sundaysfound = sundaysfound + 1
         end
         
     end
-    Sunday(prev, sunday)
+    @info("Construct from $(prev), $(sunday)")
+    #Sunday(prev, sunday)
+    (prev, sunday)
 end
 
 """Find Sundays of Advent in a given year.

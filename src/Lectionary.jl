@@ -7,7 +7,6 @@ using Documenter, DocStringExtensions
 import Base: show
 import Base: ==
 
-
 export LiturgicalDay
 export name, civildate, readings
 export Sunday, PrincipalFeast, HolyDay, OtherDay
@@ -30,13 +29,13 @@ export pentecost, trinity, pentecost_season
 
 
 include("sundayconsts.jl")
-include("feastconsts.jl")
+#include("feastconstants.jl")
 include("days.jl")
 include("feasts.jl")
 include("sunday.jl")
 include("fixeddates.jl")
 include("year.jl")
-include("yearcomputus.jl")
+include("seasons.jl")
 
 
 end # module Lectionary

@@ -1,4 +1,4 @@
-struct Sunday <: LiturgicalDay
+    struct Sunday <: LiturgicalDay
     dt::Date
     calendar_day::Int
 end
@@ -15,11 +15,8 @@ end
 $(SIGNATURES)
 """
 function show(io::IO, sday::Sunday)
-    # This formatting is wrong:
-    #formatteddate = Dates.format(sday.dt,"U yy, yyyy")
-    #formatteddate = sday.dt
-    formatteddate = string(monthname(sday.dt), " ", day(sday.dt), ", ", year(sday.dt))
-    write(io, string(formatteddate,", ", name(sday) ))
+    formatteddate = string(monthname(sday.dt), " ", dayofmonth(sday.dt), ", ", year(sday.dt))
+    write(io, formatteddate)
 end
 
 function name(sday::Sunday)

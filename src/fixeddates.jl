@@ -1,15 +1,27 @@
-"""Find day of week of Christmas in a given year.
-$(SIGNATURES)
-"""
-function christmasday(yr::Int)
-    Dates.dayname(Date(yr, 12, 25))
+struct FixedDate
+    month::Int
+    day::Int
+end
+
+function month(fd::FixedDate)
+    fd.month
+end
+
+function day(fd::FixedDate)
+    fd.day
+end
+
+function fixeddate(fd::FixedDate, yr::Int)
+    Date(yr, month(fd), day(fd))
+end
+
+function dayofweek(fd::FixedDate, yr::Int)
+    fixeddate(fd, yr) |> dayname
 end
 
 
 
-"""Find day of week of Epiphany in a given year.
-$(SIGNATURES)
-"""
-function epiphanyday(yr::Int)
-    Dates.dayname(Date(yr, 1, 6))
+const CHRISTMAS_DATE = FixedDate(12,25)
+function christmasday(yr::Int)
+    dayofweek(CHRISTMAS_DATE, yr)
 end
