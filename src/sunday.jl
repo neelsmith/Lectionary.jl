@@ -27,7 +27,10 @@ function civildate(sday::Sunday)
     sday.dt
 end
 
-function readings(sday::Sunday, lectionaryyr::Char) 
+function sundayreadings(sday::Sunday, lectionaryyr::Char; as_urn = false) 
+    if as_urn
+        @warn("Support for URN references not implemented yet.")
+    end
     if lectionaryyr == 'A'
         if haskey(readingselectionsA, sday.calendar_day)
             readingselectionsA[sday.calendar_day]
