@@ -7,9 +7,16 @@ using Documenter, DocStringExtensions
 import Base: show
 import Base: ==
 
+
+export LiturgicalDay
+export name, civildate, readings
+export Sunday, PrincipalFeast, HolyDay, OtherDay
+
+
 export LiturgicalYear, lectionary_year, daily_office_year
 export sundays
-export Sunday
+
+
 
 export advent, christmas
 export advent_season
@@ -23,6 +30,8 @@ export pentecost, trinity, pentecost_season
 
 
 include("sundayconsts.jl")
+include("days.jl")
+include("feasts.jl")
 include("sunday.jl")
 include("fixeddates.jl")
 include("year.jl")

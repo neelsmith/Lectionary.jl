@@ -1,4 +1,4 @@
-struct Sunday
+struct Sunday <: LiturgicalDay
     dt::Date
     calendar_day::Int
 end
