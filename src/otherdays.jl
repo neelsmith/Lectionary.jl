@@ -11,7 +11,8 @@ function name(other::OtherDay)
     while dayname(backwardday) != "Sunday"
         backwardday = backwardday - Dates.Day(1)
     end
-   string(dayname(other.dt), " of (TBD in litrugical calendar...) ", backwardday)
+    sday = liturgical_day(backwardday)
+   string(dayname(other.dt), " following ", sday)
 end
 
 """Find date in civil calendar for a day in the liturgical year.
