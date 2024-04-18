@@ -3,3 +3,9 @@ title: Reference
 ---
 
 Look it up here.
+
+:::{.callout-note}
+## Note
+In determining readings for days in the liturgical year,
+`Lectionary.jl` does not attempt to take account of transferal of the readings for a feast to another day. For example, feasts that fall on a Sunay or during Holy Week are normally transferred to a suitable following time.
+:::
