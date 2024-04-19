@@ -1,10 +1,10 @@
 
 
+"""A feast other than a regular Sunday in the liturgical year."""
 struct Feast <: LiturgicalDay
     feastid::Int
     yr::Int
 end
-
 
 """Override `Base.==` for `Feast`.
 $(SIGNATURES)
@@ -14,24 +14,32 @@ function ==(f1::Feast, f2::Feast)
     f1.yr == f2.yr
 end
 
-"""Override `Base.show` for `Feast`.
+"""Override `Base.show` for type `Feast`.
 $(SIGNATURES)
 """
 function show(io::IO, fst::Feast)
+    nm = name(fst)
     dt = civildate(fst)
-
     if isnothing(dt)
-        write(io, string(name(fst), " (no date)"))
+       write(io, string(nm, " (no date)"))
     else
         formatteddate = string(monthname(dt), " ",  dayofmonth(dt), ", ", year(dt))
-        write(io, name(fst) * ", " * formatteddate)
+        write(io, nm * ", " * formatteddate)
     end
 end
 
+"""Name of feast.
+$(SIGNATURES)
+"""
 function name(fst::Feast)
-    feast_names[fst.feastid]
+    haskey(feast_names, fst.feastid) ? feast_names[fst.feastid] : string(fst)
 end
 
+"""Priority of feast. Lower values override 
+higher values in determining which of two sets
+of readings to prefer.
+$(SIGNATURES)
+"""
 function priority(fst::Feast)
     if fst.feastid in PRINCIPAL_FEASTS
         PRINCIPAL_FEAST
@@ -45,30 +53,18 @@ function priority(fst::Feast)
     end
 end
 
-
+"""True if feast is movable.
+$(SIGNATURES)
+"""
 function ismovable(fst::Feast)
     fst.feastid in MOVABLE
 end
 
-function civildate(fst::Feast)
-    if ismovable(fst)
-        @warn("Civil date not yet imlpemented for $(fst)..")
-        nothing
-    elseif haskey(fixed_dates,fst.feastid)
-        monthday =fixed_dates[fst.feastid]
-        Date(fst.yr, calmonth(monthday), calday(monthday))
-    else
-        @warn("Key not found for $(fst)..")
-        nothing
-    end
-        #=
-    if fst.feastid == FEAST_CHRISTMAS
-        caldate(CHRISTMAS_DATE, fst.yr)
-    elseif fst.feastid == FEAST_EPIPHANY
-        caldate(EPIPHANY_DATE, fst.yr)
-    elseif fst.feastid == FEAST_ALL_SAINTS
-        caldate(ALL_SAINTS_DATE, fst.yr)
-    elseif fst.feastid == FEAST_EASTER
+"""Date in civil calendar of movable feast.
+$(SIGNATURES)
+"""
+function movabledate(fst::Feast)
+    if fst.feastid == FEAST_EASTER
         easter_sunday(fst.yr) |> civildate
     elseif fst.feastid == FEAST_ASCENSION
         ascension(fst.yr)
@@ -77,16 +73,39 @@ function civildate(fst::Feast)
     elseif fst.feastid == FEAST_TRINITY
         trinity(fst.yr).dt
     else
-        @warn("Not yet imlemented...")
+        @info("Movable feast not implemented! $(fst)")
         nothing
     end
-    =#
 end
 
+"""Find date in civil calendar for feast.
+$(SIGNATURES)
+"""
+function civildate(fst::Feast)
+    if ismovable(fst)
+        movabledate(fst)
+
+    elseif haskey(fixed_dates,fst.feastid)
+        monthday =fixed_dates[fst.feastid]
+        Date(fst.yr, calmonth(monthday), calday(monthday))
+    else
+        @warn("Key not found for fixed date of feast: $(fst)..")
+        nothing
+    end
+end
+
+
+"""Find name of day of week of feast.
+$(SIGNATURES)
+"""
 function weekday(fst::Feast)
     civildate(fst) |> dayname
 end
 
+
+"""Find readings for feast.
+$(SIGNATURES)
+"""
 function feastreadings(feast::Feast, lectionaryyr::Char; as_urn = false) 
     if as_urn
         @warn("Support for URN references not implemented yet.")
