@@ -33,8 +33,3 @@ const TRANSFIGURATION_DATE = FixedDate(8,6)
 
 
 
-
-
-function christmasday(yr::Int)
-    dayofweek(CHRISTMAS_DATE, yr)
-end

@@ -8,3 +8,15 @@ title: "Lectionary.jl"
 - try a [tutorial](./tutorials/) to start using the `Lectionary` package
 - find [recipes](./guides/) for specific tasks
 - see [reference material](./reference/)
+
+
+## Rough notes
+
+Start with Christmas (fixed date) and Easter (movable):
+
+```{julia}
+using Lectionary
+lityr = LiturgicalYear(2023)
+easter2024 = easter_sunday(lityr)
+xmas = christmas(lityr)
+```

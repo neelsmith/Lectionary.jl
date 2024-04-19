@@ -48,6 +48,8 @@ end
 #
 # Christmas
 #
+
+
 """Find all Sundays in season of Christmas in a given liturgical year.
 $(SIGNATURES)
 """

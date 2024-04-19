@@ -8,17 +8,16 @@ import Base: show
 import Base: ==
 
 export LiturgicalDay
-export name, civildate, readings
+export name, civildate, weekday, readings, priority
 export Sunday, Feast, HolyDay, OtherDay
 
 
 export LiturgicalYear, lectionary_year, daily_office_year
-export sundays, principalfeasts
+export sundays, principal_feasts
 export liturgical_year, liturgical_day
 
-export advent, christmas
+export advent, christmas, christmas_day
 export advent_season
-export christmasday, epiphanyday
 export epiphany_season
 export easter_sunday
 export ash_wednesday, lent, palm_sunday, eastertide

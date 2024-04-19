@@ -5,10 +5,27 @@ struct Feast <: LiturgicalDay
     yr::Int
 end
 
+
+"""Override `Base.==` for `Feast`.
+$(SIGNATURES)
+"""
+function ==(f1::Feast, f2::Feast)
+    f1.feastid == f2.feastid &&
+    f1.yr == f2.yr
+end
+
+"""Override `Base.show` for `Feast`.
+$(SIGNATURES)
+"""
+function show(io::IO, fst::Feast)
+    dt = civildate(fst)
+    formatteddate = string(monthname(dt), " ",  dayofmonth(dt), ", ", year(dt))
+    write(io, name(fst) * ", " * formatteddate)
+end
+
 function name(fst::Feast)
     feast_names[fst.feastid]
 end
-
 
 function priority(fst::Feast)
     if fst.feastid in PRINCIPAL_FEASTS
@@ -34,25 +51,28 @@ end
 
 function civildate(fst::Feast)
     if fst.feastid == FEAST_CHRISTMAS
-        caldate(CHRISTMAS_DATE, pf.yr)
+        caldate(CHRISTMAS_DATE, fst.yr)
     elseif fst.feastid == FEAST_EPIPHANY
-        caldate(EPIPHANY_DATE, pf.yr)
+        caldate(EPIPHANY_DATE, fst.yr)
     elseif fst.feastid == FEAST_ALL_SAINTS
-        caldate(ALL_SAINTS_DATE, pf.yr)
+        caldate(ALL_SAINTS_DATE, fst.yr)
     elseif fst.feastid == FEAST_EASTER
-        easter_sunday(pf.yr) |> civildate
+        easter_sunday(fst.yr) |> civildate
     elseif fst.feastid == FEAST_ASCENSION
-        ascension(pf.yr)
+        ascension(fst.yr)
     elseif fst.feastid == FEAST_PENTECOST
-        pentecost(pf.yr).dt
+        pentecost(fst.yr).dt
     elseif fst.feastid == FEAST_TRINITY
-        trinity(pf.yr).dt
+        trinity(fst.yr).dt
     else
         @warn("Not yet imlemented...")
         nothing
     end
 end
 
+function weekday(fst::Feast)
+    civildate(fst) |> dayname
+end
 
 function feastreadings(feast::Feast, lectionaryyr::Char; as_urn = false) 
     if as_urn
@@ -87,4 +107,15 @@ function feastreadings(feast::Feast, lectionaryyr::Char; as_urn = false)
         nothing
     end     
    
+end
+
+
+
+function christmas_day(lityr::LiturgicalYear)
+    christmas_day(lityr.starts_in)
+    
+end
+
+function christmas_day(yr::Int)
+    Feast(FEAST_CHRISTMAS, yr)
 end
