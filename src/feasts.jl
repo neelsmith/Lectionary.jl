@@ -18,6 +18,7 @@ end
 $(SIGNATURES)
 """
 function show(io::IO, fst::Feast)
+    #=
     nm = name(fst)
     dt = civildate(fst)
     if isnothing(dt)
@@ -26,6 +27,8 @@ function show(io::IO, fst::Feast)
         formatteddate = string(monthname(dt), " ",  dayofmonth(dt), ", ", year(dt))
         write(io, nm * ", " * formatteddate)
     end
+    =#
+    write(io, string("Feast ",fst.feastid))
 end
 
 """Name of feast.
@@ -43,9 +46,9 @@ $(SIGNATURES)
 function priority(fst::Feast)
     if fst.feastid in PRINCIPAL_FEASTS
         PRINCIPAL_FEAST
-    elseif fst.feast in HOLY_DAYS_1
+    elseif fst.feastid in HOLY_DAYS_1
         HOLY_DAY_1
-    elseif fst.feast in HOLY_DAYS_2
+    elseif fst.feastid in HOLY_DAYS_2
         HOLY_DAY_2
 
     else
@@ -72,6 +75,9 @@ function movabledate(fst::Feast)
         pentecost(fst.yr).dt
     elseif fst.feastid == FEAST_TRINITY
         trinity(fst.yr).dt
+    elseif fst.feastid == FEAST_THANKSGIVING_DAY
+        thanksgiving(fst.yr)
+
     else
         @info("Movable feast not implemented! $(fst)")
         nothing

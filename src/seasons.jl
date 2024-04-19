@@ -162,8 +162,6 @@ function ash_wednesday(yr::Int)
     lent(1, yr).dt - Dates.Day(4)
 end
 
-
-## THIS IS BROKEN!
 """Find date of a given week of Lent in a given year.
 $(SIGNATURES)
 """
@@ -338,4 +336,21 @@ end
 
 function ascension(yr::Int)
     easter_sunday(yr).dt + Dates.Day(40)
+end
+
+function thanksgiving(lityr::LiturgicalYear)
+    thanksgiving(lityr.ends_in)
+end
+
+function thanksgiving(yr::Int)
+    currday = Date(yr, 11)
+    thursdaycount = dayname(currday) == "Thursday" ? 1 : 0
+
+    while thursdaycount < 4
+        currday = currday + Dates.Day(1)
+        if dayname(currday) == "Thursday"
+            thursdaycount = thursdaycount + 1
+        end
+    end
+    currday
 end

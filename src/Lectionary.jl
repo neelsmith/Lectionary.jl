@@ -24,6 +24,7 @@ export ash_wednesday, lent, palm_sunday, eastertide
 export lent_season, easter_season
 export ascension
 export pentecost, trinity, pentecost_season
+export thanksgiving
 
 export Reading, readings, ot, nt, psalm, gospel
 
