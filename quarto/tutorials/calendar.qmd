@@ -1,11 +1,15 @@
 ---
-title: "The Liturgical Year"
+title: "The Liturgical Calendar"
 ---
 
 
-The *liturgical year* is a central structure `Lectionary.jl`. You can create one from a `Date` object, or with no parameters with a the date defaulting to today, or with an integer value for the calendar year in which Advent of the liturgical year begins.
+## The `LiturgicalYear`
+
+The *liturgical year* is modelled by the `LiturgicalYear` type, a central structure in `Lectionary.jl`. You can create a `LiturgicalYear` from a  `Date` object as a single parameter, or with no parameter with the date value defaulting to today, or with an integer value for the calendar year in which Advent of the liturgical year begins, as this example illustrates:
+
 
 ```{julia}
+#| warning: false
 using Lectionary
 lityear = LiturgicalYear(2023)
 ```
@@ -13,10 +17,16 @@ lityear = LiturgicalYear(2023)
 Things you can find out about a liturgical year include:
 
 
--  its place in the three-year cycle of the Revised Commmon Lectionary:
+-  its place in the three-year cycle of the Revised Commmon Lectionary (identified by one of the characters 'A', 'B' or 'C'):
 
 ```{julia}
 lectionary_year(lityear)
+```
+
+- its sequence in the Episcopal Church's two-year cycle of Daily Office Readings (identified by an integer value, 1 or 2):
+
+```{julia}
+daily_office_year(lityear)
 ```
 
 
@@ -26,19 +36,38 @@ lectionary_year(lityear)
 date_range(lityear)
 ```
 
-()
+The result is a range of `Date`s (from the `Dates` package). Of course you can collect them, like any other range value in Julia. Here we can see that the 2023-2024 liturgical year spans 364 days in the civil calendar.
+
 ```{julia}
-#| output: false
-date_range(lityear) |> collect
+date_range(lityear) |> collect |> length
 ```
 
-date_range
+## The `LiturgicalDay`
 
-seasons of he year
+The `LiturgicalDay` is an abstract type. Its concrete implementations include the following:
 
-or a full calendar of all feasts and fasts.
+- `Sunday`
+- `HolyDay`
+- `Feast`
+- `OtherDay`
+
+Any date in the civil calendar can be mapped to a `LiturgicalDay`.
+
+
+You can find types of days for a liturgical year.
+
+
 
 ```{julia}
 holy_days(lityear)
-date_range(lityear)
 ```
+
+
+Any day in the civil calendar  can be mapped to a liturgical day.
+
+
+## Seasons of the year
+
+Numerous functions let you find the holy days belonging to a season of the liturgical year.
+
+

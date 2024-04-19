@@ -143,6 +143,10 @@ function holy_days(lityear::LiturgicalYear)
 end
 
 
+function kalendar(lityr::LiturgicalYear)
+    
+end
+
 function christmas_day(lityr::LiturgicalYear)
     christmas_day(lityr.starts_in)
     
