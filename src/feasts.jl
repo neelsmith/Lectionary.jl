@@ -18,7 +18,7 @@ end
 $(SIGNATURES)
 """
 function show(io::IO, fst::Feast)
-    #=
+    
     nm = name(fst)
     dt = civildate(fst)
     if isnothing(dt)
@@ -27,8 +27,8 @@ function show(io::IO, fst::Feast)
         formatteddate = string(monthname(dt), " ",  dayofmonth(dt), ", ", year(dt))
         write(io, nm * ", " * formatteddate)
     end
-    =#
-    write(io, string("Feast ",fst.feastid))
+    
+    #write(io, string("Feast ",fst.feastid))
 end
 
 """Name of feast.

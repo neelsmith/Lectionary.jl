@@ -1,14 +1,44 @@
 ---
-title: "Calendar basics"
+title: "The Liturgical Year"
 ---
 
 
-```{julia}
-pwd()
-```
+The *liturgical year* is a central structure `Lectionary.jl`. You can create one from a `Date` object, or with no parameters with a the date defaulting to today, or with an integer value for the calendar year in which Advent of the liturgical year begins.
 
 ```{julia}
+using Lectionary
+lityear = LiturgicalYear(2023)
+```
+
+Things you can find out about a liturgical year include:
+
+
+-  its place in the three-year cycle of the Revised Commmon Lectionary:
+
+```{julia}
+lectionary_year(lityear)
+```
+
+
+- the range of its dates (from Advent 1 to the end of the liturgical year) in the civil calendar:
+
+```{julia}
+date_range(lityear)
+```
+
+()
+```{julia}
 #| output: false
-#using Dates
-#using Lectionary
+date_range(lityear) |> collect
+```
+
+date_range
+
+seasons of he year
+
+or a full calendar of all feasts and fasts.
+
+```{julia}
+holy_days(lityear)
+date_range(lityear)
 ```

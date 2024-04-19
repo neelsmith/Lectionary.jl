@@ -2,21 +2,13 @@
 title: "Lectionary.jl"
 ---
 
-`Lectionary.jl` is a Julia package that coordinates the Gregorian civil calendar with a liturgical calendar year, and with the readings from the Revised Common Lectionary (RCL) for days in the liturgical year.
+`Lectionary.jl` is a Julia package that coordinates the liturgical calendar year with the Gregorian civil calendar and with the readings from the [Revised Common Lectionary](https://www.commontexts.org/rcl/) (RCL).
 
 - learn [how the liturgical year and the RCL work](./concepts/) 
 - try a [tutorial](./tutorials/) to start using the `Lectionary` package
 - find [recipes](./guides/) for specific tasks
 - see [reference material](./reference/)
 
+## Current status
 
-## Rough notes
-
-Start with Christmas (fixed date) and Easter (movable):
-
-```{julia}
-using Lectionary
-lityr = LiturgicalYear(2023)
-easter2024 = easter_sunday(lityr)
-xmas = christmas(lityr)
-```
+`Lectionary.jl` has not yet been published.  To work with the c current pre-release version, you can add the package from the github repository at [https://github.com/neelsmith/Lectionary.jl](https://github.com/neelsmith/Lectionary.jl).

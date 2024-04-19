@@ -14,7 +14,7 @@ export Sunday, Feast, HolyDay, OtherDay
 
 export LiturgicalYear, lectionary_year, daily_office_year
 export sundays, principal_feasts, holy_days
-export liturgical_year, liturgical_day
+export liturgical_year, liturgical_day, date_range
 
 export advent, christmas, christmas_day
 export advent_season

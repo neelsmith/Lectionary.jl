@@ -7,6 +7,15 @@ struct LiturgicalYear
     end
 end
 
+function LiturgicalYear(dt::Date = Date(Dates.now()))
+    yr = year(dt)
+    if dt >= advent(1, yr).dt
+        LiturgicalYear(yr)
+    else
+        LiturgicalYear(yr - 1)
+    end
+end
+
 """Override `Base.==` for `Codex`.
 $(SIGNATURES)
 """
@@ -22,6 +31,12 @@ function show(io::IO, year::LiturgicalYear)
     write(io, string(year.starts_in,"-",year.ends_in))
 end
 
+function date_range(yr::LiturgicalYear)
+    lastday = advent(1,yr.ends_in).dt - Dates.Day(1)
+    advent(1, yr.starts_in).dt:lastday
+end
+
+#=
 """Find correct liturgical year for a given date in the civil calendar.
 $(SIGNATURES)
 """
@@ -31,7 +46,7 @@ function liturgical_year(dt::Date)
     else
         LiturgicalYear(year(dt) - 1)
     end
-end
+end=#
 
 """Find correct liturgical day for a given date in the civil calendar.
 $(SIGNATURES)
