@@ -30,6 +30,7 @@ export Reading, readings, ot, nt, psalm, gospel
 
 
 include("sundayconsts.jl")
+include("feastconstants.jl")
 include("fixeddates.jl")
 include("days.jl")
 include("feasts.jl")

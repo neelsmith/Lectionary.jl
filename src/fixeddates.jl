@@ -16,7 +16,7 @@ function caldate(fd::FixedDate, yr::Int)
 end
 
 function dayofweek(fd::FixedDate, yr::Int)
-    fixeddate(fd, yr) |> dayname
+    caldate(fd, yr) |> dayname
 end
 
 # The principal feasts with fixed dates:
