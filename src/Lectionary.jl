@@ -9,7 +9,9 @@ import Base: ==
 
 export LiturgicalDay
 export name, civildate, weekday, readings, priority
-export Sunday, Feast, HolyDay, OtherDay
+export kalendar
+export Sunday, Feast,  OtherDay
+# HolyDay
 
 
 export LiturgicalYear, lectionary_year, daily_office_year

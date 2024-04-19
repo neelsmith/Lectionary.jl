@@ -134,9 +134,6 @@ end
 
 function holy_days(lityear::LiturgicalYear)
     allholydays = vcat(HOLY_DAYS_1, HOLY_DAYS_2)
-    #[
-     #   Feast(thefeast, lityear.starts_in) for thefeast in allholydays
-    #]
     map(allholydays) do f
         Feast(f, lityear.ends_in)
     end
@@ -144,7 +141,11 @@ end
 
 
 function kalendar(lityr::LiturgicalYear)
-    
+    events = LiturgicalDay[]
+    for ld in vcat(holy_days(lityr), sundays(lityr), principal_feasts(lityr))
+        push!(events, ld)
+    end
+    sort(events , by = litday -> civildate(litday))
 end
 
 function christmas_day(lityr::LiturgicalYear)

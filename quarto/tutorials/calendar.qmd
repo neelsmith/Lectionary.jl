@@ -44,12 +44,18 @@ date_range(lityear) |> collect |> length
 
 ## The `LiturgicalDay`
 
-The `LiturgicalDay` is an abstract type. Its concrete implementations include the following:
+The `LiturgicalDay` is an abstract type with concrete implementations:
 
-- `Sunday`
-- `HolyDay`
-- `Feast`
-- `OtherDay`
+- `Feast`: feasts of the liturgical year other than Sundays. (The movable feasts could coincide with a Sunday.)
+- `Sunday`:  the Sundays of the liturgical year
+- `OtherDay`: 
+
+All liturgical days with readings assigned in the RCL:
+
+```{julia}
+kalendar(lityear)
+```
+
 
 Any date in the civil calendar can be mapped to a `LiturgicalDay`.
 
@@ -71,3 +77,7 @@ Any day in the civil calendar  can be mapped to a liturgical day.
 Numerous functions let you find the holy days belonging to a season of the liturgical year.
 
 
+
+- advent
+- christmastide
+- epiphany
