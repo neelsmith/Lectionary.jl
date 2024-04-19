@@ -19,7 +19,7 @@ function dayofweek(fd::FixedDate, yr::Int)
     caldate(fd, yr) |> dayname
 end
 
-fixed_dates = Dict(
+const fixed_dates = Dict(
     # The principal feasts with fixed dates:
     FEAST_CHRISTMAS => FixedDate(12,25),
     FEAST_ALL_SAINTS => FixedDate(11,1),
@@ -41,7 +41,7 @@ fixed_dates = Dict(
     FEAST_CONFESSION_OF_PETER => FixedDate(6,29),
     FEAST_CONVERSION_OF_PAUL => FixedDate(6,29),
 
-    FEAST_INDEPENDENCE_DAY => FixedDate(7,4,)
+    FEAST_INDEPENDENCE_DAY => FixedDate(7,4),
     FEAST_MARY_MAGDALENE => FixedDate(7,22),
     FEAST_SAINT_JAMES_APOSTLE => FixedDate(7,25),
 
@@ -59,7 +59,7 @@ fixed_dates = Dict(
 
     FEAST_SAINT_THOMAS => FixedDate(12,21),
     FEAST_SAINT_STEPHEN => FixedDate(12,26),
-    FEAST_SAINT_JOHN => FixedDate(12,27)
+    FEAST_SAINT_JOHN => FixedDate(12,27),
     FEAST_HOLY_INNOCENTS => FixedDate(12,28)
 )
 #=
