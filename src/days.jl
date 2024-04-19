@@ -10,8 +10,13 @@ function civildate(theday::T) where {T <: LiturgicalDay}
     nothing
 end
 
+function priority(theday::T) where {T <: LiturgicalDay}
+    @warn("Function civildate not implmented for LiturgicalDay type $(typeof(theday))")
+    nothing
+end
+
 function readings(theday::T, yr::Char; as_urn = false) where {T <: LiturgicalDay}
-    if theday isa PrincipalFeast
+    if theday isa Feast
         feastreadings(theday, yr; as_urn = as_urn)
 
     elseif theday isa Sunday

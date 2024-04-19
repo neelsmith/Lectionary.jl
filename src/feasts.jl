@@ -1,35 +1,51 @@
 
-struct PrincipalFeast <: LiturgicalDay
+
+struct Feast <: LiturgicalDay
     feastid::Int
     yr::Int
 end
 
-function name(pf::PrincipalFeast)
-    feast_names[pf.feastid]
+function name(fst::Feast)
+    feast_names[fst.feastid]
 end
 
 
+function priority(fst::Feast)
+    if fst.feastid in PRINCIPAL_FEASTS
+        PRINCIPAL_FEAST
+    elseif fst.feast in HOLY_DAYS_1
+        HOLY_DAY_1
+    elseif fst.feast in HOLY_DAYS_2
+        HOLY_DAY_2
+
+    else
+        OTHER_DAY
+    end
+end
+
+#=
 """True if principal feast has a fixed date.
 $(SIGNATURES)
 """
-function isfixed(pf::PrincipalFeast)
+function isfixed(pf::Feast)
     pf.feastid in [FEAST_ALL_SAINTS, FEAST_CHRISTMAS, FEAST_EPIPHANY]
 end
+=#
 
-function civildate(pf::PrincipalFeast)
-    if pf.feastid == FEAST_CHRISTMAS
+function civildate(fst::Feast)
+    if fst.feastid == FEAST_CHRISTMAS
         caldate(CHRISTMAS_DATE, pf.yr)
-    elseif pf.feastid == FEAST_EPIPHANY
+    elseif fst.feastid == FEAST_EPIPHANY
         caldate(EPIPHANY_DATE, pf.yr)
-    elseif pf.feastid == FEAST_ALL_SAINTS
+    elseif fst.feastid == FEAST_ALL_SAINTS
         caldate(ALL_SAINTS_DATE, pf.yr)
-    elseif pf.feastid == FEAST_EASTER
+    elseif fst.feastid == FEAST_EASTER
         easter_sunday(pf.yr) |> civildate
-    elseif pf.feastid == FEAST_ASCENSION
+    elseif fst.feastid == FEAST_ASCENSION
         ascension(pf.yr)
-    elseif pf.feastid == FEAST_PENTECOST
+    elseif fst.feastid == FEAST_PENTECOST
         pentecost(pf.yr).dt
-    elseif pf.feastid == FEAST_TRINITY
+    elseif fst.feastid == FEAST_TRINITY
         trinity(pf.yr).dt
     else
         @warn("Not yet imlemented...")
@@ -38,7 +54,7 @@ function civildate(pf::PrincipalFeast)
 end
 
 
-function feastreadings(feast::PrincipalFeast, lectionaryyr::Char; as_urn = false) 
+function feastreadings(feast::Feast, lectionaryyr::Char; as_urn = false) 
     if as_urn
         @warn("Support for URN references not implemented yet.")
     end

@@ -27,6 +27,10 @@ function civildate(sday::Sunday)
     sday.dt
 end
 
+function priority(sday::Sunday)
+    SUNDAY
+end
+
 function sundayreadings(sday::Sunday, lectionaryyr::Char; as_urn = false) 
     if as_urn
         @warn("Support for URN references not implemented yet.")
