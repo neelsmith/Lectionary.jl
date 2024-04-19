@@ -19,8 +19,13 @@ $(SIGNATURES)
 """
 function show(io::IO, fst::Feast)
     dt = civildate(fst)
-    formatteddate = string(monthname(dt), " ",  dayofmonth(dt), ", ", year(dt))
-    write(io, name(fst) * ", " * formatteddate)
+
+    if isnothing(dt)
+        write(io, string(name(fst), " (no date)"))
+    else
+        formatteddate = string(monthname(dt), " ",  dayofmonth(dt), ", ", year(dt))
+        write(io, name(fst) * ", " * formatteddate)
+    end
 end
 
 function name(fst::Feast)
@@ -40,16 +45,23 @@ function priority(fst::Feast)
     end
 end
 
-#=
-"""True if principal feast has a fixed date.
-$(SIGNATURES)
-"""
-function isfixed(pf::Feast)
-    pf.feastid in [FEAST_ALL_SAINTS, FEAST_CHRISTMAS, FEAST_EPIPHANY]
+
+function ismovable(fst::Feast)
+    fst.feastid in MOVABLE
 end
-=#
 
 function civildate(fst::Feast)
+    if ismovable(fst)
+        @warn("Civil date not yet imlpemented for $(fst)..")
+        nothing
+    elseif haskey(fixed_dates,fst.feastid)
+        monthday =fixed_dates[fst.feastid]
+        Date(fst.yr, calmonth(monthday), calday(monthday))
+    else
+        @warn("Key not found for $(fst)..")
+        nothing
+    end
+        #=
     if fst.feastid == FEAST_CHRISTMAS
         caldate(CHRISTMAS_DATE, fst.yr)
     elseif fst.feastid == FEAST_EPIPHANY
@@ -68,6 +80,7 @@ function civildate(fst::Feast)
         @warn("Not yet imlemented...")
         nothing
     end
+    =#
 end
 
 function weekday(fst::Feast)

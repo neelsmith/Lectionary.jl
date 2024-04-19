@@ -117,7 +117,12 @@ function principal_feasts(lityear::LiturgicalYear)
     ]
 end
 
-
+function holy_days(lityear::LiturgicalYear)
+    allholydays = vcat(HOLY_DAYS_1, HOLY_DAYS_2)
+    [
+        Feast(thefeast, lityear.starts_in) for thefeast in allholydays
+    ]
+end
 
 
 function christmas_day(lityr::LiturgicalYear)

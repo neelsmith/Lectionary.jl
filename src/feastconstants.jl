@@ -74,3 +74,8 @@ const feast_names = Dict(
     FEAST_CHRISTMAS => "Christmas Day",
     FEAST_EPIPHANY => "The Epiphany"
 )
+
+const MOVABLE = [
+    FEAST_EASTER, FEAST_ASCENSION, FEAST_PENTECOST,
+    FEAST_TRINITY   
+]

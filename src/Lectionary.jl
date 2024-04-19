@@ -13,7 +13,7 @@ export Sunday, Feast, HolyDay, OtherDay
 
 
 export LiturgicalYear, lectionary_year, daily_office_year
-export sundays, principal_feasts
+export sundays, principal_feasts, holy_days
 export liturgical_year, liturgical_day
 
 export advent, christmas, christmas_day
