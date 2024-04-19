@@ -6,7 +6,7 @@ title: "Lectionary.jl"
 
 - learn [how the liturgical year and the RCL work](./concepts/) 
 - try a [tutorial](./tutorials/) to start using the `Lectionary` package
-- find [recipes](./guides/) for specific tasks
+- find [recipes](./guides/) for specific tasks with `Lectionary.jl`
 - see [reference material](./reference/)
 
 ## Current status
