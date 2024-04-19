@@ -109,13 +109,3 @@ function feastreadings(feast::Feast, lectionaryyr::Char; as_urn = false)
    
 end
 
-
-
-function christmas_day(lityr::LiturgicalYear)
-    christmas_day(lityr.starts_in)
-    
-end
-
-function christmas_day(yr::Int)
-    Feast(FEAST_CHRISTMAS, yr)
-end

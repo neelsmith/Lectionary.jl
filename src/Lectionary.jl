@@ -41,6 +41,7 @@ include("year.jl")
 include("seasons.jl")
 
 include("reading.jl")
+include("readingconstants.jl")
 
 
 end # module Lectionary

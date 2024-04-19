@@ -53,8 +53,6 @@ function liturgical_day(dt::Date)
     end
 end
 
-
-
 """Rules for finding lectionary year cycle,
 as a Dict."""
 const lectionary_year_dict = Dict(
@@ -123,4 +121,16 @@ function principal_feasts(lityear::LiturgicalYear)
         #Feast(FEAST_TRINITY, lityear.ends_in),
         #east(FEAST_ALL_SAINTS, lityear.ends_in)
     ]
+end
+
+
+
+
+function christmas_day(lityr::LiturgicalYear)
+    christmas_day(lityr.starts_in)
+    
+end
+
+function christmas_day(yr::Int)
+    Feast(FEAST_CHRISTMAS, yr)
 end

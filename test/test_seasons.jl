@@ -1,6 +1,7 @@
 @testset "Test seasons functions" begin
-    @test christmasday(2023) == "Monday"
+    #@test christmasday(2023) == "Monday"
 
+    @test christmas_day(2023) |> weekday == "Monday"
 
     @test advent(1,2023) == Lectionary.Sunday(Date(2023,12,3), Lectionary.ADVENT_1)
 
