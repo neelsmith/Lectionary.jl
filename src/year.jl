@@ -114,12 +114,6 @@ end
 function principal_feasts(lityear::LiturgicalYear)
     [
         Feast(thefeast, lityear.starts_in) for thefeast in PRINCIPAL_FEASTS
-        #Feast(FEAST_EPIPHANY, lityear.ends_in),
-        #Feast(FEAST_EASTER, lityear.ends_in),
-        #Feast(FEAST_ASCENSION, lityear.ends_in),
-        #Feast(FEAST_PENTECOST, lityear.ends_in),
-        #Feast(FEAST_TRINITY, lityear.ends_in),
-        #east(FEAST_ALL_SAINTS, lityear.ends_in)
     ]
 end
 
