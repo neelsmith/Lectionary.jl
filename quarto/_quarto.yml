@@ -37,6 +37,7 @@ website:
       contents: 
         - tutorials/index.qmd
         - tutorials/calendar.qmd
+        - tutorials/readings.qmd
 
     - title: "Guides"
       contents:

@@ -1,0 +1,12 @@
+---
+title: "Readings from the RCL"
+---
+
+
+
+
+:::{.callout-caution}
+Content TBA
+:::
+
+Introduce the `readings` function, and explain the data it returns.
