@@ -13,10 +13,3 @@ title: "Lectionary.jl"
 
 `Lectionary.jl` has not yet been published.  To work with the current pre-release version, you can add the package from the github repository at [https://github.com/neelsmith/Lectionary.jl](https://github.com/neelsmith/Lectionary.jl).
 
-
-Test this for docs withing Quarto:
-
-```{julia}
-#| echo: false
-@doc Base.:+
-```

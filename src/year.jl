@@ -87,10 +87,10 @@ $(SIGNATURES)
 """
 function liturgical_day(dt::Date)
     lityr = liturgical_year(dt)
-    feastlist = principal_feasts(lityr) #.|> civildate
+    feastlist = principal_feasts(lityr)
     feastmatch = findfirst(f -> civildate(f) == dt, feastlist)
 
-    sundaylist = sundays(lityr) #.|> civildate
+    sundaylist = sundays(lityr)
     sundaymatch = findfirst(f -> civildate(f) == dt, sundaylist) 
   
     if ! isnothing(feastmatch)
