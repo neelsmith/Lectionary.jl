@@ -1,0 +1,4 @@
+- source: project
+  quarto-pub:
+    - id: 39efd269-19f8-4677-ad8a-f7d38182b6c2
+      url: 'https://neelsmith.quarto.pub/lectionary'
