@@ -1,6 +1,17 @@
 # `Lectionary.jl`: API documentation
 
 
+## The liturgical year
+
+
+```@docs
+LiturgicalYear
+date_range
+lectionary_year
+daily_office_year
+```
+
+
 ## Liturgical days
 
 Types:

@@ -1,3 +1,19 @@
+"""A specific liturgical year.
+
+## Examples
+```julia-repl
+julia> LiturgicalYear()
+2023-2024
+
+julia> LiturgicalYear(2023)
+2023-2024
+
+julia> using Dates
+julia> LiturgicalYear(Date(2024, 4, 1))
+2023-2024
+
+```
+"""
 struct LiturgicalYear
     starts_in::Int
     ends_in::Int
@@ -7,6 +23,11 @@ struct LiturgicalYear
     end
 end
 
+
+"""Construct a `LiturgicalYear` from a specified `Date`,
+or default to constructing the liturgical year from today's date.
+$(SIGNATURES)
+"""
 function LiturgicalYear(dt::Date = Date(Dates.now()))
     yr = year(dt)
     if dt >= advent(1, yr).dt
@@ -31,6 +52,19 @@ function show(io::IO, year::LiturgicalYear)
     write(io, string(year.starts_in,"-",year.ends_in))
 end
 
+
+"""Find range of dates in the civil calendar for a liturgical year.
+
+## Example
+```julia-repl
+julia> ly = LiturgicalYear()
+2023-2024
+julia> date_range(ly)
+Date("2023-12-03"):Day(1):Date("2024-11-30")
+```
+
+$(SIGNATURES)
+"""
 function date_range(yr::LiturgicalYear)
     lastday = advent(1,yr.ends_in).dt - Dates.Day(1)
     advent(1, yr.starts_in).dt:lastday
@@ -77,6 +111,16 @@ const lectionary_year_dict = Dict(
 )
 
 """Find lectionary year cycle for a given liturgical year.
+
+## Example
+
+```julia-repl
+julia> ly = LiturgicalYear()
+2023-2024
+julia> lectionary_year(ly)
+'B': ASCII/Unicode U+0042 (category Lu: Letter, uppercase)
+```
+
 $(SIGNATURES)
 """
 function lectionary_year(lityr::LiturgicalYear)
@@ -84,7 +128,15 @@ function lectionary_year(lityr::LiturgicalYear)
 end
 
 
-"""Find lectionary year cycle for a given year.
+"""Find lectionary year cycle for the liturgical year begining in a given year of the civil calendar.
+
+## Example
+
+```julia-repl
+julia> lectionary_year(2023)
+'B': ASCII/Unicode U+0042 (category Lu: Letter, uppercase)
+```
+
 $(SIGNATURES)
 """
 function lectionary_year(yr::Int)
@@ -93,13 +145,32 @@ function lectionary_year(yr::Int)
 end
 
 """Find daily office year cycle for a given liturgical year.
+
+
+## Example
+
+```julia-repl
+julia> ly = LiturgicalYear()
+2023-2024
+julia> daily_office_year(ly)
+2
+```
+
 $(SIGNATURES)
 """
 function daily_office_year(lityr::LiturgicalYear)
     daily_office_year(lityr.starts_in)
 end
 
-"""Find daily office year cycle for a given year.
+"""Find daily office year cycle for the liturgical year beginning in a given year in the civil calendar.
+
+
+## Example
+
+```julia-repl
+julia> daily_office_year(2023)
+2
+```
 $(SIGNATURES)
 """
 function daily_office_year(yr::Int)
