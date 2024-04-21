@@ -48,11 +48,9 @@ function show(io::IO, fst::Feast)
         formatteddate = string(monthname(dt), " ",  dayofmonth(dt), ", ", year(dt))
         write(io, nm * ", " * formatteddate)
     end
-    
-    #write(io, string("Feast ",fst.feastid))
 end
 
-"""Name of feast.
+"""Name of a feast in the liturgical calendar.
 
 **Example**
 ```julia-repl

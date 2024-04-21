@@ -40,7 +40,7 @@ end
 """Override `Base.==` for `Codex`.
 $(SIGNATURES)
 """
-function ==(yr1::LiturgicalYear, yr2::LiturgicalYear)
+function ==(yr1::LiturgicalYear, yr2::LiturgicalYear = LiturgicalYear())
     yr1.starts_in == yr.starts_in &&
     yr1.ends_in == yr.ends_in 
 end
@@ -48,7 +48,7 @@ end
 """Override `Base.show` for `Codex`.
 $(SIGNATURES)
 """
-function show(io::IO, year::LiturgicalYear)
+function show(io::IO, year::LiturgicalYear = LiturgicalYear())
     write(io, string(year.starts_in,"-",year.ends_in))
 end
 
@@ -65,7 +65,7 @@ Date("2023-12-03"):Day(1):Date("2024-11-30")
 
 $(SIGNATURES)
 """
-function date_range(yr::LiturgicalYear)
+function date_range(yr::LiturgicalYear = LiturgicalYear())
     lastday = advent(1,yr.ends_in).dt - Dates.Day(1)
     advent(1, yr.starts_in).dt:lastday
 end
@@ -123,7 +123,7 @@ julia> lectionary_year(ly)
 
 $(SIGNATURES)
 """
-function lectionary_year(lityr::LiturgicalYear)
+function lectionary_year(lityr::LiturgicalYear = LiturgicalYear())
     lectionary_year(lityr.starts_in)
 end
 
@@ -158,7 +158,7 @@ julia> daily_office_year(ly)
 
 $(SIGNATURES)
 """
-function daily_office_year(lityr::LiturgicalYear)
+function daily_office_year(lityr::LiturgicalYear = LiturgicalYear())
     daily_office_year(lityr.starts_in)
 end
 
@@ -182,7 +182,7 @@ end
 """Find Sundays in a give liturgical year.
 $(SIGNATURES)
 """
-function sundays(lityear::LiturgicalYear)
+function sundays(lityear::LiturgicalYear = LiturgicalYear())
     
    vcat(
         advent_sundays(lityear), 
@@ -197,11 +197,11 @@ function sundays(lityear::LiturgicalYear)
 end
 
 
-function principal_feasts(lityear::LiturgicalYear)
+function principal_feasts(lityear::LiturgicalYear = LiturgicalYear())
     [Feast(thefeast, lityear) for thefeast in PRINCIPAL_FEASTS]
 end
 
-function holy_days(lityear::LiturgicalYear)
+function holy_days(lityear::LiturgicalYear = LiturgicalYear())
     allholydays = vcat(HOLY_DAYS_1, HOLY_DAYS_2)
     map(allholydays) do f
         Feast(f, lityear)
@@ -213,7 +213,7 @@ end
 this liturgical year.
 $(SIGNATURES)
 """
-function kalendar(lityr::LiturgicalYear)
+function kalendar(lityr::LiturgicalYear = LiturgicalYear())
     events = LiturgicalDay[]
     for ld in vcat(holy_days(lityr), sundays(lityr), principal_feasts(lityr))
         push!(events, ld)
@@ -221,7 +221,7 @@ function kalendar(lityr::LiturgicalYear)
     sort(events , by = litday -> civildate(litday))
 end
 
-function christmas_day(lityr::LiturgicalYear)
+function christmas_day(lityr::LiturgicalYear = LiturgicalYear())
     christmas_day(lityr.starts_in)
     
 end

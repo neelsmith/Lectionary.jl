@@ -1,9 +1,22 @@
+"""A Sunday in the liturgical year.
+"""
 struct Sunday <: LiturgicalDay
     dt::Date
     calendar_day::Int
 end
 
-"""Override `Base.==` for `Codex`.
+
+function Sunday(sundayid::Int, lityear::LiturgicalYear = LiturgicalYear())
+    matches = filter(sunday -> sunday.calendar_day == sundayid, sundays(lityear))
+    if isempty(matches)
+        @warn("No Sunday found with code: $(sundayid)")
+        nothing
+    else
+        matches[1]
+    end
+end
+
+"""Override `Base.==` for `Sunday`.
 $(SIGNATURES)
 """
 function ==(sday1::Sunday, sday2::Sunday)
@@ -11,7 +24,7 @@ function ==(sday1::Sunday, sday2::Sunday)
     sday1.calendar_day == sday1.calendar_day
 end
 
-"""Override `Base.show` for `Codex`.
+"""Override `Base.show` for `Sunday`.
 $(SIGNATURES)
 """
 function show(io::IO, sday::Sunday)
@@ -19,6 +32,20 @@ function show(io::IO, sday::Sunday)
     write(io, name(sday) * ", " * formatteddate)
 end
 
+
+
+"""Name of a Sunday in the liturgical calendar.
+
+**Example**
+```julia-repl
+julia> fst = Feast(Lectionary.FEAST_PENTECOST)
+The Day of Pentecost, May 19, 2024
+julia> name(fst)
+"The Day of Pentecost"
+```
+
+$(SIGNATURES)
+"""
 function name(sday::Sunday)
     sunday_names[sday.calendar_day]
 end

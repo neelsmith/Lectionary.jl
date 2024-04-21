@@ -1,0 +1,17 @@
+---
+title: "API documentation: Sundays"
+---
+
+
+
+
+`advent` 
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+using Lectionary
+@doc advent
+```
+:::

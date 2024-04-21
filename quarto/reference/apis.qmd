@@ -1,5 +1,5 @@
 ---
-title: "API documentation"
+title: "API documentation: years, seasons, days"
 ---
 
 
@@ -53,21 +53,46 @@ using Lectionary
 
 ## Liturgical days
 
-Types:
+### Types
 
+`Feast`
 
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc Feast
 ```
-LiturgicalDay
-Sunday
+:::
 
-OtherDay
+`Sunday`
+
+
+
+`OtherDay`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc OtherDay
 ```
+:::
 
-```@docs
-Feast
+
+
+
+### Functions
+
+`name`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc name
 ```
-
-Functions:
+:::
 
 docs
 ```
@@ -80,10 +105,10 @@ kalendar
 ```
 
 
-# HolyDay
+# Holy days
 
 
-export LiturgicalYear, lectionary_year, daily_office_year
+
 export sundays, principal_feasts, holy_days
 export liturgical_year, liturgical_day, date_range
 

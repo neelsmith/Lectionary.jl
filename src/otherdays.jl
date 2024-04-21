@@ -1,10 +1,56 @@
 
 
+"""A day in the liturgical calendar that is not identified as
+a feast, fast or Sunday.
+"""
 struct OtherDay <: LiturgicalDay
     dt::Date
 end
 
+"""Override `Base.==` for `OtherDay`.
+$(SIGNATURES)
+"""
+function ==(day1::OtherDay, day2::OtherDay)
+    day1.dt == day2.date
+end
+
+
+"""Override `Base.show` for type `OtherDay`.
+
+**Example**
+```julia-repl
+julia> liturgical_day(Date(2024, 5, 6))
+May 6, 2024, Monday following the sixth Sunday of Easter
+```
+
+$(SIGNATURES)
+"""
+function show(io::IO, otherday::OtherDay)
+    
+    nm = name(otherday)
+    dt = civildate(otherday)
+    if isnothing(dt)
+       write(io, string(nm, " (no date)"))
+    else
+        formatteddate = string(monthname(dt), " ",  dayofmonth(dt), ", ", year(dt))
+        write(io, formatteddate * ", " * nm  )
+    end
+end
+
 ## Modify to find liturgical year, look up found sunday in list of sundays
+"""Name of an `OtherDay` in the liturgical calendar.
+
+**Example**
+
+```julia-repl
+julia> otherday = OtherDay(Date(2024, 5, 6))
+May 6, 2024, Monday following the sixth Sunday of Easter
+julia> name(otherday)
+"Monday following the sixth Sunday of Easter"
+```
+
+$(SIGNATURES)
+"""
 function name(other::OtherDay)
    
     backwardday = other.dt
@@ -12,7 +58,7 @@ function name(other::OtherDay)
         backwardday = backwardday - Dates.Day(1)
     end
     sday = liturgical_day(backwardday)
-   string(dayname(other.dt), " following ", sday)
+   string(dayname(other.dt), " following ", name(sday))
 end
 
 """Find date in civil calendar for a day in the liturgical year.

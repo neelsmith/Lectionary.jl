@@ -47,12 +47,16 @@ website:
       contents: 
         - reference/index.qmd
         - reference/apis.qmd
+        - reference/sundays.qmd
         - reference/feasts.qmd
+        - reference/readings.qmd
+
 
     - title: "Concepts"
       contents: 
         - concepts/index.qmd
         - concepts/liturgicalyear/index.qmd
+
 
         
 

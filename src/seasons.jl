@@ -4,6 +4,8 @@ struct Season
 end
 
 function kalendar(s::Season)
+    @warn("`kalendar` not yet implemented for type Season.")
+    nothing
 end
 
 #
@@ -11,15 +13,31 @@ end
 #
 """Find a given Sunday in Advent in a given liturgical year.
 $(SIGNATURES)
+
+**Examples**
+
+
+```julia-repl
+julia> advent(1) 
+the first Sunday of Advent, December 3, 2023
+julia> advent(1, LiturgicalYear(2023))
+the first Sunday of Advent, December 3, 2023
+```
 """
-function advent(sunday::Int, lityr::LiturgicalYear)
+function advent(sunday::Int, lityr::LiturgicalYear = LiturgicalYear())::Sunday
     advent(sunday, lityr.starts_in)
 end
 
-"""Find a given Sunday in Advent in a given liturgical year.
+"""Find a given Sunday in Advent in a given year of the civil calendar.
+
+```julia-repl
+julia> advent(1, 2023)
+the first Sunday of Advent, December 3, 2023
+```
+
 $(SIGNATURES)
 """
-function advent(sunday::Int, yr::Int)
+function advent(sunday::Int, yr::Int)::Sunday
     sundaystofind = 5 - sunday
     @debug("Look back $(sundaystofind) Sundays")
     xmas = Date(yr, 12, 25)
@@ -37,17 +55,17 @@ function advent(sunday::Int, yr::Int)
     Sunday(prev, sunday)
 end
 
-"""Find Sundays of Advent in a given year.
+"""Find all Sundays of Advent in a given year.
 $(SIGNATURES)
 """
 function advent_sundays(yr::Int)
     advent_sundays(LiturgicalYear(yr))
 end
 
-"""Find Sundays of Advent in a given liturgical year.
+"""Find all Sundays of Advent in a given liturgical year.
 $(SIGNATURES)
 """
-function advent_sundays(lityear::LiturgicalYear)
+function advent_sundays(lityear::LiturgicalYear = LiturgicalYear())
     [advent(sunday, lityear.starts_in) for sunday in 1:4] 
 end
 
@@ -55,10 +73,10 @@ end
 #
 # Christmas
 #
-"""Find all Sundays in season of Christmas in a given liturgical year.
+"""Find all Sundays in the season of Christmas in a given liturgical year.
 $(SIGNATURES)
 """
-function christmas_sundays(lityr::LiturgicalYear)
+function christmas_sundays(lityr::LiturgicalYear = LiturgicalYear())
     epiphany = Date(lityr.ends_in, 1, 6)
     xmas = Date(lityr.starts_in, 12, 25)
     prev = epiphany
@@ -84,7 +102,7 @@ function christmas_sundays(lityr::LiturgicalYear)
 
 end
 
-"""Find all Sundays in season of Christmas in a given year.
+"""Find all Sundays in the season of Christmas in a given year.
 $(SIGNATURES)
 """
 function christmas_sundays(yr::Int)
@@ -92,17 +110,17 @@ function christmas_sundays(yr::Int)
 end
 
 
-"""Find a given Sunday of Christmas in a given year.
+"""Find a given Sunday of Christmas in a given year of the civil calendar.
 $(SIGNATURES)
 """
 function christmas(sunday::Int, yr::Int)
     christmas(sunday, LiturgicalYear(yr))
 end
 
-"""Find date of a given week of Christmas in a given year.
+"""Find a given Sunday of Christmas in a given liturgical year.
 $(SIGNATURES)
 """
-function christmas(sunday::Int, lityr::LiturgicalYear)
+function christmas(sunday::Int, lityr::LiturgicalYear = LiturgicalYear())
     sundays = christmas_sundays(lityr)
     sunday > length(sundays) ? nothing : sundays[sunday]
 end
@@ -110,18 +128,18 @@ end
 #
 # Epiphany
 #
-"""Find sundays of ordinary time after Epiphany in a given liturgical year.
+"""Find all Sundays of ordinary time after Epiphany in a given liturgical year.
 $(SIGNATURES)
 """
-function epiphany_sundays(lityr::LiturgicalYear)
+function epiphany_sundays(lityr::LiturgicalYear = LiturgicalYear())::Vector{Sunday}
     epiphany_sundays(lityr.ends_in)
 end
 
 
-"""Find sundays of ordinary time after Epiphany season in a given year.
+"""Find all Sundays of ordinary time after Epiphany season in a given year.
 $(SIGNATURES)
 """
-function epiphany_sundays(yr::Int)
+function epiphany_sundays(yr::Int)::Vector{Sunday}
     @debug("Get ash wed for year $(yr)")
     endpoint = ash_wednesday(yr)
     epiph = Dates.Date(yr, 1, 6)
@@ -136,7 +154,7 @@ function epiphany_sundays(yr::Int)
     end
     ordered = sundays |> reverse
 
-    sundaylist = []
+    sundaylist = Sunday[]
     predecessor  = EPIPHANY  - 1
     for (i, sday) in enumerate(ordered)
         push!(sundaylist, Sunday(sday, predecessor + i))
@@ -145,7 +163,7 @@ function epiphany_sundays(yr::Int)
 end
 
 #=
-function epiphany(lityr::LiturgicalYear)
+function epiphany(lityr::LiturgicalYear = LiturgicalYear())
     epiphany(lityr.ends_in)
 end
 function epiphany(yr::Int)
@@ -166,6 +184,11 @@ function ash_wednesday(yr::Int)
     lent(1, yr).dt - Dates.Day(4)
 end
 
+
+function lent(sunday::Int, lityr::LiturgicalYear = LiturgicalYear())
+    lent(sunday)
+end
+
 """Find date of a given week of Lent in a given year.
 $(SIGNATURES)
 """
@@ -181,7 +204,7 @@ end
 """Find date of Palm Sunday for a given liturgical year.
 $(SIGNATURES)
 """
-function palm_sunday(lityr::LiturgicalYear)
+function palm_sunday(lityr::LiturgicalYear = LiturgicalYear())
     palm_sunday(lityr.ends_in)
 end
 
@@ -204,7 +227,7 @@ end
 """Find Sundays of Lent in a given liturgical year.
 $(SIGNATURES)
 """
-function lent_season(lityear::LiturgicalYear)
+function lent_season(lityear::LiturgicalYear = LiturgicalYear())
     [lent(sunday, lityear.ends_in) for sunday in 1:5] 
 end
 
@@ -217,7 +240,7 @@ end
 """Find date of Easter in a given liturgical year.
 $(SIGNATURES)
 """
-function easter_sunday(lityr::LiturgicalYear)
+function easter_sunday(lityr::LiturgicalYear = LiturgicalYear())
     easter_sunday(lityr.ends_in)
 end
 
@@ -251,7 +274,7 @@ function eastertide(sunday::Int, yr::Int)
     Sunday(thesunday, EASTER_SUNDAY + (sunday - 1))
 end
 
-function easter_season(lityr::LiturgicalYear)
+function easter_season(lityr::LiturgicalYear = LiturgicalYear())
     easter_season(lityr.ends_in)
 end
 
@@ -264,31 +287,49 @@ end
 #
 # Pentecost
 #
-function pentecost(lityr::LiturgicalYear)
-    pentecost(lityr.ends_in)
+"""Find the Sunday of Pentecost in a liturgical year.
+$(SIGNATURES)
+"""
+function pentecost_day(lityr::LiturgicalYear = LiturgicalYear())
+    pentecost_day(lityr.ends_in)
 end
-function pentecost(yr::Int)
+
+
+"""Find the Sunday of Pentecost in a year of the civil calendar.
+$(SIGNATURES)
+"""
+function pentecost_day(yr::Int)
     dt = easter_season(yr)[end].dt + Dates.Day(7)
     Sunday(dt, PENTECOST)
 end
 
 
-
-function trinity(lityr::LiturgicalYear)
+"""Find Trinity Sunday in a liturgical year.
+$(SIGNATURES)
+"""
+function trinity(lityr::LiturgicalYear = LiturgicalYear())
     trinity(lityr.ends_in)
 end
+
+"""Find Trinity Sunday in a year of the civil calendar.
+$(SIGNATURES)
+"""
 function trinity(yr::Int)
-    dt = pentecost(yr).dt + Dates.Day(7)
+    dt = pentecost_day(yr).dt + Dates.Day(7)
     Sunday(dt, TRINITY_SUNDAY)
 end
 
 
-
-function pentecost(sunday::Int, lityr::LiturgicalYear)
+"""Find a given Sunday in ordinary time after Pentecost.
+$(SIGNATURES)
+"""
+function pentecost(sunday::Int, lityr::LiturgicalYear = LiturgicalYear())
     pentecost(sunday, lityr.ends_in)
 end
 
-
+"""Find a given Sunday in ordinary time after Pentecost.
+$(SIGNATURES)
+"""
 function pentecost(sunday::Int, yr::Int)
     @assert sunday > 1 && sunday < 30
     endpoint = advent(1, yr).dt
@@ -316,11 +357,18 @@ function pentecost(sunday::Int, yr::Int)
 end
 
 
-
-function pentecost_season(lityr::LiturgicalYear)
+"""In a given liturgical year, find Sundays in ordinary time after Pentecost.
+$(SIGNATURES)
+"""
+function pentecost_season(lityr::LiturgicalYear = LiturgicalYear())
     pentecost_season(lityr.ends_in)
 end
 
+
+
+"""In a given year in the civil calendar, find Sundays in ordinary time after Pentecost.
+$(SIGNATURES)
+"""
 function pentecost_season(yr::Int)
     sundayslist = []
     for i in 2:28
@@ -333,19 +381,33 @@ function pentecost_season(yr::Int)
 end
 
 
-
-function ascension(lityr::LiturgicalYear)
+"""Find Ascension Day in a given liturgical year.
+$(SIGNATURES)
+"""
+function ascension(lityr::LiturgicalYear = LiturgicalYear())
     ascension(lityr.ends_in)
 end
 
+"""Find Ascension Day in a given year of the civil calendar.
+$(SIGNATURES)
+"""
 function ascension(yr::Int)
     easter_sunday(yr).dt + Dates.Day(40)
 end
 
-function thanksgiving(lityr::LiturgicalYear)
+
+
+"""Find Thanksgiving Day in a given liturgical year.
+$(SIGNATURES)
+"""
+function thanksgiving(lityr::LiturgicalYear = LiturgicalYear())
     thanksgiving(lityr.ends_in)
 end
 
+
+"""Find Thanksgiving Day in a given year of the civil calendar.
+$(SIGNATURES)
+"""
 function thanksgiving(yr::Int)
     currday = Date(yr, 11)
     thursdaycount = dayname(currday) == "Thursday" ? 1 : 0
