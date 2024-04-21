@@ -1,14 +1,25 @@
 ---
-title: "Identifiers for principal feasts"
+title: "Identifiers for principal feasts and their priority in the calendar"
 ---
 
 
-Given a liturgical year, you can construct the liturgical day for a feasts using one of the constants listed here.
+
+Feast days are identified by constant values listed on this page. You can construct the liturgical day for a feast in a given liturgical year using one of these constants.
 
 ```{julia}
 using Lectionary
 Feast(Lectionary.FEAST_ALL_SAINTS, LiturgicalYear())
 ```
+
+
+
+
+- `PRINCIPAL_FEAST` = 1
+- `HOLY_DAY_1` = 2
+- `SUNDAY` = 3
+- `HOLY_DAY_2` = 4
+- `LESSER_FEAST` = 5 # Not yet implemented
+- `OTHER_DAY` = 6
 
 
 ## Principal feasts (priority 1)

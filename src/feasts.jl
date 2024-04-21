@@ -1,12 +1,25 @@
 
 
-"""A feast other than a regular Sunday in the liturgical year."""
+"""A feast other than a regular Sunday in the liturgical year.
+
+## Examples
+```julia-repl
+julia> Feast(Lectionary.FEAST_PENTECOST)
+The Day of Pentecost, May 19, 2024
+julia> Feast(Lectionary.FEAST_PENTECOST, 2025)
+The Day of Pentecost, June 1, 2025
+```
+"""
 struct Feast <: LiturgicalDay
     feastid::Int
     yr::Int
 end
 
-function Feast(feastid::Int, ly::LiturgicalYear)
+
+"""Construct a `Feast` day.
+
+"""
+function Feast(feastid::Int, ly::LiturgicalYear = LiturgicalYear())
     if feastid in YEAR1_FEASTS
         Feast(feastid, ly.starts_in) 
     else
@@ -40,6 +53,14 @@ function show(io::IO, fst::Feast)
 end
 
 """Name of feast.
+
+##Example
+```julia-repl
+julia> fst = Feast(Lectionary.FEAST_PENTECOST)
+The Day of Pentecost, May 19, 2024
+julia> name(fst)
+"The Day of Pentecost"
+```
 $(SIGNATURES)
 """
 function name(fst::Feast)
@@ -93,6 +114,15 @@ function movabledate(fst::Feast)
 end
 
 """Find date in civil calendar for feast.
+
+
+##Example
+```julia-repl
+julia> fst = Feast(Lectionary.FEAST_PENTECOST)
+The Day of Pentecost, May 19, 2024
+julia> civildate(fst)
+2024-05-19
+```
 $(SIGNATURES)
 """
 function civildate(fst::Feast)
@@ -110,6 +140,16 @@ end
 
 
 """Find name of day of week of feast.
+
+
+##Example
+```julia-repl
+julia> fst = Feast(Lectionary.FEAST_PENTECOST)
+The Day of Pentecost, May 19, 2024
+julia> weekday(fst)
+"Sunday"
+```
+
 $(SIGNATURES)
 """
 function weekday(fst::Feast)

@@ -114,9 +114,9 @@ $(SIGNATURES)
 function sundays(lityear::LiturgicalYear)
     
    vcat(
-        advent_season(lityear), 
+        advent_sundays(lityear), 
         christmas_sundays(lityear), 
-        epiphany_season(lityear),
+        epiphany_sundays(lityear),
         lent_season(lityear),
         [palm_sunday(lityear), easter_sunday(lityear)],
         easter_season(lityear),
@@ -138,6 +138,10 @@ function holy_days(lityear::LiturgicalYear)
 end
 
 
+"""Find a vector of all liturgical days with assigned readings in 
+this liturgical year.
+$(SIGNATURES)
+"""
 function kalendar(lityr::LiturgicalYear)
     events = LiturgicalDay[]
     for ld in vcat(holy_days(lityr), sundays(lityr), principal_feasts(lityr))

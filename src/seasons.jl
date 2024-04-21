@@ -3,18 +3,20 @@ struct Season
     lityr::LiturgicalYear
 end
 
+function kalendar(s::Season)
+end
+
 #
 # Advent
 #
-
-"""Find date of a given week of Advent in a given liturgical year.
+"""Find a given Sunday in Advent in a given liturgical year.
 $(SIGNATURES)
 """
 function advent(sunday::Int, lityr::LiturgicalYear)
     advent(sunday, lityr.starts_in)
 end
 
-"""Find date of a given week of Advent in a given year.
+"""Find a given Sunday in Advent in a given liturgical year.
 $(SIGNATURES)
 """
 function advent(sunday::Int, yr::Int)
@@ -38,14 +40,14 @@ end
 """Find Sundays of Advent in a given year.
 $(SIGNATURES)
 """
-function advent_season(yr::Int)
-    advent_season(LiturgicalYear(yr))
+function advent_sundays(yr::Int)
+    advent_sundays(LiturgicalYear(yr))
 end
 
 """Find Sundays of Advent in a given liturgical year.
 $(SIGNATURES)
 """
-function advent_season(lityear::LiturgicalYear)
+function advent_sundays(lityear::LiturgicalYear)
     [advent(sunday, lityear.starts_in) for sunday in 1:4] 
 end
 
@@ -53,8 +55,6 @@ end
 #
 # Christmas
 #
-
-
 """Find all Sundays in season of Christmas in a given liturgical year.
 $(SIGNATURES)
 """
@@ -92,7 +92,7 @@ function christmas_sundays(yr::Int)
 end
 
 
-"""Find date of a given week of Christmas in a given year.
+"""Find a given Sunday of Christmas in a given year.
 $(SIGNATURES)
 """
 function christmas(sunday::Int, yr::Int)
@@ -110,19 +110,18 @@ end
 #
 # Epiphany
 #
-
-"""Find sundays of Epiphany season in a given liturgical year.
+"""Find sundays of ordinary time after Epiphany in a given liturgical year.
 $(SIGNATURES)
 """
-function epiphany_season(lityr::LiturgicalYear)
-    epiphany_season(lityr.ends_in)
+function epiphany_sundays(lityr::LiturgicalYear)
+    epiphany_sundays(lityr.ends_in)
 end
 
 
-"""Find sundays of Epiphany season in a given year.
+"""Find sundays of ordinary time after Epiphany season in a given year.
 $(SIGNATURES)
 """
-function epiphany_season(yr::Int)
+function epiphany_sundays(yr::Int)
     @debug("Get ash wed for year $(yr)")
     endpoint = ash_wednesday(yr)
     epiph = Dates.Date(yr, 1, 6)
@@ -145,15 +144,15 @@ function epiphany_season(yr::Int)
     sundaylist
 end
 
-
+#=
 function epiphany(lityr::LiturgicalYear)
     epiphany(lityr.ends_in)
 end
 function epiphany(yr::Int)
     #Sunday(Date(yr, 1, 6), EPIPHANY)
-    epiphany_season(yr)[1]
+    epiphany_sundays(yr)[1]
 end
-
+=#
 
 
 #

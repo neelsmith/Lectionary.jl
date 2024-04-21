@@ -19,8 +19,8 @@ export sundays, principal_feasts, holy_days
 export liturgical_year, liturgical_day, date_range
 
 export advent, christmas, christmas_day
-export advent_season
-export epiphany_season
+export advent_sundays
+export epiphany_sundays
 export easter_sunday
 export ash_wednesday, lent, palm_sunday, eastertide
 export lent_season, easter_season
@@ -30,6 +30,9 @@ export thanksgiving
 
 export Reading, readings, ot, nt, psalm, gospel
 
+
+
+include("year.jl")
 
 include("seasonconstants.jl")
 include("sundayconsts.jl")
@@ -41,7 +44,7 @@ include("sunday.jl")
 include("holydays.jl")
 include("otherdays.jl")
 
-include("year.jl")
+
 include("seasons.jl")
 
 include("reading.jl")

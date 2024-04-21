@@ -4,4 +4,7 @@
 
     @test lectionary_year(1977) == 'A'
     @test lectionary_year(liturgicalyear) == 'A'
+
+    kal = kalendar(liturgicalyear)
+    @test kal isa Vector{LiturgicalDay}
 end
