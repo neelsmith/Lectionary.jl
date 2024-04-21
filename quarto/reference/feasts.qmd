@@ -1,0 +1,59 @@
+---
+title: "Identifiers for principal feasts"
+---
+
+
+Given a liturgical year, you can construct the liturgical day for a feasts using one of the constants listed here.
+
+```{julia}
+using Lectionary
+Feast(Lectionary.FEAST_ALL_SAINTS, LiturgicalYear())
+```
+
+
+## Principal feasts (priority 1)
+
+- `FEAST_EASTER`
+- `FEAST_ASCENSION`
+- `FEAST_PENTECOST`
+- `FEAST_TRINITY`
+- `FEAST_ALL_SAINTS`
+- `FEAST_CHRISTMAS`
+- `FEAST_EPIPHANY`
+
+
+## Holy Days (priority 2)
+
+const FEAST_HOLY_NAME = 9
+const FEAST_PRESENTATION = 10
+const FEAST_TRANSFIGURATION = 11
+
+
+# Holy Days (priority 4)
+const FEAST_ANNUNCIATION = 12
+const FEAST_VISITATION = 13
+const FEAST_SAINT_JOHN = 14
+const FEAST_HOLY_CROSS = 15
+const FEAST_SAINT_STEPHEN = 16
+const FEAST_HOLY_INNOCENTS = 17
+const FEAST_SAINT_JOSEPH = 18
+const FEAST_MARY_MAGDALENE = 19
+const FEAST_MARY_THE_VIRGIN = 20
+const FEAST_MICHAEL_AND_ALL_ANGELS = 21
+const FEAST_SAINT_JAMES_JERUSALEM = 22
+const FEAST_INDEPENDENCE_DAY = 23
+const FEAST_THANKSGIVING_DAY = 24
+const FEAST_CONFESSION_OF_PETER = 25
+const FEAST_CONVERSION_OF_PAUL = 26
+const FEAST_SAINT_MATTHIAS = 27
+const FEAST_SAINT_MARK = 28 
+const FEAST_SAINTS_PHILIP_AND_JAMES = 29
+const FEAST_SAINT_BARNABAS = 30
+const FEAST_SAINT_JOHN_BAPTIST = 31
+const FEAST_SAINT_JAMES_APOSTLE = 32
+const FEAST_SAINT_BARTHOLOMEW = 33
+const FEAST_SAINT_MATTHEW = 34
+const FEAST_SAINT_LUKE = 35
+const FEAST_SAINTS_SIMON_AND_JUDE = 36
+const FEAST_SAINT_ANDREW = 37
+const FEAST_SAINT_THOMAS 

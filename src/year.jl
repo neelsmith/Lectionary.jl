@@ -127,15 +127,13 @@ end
 
 
 function principal_feasts(lityear::LiturgicalYear)
-    [
-        Feast(thefeast, lityear.starts_in) for thefeast in PRINCIPAL_FEASTS
-    ]
+    [Feast(thefeast, lityear) for thefeast in PRINCIPAL_FEASTS]
 end
 
 function holy_days(lityear::LiturgicalYear)
     allholydays = vcat(HOLY_DAYS_1, HOLY_DAYS_2)
     map(allholydays) do f
-        Feast(f, lityear.ends_in)
+        Feast(f, lityear)
     end
 end
 

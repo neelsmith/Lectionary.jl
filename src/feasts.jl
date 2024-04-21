@@ -6,6 +6,14 @@ struct Feast <: LiturgicalDay
     yr::Int
 end
 
+function Feast(feastid::Int, ly::LiturgicalYear)
+    if feastid in YEAR1_FEASTS
+        Feast(feastid, ly.starts_in) 
+    else
+        Feast(feastid, ly.ends_in)
+    end
+end
+
 """Override `Base.==` for `Feast`.
 $(SIGNATURES)
 """

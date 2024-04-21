@@ -31,6 +31,7 @@ export thanksgiving
 export Reading, readings, ot, nt, psalm, gospel
 
 
+include("seasonconstants.jl")
 include("sundayconsts.jl")
 include("feastconstants.jl")
 include("fixeddates.jl")

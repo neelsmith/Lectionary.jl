@@ -1,3 +1,8 @@
+struct Season
+    seasonid::Int
+    lityr::LiturgicalYear
+end
+
 #
 # Advent
 #
