@@ -30,6 +30,8 @@ end
 
 """Find a given Sunday in Advent in a given year of the civil calendar.
 
+**Example**
+
 ```julia-repl
 julia> advent(1, 2023)
 the first Sunday of Advent, December 3, 2023
@@ -55,7 +57,20 @@ function advent(sunday::Int, yr::Int)::Sunday
     Sunday(prev, sunday)
 end
 
-"""Find all Sundays of Advent in a given year.
+"""Find all Sundays of Advent in a given year of the civil calendar.
+
+
+**Example**
+
+```julia-repl
+julia> advent_sundays(2023)
+4-element Vector{Sunday}:
+ the first Sunday of Advent, December 3, 2023
+ the second Sunday of Advent, December 10, 2023
+ the third Sunday of Advent, December 17, 2023
+ the fourth Sunday of Advent, December 24, 2023
+```
+
 $(SIGNATURES)
 """
 function advent_sundays(yr::Int)
@@ -63,6 +78,25 @@ function advent_sundays(yr::Int)
 end
 
 """Find all Sundays of Advent in a given liturgical year.
+
+
+**Examples**
+
+```julia-repl
+julia> advent_sundays()
+4-element Vector{Sunday}:
+ the first Sunday of Advent, December 3, 2023
+ the second Sunday of Advent, December 10, 2023
+ the third Sunday of Advent, December 17, 2023
+ the fourth Sunday of Advent, December 24, 2023
+ julia> advent_sundays(LiturgicalYear(2023))
+4-element Vector{Sunday}:
+ the first Sunday of Advent, December 3, 2023
+ the second Sunday of Advent, December 10, 2023
+ the third Sunday of Advent, December 17, 2023
+ the fourth Sunday of Advent, December 24, 2023
+```
+
 $(SIGNATURES)
 """
 function advent_sundays(lityear::LiturgicalYear = LiturgicalYear())
@@ -74,6 +108,19 @@ end
 # Christmas
 #
 """Find all Sundays in the season of Christmas in a given liturgical year.
+
+
+**Examples**
+
+```julia-repl
+julia> christmas_sundays()
+1-element Vector{Sunday}:
+ the first Sunday after Christmas Day, December 31, 2023
+ julia> christmas_sundays(LiturgicalYear(2023))
+1-element Vector{Sunday}:
+ the first Sunday after Christmas Day, December 31, 2023
+```
+
 $(SIGNATURES)
 """
 function christmas_sundays(lityr::LiturgicalYear = LiturgicalYear())
@@ -102,7 +149,16 @@ function christmas_sundays(lityr::LiturgicalYear = LiturgicalYear())
 
 end
 
-"""Find all Sundays in the season of Christmas in a given year.
+"""Find all Sundays in the season of Christmas in a given year of the civil calendar.
+
+**Examples**
+
+```julia-repl
+julia> christmas_sundays(2023)
+1-element Vector{Sunday}:
+ the first Sunday after Christmas Day, December 31, 2023
+ ```
+
 $(SIGNATURES)
 """
 function christmas_sundays(yr::Int)
@@ -110,14 +166,30 @@ function christmas_sundays(yr::Int)
 end
 
 
-"""Find a given Sunday of Christmas in a given year of the civil calendar.
+"""Find a given Sunday of the Christmas season in a given year of the civil calendar.
+
+**Example**
+```julia-repl
+julia> christmas(1,  2023)
+the first Sunday after Christmas Day, December 31, 2023
+```
+
 $(SIGNATURES)
 """
 function christmas(sunday::Int, yr::Int)
     christmas(sunday, LiturgicalYear(yr))
 end
 
-"""Find a given Sunday of Christmas in a given liturgical year.
+"""Find a given Sunday of the Christmas season in a given liturgical year.
+
+**Examples**
+```julia-repl
+julia> christmas(1)
+the first Sunday after Christmas Day, December 31, 2023
+julia> christmas(1, LiturgicalYear(2023))
+the first Sunday after Christmas Day, December 31, 2023
+```
+
 $(SIGNATURES)
 """
 function christmas(sunday::Int, lityr::LiturgicalYear = LiturgicalYear())
@@ -162,15 +234,16 @@ function epiphany_sundays(yr::Int)::Vector{Sunday}
     sundaylist
 end
 
-#=
-function epiphany(lityr::LiturgicalYear = LiturgicalYear())
+
+function epiphany_day(lityr::LiturgicalYear = LiturgicalYear())
     epiphany(lityr.ends_in)
 end
-function epiphany(yr::Int)
+function epiphany_day(yr::Int)
     #Sunday(Date(yr, 1, 6), EPIPHANY)
-    epiphany_sundays(yr)[1]
+    #epiphany_sundays(yr)[1]
+    Feast(FEAST_EPIPHANY, yr)
 end
-=#
+
 
 
 #

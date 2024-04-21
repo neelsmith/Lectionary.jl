@@ -2,6 +2,7 @@
 title: "API documentation: Sundays"
 ---
 
+The following functions generate specific Sundays of the liturgical year (type `Sunday`) or Vectors of Sundays for seasons of the year.
 
 
 
@@ -13,5 +14,40 @@ title: "API documentation: Sundays"
 #| warning: false
 using Lectionary
 @doc advent
+```
+:::
+
+
+`advent_sundays`
+
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc advent_sundays
+```
+:::
+
+
+`christmas` 
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+using Lectionary
+@doc christmas
+```
+:::
+
+`christmas_sundays` 
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+using Lectionary
+@doc christmas_sundays
 ```
 :::

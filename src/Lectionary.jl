@@ -18,9 +18,9 @@ export LiturgicalYear, lectionary_year, daily_office_year
 export sundays, principal_feasts, holy_days
 export liturgical_year, liturgical_day, date_range
 
-export advent, christmas, christmas_day
-export advent_sundays
-export epiphany_sundays
+export advent, advent_sundays
+export christmas, christmas_day, christmas_sundays
+export epiphany_day, epiphany_sundays
 export easter_sunday
 export ash_wednesday, lent, palm_sunday, eastertide
 export lent_season, easter_season
