@@ -1,6 +1,6 @@
 """A specific liturgical year.
 
-## Examples
+**Examples**
 ```julia-repl
 julia> LiturgicalYear()
 2023-2024
@@ -55,7 +55,7 @@ end
 
 """Find range of dates in the civil calendar for a liturgical year.
 
-## Example
+**Example**
 ```julia-repl
 julia> ly = LiturgicalYear()
 2023-2024
@@ -70,7 +70,7 @@ function date_range(yr::LiturgicalYear)
     advent(1, yr.starts_in).dt:lastday
 end
 
-#=
+
 """Find correct liturgical year for a given date in the civil calendar.
 $(SIGNATURES)
 """
@@ -80,7 +80,7 @@ function liturgical_year(dt::Date)
     else
         LiturgicalYear(year(dt) - 1)
     end
-end=#
+end
 
 """Find correct liturgical day for a given date in the civil calendar.
 $(SIGNATURES)
@@ -112,7 +112,7 @@ const lectionary_year_dict = Dict(
 
 """Find lectionary year cycle for a given liturgical year.
 
-## Example
+**Example**
 
 ```julia-repl
 julia> ly = LiturgicalYear()
@@ -130,7 +130,7 @@ end
 
 """Find lectionary year cycle for the liturgical year begining in a given year of the civil calendar.
 
-## Example
+**Example**
 
 ```julia-repl
 julia> lectionary_year(2023)
@@ -147,7 +147,7 @@ end
 """Find daily office year cycle for a given liturgical year.
 
 
-## Example
+**Example**
 
 ```julia-repl
 julia> ly = LiturgicalYear()
@@ -165,7 +165,7 @@ end
 """Find daily office year cycle for the liturgical year beginning in a given year in the civil calendar.
 
 
-## Example
+**Example**
 
 ```julia-repl
 julia> daily_office_year(2023)

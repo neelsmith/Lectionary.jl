@@ -2,7 +2,7 @@
 
 """A feast other than a regular Sunday in the liturgical year.
 
-## Examples
+**Examples**
 ```julia-repl
 julia> Feast(Lectionary.FEAST_PENTECOST)
 The Day of Pentecost, May 19, 2024
@@ -54,7 +54,7 @@ end
 
 """Name of feast.
 
-## Example
+**Example**
 ```julia-repl
 julia> fst = Feast(Lectionary.FEAST_PENTECOST)
 The Day of Pentecost, May 19, 2024
@@ -116,7 +116,7 @@ end
 """Find date in civil calendar for feast.
 
 
-## Example
+**Example**
 ```julia-repl
 julia> fst = Feast(Lectionary.FEAST_PENTECOST)
 The Day of Pentecost, May 19, 2024
@@ -142,7 +142,7 @@ end
 """Find name of day of week of feast.
 
 
-## Example
+**Example**
 ```julia-repl
 julia> fst = Feast(Lectionary.FEAST_PENTECOST)
 The Day of Pentecost, May 19, 2024
