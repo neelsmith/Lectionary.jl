@@ -48,6 +48,8 @@ const FEAST_SAINTS_SIMON_AND_JUDE = 36
 const FEAST_SAINT_ANDREW = 37
 const FEAST_SAINT_THOMAS = 39
 
+const FAST_ASH_WEDNESDAY = -1
+
 const PRINCIPAL_FEASTS = [
     FEAST_EASTER, FEAST_ASCENSION, FEAST_PENTECOST, FEAST_TRINITY,
     FEAST_ALL_SAINTS, FEAST_CHRISTMAS, FEAST_EPIPHANY
@@ -101,12 +103,14 @@ const feast_names = Dict(
     FEAST_SAINT_LUKE => "Saint Luke the Evangelist",
     FEAST_SAINTS_SIMON_AND_JUDE => "Saint Simon and Saint Jude, Apostles",
     FEAST_SAINT_ANDREW => "Saint Andrew the Apostle",
-    FEAST_SAINT_THOMAS => "Saint Thomas the Apostle"
+    FEAST_SAINT_THOMAS => "Saint Thomas the Apostle",
+    FAST_ASH_WEDNESDAY => "The First Day of Lent or Ash Wednesday"
 )
 
 const MOVABLE = [
     FEAST_EASTER, FEAST_ASCENSION, FEAST_PENTECOST,
-    FEAST_TRINITY, FEAST_THANKSGIVING_DAY
+    FEAST_TRINITY, FEAST_THANKSGIVING_DAY,
+    FAST_ASH_WEDNESDAY
 ]
 
 

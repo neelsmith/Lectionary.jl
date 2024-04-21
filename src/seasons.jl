@@ -73,7 +73,7 @@ julia> advent_sundays(2023)
 
 $(SIGNATURES)
 """
-function advent_sundays(yr::Int)
+function advent_sundays(yr::Int)::Vector{Sunday}
     advent_sundays(LiturgicalYear(yr))
 end
 
@@ -99,7 +99,7 @@ julia> advent_sundays()
 
 $(SIGNATURES)
 """
-function advent_sundays(lityear::LiturgicalYear = LiturgicalYear())
+function advent_sundays(lityear::LiturgicalYear = LiturgicalYear())::Vector{Sunday}
     [advent(sunday, lityear.starts_in) for sunday in 1:4] 
 end
 
@@ -123,7 +123,7 @@ julia> christmas_sundays()
 
 $(SIGNATURES)
 """
-function christmas_sundays(lityr::LiturgicalYear = LiturgicalYear())
+function christmas_sundays(lityr::LiturgicalYear = LiturgicalYear())::Vector{Sunday}
     epiphany = Date(lityr.ends_in, 1, 6)
     xmas = Date(lityr.starts_in, 12, 25)
     prev = epiphany
@@ -161,7 +161,7 @@ julia> christmas_sundays(2023)
 
 $(SIGNATURES)
 """
-function christmas_sundays(yr::Int)
+function christmas_sundays(yr::Int)::Vector{Sunday}
     christmas_sundays(LiturgicalYear(yr))
 end
 
@@ -176,7 +176,7 @@ the first Sunday after Christmas Day, December 31, 2023
 
 $(SIGNATURES)
 """
-function christmas(sunday::Int, yr::Int)
+function christmas(sunday::Int, yr::Int)::Sunday
     christmas(sunday, LiturgicalYear(yr))
 end
 
@@ -192,7 +192,7 @@ the first Sunday after Christmas Day, December 31, 2023
 
 $(SIGNATURES)
 """
-function christmas(sunday::Int, lityr::LiturgicalYear = LiturgicalYear())
+function christmas(sunday::Int, lityr::LiturgicalYear = LiturgicalYear())::Sunday
     sundays = christmas_sundays(lityr)
     sunday > length(sundays) ? nothing : sundays[sunday]
 end
@@ -201,6 +201,29 @@ end
 # Epiphany
 #
 """Find all Sundays of ordinary time after Epiphany in a given liturgical year.
+
+**Examples**
+```julia-repl
+julia> epiphany_sundays()
+6-element Vector{Sunday}:
+ the Epiphany, January 7, 2024
+ the first Sunday after the Epiphany, January 14, 2024
+ the second Sunday after the Epiphany, January 21, 2024
+ the third Sunday after the Epiphany, January 28, 2024
+ the fourth Sunday after the Epiphany, February 4, 2024
+ the fifth Sunday after the Epiphany, February 11, 2024
+ julia> epiphany_sundays(LiturgicalYear(2023))
+6-element Vector{Sunday}:
+ the Epiphany, January 7, 2024
+ the first Sunday after the Epiphany, January 14, 2024
+ the second Sunday after the Epiphany, January 21, 2024
+ the third Sunday after the Epiphany, January 28, 2024
+ the fourth Sunday after the Epiphany, February 4, 2024
+ the fifth Sunday after the Epiphany, February 11, 2024
+
+```
+
+
 $(SIGNATURES)
 """
 function epiphany_sundays(lityr::LiturgicalYear = LiturgicalYear())::Vector{Sunday}
@@ -208,7 +231,21 @@ function epiphany_sundays(lityr::LiturgicalYear = LiturgicalYear())::Vector{Sund
 end
 
 
-"""Find all Sundays of ordinary time after Epiphany season in a given year.
+"""Find all Sundays of ordinary time after Epiphany season in a given year of the civil calendar.
+
+**Example**
+
+```julia-repl
+julia> epiphany_sundays(2023)
+7-element Vector{Sunday}:
+ the Epiphany, January 8, 2023
+ the first Sunday after the Epiphany, January 15, 2023
+ the second Sunday after the Epiphany, January 22, 2023
+ the third Sunday after the Epiphany, January 29, 2023
+ the fourth Sunday after the Epiphany, February 5, 2023
+ the fifth Sunday after the Epiphany, February 12, 2023
+ the sixth Sunday after the Epiphany, February 19, 2023
+```
 $(SIGNATURES)
 """
 function epiphany_sundays(yr::Int)::Vector{Sunday}
@@ -235,12 +272,20 @@ function epiphany_sundays(yr::Int)::Vector{Sunday}
 end
 
 
-function epiphany_day(lityr::LiturgicalYear = LiturgicalYear())
-    epiphany(lityr.ends_in)
+
+"""
+one method
+$(SIGNATURES)
+"""
+function epiphany_day(lityr::LiturgicalYear = LiturgicalYear())::Feast
+    epiphany_day(lityr.ends_in)
 end
-function epiphany_day(yr::Int)
-    #Sunday(Date(yr, 1, 6), EPIPHANY)
-    #epiphany_sundays(yr)[1]
+
+"""
+another method
+$(SIGNATURES)
+"""
+function epiphany_day(yr::Int)::Feast
     Feast(FEAST_EPIPHANY, yr)
 end
 
@@ -249,11 +294,21 @@ end
 #
 # Lent
 #
+function ash_wednesday(lityr::LiturgicalYear = LiturgicalYear())::Feast
+    ash_wednesday(lityr.ends_in)
+end
+function ash_wednesday(yr::Int)::Feast
+    Feast(FAST_ASH_WEDNESDAY, yr)
+end
+
+function ash_wednesday_date(lityr::LiturgicalYear = LiturgicalYear())::Date
+    ash_wednesday_date(lityr.ends_in)
+end
+
 """Find date of Ash Wednesday for a given year.
 $(SIGNATURES)
 """
-function ash_wednesday(yr::Int)
-
+function ash_wednesday_date(yr::Int)::Date
     lent(1, yr).dt - Dates.Day(4)
 end
 

@@ -1,5 +1,5 @@
 ---
-title: "API documentation: years, seasons, days"
+title: "API documentation: years, seasons, feasts"
 ---
 
 
@@ -51,9 +51,8 @@ using Lectionary
 
 
 
-## Liturgical days
+## Feast days
 
-### Types
 
 `Feast`
 
@@ -65,19 +64,7 @@ using Lectionary
 ```
 :::
 
-`Sunday`
 
-
-
-`OtherDay`
-
-:::{.callout-note appearance="minimal"}
-```{julia}
-#| echo: false
-#| warning: false
-@doc OtherDay
-```
-:::
 
 
 
@@ -123,3 +110,29 @@ export pentecost, trinity, pentecost_season
 export thanksgiving
 
 export Reading, readings, ot, nt, psalm, gospel
+
+
+`epiphany_day`
+
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+using Lectionary
+@doc epiphany_day
+```
+:::
+
+
+## Other days
+
+`OtherDay`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc OtherDay
+```
+:::

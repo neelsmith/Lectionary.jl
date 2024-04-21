@@ -46,7 +46,7 @@ website:
     - title: "Reference"
       contents: 
         - reference/index.qmd
-        - reference/apis.qmd
+        - reference/year-seasons.qmd
         - reference/sundays.qmd
         - reference/feasts.qmd
         - reference/readings.qmd

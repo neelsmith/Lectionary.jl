@@ -1,6 +1,6 @@
 
 
-"""A feast other than a regular Sunday in the liturgical year.
+"""A fast or a feast in the liturgical year other than a regular Sunday.
 
 **Examples**
 ```julia-repl
@@ -104,6 +104,9 @@ function movabledate(fst::Feast)
         trinity(fst.yr).dt
     elseif fst.feastid == FEAST_THANKSGIVING_DAY
         thanksgiving(fst.yr)
+
+    elseif fst.feastid == FAST_ASH_WEDNESDAY
+        ash_wednesday_date(fst.yr)
 
     else
         @info("Movable feast not implemented! $(fst)")
