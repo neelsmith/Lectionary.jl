@@ -191,20 +191,20 @@ function sundays(lityear::LiturgicalYear = LiturgicalYear())
         lent_season(lityear),
         [palm_sunday(lityear), easter_sunday(lityear)],
         easter_season(lityear),
-        [pentecost(lityear), trinity(lityear)],
+        [pentecost_day(lityear), trinity(lityear)],
         pentecost_season(lityear)
     )
 end
 
 
 function principal_feasts(lityear::LiturgicalYear = LiturgicalYear())
-    [Feast(thefeast, lityear) for thefeast in PRINCIPAL_FEASTS]
+    [Commemoration(thefeast, lityear) for thefeast in PRINCIPAL_FEASTS]
 end
 
 function holy_days(lityear::LiturgicalYear = LiturgicalYear())
     allholydays = vcat(HOLY_DAYS_1, HOLY_DAYS_2)
     map(allholydays) do f
-        Feast(f, lityear)
+        Commemoration(f, lityear)
     end
 end
 
@@ -227,5 +227,5 @@ function christmas_day(lityr::LiturgicalYear = LiturgicalYear())
 end
 
 function christmas_day(yr::Int)
-    Feast(FEAST_CHRISTMAS, yr)
+    Commemoration(FEAST_CHRISTMAS, yr)
 end

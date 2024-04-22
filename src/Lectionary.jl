@@ -10,7 +10,7 @@ import Base: ==
 export LiturgicalDay
 export name, civildate, weekday, readings, priority
 export kalendar
-export Sunday, Feast,  OtherDay
+export Sunday, Commemoration,  OtherDay
 # HolyDay
 
 
@@ -26,7 +26,7 @@ export ash_wednesday, lent, palm_sunday, eastertide
 export ash_wednesday_date
 export lent_season, easter_season
 export ascension
-export pentecost, trinity, pentecost_season
+export pentecost, pentecost_day, trinity, pentecost_season
 export thanksgiving
 
 export Reading, readings, ot, nt, psalm, gospel

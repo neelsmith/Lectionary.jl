@@ -4,41 +4,41 @@
 
 **Examples**
 ```julia-repl
-julia> Feast(Lectionary.FEAST_PENTECOST)
+julia> Commemoration(Lectionary.FEAST_PENTECOST)
 The Day of Pentecost, May 19, 2024
-julia> Feast(Lectionary.FEAST_PENTECOST, 2025)
+julia> Commemoration(Lectionary.FEAST_PENTECOST, 2025)
 The Day of Pentecost, June 1, 2025
 ```
 """
-struct Feast <: LiturgicalDay
+struct Commemoration <: LiturgicalDay
     feastid::Int
     yr::Int
 end
 
 
-"""Construct a `Feast` day.
+"""Construct a `Commemoration` day.
 
 """
-function Feast(feastid::Int, ly::LiturgicalYear = LiturgicalYear())
+function Commemoration(feastid::Int, ly::LiturgicalYear = LiturgicalYear())
     if feastid in YEAR1_FEASTS
-        Feast(feastid, ly.starts_in) 
+        Commemoration(feastid, ly.starts_in) 
     else
-        Feast(feastid, ly.ends_in)
+        Commemoration(feastid, ly.ends_in)
     end
 end
 
-"""Override `Base.==` for `Feast`.
+"""Override `Base.==` for `Commemoration`.
 $(SIGNATURES)
 """
-function ==(f1::Feast, f2::Feast)
+function ==(f1::Commemoration, f2::Commemoration)
     f1.feastid == f2.feastid &&
     f1.yr == f2.yr
 end
 
-"""Override `Base.show` for type `Feast`.
+"""Override `Base.show` for type `Commemoration`.
 $(SIGNATURES)
 """
-function show(io::IO, fst::Feast)
+function show(io::IO, fst::Commemoration)
     
     nm = name(fst)
     dt = civildate(fst)
@@ -54,14 +54,14 @@ end
 
 **Example**
 ```julia-repl
-julia> fst = Feast(Lectionary.FEAST_PENTECOST)
+julia> fst = Commemoration(Lectionary.FEAST_PENTECOST)
 The Day of Pentecost, May 19, 2024
 julia> name(fst)
 "The Day of Pentecost"
 ```
 $(SIGNATURES)
 """
-function name(fst::Feast)
+function name(fst::Commemoration)
     haskey(feast_names, fst.feastid) ? feast_names[fst.feastid] : string(fst)
 end
 
@@ -70,7 +70,7 @@ higher values in determining which of two sets
 of readings to prefer.
 $(SIGNATURES)
 """
-function priority(fst::Feast)
+function priority(fst::Commemoration)
     if fst.feastid in PRINCIPAL_FEASTS
         PRINCIPAL_FEAST
     elseif fst.feastid in HOLY_DAYS_1
@@ -86,14 +86,14 @@ end
 """True if feast is movable.
 $(SIGNATURES)
 """
-function ismovable(fst::Feast)
+function ismovable(fst::Commemoration)
     fst.feastid in MOVABLE
 end
 
 """Date in civil calendar of movable feast.
 $(SIGNATURES)
 """
-function movabledate(fst::Feast)
+function movabledate(fst::Commemoration)
     if fst.feastid == FEAST_EASTER
         easter_sunday(fst.yr) |> civildate
     elseif fst.feastid == FEAST_ASCENSION
@@ -119,14 +119,14 @@ end
 
 **Example**
 ```julia-repl
-julia> fst = Feast(Lectionary.FEAST_PENTECOST)
+julia> fst = Commemoration(Lectionary.FEAST_PENTECOST)
 The Day of Pentecost, May 19, 2024
 julia> civildate(fst)
 2024-05-19
 ```
 $(SIGNATURES)
 """
-function civildate(fst::Feast)
+function civildate(fst::Commemoration)
     if ismovable(fst)
         movabledate(fst)
 
@@ -145,7 +145,7 @@ end
 
 **Example**
 ```julia-repl
-julia> fst = Feast(Lectionary.FEAST_PENTECOST)
+julia> fst = Commemoration(Lectionary.FEAST_PENTECOST)
 The Day of Pentecost, May 19, 2024
 julia> weekday(fst)
 "Sunday"
@@ -153,7 +153,7 @@ julia> weekday(fst)
 
 $(SIGNATURES)
 """
-function weekday(fst::Feast)
+function weekday(fst::Commemoration)
     civildate(fst) |> dayname
 end
 
@@ -161,7 +161,7 @@ end
 """Find readings for feast.
 $(SIGNATURES)
 """
-function feastreadings(feast::Feast, lectionaryyr::Char; as_urn = false) 
+function feastreadings(feast::Commemoration, lectionaryyr::Char; as_urn = false) 
     if as_urn
         @warn("Support for URN references not implemented yet.")
     end

@@ -80,7 +80,7 @@ $(SIGNATURES)
 """
 function readings(theday::T, yr::Char; as_urn = false) where {T <: LiturgicalDay}
     @info("Get readings for year $(yr)")
-    if theday isa Feast
+    if theday isa Commemoration
         #@info("Get readings for feast $(theday)")
         feastreadings(theday, yr; as_urn = as_urn)
 

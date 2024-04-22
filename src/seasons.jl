@@ -253,7 +253,7 @@ function epiphany_sundays(yr::Int)::Vector{Sunday}
     endpoint = ash_wednesday(yr)
     epiph = Dates.Date(yr, 1, 6)
     
-    prev = endpoint
+    prev = endpoint |> civildate
     sundays = []
     while prev > epiph
         prev = prev  - Dates.Day(1)
@@ -277,7 +277,7 @@ end
 one method
 $(SIGNATURES)
 """
-function epiphany_day(lityr::LiturgicalYear = LiturgicalYear())::Feast
+function epiphany_day(lityr::LiturgicalYear = LiturgicalYear())::Commemoration
     epiphany_day(lityr.ends_in)
 end
 
@@ -285,8 +285,8 @@ end
 another method
 $(SIGNATURES)
 """
-function epiphany_day(yr::Int)::Feast
-    Feast(FEAST_EPIPHANY, yr)
+function epiphany_day(yr::Int)::Commemoration
+    Commemoration(FEAST_EPIPHANY, yr)
 end
 
 
@@ -294,11 +294,11 @@ end
 #
 # Lent
 #
-function ash_wednesday(lityr::LiturgicalYear = LiturgicalYear())::Feast
+function ash_wednesday(lityr::LiturgicalYear = LiturgicalYear())::Commemoration
     ash_wednesday(lityr.ends_in)
 end
-function ash_wednesday(yr::Int)::Feast
-    Feast(FAST_ASH_WEDNESDAY, yr)
+function ash_wednesday(yr::Int)::Commemoration
+    Commemoration(FAST_ASH_WEDNESDAY, yr)
 end
 
 function ash_wednesday_date(lityr::LiturgicalYear = LiturgicalYear())::Date

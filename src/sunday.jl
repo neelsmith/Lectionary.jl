@@ -38,7 +38,7 @@ end
 
 **Example**
 ```julia-repl
-julia> fst = Feast(Lectionary.FEAST_PENTECOST)
+julia> fst = Commemoration(Lectionary.FEAST_PENTECOST)
 The Day of Pentecost, May 19, 2024
 julia> name(fst)
 "The Day of Pentecost"
