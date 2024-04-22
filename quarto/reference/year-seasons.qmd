@@ -64,13 +64,6 @@ using Lectionary
 ```
 :::
 
-
-
-
-
-
-### Functions
-
 `name`
 
 :::{.callout-note appearance="minimal"}
@@ -92,7 +85,7 @@ kalendar
 ```
 
 
-# Holy days
+## Holy days
 
 
 
@@ -141,6 +134,27 @@ export Reading, readings, ot, nt, psalm, gospel
 #| echo: false
 #| warning: false
 @doc ash_wednesday_date
+```
+:::
+
+`ascension`
+
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc ascension
+```
+:::
+
+`thanksgiving`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc thanksgiving
 ```
 :::
 

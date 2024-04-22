@@ -2,7 +2,7 @@
 title: "API documentation: Sundays"
 ---
 
-The following functions generate specific Sundays of the liturgical year (type `Sunday`) or Vectors of Sundays for seasons of the year.
+The following functions generate specific Sundays of the liturgical year (type `Sunday`) or Vectors of Sundays for a given liturgical year or year in the civil calendar.
 
 
 
@@ -36,7 +36,6 @@ using Lectionary
 ```{julia}
 #| echo: false
 #| warning: false
-using Lectionary
 @doc christmas
 ```
 :::
@@ -47,7 +46,6 @@ using Lectionary
 ```{julia}
 #| echo: false
 #| warning: false
-using Lectionary
 @doc christmas_sundays
 ```
 :::
@@ -61,7 +59,6 @@ using Lectionary
 ```{julia}
 #| echo: false
 #| warning: false
-using Lectionary
 @doc epiphany_sundays
 ```
 :::
@@ -72,7 +69,6 @@ using Lectionary
 ```{julia}
 #| echo: false
 #| warning: false
-using Lectionary
 @doc lent
 ```
 :::
@@ -83,7 +79,6 @@ using Lectionary
 ```{julia}
 #| echo: false
 #| warning: false
-using Lectionary
 @doc lent_season
 ```
 :::
@@ -96,7 +91,6 @@ using Lectionary
 ```{julia}
 #| echo: false
 #| warning: false
-using Lectionary
 @doc palm_sunday
 ```
 :::
@@ -110,7 +104,66 @@ using Lectionary
 ```{julia}
 #| echo: false
 #| warning: false
-using Lectionary
 @doc easter_sunday
 ```
 :::
+
+`eastertide`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc eastertide
+```
+:::
+
+
+`easter_season`
+
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc easter_season
+```
+:::
+
+
+
+`pentecost_day`
+
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc pentecost_day
+```
+:::
+
+
+`trinity`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc trinity
+```
+:::
+
+
+`pentecost`
+
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc pentecost
+```
+:::
+
+pentecost_season

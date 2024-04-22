@@ -376,7 +376,7 @@ the first Sunday in Lent, February 18, 2024
 
 $(SIGNATURES)
 """
-function lent(sunday::Int, lityr::LiturgicalYear = LiturgicalYear())
+function lent(sunday::Int, lityr::LiturgicalYear = LiturgicalYear())::Sunday
     lent(sunday, lityr.ends_in)
 end
 
@@ -390,7 +390,7 @@ the first Sunday in Lent, February 18, 2024
 ```
 $(SIGNATURES)
 """
-function lent(sunday::Int, yr::Int)
+function lent(sunday::Int, yr::Int)::Sunday
     sundaystofind = 7 - sunday
     sunday_date = easter_sunday(yr).dt - Dates.Day(sundaystofind * 7)
 
@@ -416,7 +416,7 @@ julia> lent_season(2024)
 
 $(SIGNATURES)
 """
-function lent_season(yr::Int)
+function lent_season(yr::Int)::Vector{Sunday}
     lent_season(LiturgicalYear(yr - 1))
 end
 
@@ -443,7 +443,7 @@ julia> lent_season(LiturgicalYear(2023))
 
 $(SIGNATURES)
 """
-function lent_season(lityear::LiturgicalYear = LiturgicalYear())
+function lent_season(lityear::LiturgicalYear = LiturgicalYear())::Vector{Sunday}
     [lent(sunday, lityear.ends_in) for sunday in 1:5] 
 end
 
@@ -459,7 +459,7 @@ Palm Sunday, March 24, 2024
 ```
 $(SIGNATURES)
 """
-function palm_sunday(lityr::LiturgicalYear = LiturgicalYear())
+function palm_sunday(lityr::LiturgicalYear = LiturgicalYear())::Sunday
     palm_sunday(lityr.ends_in)
 end
 
@@ -474,7 +474,7 @@ Palm Sunday, March 24, 2024
 
 $(SIGNATURES)
 """
-function palm_sunday(yr::Int)
+function palm_sunday(yr::Int)::Sunday
     dt = easter_sunday(yr).dt - Dates.Day(7)
     Sunday(dt, PALM_SUNDAY)
 end
@@ -496,7 +496,7 @@ Easter Day, March 31, 2024
 ```
 $(SIGNATURES)
 """
-function easter_sunday(lityr::LiturgicalYear = LiturgicalYear())
+function easter_sunday(lityr::LiturgicalYear = LiturgicalYear())::Sunday
     easter_sunday(lityr.ends_in)
 end
 
@@ -509,7 +509,7 @@ Easter Day, March 31, 2024
 ```
 $(SIGNATURES)
 """
-function easter_sunday(yr::Int)
+function easter_sunday(yr::Int)::Sunday
     hr = Dates.DateTime(yr, 3, 21)
     while mphase(jdcnv(hr)) < 0.99
         hr = hr + Dates.Hour(1)
@@ -522,10 +522,34 @@ function easter_sunday(yr::Int)
     Sunday(nxtday, EASTER_SUNDAY)
 end
 
-"""Find date of a given week of Easter season in a given year.
+
+"""Find a given Sunday of Easter season in a given liturgical year.
+
+**Examples**
+```julia-repl
+julia> eastertide(2)
+the second Sunday of Easter, April 7, 2024
+julia> eastertide(2, LiturgicalYear(2023))
+the second Sunday of Easter, April 7, 2024
+```
 $(SIGNATURES)
 """
-function eastertide(sunday::Int, yr::Int)
+function eastertide(sunday::Int, lityr::LiturgicalYear = LiturgicalYear())::Sunday
+    eastertide(sunday, lityr.ends_in)
+
+end
+
+"""Find a given Sunday of Easter season in a given year of the civil calendar.
+
+**Examples**
+```julia-repl
+julia> eastertide(2, 2024)
+the second Sunday of Easter, April 7, 2024
+```
+
+$(SIGNATURES)
+"""
+function eastertide(sunday::Int, yr::Int)::Sunday
     @assert sunday < 8 && sunday > 1
     #predecessor = easter_sunday(yr).dt - Dates.Day(1)
     @debug("Find sunday $(sunday) in $(yr)")
@@ -536,11 +560,56 @@ function eastertide(sunday::Int, yr::Int)
     Sunday(thesunday, EASTER_SUNDAY + (sunday - 1))
 end
 
-function easter_season(lityr::LiturgicalYear = LiturgicalYear())
+
+
+"""Find all Sundays following Easter in the Easter season of given liturgical year.
+
+**Examples**
+```juliarepl
+julia> easter_season()
+6-element Vector{Lectionary.Sunday}:
+ the second Sunday of Easter, April 7, 2024
+ the third Sunday of Easter, April 14, 2024
+ the fourth Sunday of Easter, April 21, 2024
+ the fifth Sunday of Easter, April 28, 2024
+ the sixth Sunday of Easter, May 5, 2024
+ the seventh Sunday of Easter, May 12, 2024
+ julia> easter_season(LiturgicalYear(2023))
+6-element Vector{Lectionary.Sunday}:
+ the second Sunday of Easter, April 7, 2024
+ the third Sunday of Easter, April 14, 2024
+ the fourth Sunday of Easter, April 21, 2024
+ the fifth Sunday of Easter, April 28, 2024
+ the sixth Sunday of Easter, May 5, 2024
+ the seventh Sunday of Easter, May 12, 2024 
+```
+
+$(SIGNATURES)
+"""
+function easter_season(lityr::LiturgicalYear = LiturgicalYear())::Vector{Sunday}
     easter_season(lityr.ends_in)
 end
 
-function easter_season(yr::Int)
+
+
+"""Find all Sundays following Easter in the Easter season of given year in the civil calendar.
+
+**Examples**
+```juliarepl
+julia> easter_season(2024)
+6-element Vector{Lectionary.Sunday}:
+ the second Sunday of Easter, April 7, 2024
+ the third Sunday of Easter, April 14, 2024
+ the fourth Sunday of Easter, April 21, 2024
+ the fifth Sunday of Easter, April 28, 2024
+ the sixth Sunday of Easter, May 5, 2024
+ the seventh Sunday of Easter, May 12, 2024
+ julia> easter_season(LiturgicalYear(2023)) 
+```
+
+$(SIGNATURES)
+"""
+function easter_season(yr::Int)::Vector{Sunday}
     [eastertide(sunday, yr) for sunday in 2:7] 
 end
 
@@ -549,50 +618,100 @@ end
 #
 # Pentecost
 #
-"""Find the Sunday of Pentecost in a liturgical year.
+"""Find the Sunday of Pentecost in a given liturgical year.
+
+**Examples**
+
+```julia-repl
+julia> pentecost_day()
+the day of Pentecost, May 19, 2024
+julia> pentecost_day(LiturgicalYear(2023))
+the day of Pentecost, May 19, 2024
+```
 $(SIGNATURES)
 """
-function pentecost_day(lityr::LiturgicalYear = LiturgicalYear())
+function pentecost_day(lityr::LiturgicalYear = LiturgicalYear())::Sunday
     pentecost_day(lityr.ends_in)
 end
 
 
 """Find the Sunday of Pentecost in a year of the civil calendar.
+
+
+**Example**
+
+```julia-repl
+julia> pentecost_day(2024)
+the day of Pentecost, May 19, 2024
+```
+
 $(SIGNATURES)
 """
-function pentecost_day(yr::Int)
+function pentecost_day(yr::Int)::Sunday
     dt = easter_season(yr)[end].dt + Dates.Day(7)
     Sunday(dt, PENTECOST)
 end
 
 
-"""Find Trinity Sunday in a liturgical year.
+"""Find Trinity Sunday in a given liturgical year.
+
+**Examples**
+```julia-repl
+julia> trinity()
+Trinity Sunday, May 26, 2024
+julia> trinity(LiturgicalYear(2023))
+Trinity Sunday, May 26, 2024
+```
+
+
 $(SIGNATURES)
 """
-function trinity(lityr::LiturgicalYear = LiturgicalYear())
+function trinity(lityr::LiturgicalYear = LiturgicalYear())::Sunday
     trinity(lityr.ends_in)
 end
 
-"""Find Trinity Sunday in a year of the civil calendar.
+"""Find Trinity Sunday in a given year of the civil calendar.
+
+**Example**
+```julia-repl
+julia> trinity(2024)
+Trinity Sunday, May 26, 2024
+```
 $(SIGNATURES)
 """
-function trinity(yr::Int)
+function trinity(yr::Int)::Sunday
     dt = pentecost_day(yr).dt + Dates.Day(7)
     Sunday(dt, TRINITY_SUNDAY)
 end
 
 
-"""Find a given Sunday in ordinary time after Pentecost.
+"""Find a given Sunday in ordinary time after Pentecost in a given liturgical year.
+
+**Examples**
+```julia-repl
+julia> pentecost(3)
+the third Sunday after Pentecost, June 9, 2024
+julia> pentecost(3, LiturgicalYear(2023))
+the third Sunday after Pentecost, June 9, 2024
+```
+
+
 $(SIGNATURES)
 """
-function pentecost(sunday::Int, lityr::LiturgicalYear = LiturgicalYear())
+function pentecost(sunday::Int, lityr::LiturgicalYear = LiturgicalYear())::Sunday
     pentecost(sunday, lityr.ends_in)
 end
 
-"""Find a given Sunday in ordinary time after Pentecost.
+"""Find a given Sunday in ordinary time after Pentecost in a given year of the civil calendar.
+
+**Example**
+```julia-repl
+julia> pentecost(3,2024)
+the third Sunday after Pentecost, June 9, 2024
+```
 $(SIGNATURES)
 """
-function pentecost(sunday::Int, yr::Int)
+function pentecost(sunday::Int, yr::Int)::Sunday
     @assert sunday > 1 && sunday < 30
     endpoint = advent(1, yr).dt
     startpoint = trinity(yr).dt
@@ -620,9 +739,10 @@ end
 
 
 """In a given liturgical year, find Sundays in ordinary time after Pentecost.
+
 $(SIGNATURES)
 """
-function pentecost_season(lityr::LiturgicalYear = LiturgicalYear())
+function pentecost_season(lityr::LiturgicalYear = LiturgicalYear())::Vector{Sunday}
     pentecost_season(lityr.ends_in)
 end
 
@@ -631,7 +751,7 @@ end
 """In a given year in the civil calendar, find Sundays in ordinary time after Pentecost.
 $(SIGNATURES)
 """
-function pentecost_season(yr::Int)
+function pentecost_season(yr::Int)::Vector{Sunday}
     sundayslist = []
     for i in 2:28
         sunday = pentecost(i, yr)
