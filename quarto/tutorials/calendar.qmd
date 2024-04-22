@@ -6,8 +6,6 @@ title: "The Liturgical Calendar"
 ## The `LiturgicalYear`
 
 
-### Constructors
-
 The *liturgical year* is modelled by the `LiturgicalYear` type, a central structure in `Lectionary.jl`. You can create a `LiturgicalYear` from a  `Date` object as a single parameter; if you construct a `LiturgicalYear` with no parameter, the date value defaults to today. You can also construct a `LiturgicalYear` with an integer value for the calendar year in which the liturgical year begins (i.e., the year of the civil calendar that Advent falls in).
 
 ```{julia}
@@ -17,9 +15,7 @@ lityear = LiturgicalYear(2023)
 ```
 
 
-### Basic facts of the liturgical year
-
-Things you can find out about a liturgical year include:
+Basic facts you can find out about a liturgical year include:
 
 
 -  its place in the three-year cycle of the Revised Commmon Lectionary (identified by one of the characters 'A', 'B' or 'C'):
@@ -41,7 +37,7 @@ daily_office_year(lityear)
 date_range(lityear)
 ```
 
-The result is a range of `Date`s (from the `Dates` package). Of course you can collect them, like any other range value in Julia. Here we can see that the 2023-2024 liturgical year spans 364 days in the civil calendar.
+The result of the `date_range` function is a range of `Date`s (from the `Dates` package). Of course you can collect them, like any other range value in Julia. Here we can see that the 2023-2024 liturgical year spans 364 days in the civil calendar.
 
 ```{julia}
 date_range(lityear) |> collect |> length
@@ -49,7 +45,7 @@ date_range(lityear) |> collect |> length
 
 
 
-- a full calendar of dates with assigned readings in the RCL (all Sundays and feast days):
+- a full calendar of dates with assigned readings in the RCL (fasts, feast days and all Sundays):
 
 ```{julia}
 kalendar(lityear)
@@ -63,10 +59,9 @@ The result is a Vector of `LiturgicalDay`s.
 
 The `LiturgicalDay` is an abstract type with concrete implementations:
 
-- `Feast`: feasts of the liturgical year other than Sundays with assigned readings in the RCL. (The movable feasts could coincide with a Sunday.)
+- `Feast`: fasts and feasts of the liturgical year with assigned readings in the RCL, other than Sundays. (Feasts with fixed dates could coincide with a Sunday.)
 - `Sunday`:  the Sundays of the liturgical year
 - `OtherDay`: days of the year with no assigned reading.
-
 
 Any date in the civil calendar can be mapped to a `LiturgicalDay`.
 
@@ -75,6 +70,9 @@ using Dates
 liturgical_day(Date(2024,4,1))
 ```
 
+:::{.callout-caution}
+Content TBA
+:::
 
 You can find types of days for a liturgical year.
 
