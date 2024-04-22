@@ -1,8 +1,5 @@
-
-
 """A day in the liturgical calendar that is not identified as
 a feast, fast or Sunday.
-
 
 **Example**
 ```julia-repl
@@ -14,7 +11,6 @@ $(SIGNATURES)
 struct OtherDay <: LiturgicalDay
     dt::Date
 end
-
 
 """Construct an `OtherDay` for today.
 
@@ -73,7 +69,7 @@ julia> name(otherday)
 
 $(SIGNATURES)
 """
-function name(other::OtherDay)
+function name(other::OtherDay)::String
    
     backwardday = other.dt
     while dayname(backwardday) != "Sunday"
@@ -85,12 +81,35 @@ end
 
 """Find the date in civil calendar for an ordinary day in the liturgical year.
 
+**Example**
+
+```julia-repl
+julia> otherday = OtherDay(Date(2024, 5, 6))
+May 6, 2024, Monday following the sixth Sunday of Easter
+julia> civildate(otherday)
+2024-05-06
+```
+
 $(SIGNATURES)
 """
-function civildate(other::OtherDay)
+function civildate(other::OtherDay)::Date
     other.dt
 end
 
+
+"""Find name of day of week of commemoration.
+
+**Example**
+```julia-repl
+julia> weekday(OtherDay(Date(2024, 5, 6)))
+"Monday"
+```
+
+$(SIGNATURES)
+"""
+function weekday(otherday::OtherDay)::String
+    civildate(otherday) |> dayname
+end
 
 """Priority of an ordinary day.
 
@@ -101,16 +120,15 @@ julia> dec25 = OtherDay(Date(2023,12,25))
 December 25, 2023, Monday following the fourth Sunday of Advent
 julia> xmas = christmas_day()
 Christmas Day, December 25, 2023
-julia> priority(xmas) <  priority(dec25)
+julia> precedence(xmas) <  precedence(dec25)
 true
 ```
 
 $(SIGNATURES)
 """
-function priority(other::OtherDay)
+function precedence(other::OtherDay)::Int
     OTHER_DAY
 end
-
 
 
 

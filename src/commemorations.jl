@@ -39,11 +39,11 @@ end
 """Override `Base.show` for type `Commemoration`.
 $(SIGNATURES)
 """
-function show(io::IO, fst::Commemoration)
+function show(io::IO, comm::Commemoration)
     
-    nm = name(fst)
+    nm = name(comm)
     
-    dt = civildate(fst)
+    dt = civildate(comm)
     if isnothing(dt)
        write(io, string(nm, " (no date)"))
     else
@@ -61,8 +61,8 @@ julia> name(ash_wednesday())
 ```
 $(SIGNATURES)
 """
-function name(fst::Commemoration)
-    haskey(feast_names, fst.commemoration_id) ? feast_names[fst.commemoration_id] : string(fst)
+function name(comm::Commemoration)::String
+    haskey(feast_names, comm.commemoration_id) ? feast_names[comm.commemoration_id] : string(comm)
 end
 
 """Priority of a commemoration. Lower values override 
@@ -77,12 +77,12 @@ of readings to prefer.
 
 $(SIGNATURES)
 """
-function priority(fst::Commemoration)
-    if fst.commemoration_id in PRINCIPAL_FEASTS
+function precedence(comm::Commemoration)::Int
+    if comm.commemoration_id in PRINCIPAL_FEASTS
         PRINCIPAL_FEAST
-    elseif fst.commemoration_id in HOLY_DAYS_1
+    elseif comm.commemoration_id in HOLY_DAYS_1
         HOLY_DAY_1
-    elseif fst.commemoration_id in HOLY_DAYS_2
+    elseif comm.commemoration_id in HOLY_DAYS_2
         HOLY_DAY_2
 
     else
@@ -93,56 +93,52 @@ end
 """True if date of commemoration is movable.
 $(SIGNATURES)
 """
-function ismovable(fst::Commemoration)
-    fst.commemoration_id in MOVABLE
+function ismovable(comm::Commemoration)::Bool
+    comm.commemoration_id in MOVABLE
 end
 
 """Date in civil calendar of a movable commemoration.
 $(SIGNATURES)
 """
-function movabledate(fst::Commemoration)
-    if fst.commemoration_id == FEAST_EASTER
-        easter_sunday(fst.yr) |> civildate
-    elseif fst.commemoration_id == FEAST_ASCENSION
-        ascension(fst.yr)
-    elseif fst.commemoration_id == FEAST_PENTECOST
-        pentecost_day(fst.yr).dt
-    elseif fst.commemoration_id == FEAST_TRINITY
-        trinity(fst.yr).dt
-    elseif fst.commemoration_id == FEAST_THANKSGIVING_DAY
-        thanksgiving(fst.yr)
+function movabledate(comm::Commemoration)::Date
+    if comm.commemoration_id == FEAST_EASTER
+        easter_sunday(comm.yr) |> civildate
+    elseif comm.commemoration_id == FEAST_ASCENSION
+        ascension(comm.yr)
+    elseif comm.commemoration_id == FEAST_PENTECOST
+        pentecost_day(comm.yr).dt
+    elseif comm.commemoration_id == FEAST_TRINITY
+        trinity(comm.yr).dt
+    elseif comm.commemoration_id == FEAST_THANKSGIVING_DAY
+        thanksgiving(comm.yr)
 
-    elseif fst.commemoration_id == FAST_ASH_WEDNESDAY
-        ash_wednesday_date(fst.yr)
+    elseif comm.commemoration_id == FAST_ASH_WEDNESDAY
+        ash_wednesday_date(comm.yr)
 
     else
-        @info("Movable feast not implemented! $(fst)")
+        @info("Movable feast not implemented! $(comm)")
         nothing
     end
 end
 
-"""Find date in civil calendar for a commemoration.
-
+"""Find the date in the civil calendar for a commemoration.
 
 **Example**
 ```julia-repl
-julia> fst = Commemoration(Lectionary.FEAST_PENTECOST)
-The Day of Pentecost, May 19, 2024
-julia> civildate(fst)
-2024-05-19
+julia> civildate(ash_wednesday())
+2024-02-14
 ```
 $(SIGNATURES)
 """
-function civildate(fst::Commemoration)
-    if ismovable(fst)
+function civildate(comm::Commemoration)::Date
+    if ismovable(comm)
+        movabledate(comm)
 
-        movabledate(fst)
-
-    elseif haskey(fixed_dates,fst.commemoration_id)
-        monthday = fixed_dates[fst.commemoration_id]
-        Date(fst.yr, calmonth(monthday), calday(monthday))
+    elseif haskey(fixed_dates,comm.commemoration_id)
+        monthday = fixed_dates[comm.commemoration_id]
+        Date(comm.yr, calmonth(monthday), calday(monthday))
     else
-        @warn("Key not found for fixed date of commemorations: $(fst)..")
+        @warn("Key not found for fixed date of commemorations: $(comm)..")
         nothing
     end
 end
@@ -150,18 +146,15 @@ end
 
 """Find name of day of week of commemoration.
 
-
 **Example**
 ```julia-repl
-julia> fst = Commemoration(Lectionary.FEAST_PENTECOST)
-The Day of Pentecost, May 19, 2024
-julia> weekday(fst)
-"Sunday"
+julia> weekday(christmas_day())
+"Monday"
 ```
 
 $(SIGNATURES)
 """
-function weekday(fst::Commemoration)
+function weekday(fst::Commemoration)::String
     civildate(fst) |> dayname
 end
 

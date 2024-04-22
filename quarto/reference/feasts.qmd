@@ -1,16 +1,14 @@
 ---
-title: "Identifiers for principal feasts and their priority in the calendar"
+title: "Identifiers for principal feasts and their precedence in the calendar"
 ---
 
 
 
-Feast days are identified by constant values listed on this page. You can construct the liturgical day for a feast in a given liturgical year using one of these constants.
 
-```{julia}
-using Lectionary
-Feast(Lectionary.FEAST_ALL_SAINTS, LiturgicalYear())
-```
 
+## Rrecedence
+
+Commemorations with fixed dates can fall on the same day as a Sunday.  The following constants are used to rank their precedence.
 
 
 
@@ -22,7 +20,18 @@ Feast(Lectionary.FEAST_ALL_SAINTS, LiturgicalYear())
 - `OTHER_DAY` = 6
 
 
-## Principal feasts (priority 1)
+
+## Commemorations (feasts and fasts)
+
+Feast days are identified by constant values listed on this page. You can construct the liturgical day for a feast in a given liturgical year using one of the constant .
+
+```{julia}
+using Lectionary
+Commemoration(Lectionary.FEAST_ALL_SAINTS)
+```
+
+
+## Principal feasts (precedence 1)
 
 - `FEAST_EASTER`
 - `FEAST_ASCENSION`
@@ -33,38 +42,42 @@ Feast(Lectionary.FEAST_ALL_SAINTS, LiturgicalYear())
 - `FEAST_EPIPHANY`
 
 
-## Holy Days (priority 2)
+## Holy Days (precedence 2)
 
-const FEAST_HOLY_NAME = 9
-const FEAST_PRESENTATION = 10
-const FEAST_TRANSFIGURATION = 11
+- `FEAST_HOLY_NAME`
+- `FEAST_PRESENTATION`
+- `FEAST_TRANSFIGURATION`
 
+## Sundays (precedence 3)
 
-# Holy Days (priority 4)
-const FEAST_ANNUNCIATION = 12
-const FEAST_VISITATION = 13
-const FEAST_SAINT_JOHN = 14
-const FEAST_HOLY_CROSS = 15
-const FEAST_SAINT_STEPHEN = 16
-const FEAST_HOLY_INNOCENTS = 17
-const FEAST_SAINT_JOSEPH = 18
-const FEAST_MARY_MAGDALENE = 19
-const FEAST_MARY_THE_VIRGIN = 20
-const FEAST_MICHAEL_AND_ALL_ANGELS = 21
-const FEAST_SAINT_JAMES_JERUSALEM = 22
-const FEAST_INDEPENDENCE_DAY = 23
-const FEAST_THANKSGIVING_DAY = 24
-const FEAST_CONFESSION_OF_PETER = 25
-const FEAST_CONVERSION_OF_PAUL = 26
-const FEAST_SAINT_MATTHIAS = 27
-const FEAST_SAINT_MARK = 28 
-const FEAST_SAINTS_PHILIP_AND_JAMES = 29
-const FEAST_SAINT_BARNABAS = 30
-const FEAST_SAINT_JOHN_BAPTIST = 31
-const FEAST_SAINT_JAMES_APOSTLE = 32
-const FEAST_SAINT_BARTHOLOMEW = 33
-const FEAST_SAINT_MATTHEW = 34
-const FEAST_SAINT_LUKE = 35
-const FEAST_SAINTS_SIMON_AND_JUDE = 36
-const FEAST_SAINT_ANDREW = 37
-const FEAST_SAINT_THOMAS 
+- see separate page
+
+## Holy Days (precedence 4)
+
+- `FEAST_ANNUNCIATION`
+- `FEAST_VISITATION`
+- `FEAST_SAINT_JOHN`
+- `FEAST_HOLY_CROSS`
+- `FEAST_SAINT_STEPHEN`
+- `FEAST_HOLY_INNOCENTS`
+- `FEAST_SAINT_JOSEPH`
+- `FEAST_MARY_MAGDALENE`
+- `FEAST_MARY_THE_VIRGIN`
+- `FEAST_MICHAEL_AND_ALL_ANGELS`
+- `FEAST_SAINT_JAMES_JERUSALEM`
+- `FEAST_INDEPENDENCE_DAY`
+- `FEAST_THANKSGIVING_DAY`
+- `FEAST_CONFESSION_OF_PETER`
+- `FEAST_CONVERSION_OF_PAUL`
+- `FEAST_SAINT_MATTHIAS`
+- `FEAST_SAINT_MARK`
+- `FEAST_SAINTS_PHILIP_AND_JAMES`
+- `FEAST_SAINT_BARNABAS`
+- `FEAST_SAINT_JOHN_BAPTIST`
+- `FEAST_SAINT_JAMES_APOSTLE`
+- `FEAST_SAINT_BARTHOLOMEW`
+- `FEAST_SAINT_MATTHEW`
+- `FEAST_SAINT_LUKE`
+- `FEAST_SAINTS_SIMON_AND_JUDE`
+- `FEAST_SAINT_ANDREW`
+- `FEAST_SAINT_THOMAS`

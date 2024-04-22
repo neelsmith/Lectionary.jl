@@ -1,4 +1,4 @@
-# Categories of priority:
+# Categories of precedence:
 const PRINCIPAL_FEAST = 1
 const HOLY_DAY_1 = 2
 const SUNDAY = 3

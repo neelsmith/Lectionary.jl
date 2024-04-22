@@ -8,7 +8,7 @@ import Base: show
 import Base: ==
 
 export LiturgicalDay
-export name, civildate, weekday, readings, priority
+export name, civildate, weekday, readings, precedence
 export kalendar
 export Sunday, Commemoration,  OtherDay
 # HolyDay

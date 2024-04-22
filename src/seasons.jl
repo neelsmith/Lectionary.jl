@@ -3,10 +3,22 @@ struct Season
     lityr::LiturgicalYear
 end
 
+
 function kalendar(s::Season)
     @warn("`kalendar` not yet implemented for type Season.")
     nothing
 end
+
+function liturgical_color(s::Season)
+    @warn("`liturgical_color` not yet implemented for type Season.")
+    nothing
+end
+
+function date_range(s::Season)
+    @warn("`date_range` not yet implemented for type Season.")
+    nothing
+end
+
 
 #
 # Advent

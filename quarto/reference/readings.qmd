@@ -13,3 +13,8 @@ In determining readings for days in the liturgical year,
 export Reading, readings, ot, nt, psalm, gospel
 
 
+
+
+`readings`
+
+`precedence`

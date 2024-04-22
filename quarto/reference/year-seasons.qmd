@@ -1,9 +1,11 @@
 ---
-title: "API documentation: years, seasons, feasts"
+title: "API documentation: liturgical years, seasons, and days"
 ---
 
 
-## The liturgical year
+## The liturgical year and seasons
+
+### Types
 
 `LiturgicalYear` 
 
@@ -16,16 +18,12 @@ using Lectionary
 ```
 :::
 
+`LiturgicalYear` 
 
-`date_range`
 
-:::{.callout-note appearance="minimal"}
-```{julia}
-#| echo: false
-#| warning: false
-@doc date_range
-```
-:::
+### Functions for working with years and seasons
+
+
 
 `lectionary_year`
 
@@ -50,10 +48,25 @@ using Lectionary
 :::
 
 
+`date_range`
 
-## Feasts, fasts, commemorations and other days
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc date_range
+```
+:::
 
-### Types
+
+`kalendar`
+
+
+`liturgical_color`
+
+## Liturgical days
+
+### Concrete subtypes of the `LiturgicalDay`
 
 `Sunday`: see [separate page](./sundays.qmd)
 
@@ -78,7 +91,7 @@ using Lectionary
 :::
 
 
-### Functions
+### Functions for working with liturgical days
 
 
 `name`
@@ -110,15 +123,24 @@ using Lectionary
 
 
 `weekday`
-`readings`
-`priority`
 
 
-kalendar ?
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc weekday
+```
+:::
 
 
 
-## Holy days
+
+
+
+
+
+### Functions for constructing particular liturgical days
 
 
 
@@ -179,14 +201,4 @@ export liturgical_year, liturgical_day, date_range
 ```
 :::
 
-## Other days
 
-`OtherDay`
-
-:::{.callout-note appearance="minimal"}
-```{julia}
-#| echo: false
-#| warning: false
-@doc OtherDay
-```
-:::

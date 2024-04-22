@@ -48,7 +48,7 @@ function name(sday::Sunday)
     sunday_names[sday.calendar_day]
 end
 
-"""Find date in thge civil calendar for a given Sunday.
+"""Find the date in the civil calendar for a given Sunday.
 
 **Example**
 ```julia-repl
@@ -63,7 +63,7 @@ function civildate(sday::Sunday)
     sday.dt
 end
 
-function priority(sday::Sunday)
+function precedence(sday::Sunday)
     SUNDAY
 end
 
