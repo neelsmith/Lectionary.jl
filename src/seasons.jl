@@ -1,21 +1,66 @@
-struct Season
+"""A liturgical season in a specific liturgical year.
+
+**Example**
+```julia-repl
+julia> LiturgicalSeason(Lectionary.LENT, LiturgicalYear(2023))
+Lent of liturgical year 2023-2024
+```
+$(SIGNATURES)
+"""
+struct LiturgicalSeason
     seasonid::Int
     lityr::LiturgicalYear
 end
 
 
-function kalendar(s::Season)
-    @warn("`kalendar` not yet implemented for type Season.")
+"""A liturgical season in the current liturgical year.
+
+**Example**
+```julia-repl
+julia> LiturgicalSeason(Lectionary.LENT)
+Lent of liturgical year 2023-2024
+```
+$(SIGNATURES)
+"""
+function LiturgicalSeason(seasonid::Int)
+    LiturgicalSeason(seasonid, LiturgicalYear())
+end
+
+"""Override `Base.==` for `LiturgicalSeason`.
+$(SIGNATURES)
+"""
+function ==(s1::LiturgicalSeason, s2::LiturgicalSeason)
+    yr1.starts_in == yr.starts_in &&
+    yr1.ends_in == yr.ends_in 
+end
+
+"""Override `Base.show` for `LiturgicalYear`.
+$(SIGNATURES)
+"""
+function show(io::IO, season::LiturgicalSeason)
+    nm = season_names[season.seasonid]
+    write(io, string(nm, " of liturgical year ", season.lityr))
+    #write(io, string(nm))
+end
+
+
+
+
+
+
+
+function kalendar(s::LiturgicalSeason)
+    @warn("`kalendar` not yet implemented for type LiturgicalSeason.")
     nothing
 end
 
-function liturgical_color(s::Season)
-    @warn("`liturgical_color` not yet implemented for type Season.")
+function liturgical_color(s::LiturgicalSeason)
+    @warn("`liturgical_color` not yet implemented for type LiturgicalSeason.")
     nothing
 end
 
-function date_range(s::Season)
-    @warn("`date_range` not yet implemented for type Season.")
+function date_range(s::LiturgicalSeason)
+    @warn("`date_range` not yet implemented for type LiturgicalSeason.")
     nothing
 end
 
@@ -282,7 +327,6 @@ function epiphany_sundays(yr::Int)::Vector{Sunday}
     end
     sundaylist
 end
-
 
 
 """Construct Day of Epiphany for a given liturgical year.

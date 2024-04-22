@@ -37,15 +37,15 @@ function LiturgicalYear(dt::Date = Date(Dates.now()))
     end
 end
 
-"""Override `Base.==` for `Codex`.
+"""Override `Base.==` for `LiturgicalYear`.
 $(SIGNATURES)
 """
-function ==(yr1::LiturgicalYear, yr2::LiturgicalYear = LiturgicalYear())
-    yr1.starts_in == yr.starts_in &&
-    yr1.ends_in == yr.ends_in 
+function ==(yr1::LiturgicalYear, yr2::LiturgicalYear)
+    yr1.starts_in == yr2.starts_in &&
+    yr1.ends_in == yr2.ends_in 
 end
 
-"""Override `Base.show` for `Codex`.
+"""Override `Base.show` for `LiturgicalYear`.
 $(SIGNATURES)
 """
 function show(io::IO, year::LiturgicalYear = LiturgicalYear())

@@ -7,16 +7,20 @@ using Documenter, DocStringExtensions
 import Base: show
 import Base: ==
 
-export LiturgicalDay
-export name, civildate, weekday, readings, precedence
-export kalendar
-export Sunday, Commemoration,  OtherDay
-# HolyDay
 
 
 export LiturgicalYear, lectionary_year, daily_office_year
 export sundays, principal_feasts, holy_days
 export liturgical_year, liturgical_day, date_range
+
+export LiturgicalSeason
+
+export LiturgicalDay
+export name, civildate, weekday, readings, precedence
+export kalendar
+export Sunday, Commemoration,  OtherDay
+
+
 
 export advent, advent_sundays
 export christmas, christmas_day, christmas_sundays

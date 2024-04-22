@@ -1,12 +1,12 @@
 ---
-title: "Identifiers for principal feasts and their precedence in the calendar"
+title: "Identifiers for commemorations and their precedence in the lectionary"
 ---
 
 
 
 
 
-## Rrecedence
+## Precedence
 
 Commemorations with fixed dates can fall on the same day as a Sunday.  The following constants are used to rank their precedence.
 
@@ -23,15 +23,16 @@ Commemorations with fixed dates can fall on the same day as a Sunday.  The follo
 
 ## Commemorations (feasts and fasts)
 
-Feast days are identified by constant values listed on this page. You can construct the liturgical day for a feast in a given liturgical year using one of the constant .
+Feast days are identified by constant values listed on this page. You can construct the liturgical day for a feast in a given liturgical year using one of the constants.
 
 ```{julia}
+#| warning: false
 using Lectionary
 Commemoration(Lectionary.FEAST_ALL_SAINTS)
 ```
 
 
-## Principal feasts (precedence 1)
+### Principal feasts (precedence 1)
 
 - `FEAST_EASTER`
 - `FEAST_ASCENSION`
@@ -42,17 +43,17 @@ Commemoration(Lectionary.FEAST_ALL_SAINTS)
 - `FEAST_EPIPHANY`
 
 
-## Holy Days (precedence 2)
+### Holy Days (precedence 2)
 
 - `FEAST_HOLY_NAME`
 - `FEAST_PRESENTATION`
 - `FEAST_TRANSFIGURATION`
 
-## Sundays (precedence 3)
+### Sundays (precedence 3)
 
-- see separate page
+- see [separate page](./sundays.qmd)
 
-## Holy Days (precedence 4)
+### Holy Days (precedence 4)
 
 - `FEAST_ANNUNCIATION`
 - `FEAST_VISITATION`
