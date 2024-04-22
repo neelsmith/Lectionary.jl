@@ -1,5 +1,5 @@
 ---
-title: Schedule of readings
+title: "API documentation: schedule of readings"
 ---
 
 :::{.callout-note}
@@ -7,3 +7,9 @@ title: Schedule of readings
 In determining readings for days in the liturgical year,
 `Lectionary.jl` does not attempt to take account of transferal of the readings for a feast to another day. For example, feasts that fall on a Sunday or during Holy Week are normally transferred to a suitable following time.
 :::
+
+
+
+export Reading, readings, ot, nt, psalm, gospel
+
+
