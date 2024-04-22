@@ -65,3 +65,52 @@ using Lectionary
 @doc epiphany_sundays
 ```
 :::
+
+`lent`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+using Lectionary
+@doc lent
+```
+:::
+
+`lent_season`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+using Lectionary
+@doc lent_season
+```
+:::
+
+
+
+`palm_sunday`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+using Lectionary
+@doc palm_sunday
+```
+:::
+
+
+
+
+`easter_sunday`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+using Lectionary
+@doc easter_sunday
+```
+:::

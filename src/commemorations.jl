@@ -16,7 +16,7 @@ struct Commemoration <: LiturgicalDay
 end
 
 
-"""Construct a `Commemoration` day.
+"""Construct a liturgical day for a `Commemoration.
 
 """
 function Commemoration(feastid::Int, ly::LiturgicalYear = LiturgicalYear())

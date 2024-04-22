@@ -51,16 +51,16 @@ using Lectionary
 
 
 
-## Feast days
+## Feasts, fasts and commemorations
 
 
-`Feast`
+`Commemoration`
 
 :::{.callout-note appearance="minimal"}
 ```{julia}
 #| echo: false
 #| warning: false
-@doc Feast
+@doc Commemoration
 ```
 :::
 
@@ -119,11 +119,30 @@ export Reading, readings, ot, nt, psalm, gospel
 ```{julia}
 #| echo: false
 #| warning: false
-using Lectionary
 @doc epiphany_day
 ```
 :::
 
+`ash_wednesday`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc ash_wednesday
+```
+:::
+
+
+`ash_wednesday_date`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc ash_wednesday_date
+```
+:::
 
 ## Other days
 

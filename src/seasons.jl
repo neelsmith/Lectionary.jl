@@ -273,16 +273,29 @@ end
 
 
 
-"""
-one method
+"""Construct Day of Epiphany for a given liturgical year.
+
+**Examples**
+
+```julia-repl
+julia> epiphany_day()
+The Epiphany, January 6, 2024
+julia> epiphany_day(LiturgicalYear(2023))
+The Epiphany, January 6, 2023
+```
 $(SIGNATURES)
 """
 function epiphany_day(lityr::LiturgicalYear = LiturgicalYear())::Commemoration
     epiphany_day(lityr.ends_in)
 end
 
-"""
-another method
+"""Construct Day of Epiphany for a given year in the civil calendar.
+
+**Example**
+```julia-repl
+julia> epiphany_day(2023)
+The Epiphany, January 6, 2023
+```
 $(SIGNATURES)
 """
 function epiphany_day(yr::Int)::Commemoration
@@ -294,30 +307,87 @@ end
 #
 # Lent
 #
+"""Construct Ash Wednesday for a given liturgical year.
+
+**Examples**
+```julia-repl
+julia> ash_wednesday()
+The First Day of Lent or Ash Wednesday, February 14, 2024
+julia> ash_wednesday(LiturgicalYear(2023))
+The First Day of Lent or Ash Wednesday, February 14, 2024
+```
+$(SIGNATURES)
+"""
 function ash_wednesday(lityr::LiturgicalYear = LiturgicalYear())::Commemoration
     ash_wednesday(lityr.ends_in)
 end
+
+"""Construct Ash Wednesday for a given year in the civil calendar.
+
+**Example**
+```julia-repl
+julia> ash_wednesday(2024)
+The First Day of Lent or Ash Wednesday, February 14, 2024
+```
+$(SIGNATURES)
+"""
 function ash_wednesday(yr::Int)::Commemoration
     Commemoration(FAST_ASH_WEDNESDAY, yr)
 end
 
+"""Find the date of Ash Wednesday in a given liturgical year in the civil calendar.
+
+**Examples**
+```julia-repl
+julia> ash_wednesday_date()
+2024-02-14
+julia> ash_wednesday_date(LiturgicalYear(2023))
+2024-02-14
+```
+
+$(SIGNATURES)
+"""
 function ash_wednesday_date(lityr::LiturgicalYear = LiturgicalYear())::Date
     ash_wednesday_date(lityr.ends_in)
 end
 
-"""Find date of Ash Wednesday for a given year.
+"""Find date of Ash Wednesday for a given year in the civil calendar.
+
+**Examples*
+```julia-repl
+julia> ash_wednesday_date(2024)
+2024-02-14
+```
 $(SIGNATURES)
 """
 function ash_wednesday_date(yr::Int)::Date
     lent(1, yr).dt - Dates.Day(4)
 end
 
+"""Find a given Sunday of Lent in a given liturgial year.
 
+**Examples**
+```julia-repl
+julia> lent(1)
+the first Sunday in Lent, February 18, 2024
+julia> lent(1, LiturgicalYear(2023))
+the first Sunday in Lent, February 18, 2024
+```
+
+$(SIGNATURES)
+"""
 function lent(sunday::Int, lityr::LiturgicalYear = LiturgicalYear())
-    lent(sunday)
+    lent(sunday, lityr.ends_in)
 end
 
-"""Find date of a given week of Lent in a given year.
+"""Find a given Sunday of Lent in a given year in the civil calendar.
+
+
+**Examples**
+```julia-repl
+julia> lent(1, 2024)
+the first Sunday in Lent, February 18, 2024
+```
 $(SIGNATURES)
 """
 function lent(sunday::Int, yr::Int)
@@ -329,7 +399,64 @@ function lent(sunday::Int, yr::Int)
 end
 
 
+
+
+"""Find Sundays of Lent in a given year of the civil calendar.
+
+**Example**
+```julia-repl
+julia> lent_season(2024)
+5-element Vector{Sunday}:
+ the first Sunday in Lent, February 18, 2024
+ the second Sunday in Lent, February 25, 2024
+ the third Sunday in Lent, March 3, 2024
+ the fourth Sunday in Lent, March 10, 2024
+ the fifth Sunday in Lent, March 17, 2024
+```
+
+$(SIGNATURES)
+"""
+function lent_season(yr::Int)
+    lent_season(LiturgicalYear(yr - 1))
+end
+
+"""Find Sundays of Lent in a given liturgical year.
+
+**Examples**
+
+```julia-repl
+julia> lent_season()
+5-element Vector{Sunday}:
+ the first Sunday in Lent, February 18, 2024
+ the second Sunday in Lent, February 25, 2024
+ the third Sunday in Lent, March 3, 2024
+ the fourth Sunday in Lent, March 10, 2024
+ the fifth Sunday in Lent, March 17, 2024
+julia> lent_season(LiturgicalYear(2023))
+5-element Vector{Sunday}:
+ the first Sunday in Lent, February 18, 2024
+ the second Sunday in Lent, February 25, 2024
+ the third Sunday in Lent, March 3, 2024
+ the fourth Sunday in Lent, March 10, 2024
+ the fifth Sunday in Lent, March 17, 2024 
+```
+
+$(SIGNATURES)
+"""
+function lent_season(lityear::LiturgicalYear = LiturgicalYear())
+    [lent(sunday, lityear.ends_in) for sunday in 1:5] 
+end
+
+
 """Find date of Palm Sunday for a given liturgical year.
+
+**Examples**
+```julia-repl
+julia> palm_sunday()
+Palm Sunday, March 24, 2024
+julia> palm_sunday(LiturgicalYear(2023))
+Palm Sunday, March 24, 2024
+```
 $(SIGNATURES)
 """
 function palm_sunday(lityr::LiturgicalYear = LiturgicalYear())
@@ -338,25 +465,18 @@ end
 
 
 """Find date of Palm Sunday for a given year.
+
+**Example**
+```julia-repl
+julia> palm_sunday(2024)
+Palm Sunday, March 24, 2024
+```
+
 $(SIGNATURES)
 """
 function palm_sunday(yr::Int)
     dt = easter_sunday(yr).dt - Dates.Day(7)
     Sunday(dt, PALM_SUNDAY)
-end
-
-"""Find Sundays of Lent in a given liturgical year.
-$(SIGNATURES)
-"""
-function lent_season(yr::Int)
-    lent_season(LiturgicalYear(yr))
-end
-
-"""Find Sundays of Lent in a given liturgical year.
-$(SIGNATURES)
-"""
-function lent_season(lityear::LiturgicalYear = LiturgicalYear())
-    [lent(sunday, lityear.ends_in) for sunday in 1:5] 
 end
 
 
@@ -365,14 +485,28 @@ end
 # EASTER AND EASTERTIDE
 #
 
-"""Find date of Easter in a given liturgical year.
+"""Find Easter in a given liturgical year.
+
+**Examples**
+```julia-repl
+julia> easter_sunday()
+Easter Day, March 31, 2024
+julia> easter_sunday(LiturgicalYear(2023))
+Easter Day, March 31, 2024
+```
 $(SIGNATURES)
 """
 function easter_sunday(lityr::LiturgicalYear = LiturgicalYear())
     easter_sunday(lityr.ends_in)
 end
 
-"""Find date of Easter in a given year.
+"""Find Easter in a given year of the civil calendar.
+
+**Example**
+```julia-repl
+julia> easter_sunday(2024)
+Easter Day, March 31, 2024
+```
 $(SIGNATURES)
 """
 function easter_sunday(yr::Int)
