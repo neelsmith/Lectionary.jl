@@ -38,10 +38,8 @@ end
 
 **Example**
 ```julia-repl
-julia> fst = Commemoration(Lectionary.FEAST_PENTECOST)
-The Day of Pentecost, May 19, 2024
-julia> name(fst)
-"The Day of Pentecost"
+julia> name(easter_sunday())
+"Easter Day"
 ```
 
 $(SIGNATURES)
@@ -50,6 +48,17 @@ function name(sday::Sunday)
     sunday_names[sday.calendar_day]
 end
 
+"""Find date in thge civil calendar for a given Sunday.
+
+**Example**
+```julia-repl
+julia> civildate(easter_sunday())
+2024-03-31
+```
+
+
+$(SIGNATURES)
+"""
 function civildate(sday::Sunday)
     sday.dt
 end

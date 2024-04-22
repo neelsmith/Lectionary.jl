@@ -11,7 +11,7 @@ function civildate(theday::T) where {T <: LiturgicalDay}
 end
 
 function priority(theday::T) where {T <: LiturgicalDay}
-    @warn("Function civildate not implemented for LiturgicalDay type $(typeof(theday))")
+    @warn("Function priority not implemented for LiturgicalDay type $(typeof(theday))")
     nothing
 end
 

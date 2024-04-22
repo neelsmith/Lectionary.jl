@@ -2,9 +2,31 @@
 
 """A day in the liturgical calendar that is not identified as
 a feast, fast or Sunday.
+
+
+**Example**
+```julia-repl
+julia> OtherDay(Date(2024,4,22))
+April 22, 2024, Monday following the fourth Sunday of Easter
+```
+$(SIGNATURES)
 """
 struct OtherDay <: LiturgicalDay
     dt::Date
+end
+
+
+"""Construct an `OtherDay` for today.
+
+**Example**
+```julia-repl
+julia> OtherDay()
+April 22, 2024, Monday following the fourth Sunday of Easter
+```
+$(SIGNATURES)
+"""
+function OtherDay()
+    OtherDay(Date(now()))
 end
 
 """Override `Base.==` for `OtherDay`.
@@ -61,13 +83,33 @@ function name(other::OtherDay)
    string(dayname(other.dt), " following ", name(sday))
 end
 
-"""Find date in civil calendar for a day in the liturgical year.
+"""Find the date in civil calendar for an ordinary day in the liturgical year.
+
 $(SIGNATURES)
 """
 function civildate(other::OtherDay)
     other.dt
 end
 
+
+"""Priority of an ordinary day.
+
+**Examples**
+
+```julia-repl
+julia> dec25 = OtherDay(Date(2023,12,25))
+December 25, 2023, Monday following the fourth Sunday of Advent
+julia> xmas = christmas_day()
+Christmas Day, December 25, 2023
+julia> priority(xmas) <  priority(dec25)
+true
+```
+
+$(SIGNATURES)
+"""
+function priority(other::OtherDay)
+    OTHER_DAY
+end
 
 
 

@@ -711,7 +711,7 @@ the third Sunday after Pentecost, June 9, 2024
 ```
 $(SIGNATURES)
 """
-function pentecost(sunday::Int, yr::Int)::Sunday
+function pentecost(sunday::Int, yr::Int)::Union{Sunday,Nothing}
     @assert sunday > 1 && sunday < 30
     endpoint = advent(1, yr).dt
     startpoint = trinity(yr).dt
@@ -740,6 +740,55 @@ end
 
 """In a given liturgical year, find Sundays in ordinary time after Pentecost.
 
+**Examples**
+```julia-repl
+
+julia> pentecost_season()
+26-element Vector{Lectionary.Sunday}:
+ the second Sunday after Pentecost, June 2, 2024
+ the third Sunday after Pentecost, June 9, 2024
+ the fourth Sunday after Pentecost, June 16, 2024
+ the fifth Sunday after Pentecost, June 23, 2024
+ the sixth Sunday after Pentecost, June 30, 2024
+ the seventh Sunday after Pentecost, July 7, 2024
+ the eighth Sunday after Pentecost, July 14, 2024
+ the ninth Sunday after Pentecost, July 21, 2024
+ the tenth Sunday after Pentecost, July 28, 2024
+ the eleventh Sunday after Pentecost, August 4, 2024
+ ⋮
+ the nineteenth Sunday after Pentecost, September 29, 2024
+ the twentieth Sunday after Pentecost, October 6, 2024
+ the twenty-first Sunday after Pentecost, October 13, 2024
+ the twenty-second Sunday after Pentecost, October 20, 2024
+ the twenty-third Sunday after Pentecost, October 27, 2024
+ the twenty-fourth Sunday after Pentecost, November 3, 2024
+ the twenty-fifth Sunday after Pentecost, November 10, 2024
+ the twenty-sixth Sunday after Pentecost, November 17, 2024
+ the twenty-seventh Sunday after Pentecost, November 24, 2024
+ julia> pentecost_season(LiturgicalYear(2023))
+26-element Vector{Lectionary.Sunday}:
+ the second Sunday after Pentecost, June 2, 2024
+ the third Sunday after Pentecost, June 9, 2024
+ the fourth Sunday after Pentecost, June 16, 2024
+ the fifth Sunday after Pentecost, June 23, 2024
+ the sixth Sunday after Pentecost, June 30, 2024
+ the seventh Sunday after Pentecost, July 7, 2024
+ the eighth Sunday after Pentecost, July 14, 2024
+ the ninth Sunday after Pentecost, July 21, 2024
+ the tenth Sunday after Pentecost, July 28, 2024
+ the eleventh Sunday after Pentecost, August 4, 2024
+ ⋮
+ the nineteenth Sunday after Pentecost, September 29, 2024
+ the twentieth Sunday after Pentecost, October 6, 2024
+ the twenty-first Sunday after Pentecost, October 13, 2024
+ the twenty-second Sunday after Pentecost, October 20, 2024
+ the twenty-third Sunday after Pentecost, October 27, 2024
+ the twenty-fourth Sunday after Pentecost, November 3, 2024
+ the twenty-fifth Sunday after Pentecost, November 10, 2024
+ the twenty-sixth Sunday after Pentecost, November 17, 2024
+ the twenty-seventh Sunday after Pentecost, November 24, 2024
+ ```
+
 $(SIGNATURES)
 """
 function pentecost_season(lityr::LiturgicalYear = LiturgicalYear())::Vector{Sunday}
@@ -749,6 +798,34 @@ end
 
 
 """In a given year in the civil calendar, find Sundays in ordinary time after Pentecost.
+
+**Example**
+```julia-repl
+julia> pentecost_season(2024)
+26-element Vector{Lectionary.Sunday}:
+ the second Sunday after Pentecost, June 2, 2024
+ the third Sunday after Pentecost, June 9, 2024
+ the fourth Sunday after Pentecost, June 16, 2024
+ the fifth Sunday after Pentecost, June 23, 2024
+ the sixth Sunday after Pentecost, June 30, 2024
+ the seventh Sunday after Pentecost, July 7, 2024
+ the eighth Sunday after Pentecost, July 14, 2024
+ the ninth Sunday after Pentecost, July 21, 2024
+ the tenth Sunday after Pentecost, July 28, 2024
+ the eleventh Sunday after Pentecost, August 4, 2024
+ ⋮
+ the nineteenth Sunday after Pentecost, September 29, 2024
+ the twentieth Sunday after Pentecost, October 6, 2024
+ the twenty-first Sunday after Pentecost, October 13, 2024
+ the twenty-second Sunday after Pentecost, October 20, 2024
+ the twenty-third Sunday after Pentecost, October 27, 2024
+ the twenty-fourth Sunday after Pentecost, November 3, 2024
+ the twenty-fifth Sunday after Pentecost, November 10, 2024
+ the twenty-sixth Sunday after Pentecost, November 17, 2024
+ the twenty-seventh Sunday after Pentecost, November 24, 2024
+```
+
+
 $(SIGNATURES)
 """
 function pentecost_season(yr::Int)::Vector{Sunday}

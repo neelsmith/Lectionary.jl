@@ -166,4 +166,12 @@ using Lectionary
 ```
 :::
 
-pentecost_season
+`pentecost_season`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc pentecost_season
+```
+:::

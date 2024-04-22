@@ -51,8 +51,11 @@ using Lectionary
 
 
 
-## Feasts, fasts and commemorations
+## Feasts, fasts, commemorations and other days
 
+### Types
+
+`Sunday`: see [separate page](./sundays.qmd)
 
 `Commemoration`
 
@@ -64,6 +67,20 @@ using Lectionary
 ```
 :::
 
+`OtherDay`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc OtherDay
+```
+:::
+
+
+### Functions
+
+
 `name`
 
 :::{.callout-note appearance="minimal"}
@@ -74,15 +91,31 @@ using Lectionary
 ```
 :::
 
-docs
+
+
+
+
+
+
+
+`civildate`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc civildate
 ```
-name
-civildate
-weekday
-readings
-priority
-kalendar
-```
+:::
+
+
+`weekday`
+`readings`
+`priority`
+
+
+kalendar ?
+
 
 
 ## Holy days
