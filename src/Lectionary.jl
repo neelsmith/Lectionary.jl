@@ -29,6 +29,8 @@ export ascension
 export pentecost, pentecost_day, trinity, pentecost_season
 export thanksgiving
 
+export calendar_week, calendar_month, calendar_year
+
 export Reading, readings, ot, nt, psalm, gospel
 
 
@@ -48,8 +50,10 @@ include("otherdays.jl")
 
 include("seasons.jl")
 
+
 include("reading.jl")
 include("readingconstants.jl")
 
+include("gregorian.jl")
 
 end # module Lectionary
