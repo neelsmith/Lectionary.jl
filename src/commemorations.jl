@@ -41,6 +41,7 @@ $(SIGNATURES)
 function show(io::IO, fst::Commemoration)
     
     nm = name(fst)
+    
     dt = civildate(fst)
     if isnothing(dt)
        write(io, string(nm, " (no date)"))
@@ -48,6 +49,8 @@ function show(io::IO, fst::Commemoration)
         formatteddate = string(monthname(dt), " ",  dayofmonth(dt), ", ", year(dt))
         write(io, nm * ", " * formatteddate)
     end
+    
+    #write(io,nm )
 end
 
 """Name of a feast in the liturgical calendar.
@@ -99,7 +102,7 @@ function movabledate(fst::Commemoration)
     elseif fst.feastid == FEAST_ASCENSION
         ascension(fst.yr)
     elseif fst.feastid == FEAST_PENTECOST
-        pentecost(fst.yr).dt
+        pentecost_day(fst.yr).dt
     elseif fst.feastid == FEAST_TRINITY
         trinity(fst.yr).dt
     elseif fst.feastid == FEAST_THANKSGIVING_DAY
@@ -128,10 +131,11 @@ $(SIGNATURES)
 """
 function civildate(fst::Commemoration)
     if ismovable(fst)
+
         movabledate(fst)
 
     elseif haskey(fixed_dates,fst.feastid)
-        monthday =fixed_dates[fst.feastid]
+        monthday = fixed_dates[fst.feastid]
         Date(fst.yr, calmonth(monthday), calday(monthday))
     else
         @warn("Key not found for fixed date of feast: $(fst)..")
