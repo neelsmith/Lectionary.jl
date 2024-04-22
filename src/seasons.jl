@@ -12,7 +12,6 @@ struct LiturgicalSeason
     lityr::LiturgicalYear
 end
 
-
 """A liturgical season in the current liturgical year.
 
 **Example**
@@ -40,7 +39,6 @@ $(SIGNATURES)
 function show(io::IO, season::LiturgicalSeason)
     nm = season_names[season.seasonid]
     write(io, string(nm, " of liturgical year ", season.lityr))
-    #write(io, string(nm))
 end
 
 
@@ -50,8 +48,36 @@ end
 
 
 function kalendar(s::LiturgicalSeason)
-    @warn("`kalendar` not yet implemented for type LiturgicalSeason.")
-    nothing
+    yrkal = kalendar(s.lityr)
+    filter(litday -> civildate(litday) in date_range(s),yrkal)
+end
+
+
+
+function date_range(s::LiturgicalSeason)
+    if s.seasonid == ADVENT_SEASON
+        civildate(advent(1, s.lityr)):Date(s.lityr.starts_in, 12, 24)
+
+    elseif s.seasonid == CHRISTMASTIDE
+        Date(s.lityr.starts_in, 12, 24):Date(s.lityr.ends_in, 1, 5)
+
+    elseif s.seasonid == EPIPHANY_SEASON
+        lastday = civildate(ash_wednesday(s.lityr)) - Dates.Day(1)
+        Date(s.lityr.ends_in, 1,6):lastday
+
+    elseif s.seasonid == LENT
+        lastday = civildate(easter_sunday(s.lityr)) - Dates.Day(1)
+        civildate(ash_wednesday(s.lityr)):lastday
+
+    elseif s.seasonid == EASTERTIDE
+        lastday = civildate(pentecost_day(s.lityr)) - Dates.Day(1)
+        civildate(easter_sunday(s.lityr)):lastday
+
+    elseif s.seasonid == ORDINARY_TIME
+        lastday = civildate(advent(1,s.lityr.ends_in)) - Dates.Day(1)
+        civildate(pentecost_day(s.lityr)):lastday
+        
+    end
 end
 
 function liturgical_color(s::LiturgicalSeason)
@@ -59,10 +85,6 @@ function liturgical_color(s::LiturgicalSeason)
     nothing
 end
 
-function date_range(s::LiturgicalSeason)
-    @warn("`date_range` not yet implemented for type LiturgicalSeason.")
-    nothing
-end
 
 
 #
