@@ -9,13 +9,21 @@ In determining readings for days in the liturgical year,
 :::
 
 
+## Type
 
-export Reading, readings, ot, nt, psalm, gospel
-
-
-
+ `Reading`
+ 
+## Functions
 
 `readings`
+
+`ot` 
+
+`nt` 
+
+`psalm` 
+
+`gospel`
 
 `precedence`
 
