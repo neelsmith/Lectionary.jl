@@ -37,6 +37,7 @@ website:
       contents: 
         - tutorials/index.qmd
         - tutorials/calendar.qmd
+        - tutorials/civilcalendar.qmd
         - tutorials/readings.qmd
 
     - title: "Recipes"
@@ -60,6 +61,7 @@ website:
       contents: 
         - concepts/index.qmd
         - concepts/liturgicalyear/index.qmd
+        - concepts/rcl.qmd
 
 
         

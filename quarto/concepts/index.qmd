@@ -1,10 +1,9 @@
 ---
-title: Concepts
+title: "`Lectionary.jl`: concepts"
 ---
 
-:::{.callout-caution}
-Content TBA
-:::
 
+`Lectionary.jl` coordinates the liturgical year with the year of the civil calendar, and with readings for the liturgical year defined by the Revised Common Lectionary (RCL).
 
-Grok Lectionary.
+- learn about [the liturgical year](liturgicalyear/)
+- learn about the [Revised Common Lectionary](rcl.qmd)

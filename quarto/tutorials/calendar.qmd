@@ -2,8 +2,11 @@
 title: "The Liturgical Calendar"
 ---
 
+:::{.callout-caution}
+Incomplete draft
+:::
 
-## The `LiturgicalYear`
+## The `LiturgicalYear` type
 
 
 The *liturgical year* is modelled by the `LiturgicalYear` type, a central structure in `Lectionary.jl`. You can create a `LiturgicalYear` from a  `Date` object as a single parameter; if you construct a `LiturgicalYear` with no parameter, the date value defaults to today. You can also construct a `LiturgicalYear` with an integer value for the calendar year in which the liturgical year begins (i.e., the year of the civil calendar that Advent falls in).
@@ -55,7 +58,7 @@ The result is a Vector of `LiturgicalDay`s.
 
 
 
-## The `LiturgicalDay`
+## The `LiturgicalDay` type
 
 The `LiturgicalDay` is an abstract type with concrete implementations:
 

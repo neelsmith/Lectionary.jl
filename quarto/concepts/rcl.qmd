@@ -1,0 +1,21 @@
+---
+title: "The Revised Common Lectionary (RCL)"
+---
+
+:::{.callout-caution}
+Content TBA
+:::
+
+- what is a lectionary?
+- what is structure of a day's assigned readings
+- note that three days have multiple sets of readings assigned
+
+## Variation included in RCL
+
+- longer readings
+- alternate readings
+- systematic A,B tracks for OT in ordinary time after Epiphany
+
+
+
+- link out to RCL site for info.

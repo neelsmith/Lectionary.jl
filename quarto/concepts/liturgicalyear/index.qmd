@@ -13,5 +13,22 @@ Lots of sites online will explain this but link to the RCL site.
 
 Key points:
 
-- Christmas is fixed.
-- Easter varies.
+- Christmas is fixed. The day of the week of Christmas Day gives the range of the Christmas cycle from Advent 1 to day before Epiphany.
+- Easter varies.  The rest of the year is from Epiphany to Advent 1 of the following year. The date of Easter determines how it is subdivided into seasons. Ordinary time after Epiphany continues to Ash Wednesday, which in turn precedes Easter by 40 days. Eastertide lasts until Pentecost. Pentecost through the end of the liturgical year is ordinary time.
+
+## Determining the date of Easter
+
+- March 21 substitutes for astronomical equinox
+- following astronomical new moon
+- following Sunday
+
+Earliest possible is March 22
+
+
+## Movable dates
+
+
+## Precedence of days
+
+
+
