@@ -24,6 +24,16 @@ using Lectionary
 ### Functions for working with years and seasons
 
 
+`liturgical_year`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc liturgical_year
+```
+:::
+
 
 `lectionary_year`
 
@@ -106,11 +116,6 @@ using Lectionary
 
 
 
-
-
-
-
-
 `civildate`
 
 :::{.callout-note appearance="minimal"}
@@ -121,6 +126,15 @@ using Lectionary
 ```
 :::
 
+`liturgical_day`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc liturgical_day
+```
+:::
 
 `weekday`
 
@@ -145,7 +159,8 @@ using Lectionary
 
 
 export sundays, principal_feasts, holy_days
-export liturgical_year, liturgical_day, date_range
+
+
 
 
 `epiphany_day`
