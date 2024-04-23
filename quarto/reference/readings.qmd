@@ -18,3 +18,5 @@ export Reading, readings, ot, nt, psalm, gospel
 `readings`
 
 `precedence`
+
+`prioritize`

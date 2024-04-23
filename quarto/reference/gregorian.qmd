@@ -1,6 +1,17 @@
 ---
-title: "API documentation: weeks, months and years in the civil calendar"
+title: "API documentation: dates in the civil calendar"
 ---
+
+`weekrange`
+
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc weekrange
+```
+:::
 
 
 

@@ -1,6 +1,16 @@
 """Find the seven-day range beginning with Sunday 
 that a given date falls in.
 
+
+**Examples**
+```julia-repl
+julia> Lectionary.weekrange()
+Date("2024-04-21"):Day(1):Date("2024-04-27")
+julia> Lectionary.weekrange(Date(2024,4,23))
+Date("2024-04-21"):Day(1):Date("2024-04-27")
+
+```
+
 $(SIGNATURES)
 """
 function weekrange(dt::Date = Date(Dates.now()))
@@ -23,6 +33,27 @@ end
 
 """Compose a 7-element vector ordered from Sunday to Saturday and including the given date, with a value of either a liturgical day or nothing for each day in the week.
 
+**Examples**
+```julia-repl
+julia> calendar_week()
+7-element Vector{Union{Nothing, LiturgicalDay}}:
+ the fourth Sunday of Easter, April 21, 2024
+ nothing
+ nothing
+ nothing
+ Saint Mark the Evangelist, April 25, 2024
+ nothing
+ nothing
+julia> calendar_week(Date(2024,4,24))
+7-element Vector{Union{Nothing, LiturgicalDay}}:
+ the fourth Sunday of Easter, April 21, 2024
+ nothing
+ nothing
+ nothing
+ Saint Mark the Evangelist, April 25, 2024
+ nothing
+ nothing
+```
 $(SIGNATURES)
 """
 function calendar_week(dt::Date = Date(Dates.now()))::Vector{Union{Nothing, LiturgicalDay}}
@@ -44,6 +75,17 @@ end
 
 """Compose a 7-element vector ordered from Sunday to Saturday and including the given liturgical day, with a value of either a liturgical day or nothing for each day in the week.
 
+```julia-repl
+julia> calendar_week(Commemoration(Lectionary.FEAST_SAINT_MARK, 2024))
+7-element Vector{Union{Nothing, LiturgicalDay}}:
+ the fourth Sunday of Easter, April 21, 2024
+ nothing
+ nothing
+ nothing
+ Saint Mark the Evangelist, April 25, 2024
+ nothing
+ nothing
+```
 $(SIGNATURES)
 """
 function calendar_week(lday::LiturgicalDay)::Vector{Union{Nothing, LiturgicalDay}}
@@ -54,6 +96,23 @@ end
 
 """Compose a vector of 4 or 5 week vectors for a calendar month, with values of either a liturgical day or nothing for each day in each week.
 
+**Examples**
+```julia-repl
+julia> calendar_month()
+5-element Vector{Vector{Union{Nothing, LiturgicalDay}}}:
+ [Easter Day, March 31, 2024, nothing, nothing, nothing, nothing, nothing, nothing]
+ [the second Sunday of Easter, April 7, 2024, nothing, nothing, nothing, nothing, nothing, nothing]
+ [the third Sunday of Easter, April 14, 2024, nothing, nothing, nothing, nothing, nothing, nothing]
+ [the fourth Sunday of Easter, April 21, 2024, nothing, nothing, nothing, Saint Mark the Evangelist, April 25, 2024, nothing, nothing]
+ [the fifth Sunday of Easter, April 28, 2024, nothing, nothing, Saint Philip and Saint James, Apostles, May 1, 2024, nothing, nothing, nothing]
+ julia> calendar_month(Date(2024,4,2))
+ 5-element Vector{Vector{Union{Nothing, LiturgicalDay}}}:
+  [Easter Day, March 31, 2024, nothing, nothing, nothing, nothing, nothing, nothing]
+  [the second Sunday of Easter, April 7, 2024, nothing, nothing, nothing, nothing, nothing, nothing]
+  [the third Sunday of Easter, April 14, 2024, nothing, nothing, nothing, nothing, nothing, nothing]
+  [the fourth Sunday of Easter, April 21, 2024, nothing, nothing, nothing, Saint Mark the Evangelist, April 25, 2024, nothing, nothing]
+  [the fifth Sunday of Easter, April 28, 2024, nothing, nothing, Saint Philip and Saint James, Apostles, May 1, 2024, nothing, nothing, nothing] 
+```
 
 $(SIGNATURES)
 """
@@ -73,6 +132,17 @@ end
 
 """Compose a vector of 4 or 5 week vectors for a calendar month, with values of either a liturgical day or nothing for each day in each week.
 
+**Example**
+
+```julia-repl
+julia> calendar_month(eastertide(2,2024))
+5-element Vector{Vector{Union{Nothing, LiturgicalDay}}}:
+ [Easter Day, March 31, 2024, nothing, nothing, nothing, nothing, nothing, nothing]
+ [the second Sunday of Easter, April 7, 2024, nothing, nothing, nothing, nothing, nothing, nothing]
+ [the third Sunday of Easter, April 14, 2024, nothing, nothing, nothing, nothing, nothing, nothing]
+ [the fourth Sunday of Easter, April 21, 2024, nothing, nothing, nothing, Saint Mark the Evangelist, April 25, 2024, nothing, nothing]
+ [the fifth Sunday of Easter, April 28, 2024, nothing, nothing, Saint Philip and Saint James, Apostles, May 1, 2024, nothing, nothing, nothing]
+```
 
 $(SIGNATURES)
 """
@@ -81,6 +151,9 @@ function calendar_month(lday::LiturgicalDay)::Vector{Vector{Union{Nothing, Litur
 end
 
 
+"""Construct a calendar of months ...
+$SIGNATURES
+"""
 function calendar_year(dt::Date = Date(Dates.now()))::Vector{Vector{Vector{Union{Nothing, LiturgicalDay}}}}
     ly = liturgical_year(dt)
     nextadv = advent(1, ly.ends_in)
@@ -109,6 +182,9 @@ function calendar_year(dt::Date = Date(Dates.now()))::Vector{Vector{Vector{Union
 end
 
 
+"""Construct a calendar of months in the civil year for a given liturgical year.
+$SIGNATURES
+"""
 function calendar_year(lday::LiturgicalDay)::Vector{Vector{Vector{Union{Nothing, LiturgicalDay}}}}
     calendar_year(civildate(lday))
 end
