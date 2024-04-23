@@ -1,21 +1,28 @@
 ---
 title: "Formatting a calendar for markdown display"
+tbl-colwidths: [12,12,12,12,12,12,12]
 ---
-
 
 - environments like Pluto, VS Code, quarto publish
 - easy!
 
 
+Collect a calendar week: the result is a Vector of `LiturgicalDay`s.
+
 ```{julia}
+#| warning: false
 using Lectionary
 wk = calendar_week()
 ```
 
+
+Format a Markdown table with a column for each day:
+
 ```{julia}
+#| output: false
 mdlines = [
-    "| S | M | T | W | Th | F | Sat |",
-    " | --- | --- | --- | --- | --- | --- | ---  |"
+    "| Sunday | Monday | Tuesday | Wednesday | Thursday | Friday | Saturday |",
+    "| --- | --- | --- | --- | --- | --- | ---  |"
 ]
 oneweek = []
 for litday in wk
@@ -27,8 +34,9 @@ for litday in wk
 end
 wkstring = "| " * join(oneweek, " | ") * " |"
 push!(mdlines, wkstring)
-    
 ```
+
+In an environment like Pluto, VS Code, or with quarto publish, we can use the `Markdown` package's `parse` function to create displayable output:
 
 ```{julia}
 #| asis: true
@@ -36,16 +44,3 @@ using Markdown
 join(mdlines,"\n") * "\n" |> Markdown.parse
 ```
 
-
-```{julia}
-#| asis: true
-simpletab = """
-| S | M | T | W | Th | F | Sat | 
-| –-- | –-- | –-- | –-- | –-- | –-- | -–- | 
-| the fourth Sunday of Easter, April 21,
-  2024 | | | | Saint Mark the Evangelist, April 25, 2024 | | |
-"""
-
-
-Markdown.parse(simpletab)
-```
