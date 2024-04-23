@@ -50,6 +50,7 @@ website:
         - "---"
         - reference/year-seasons.qmd
         - reference/sundays.qmd
+        - reference/gregorian.qmd
         - "---"
         - reference/commemorations.qmd        
         - "---"

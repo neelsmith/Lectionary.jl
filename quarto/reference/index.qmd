@@ -7,6 +7,7 @@ title: "`Lectionary.jl`: reference"
 
 - API documentation: [years, seasons and days](year-seasons.qmd) of the liturgical year
 - API documentation: [Sundays](sundays.qmd) of the liturgical year
+- API documentation: [weeks, months and years](gregorian.qmd) in the civil calendar
 - Reference: [identifiers for commemorations](commemorations.qmd) in the liturgical year
 
 

@@ -74,7 +74,7 @@ end
 """Find correct liturgical year for a given date in the civil calendar.
 $(SIGNATURES)
 """
-function liturgical_year(dt::Date)
+function liturgical_year(dt::Date = Date(Dates.now()))::LiturgicalYear
     if dt > advent(1, year(dt)).dt
         LiturgicalYear(year(dt))
     else
@@ -85,7 +85,7 @@ end
 """Find correct liturgical day for a given date in the civil calendar.
 $(SIGNATURES)
 """
-function liturgical_day(dt::Date)
+function liturgical_day(dt::Date  = Date(Dates.now()))::LiturgicalDay
     lityr = liturgical_year(dt)
     feastlist = principal_feasts(lityr)
     feastmatch = findfirst(f -> civildate(f) == dt, feastlist)

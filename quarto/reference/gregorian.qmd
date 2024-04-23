@@ -1,0 +1,43 @@
+---
+title: "API documentation: weeks, months and years in the civil calendar"
+---
+
+
+
+`calendar_week`
+
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+using Lectionary
+@doc calendar_week
+```
+:::
+
+
+
+`calendar_month`
+
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc calendar_month
+```
+:::
+
+
+
+`calendar_year`
+
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc calendar_year
+```
+:::
