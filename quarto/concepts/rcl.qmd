@@ -18,4 +18,7 @@ Content TBA
 
 
 
-- link out to RCL site for info.
+Links to Consultation on Common Texts:
+
+- [introduction to the RCL](https://www.commontexts.org/wp-content/uploads/2015/11/RCL_Introduction_Web.pdf) (PDF)
+- [download the lectionary](https://www.commontexts.org/rcl/download/) (PDFs for years A, B and C)
