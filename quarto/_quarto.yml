@@ -49,10 +49,11 @@ website:
         - "---"
         - reference/year-seasons.qmd
         - reference/sundays.qmd
-        - reference/feasts.qmd
+        - "---"
+        - reference/commemorations.qmd        
         - "---"
         - reference/readings.qmd
-        
+
         
 
     - title: "Concepts"

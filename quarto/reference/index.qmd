@@ -1,13 +1,17 @@
 ---
-title: Reference
+title: "`Lectionary.jl`: reference"
 ---
 
 
+## The liturgical year and the civil calendar
+
+- API documentation: [years, seasons and days](year-seasons.qmd) of the liturgical year
+- API documentation: [Sundays](sundays.qmd) of the liturgical year
+- Reference: [identifiers for commemorations](commemorations.qmd) in the liturgical year
+
+
+## Readings
+
 :::{.callout-caution}
-Content TBA
+Documentation TBA
 :::
-
-
-
-Look it up here.
-

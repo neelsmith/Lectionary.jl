@@ -72,7 +72,37 @@ using Lectionary
 `kalendar`
 
 
-`liturgical_color`
+`sundays`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc sundays
+```
+:::
+
+`principal_feasts`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc principal_feasts
+```
+:::
+
+`holy_days`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc holy_days
+```
+:::
+
+
 
 ## Liturgical days
 
@@ -158,7 +188,7 @@ using Lectionary
 
 
 
-export sundays, principal_feasts, holy_days
+
 
 
 
