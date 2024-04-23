@@ -43,6 +43,7 @@ website:
     - title: "Recipes"
       contents:
         - guides/index.qmd
+        - guides/md_calendar.qmd
 
     - title: "Reference"
       contents: 

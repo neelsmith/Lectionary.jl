@@ -1,0 +1,51 @@
+---
+title: "Formatting a calendar for markdown display"
+---
+
+
+- environments like Pluto, VS Code, quarto publish
+- easy!
+
+
+```{julia}
+using Lectionary
+wk = calendar_week()
+```
+
+```{julia}
+mdlines = [
+    "| S | M | T | W | Th | F | Sat |",
+    " | --- | --- | --- | --- | --- | --- | ---  |"
+]
+oneweek = []
+for litday in wk
+    if isnothing(litday)
+        push!(oneweek," ")
+    else
+        push!(oneweek, string(litday))
+    end
+end
+wkstring = "| " * join(oneweek, " | ") * " |"
+push!(mdlines, wkstring)
+    
+```
+
+```{julia}
+#| asis: true
+using Markdown
+join(mdlines,"\n") * "\n" |> Markdown.parse
+```
+
+
+```{julia}
+#| asis: true
+simpletab = """
+| S | M | T | W | Th | F | Sat | 
+| –-- | –-- | –-- | –-- | –-- | –-- | -–- | 
+| the fourth Sunday of Easter, April 21,
+  2024 | | | | Saint Mark the Evangelist, April 25, 2024 | | |
+"""
+
+
+Markdown.parse(simpletab)
+```
