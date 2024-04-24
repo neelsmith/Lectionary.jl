@@ -48,7 +48,19 @@ const FEAST_SAINTS_SIMON_AND_JUDE = 36
 const FEAST_SAINT_ANDREW = 37
 const FEAST_SAINT_THOMAS = 39
 
-const FAST_ASH_WEDNESDAY = -1
+
+const HOLY_WEEK_MONDAY = -1
+const HOLY_WEEK_TUESDAY = -2
+const FAST_ASH_WEDNESDAY = -3
+const MAUNDY_THURSDAY = -4
+const FAST_GOOD_FRIDAY = -5
+const HOLY_SATURDAY = -6
+const EASTER_WEEK_MONDAY = -7
+const EASTER_WEEK_TUESDAY = -8
+const EASTER_WEEK_WEDNESDAY = -9
+const EASTER_WEEK_THURSDAY = -10
+const EASTER_WEEK_FRIDAY = -11
+const EASTER_WEEK_SATURDAY = -12
 
 const PRINCIPAL_FEASTS = [
     FEAST_EASTER, FEAST_ASCENSION, FEAST_PENTECOST, FEAST_TRINITY,
@@ -104,13 +116,32 @@ const feast_names = Dict(
     FEAST_SAINTS_SIMON_AND_JUDE => "Saint Simon and Saint Jude, Apostles",
     FEAST_SAINT_ANDREW => "Saint Andrew the Apostle",
     FEAST_SAINT_THOMAS => "Saint Thomas the Apostle",
-    FAST_ASH_WEDNESDAY => "The First Day of Lent or Ash Wednesday"
+    HOLY_WEEK_MONDAY => "Monday of Holy Week",
+    HOLY_WEEK_TUESDAY => "Tuesday of Holy Week",
+    FAST_ASH_WEDNESDAY => "The First Day of Lent or Ash Wednesday",
+    MAUNDY_THURSDAY => "Holy Thursday",
+    FAST_GOOD_FRIDAY => "Good Friday",
+    HOLY_SATURDAY => "Holy Saturday",
+
+    EASTER_WEEK_MONDAY => "Monday in Easter week",
+    EASTER_WEEK_TUESDAY => "Tuesday in Easter week",
+    EASTER_WEEK_WEDNESDAY => "Wednesday in Easter week",
+    EASTER_WEEK_THURSDAY => "Thursday in Easter week",
+    EASTER_WEEK_FRIDAY => "Friday in Easter week",
+    EASTER_WEEK_SATURDAY => "Saturday in Easter week"
+
 )
+
 
 const MOVABLE = [
     FEAST_EASTER, FEAST_ASCENSION, FEAST_PENTECOST,
     FEAST_TRINITY, FEAST_THANKSGIVING_DAY,
-    FAST_ASH_WEDNESDAY
+    HOLY_WEEK_MONDAY, HOLY_WEEK_TUESDAY,
+    FAST_ASH_WEDNESDAY, MAUNDY_THURSDAY,
+    FAST_GOOD_FRIDAY, HOLY_SATURDAY,
+    EASTER_WEEK_MONDAY,EASTER_WEEK_TUESDAY,
+    EASTER_WEEK_WEDNESDAY,EASTER_WEEK_THURSDAY,
+    EASTER_WEEK_FRIDAY,EASTER_WEEK_SATURDAY
 ]
 
 const YEAR1_FEASTS = [

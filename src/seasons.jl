@@ -413,6 +413,27 @@ function ash_wednesday(yr::Int)::Commemoration
     Commemoration(FAST_ASH_WEDNESDAY, yr)
 end
 
+
+
+
+function good_friday(lityr::LiturgicalYear = LiturgicalYear())::Commemoration
+    good_friday(lityr.ends_in)
+end
+
+"""Construct Good Friday for a given year in the civil calendar.
+
+**Example**
+
+$(SIGNATURES)
+"""
+function good_friday(yr::Int)::Commemoration
+    Commemoration(FAST_GOOD_FRIDAY, yr)
+end
+
+
+
+
+
 """Find the date of Ash Wednesday in a given liturgical year in the civil calendar.
 
 **Examples**

@@ -40,7 +40,7 @@ end
 $(SIGNATURES)
 """
 function show(io::IO, comm::Commemoration)
-    
+  
     nm = name(comm)
     
     dt = civildate(comm)
@@ -50,6 +50,8 @@ function show(io::IO, comm::Commemoration)
         formatteddate = string(monthname(dt), " ",  dayofmonth(dt), ", ", year(dt))
         write(io, nm * ", " * formatteddate)
     end
+    
+   # write(io, "feast or fast")
 end
 
 """Name of a commemoration in the liturgical calendar.
@@ -112,8 +114,32 @@ function movabledate(comm::Commemoration)::Date
     elseif comm.commemoration_id == FEAST_THANKSGIVING_DAY
         thanksgiving(comm.yr)
 
+    elseif comm.commemoration_id == HOLY_WEEK_MONDAY
+        ash_wednesday_date(comm.yr)  - Dates.Day(2)   
+    elseif comm.commemoration_id == HOLY_WEEK_TUESDAY
+        ash_wednesday_date(comm.yr)  - Dates.Day(1)   
     elseif comm.commemoration_id == FAST_ASH_WEDNESDAY
         ash_wednesday_date(comm.yr)
+    elseif comm.commemoration_id == MAUNDY_THURSDAY
+        ash_wednesday_date(comm.yr) + Dates.Day(1)
+    elseif comm.commemoration_id == FAST_GOOD_FRIDAY
+        ash_wednesday_date(comm.yr) + Dates.Day(2)
+    elseif comm.commemoration_id == HOLY_SATURDAY
+        ash_wednesday_date(comm.yr) + Dates.Day(3)
+
+    elseif comm.commemoration_id == EASTER_WEEK_MONDAY
+        civildate(easter_sunday(comm.yr)) + Dates.Day(1)
+    elseif comm.commemoration_id == EASTER_WEEK_TUESDAY
+        civildate(easter_sunday(comm.yr)) + Dates.Day(2)
+    elseif comm.commemoration_id == EASTER_WEEK_WEDNESDAY
+        civildate(easter_sunday(comm.yr)) + Dates.Day(3)
+    elseif comm.commemoration_id == EASTER_WEEK_THURSDAY
+        civildate(easter_sunday(comm.yr)) + Dates.Day(4)
+    elseif comm.commemoration_id == EASTER_WEEK_FRIDAY
+        civildate(easter_sunday(comm.yr)) + Dates.Day(5)
+    elseif comm.commemoration_id == EASTER_WEEK_SATURDAY
+        civildate(easter_sunday(comm.yr)) + Dates.Day(6)                
+
 
     else
         @info("Movable feast not implemented! $(comm)")
