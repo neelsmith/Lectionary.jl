@@ -117,14 +117,14 @@ using Lectionary
 :::
 
 
-`easter_season`
+`easter_sundays`
 
 
 :::{.callout-note appearance="minimal"}
 ```{julia}
 #| echo: false
 #| warning: false
-@doc easter_season
+@doc easter_sundays
 ```
 :::
 

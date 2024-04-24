@@ -190,7 +190,7 @@ function sundays(lityear::LiturgicalYear = LiturgicalYear())
         epiphany_sundays(lityear),
         lent_season(lityear),
         [palm_sunday(lityear), easter_sunday(lityear)],
-        easter_season(lityear),
+        easter_sundays(lityear),
         [pentecost_day(lityear), trinity(lityear)],
         pentecost_season(lityear)
     )

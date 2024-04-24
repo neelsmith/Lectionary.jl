@@ -28,7 +28,7 @@ export epiphany_day, epiphany_sundays
 export easter_sunday
 export ash_wednesday, lent, palm_sunday, holyweek, good_friday
 export ash_wednesday_date
-export lent_season, easter_season
+export lent_season, easter_sundays
 export eastertide
 export ascension
 export pentecost, pentecost_day, trinity, pentecost_season

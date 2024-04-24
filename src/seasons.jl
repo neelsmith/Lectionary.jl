@@ -70,7 +70,7 @@ function date_range(s::LiturgicalSeason)
         civildate(ash_wednesday(s.lityr)):lastday
 
     elseif s.seasonid == EASTERTIDE
-        lastday = civildate(pentecost_day(s.lityr)) - Dates.Day(1)
+        lastday = civildate(pentecost_day(s.lityr))
         civildate(easter_sunday(s.lityr)):lastday
 
     elseif s.seasonid == ORDINARY_TIME
@@ -550,11 +550,17 @@ function lent_season(lityear::LiturgicalYear = LiturgicalYear())::Vector{Liturgi
     vcat(start, holyweek(lityear))
 end
 
-
+"""Add sig
+$(SIGNATURES)
+"""
 function holyweek(lityr::LiturgicalYear = LiturgicalYear())
     holyweek(lityr.ends_in)
 end
 
+
+"""Add sig
+$(SIGNATURES)
+"""
 function holyweek(yr::Int)
     dayids = [HOLY_WEEK_MONDAY,HOLY_WEEK_TUESDAY,FAST_ASH_WEDNESDAY,MAUNDY_THURSDAY,FAST_GOOD_FRIDAY,HOLY_SATURDAY]
     [Commemoration(id, yr) for id in dayids]
@@ -678,7 +684,7 @@ end
 
 **Examples**
 ```juliarepl
-julia> easter_season()
+julia> easter_sundays()
 6-element Vector{Lectionary.Sunday}:
  the second Sunday of Easter, April 7, 2024
  the third Sunday of Easter, April 14, 2024
@@ -686,7 +692,7 @@ julia> easter_season()
  the fifth Sunday of Easter, April 28, 2024
  the sixth Sunday of Easter, May 5, 2024
  the seventh Sunday of Easter, May 12, 2024
- julia> easter_season(LiturgicalYear(2023))
+ julia> easter_sundays(LiturgicalYear(2023))
 6-element Vector{Lectionary.Sunday}:
  the second Sunday of Easter, April 7, 2024
  the third Sunday of Easter, April 14, 2024
@@ -698,8 +704,8 @@ julia> easter_season()
 
 $(SIGNATURES)
 """
-function easter_season(lityr::LiturgicalYear = LiturgicalYear())::Vector{Sunday}
-    easter_season(lityr.ends_in)
+function easter_sundays(lityr::LiturgicalYear = LiturgicalYear())::Vector{Sunday}
+    easter_sundays(lityr.ends_in)
 end
 
 
@@ -708,7 +714,7 @@ end
 
 **Examples**
 ```juliarepl
-julia> easter_season(2024)
+julia> easter_sundays(2024)
 6-element Vector{Lectionary.Sunday}:
  the second Sunday of Easter, April 7, 2024
  the third Sunday of Easter, April 14, 2024
@@ -716,12 +722,12 @@ julia> easter_season(2024)
  the fifth Sunday of Easter, April 28, 2024
  the sixth Sunday of Easter, May 5, 2024
  the seventh Sunday of Easter, May 12, 2024
- julia> easter_season(LiturgicalYear(2023)) 
+ julia> easter_sundays(LiturgicalYear(2023)) 
 ```
 
 $(SIGNATURES)
 """
-function easter_season(yr::Int)::Vector{Sunday}
+function easter_sundays(yr::Int)::Vector{Sunday}
     [eastertide(sunday, yr) for sunday in 2:7] 
 end
 
@@ -760,7 +766,7 @@ the day of Pentecost, May 19, 2024
 $(SIGNATURES)
 """
 function pentecost_day(yr::Int)::Sunday
-    dt = easter_season(yr)[end].dt + Dates.Day(7)
+    dt = easter_sundays(yr)[end].dt + Dates.Day(7)
     Sunday(dt, PENTECOST)
 end
 
