@@ -138,7 +138,10 @@ function movabledate(comm::Commemoration)::Date
     elseif comm.commemoration_id == EASTER_WEEK_FRIDAY
         civildate(easter_sunday(comm.yr)) + Dates.Day(5)
     elseif comm.commemoration_id == EASTER_WEEK_SATURDAY
-        civildate(easter_sunday(comm.yr)) + Dates.Day(6)                
+        civildate(easter_sunday(comm.yr)) + Dates.Day(6)      
+        
+    elseif comm.commemoration_id == FEAST_TRANSFIGURATION
+        ash_wednesday_date(comm.yr) - Dates.Day(3)
 
 
     else

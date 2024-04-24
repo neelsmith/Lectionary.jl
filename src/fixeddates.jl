@@ -27,7 +27,6 @@ const fixed_dates = Dict(
     # Major feasts that take precedence over Sundays:
     FEAST_HOLY_NAME => FixedDate(1,1),
     FEAST_PRESENTATION => FixedDate(2,2),
-    FEAST_TRANSFIGURATION => FixedDate(8,6),
     FEAST_CONFESSION_OF_PETER => FixedDate(1,18),
     FEAST_CONVERSION_OF_PAUL => FixedDate(1,25),
     FEAST_SAINT_MATTHIAS => FixedDate(2,24),

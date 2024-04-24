@@ -59,7 +59,7 @@ function date_range(s::LiturgicalSeason)
         civildate(advent(1, s.lityr)):Date(s.lityr.starts_in, 12, 24)
 
     elseif s.seasonid == CHRISTMASTIDE
-        Date(s.lityr.starts_in, 12, 24):Date(s.lityr.ends_in, 1, 5)
+        Date(s.lityr.starts_in, 12, 25):Date(s.lityr.ends_in, 1, 5)
 
     elseif s.seasonid == EPIPHANY_SEASON
         lastday = civildate(ash_wednesday(s.lityr)) - Dates.Day(1)
@@ -284,69 +284,68 @@ end
 **Examples**
 ```julia-repl
 julia> epiphany_sundays()
-6-element Vector{Sunday}:
- the Epiphany, January 7, 2024
- the first Sunday after the Epiphany, January 14, 2024
- the second Sunday after the Epiphany, January 21, 2024
- the third Sunday after the Epiphany, January 28, 2024
- the fourth Sunday after the Epiphany, February 4, 2024
- the fifth Sunday after the Epiphany, February 11, 2024
- julia> epiphany_sundays(LiturgicalYear(2023))
-6-element Vector{Sunday}:
- the Epiphany, January 7, 2024
- the first Sunday after the Epiphany, January 14, 2024
- the second Sunday after the Epiphany, January 21, 2024
- the third Sunday after the Epiphany, January 28, 2024
- the fourth Sunday after the Epiphany, February 4, 2024
- the fifth Sunday after the Epiphany, February 11, 2024
-
+5-element Vector{LiturgicalDay}:
+ the first Sunday after the Epiphany, January 7, 2024
+ the second Sunday after the Epiphany, January 14, 2024
+ the third Sunday after the Epiphany, January 21, 2024
+ the fourth Sunday after the Epiphany, January 28, 2024
+ the fifth Sunday after the Epiphany, February 4, 2024
+julia> epiphany_sundays(LiturgicalYear(2023))
+5-element Vector{LiturgicalDay}:
+ the first Sunday after the Epiphany, January 7, 2024
+ the second Sunday after the Epiphany, January 14, 2024
+ the third Sunday after the Epiphany, January 21, 2024
+ the fourth Sunday after the Epiphany, January 28, 2024
+ the fifth Sunday after the Epiphany, February 4, 2024
 ```
-
 
 $(SIGNATURES)
 """
-function epiphany_sundays(lityr::LiturgicalYear = LiturgicalYear())::Vector{Sunday}
+function epiphany_sundays(lityr::LiturgicalYear = LiturgicalYear())::Vector{LiturgicalDay}
     epiphany_sundays(lityr.ends_in)
 end
 
 
-"""Find all Sundays of ordinary time after Epiphany season in a given year of the civil calendar.
+"""Find all Sundays of ordinary time after Epiphany season in a given year of the civil calendar. Omit Transfiguration, for inclusion in list of Commemorations.
 
 **Example**
 
 ```julia-repl
-julia> epiphany_sundays(2023)
-7-element Vector{Sunday}:
- the Epiphany, January 8, 2023
- the first Sunday after the Epiphany, January 15, 2023
- the second Sunday after the Epiphany, January 22, 2023
- the third Sunday after the Epiphany, January 29, 2023
- the fourth Sunday after the Epiphany, February 5, 2023
- the fifth Sunday after the Epiphany, February 12, 2023
- the sixth Sunday after the Epiphany, February 19, 2023
+julia> epiphany_sundays(LiturgicalYear(2023))
+5-element Vector{LiturgicalDay}:
+the first Sunday after the Epiphany, January 7, 2024
+the second Sunday after the Epiphany, January 14, 2024
+the third Sunday after the Epiphany, January 21, 2024
+the fourth Sunday after the Epiphany, January 28, 2024
+the fifth Sunday after the Epiphany, February 4, 2024
 ```
 $(SIGNATURES)
 """
-function epiphany_sundays(yr::Int)::Vector{Sunday}
+function epiphany_sundays(yr::Int)::Vector{LiturgicalDay}
     @debug("Get ash wed for year $(yr)")
     endpoint = ash_wednesday(yr)
     epiph = Dates.Date(yr, 1, 6)
     
     prev = endpoint |> civildate
+    @debug("Starting from $(endpoint)")
     sundays = []
     while prev > epiph
         prev = prev  - Dates.Day(1)
         if dayname(prev) == "Sunday"
+            @debug("Found Sunday $(prev)")
             push!(sundays, prev)
         end
     end
     ordered = sundays |> reverse
-
-    sundaylist = Sunday[]
-    predecessor  = EPIPHANY  - 1
-    for (i, sday) in enumerate(ordered)
+    
+    sundaylist = LiturgicalDay[]
+    predecessor  = EPIPHANY  # - 1
+    for (i, sday) in enumerate(ordered[1:end-1])
         push!(sundaylist, Sunday(sday, predecessor + i))
     end
+    ##@debug("Added $(length(sundaylist))) Sundays; now add transfiguration for $(year(ordered[end]))")
+    #xfig = Commemoration(FEAST_TRANSFIGURATION, year(ordered[end]))
+    #push!(sundaylist, xfig)
     sundaylist
 end
 
@@ -359,7 +358,7 @@ end
 julia> epiphany_day()
 The Epiphany, January 6, 2024
 julia> epiphany_day(LiturgicalYear(2023))
-The Epiphany, January 6, 2023
+The Epiphany, January 6, 2024
 ```
 $(SIGNATURES)
 """
@@ -371,8 +370,8 @@ end
 
 **Example**
 ```julia-repl
-julia> epiphany_day(2023)
-The Epiphany, January 6, 2023
+julia> epiphany_day(2024)
+The Epiphany, January 6, 2024
 ```
 $(SIGNATURES)
 """
