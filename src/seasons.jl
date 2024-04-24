@@ -504,7 +504,8 @@ end
 **Example**
 ```julia-repl
 julia> lent_season(2024)
-5-element Vector{Sunday}:
+6-element Vector{LiturgicalDay}:
+ The First Day of Lent or Ash Wednesday, February 14, 2024
  the first Sunday in Lent, February 18, 2024
  the second Sunday in Lent, February 25, 2024
  the third Sunday in Lent, March 3, 2024
@@ -514,7 +515,7 @@ julia> lent_season(2024)
 
 $(SIGNATURES)
 """
-function lent_season(yr::Int)::Vector{Sunday}
+function lent_season(yr::Int)::Vector{LiturgicalDay}
     lent_season(LiturgicalYear(yr - 1))
 end
 
@@ -524,14 +525,16 @@ end
 
 ```julia-repl
 julia> lent_season()
-5-element Vector{Sunday}:
+6-element Vector{LiturgicalDay}:
+ The First Day of Lent or Ash Wednesday, February 14, 2024
  the first Sunday in Lent, February 18, 2024
  the second Sunday in Lent, February 25, 2024
  the third Sunday in Lent, March 3, 2024
  the fourth Sunday in Lent, March 10, 2024
  the fifth Sunday in Lent, March 17, 2024
 julia> lent_season(LiturgicalYear(2023))
-5-element Vector{Sunday}:
+6-element Vector{LiturgicalDay}:
+ The First Day of Lent or Ash Wednesday, February 14, 2024
  the first Sunday in Lent, February 18, 2024
  the second Sunday in Lent, February 25, 2024
  the third Sunday in Lent, March 3, 2024
@@ -541,10 +544,21 @@ julia> lent_season(LiturgicalYear(2023))
 
 $(SIGNATURES)
 """
-function lent_season(lityear::LiturgicalYear = LiturgicalYear())::Vector{Sunday}
-    [lent(sunday, lityear.ends_in) for sunday in 1:5] 
+function lent_season(lityear::LiturgicalYear = LiturgicalYear())::Vector{LiturgicalDay}
+    sundays = [lent(sunday, lityear.ends_in) for sunday in 1:5] 
+    start = vcat([ash_wednesday()], sundays)
+    vcat(start, holyweek(lityear))
 end
 
+
+function holyweek(lityr::LiturgicalYear = LiturgicalYear())
+    holyweek(lityr.ends_in)
+end
+
+function holyweek(yr::Int)
+    dayids = [HOLY_WEEK_MONDAY,HOLY_WEEK_TUESDAY,FAST_ASH_WEDNESDAY,MAUNDY_THURSDAY,FAST_GOOD_FRIDAY,HOLY_SATURDAY]
+    [Commemoration(id, yr) for id in dayids]
+end
 
 """Find date of Palm Sunday for a given liturgical year.
 
