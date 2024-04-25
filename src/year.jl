@@ -216,27 +216,36 @@ $(SIGNATURES)
 function kalendar(lityr::LiturgicalYear = LiturgicalYear(); src = :RCL)
     events = LiturgicalDay[]
     allcommems = holy_days(lityr)
-    commemos = if src == :BCP
+    commems = if src == :BCP
         allcommems
     elseif src == :RCL
         filter(allcommems) do litday
             litday.commemoration_id in RCL_FEASTS
         end
     end
-    @info("With src $(src), $(length(commemos)) feasts")
-    for ld in vcat(commemos, sundays(lityr), principal_feasts(lityr))
+    for ld in vcat(commems, sundays(lityr), principal_feasts(lityr))
         push!(events, ld)
     end
-    @info("After all catted, $(length(events)) events")
     sort(events , by = litday -> civildate(litday))
     
 end
 
+
+"""Find Christmas Day for a given liturgical year.
+
+$(SEASONS)
+"""
 function christmas_day(lityr::LiturgicalYear = LiturgicalYear())
     christmas_day(lityr.starts_in)
     
 end
 
+
+
+"""Find Christmas Day for a given year in the civil calendar.
+
+$(SEASONS)
+"""
 function christmas_day(yr::Int)
     Commemoration(FEAST_CHRISTMAS, yr)
 end
