@@ -969,7 +969,7 @@ end
 $(SIGNATURES)
 """
 function ascension(yr::Int)
-    easter_sunday(yr).dt + Dates.Day(40)
+    easter_sunday(yr).dt + Dates.Day(39)
 end
 
 
