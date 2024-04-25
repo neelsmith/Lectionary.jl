@@ -213,12 +213,23 @@ end
 this liturgical year.
 $(SIGNATURES)
 """
-function kalendar(lityr::LiturgicalYear = LiturgicalYear())
+function kalendar(lityr::LiturgicalYear = LiturgicalYear(); src = :RCL)
     events = LiturgicalDay[]
-    for ld in vcat(holy_days(lityr), sundays(lityr), principal_feasts(lityr))
+    allcommems = holy_days(lityr)
+    commemos = if src == :BCP
+        allcommems
+    elseif src == :RCL
+        filter(allcommems) do litday
+            litday.commemoration_id in RCL_FEASTS
+        end
+    end
+    @info("With src $(src), $(length(commemos)) feasts")
+    for ld in vcat(commemos, sundays(lityr), principal_feasts(lityr))
         push!(events, ld)
     end
+    @info("After all catted, $(length(events)) events")
     sort(events , by = litday -> civildate(litday))
+    
 end
 
 function christmas_day(lityr::LiturgicalYear = LiturgicalYear())

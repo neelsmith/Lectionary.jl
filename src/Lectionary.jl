@@ -67,4 +67,6 @@ include("reading.jl")
 
 include("gregorian.jl")
 
+include("debug.jl")
+
 end # module Lectionary
