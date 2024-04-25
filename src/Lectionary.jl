@@ -39,12 +39,19 @@ export calendar_week, calendar_month, calendar_year
 export Reading, readings, ot, nt, psalm, gospel
 
 
+include("selections.jl")
+
+
+
+
 
 include("year.jl")
 
 include("seasonconstants.jl")
 include("sundayconsts.jl")
 include("feastconstants.jl")
+include("readingconstants.jl")
+include("propersconstants.jl")
 include("fixeddates.jl")
 include("days.jl")
 include("commemorations.jl")
@@ -57,7 +64,6 @@ include("seasons.jl")
 
 
 include("reading.jl")
-include("readingconstants.jl")
 
 include("gregorian.jl")
 
