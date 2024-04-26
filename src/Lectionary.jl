@@ -34,6 +34,7 @@ export pentecost, pentecost_day, trinity, pentecost_season
 export thanksgiving
 
 export calendar_week, calendar_month, calendar_year
+export weekrange
 
 export Reading, readings, ot, nt, psalm, gospel
 
