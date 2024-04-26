@@ -43,16 +43,18 @@ function show(io::IO, comm::Commemoration)
   
     nm = name(comm)
   
-    dt = civildate(comm)
+    # This generates a stack overflow on movable feasts.
+    # Consider work around?
+    #dt = civildate(comm)
     
-    if isnothing(dt)
-       write(io, string(nm, " (no date)"))
-    else
+    #if isnothing(dt)
+       #write(io, string(nm, " (no date)"))
+    #else
        # formatteddate = string(monthname(dt), " ",  dayofmonth(dt), ", ", year(dt))
         #write(io, nm * ", " * formatteddate)
-    end
+    #end
   
-     write(io, nm )
+     write(io, string(nm , " in " , comm.yr))
 end
 
 """Name of a commemoration in the liturgical calendar.
@@ -180,15 +182,16 @@ julia> civildate(ash_wednesday())
 $(SIGNATURES)
 """
 function civildate(comm::Commemoration)::Date
-    @info("Find civildate for $(comm)")
+    @info("Find civildate for commeoration with id $(comm.commemoration_id)")
     if ismovable(comm)
+        @info("It moves")
         movabledate(comm)
 
     elseif haskey(fixed_dates,comm.commemoration_id)
         monthday = fixed_dates[comm.commemoration_id]
         Date(comm.yr, calmonth(monthday), calday(monthday))
     else
-        @warn("Key not found for fixed date of commemorations: $(comm)..")
+        @warn("Key not found for fixed date of commemoration id: $(comm.commemoration_id)..")
         nothing
     end
 end
