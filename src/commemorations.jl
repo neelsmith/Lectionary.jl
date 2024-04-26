@@ -28,6 +28,14 @@ function Commemoration(commemoration_id::Int, ly::LiturgicalYear = LiturgicalYea
     end
 end
 
+
+function lectionary_year(comm::Commemoration)
+end
+
+function litugical_year(comm::Commemoration)
+end
+
+
 """Override `Base.==` for `Commemoration`.
 $(SIGNATURES)
 """
@@ -223,7 +231,7 @@ function feastreadings(feast::Commemoration, lectionaryyr::Char; as_urn = false)
         if haskey(feastselectionsA, feast.commemoration_id)
             feastselectionsA[feast.commemoration_id]
         else
-            @warn("Could not find reading for $(feast) in year $(lectionaryyr)")
+            @warn(" $(feast) in year $(lectionaryyr)")
             nothing
         end
 
