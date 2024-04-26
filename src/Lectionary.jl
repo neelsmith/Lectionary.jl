@@ -38,12 +38,7 @@ export weekrange
 
 export Reading, readings, ot, nt, psalm, gospel
 
-
 include("selections.jl")
-
-
-
-
 
 include("year.jl")
 
