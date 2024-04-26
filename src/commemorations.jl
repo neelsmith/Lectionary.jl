@@ -116,7 +116,7 @@ $(SIGNATURES)
 """
 function movabledate(comm::Commemoration)::Date
 
-    @info("for $(comm), id is $(comm.commemoration_id)")
+    @debug("for $(comm),  $(comm.commemoration_id)")
     if comm.commemoration_id == FEAST_EASTER
         easter_sunday(comm.yr) |> civildate
     elseif comm.commemoration_id == FEAST_ASCENSION
@@ -182,9 +182,9 @@ julia> civildate(ash_wednesday())
 $(SIGNATURES)
 """
 function civildate(comm::Commemoration)::Date
-    @info("Find civildate for commeoration with id $(comm.commemoration_id)")
+    @debug("Find civildate for commeoration with id $(comm.commemoration_id)")
     if ismovable(comm)
-        @info("It moves")
+        @debug("It moves")
         movabledate(comm)
 
     elseif haskey(fixed_dates,comm.commemoration_id)

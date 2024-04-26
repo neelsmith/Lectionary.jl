@@ -44,9 +44,6 @@ end
 
 
 
-
-
-
 function kalendar(s::LiturgicalSeason)
     yrkal = kalendar(s.lityr)
     filter(litday -> civildate(litday) in date_range(s),yrkal)
@@ -90,7 +87,7 @@ end
 #
 # Advent
 #
-"""Find a given Sunday in Advent in a given liturgical year.
+"""Find a numbered Sunday in Advent in a given liturgical year.
 $(SIGNATURES)
 
 **Examples**
@@ -107,7 +104,7 @@ function advent(sunday::Int, lityr::LiturgicalYear = LiturgicalYear())::Liturgic
     advent(sunday, lityr.starts_in)
 end
 
-"""Find a given Sunday in Advent in a given year of the civil calendar.
+"""Find a numbered Sunday in Advent in a given year of the civil calendar.
 
 **Example**
 
@@ -245,7 +242,7 @@ function christmas_sundays(yr::Int)::Vector{LiturgicalSunday}
 end
 
 
-"""Find a given Sunday of the Christmas season in a given year of the civil calendar.
+"""Find a numbered Sunday of the Christmas season in a given year of the civil calendar.
 
 **Example**
 ```julia-repl
@@ -259,7 +256,7 @@ function christmas(sunday::Int, yr::Int)::LiturgicalSunday
     christmas(sunday, LiturgicalYear(yr))
 end
 
-"""Find a given Sunday of the Christmas season in a given liturgical year.
+"""Find a numbered Sunday of the Christmas season in a given liturgical year.
 
 **Examples**
 ```julia-repl
@@ -350,7 +347,7 @@ function epiphany_sundays(yr::Int)::Vector{LiturgicalDay}
 end
 
 
-"""Construct Day of Epiphany for a given liturgical year.
+"""Construct the Day of Epiphany for a given liturgical year.
 
 **Examples**
 
@@ -366,7 +363,7 @@ function epiphany_day(lityr::LiturgicalYear = LiturgicalYear())::Commemoration
     epiphany_day(lityr.ends_in)
 end
 
-"""Construct Day of Epiphany for a given year in the civil calendar.
+"""Construct the Day of Epiphany for a given year in the civil calendar.
 
 **Example**
 ```julia-repl
@@ -415,6 +412,12 @@ end
 
 
 
+"""Construct Good Friday for a given liturtical year.
+
+**Example**
+
+$(SIGNATURES)
+"""
 function good_friday(lityr::LiturgicalYear = LiturgicalYear())::Commemoration
     good_friday(lityr.ends_in)
 end
@@ -449,7 +452,7 @@ function ash_wednesday_date(lityr::LiturgicalYear = LiturgicalYear())::Date
     ash_wednesday_date(lityr.ends_in)
 end
 
-"""Find date of Ash Wednesday for a given year in the civil calendar.
+"""Find the date of Ash Wednesday for a given year in the civil calendar.
 
 **Examples*
 ```julia-repl
@@ -462,7 +465,7 @@ function ash_wednesday_date(yr::Int)::Date
     lent(1, yr).dt - Dates.Day(4)
 end
 
-"""Find a given Sunday of Lent in a given liturgial year.
+"""Find a numbered Sunday of Lent in a given liturgial year.
 
 **Examples**
 ```julia-repl
@@ -478,7 +481,7 @@ function lent(sunday::Int, lityr::LiturgicalYear = LiturgicalYear())::Liturgical
     lent(sunday, lityr.ends_in)
 end
 
-"""Find a given Sunday of Lent in a given year in the civil calendar.
+"""Find a numbered Sunday of Lent in a given year in the civil calendar.
 
 
 **Examples**
@@ -496,10 +499,7 @@ function lent(sunday::Int, yr::Int)::LiturgicalSunday
     LiturgicalSunday(sunday_date, predecessor + sunday)
 end
 
-
-
-
-"""Find Sundays of Lent in a given year of the civil calendar.
+"""Find all Sundays in Lent in a given year of the civil calendar.
 
 **Example**
 ```julia-repl
@@ -519,7 +519,7 @@ function lent_season(yr::Int)::Vector{LiturgicalDay}
     lent_season(LiturgicalYear(yr - 1))
 end
 
-"""Find Sundays of Lent in a given liturgical year.
+"""Find all Sundays in Lent in a given liturgical year.
 
 **Examples**
 
@@ -562,13 +562,13 @@ end
 $(SIGNATURES)
 """
 function holyweek(yr::Int)
-    @info("Find holy week in yr $(yr)")
+    @debug("Find holy week in yr $(yr)")
     dayids = [HOLY_WEEK_MONDAY,HOLY_WEEK_TUESDAY,HOLY_WEEK_WEDNESDAY, MAUNDY_THURSDAY,FAST_GOOD_FRIDAY,HOLY_SATURDAY]
 
     [Commemoration(id, yr) for id in dayids]
 end
 
-"""Find date of Palm Sunday for a given liturgical year.
+"""Construct Palm Sunday for a given liturgical year.
 
 **Examples**
 ```julia-repl
@@ -584,7 +584,7 @@ function palm_sunday(lityr::LiturgicalYear = LiturgicalYear())::LiturgicalSunday
 end
 
 
-"""Find date of Palm Sunday for a given year.
+"""Construct Palm Sunday for a given year in the civil calendar.
 
 **Example**
 ```julia-repl
@@ -605,7 +605,7 @@ end
 # EASTER AND EASTERTIDE
 #
 
-"""Find Easter in a given liturgical year.
+"""Construct Easter in a given liturgical year.
 
 **Examples**
 ```julia-repl
@@ -620,7 +620,7 @@ function easter_sunday(lityr::LiturgicalYear = LiturgicalYear())::LiturgicalSund
     easter_sunday(lityr.ends_in)
 end
 
-"""Find Easter in a given year of the civil calendar.
+"""Construct Easter in a given year of the civil calendar.
 
 **Example**
 ```julia-repl
@@ -643,7 +643,7 @@ function easter_sunday(yr::Int)::LiturgicalSunday
 end
 
 
-"""Find a given Sunday of Easter season in a given liturgical year.
+"""Find a numbered Sunday of Easter season in a given liturgical year.
 
 **Examples**
 ```julia-repl
@@ -659,7 +659,7 @@ function eastertide(sunday::Int, lityr::LiturgicalYear = LiturgicalYear())::Litu
 
 end
 
-"""Find a given Sunday of Easter season in a given year of the civil calendar.
+"""Find a numbered Sunday of Easter season in a given year of the civil calendar.
 
 **Examples**
 ```julia-repl
@@ -805,7 +805,7 @@ function trinity(yr::Int)::LiturgicalSunday
 end
 
 
-"""Find a given Sunday in ordinary time after Pentecost in a given liturgical year.
+"""Find a numbered Sunday in ordinary time after Pentecost in a given liturgical year.
 
 **Examples**
 ```julia-repl
@@ -822,7 +822,7 @@ function pentecost(sunday::Int, lityr::LiturgicalYear = LiturgicalYear())::Litur
     pentecost(sunday, lityr.ends_in)
 end
 
-"""Find a given Sunday in ordinary time after Pentecost in a given year of the civil calendar.
+"""Find a numbered Sunday in ordinary time after Pentecost in a given year of the civil calendar.
 
 **Example**
 ```julia-repl
@@ -858,7 +858,7 @@ function pentecost(sunday::Int, yr::Int)::Union{LiturgicalSunday,Nothing}
 end
 
 
-"""In a given liturgical year, find Sundays in ordinary time after Pentecost.
+"""In a given liturgical year, find all Sundays in ordinary time after Pentecost.
 
 **Examples**
 ```julia-repl
@@ -917,7 +917,7 @@ end
 
 
 
-"""In a given year in the civil calendar, find Sundays in ordinary time after Pentecost.
+"""In a given year in the civil calendar, find all Sundays in ordinary time after Pentecost.
 
 **Example**
 ```julia-repl
@@ -961,6 +961,7 @@ end
 
 
 """Find Ascension Day in a given liturgical year.
+
 $(SIGNATURES)
 """
 function ascension(lityr::LiturgicalYear = LiturgicalYear())

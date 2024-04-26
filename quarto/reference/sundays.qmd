@@ -1,8 +1,11 @@
 ---
-title: "API documentation: Sundays"
+title: "API documentation: the `LiturgicalSunday`"
 ---
 
-The following functions generate specific Sundays of the liturgical year (type `Sunday`) or Vectors of `Sunday`s for a given liturgical year or year in the civil calendar.
+
+The `LiturgicalSunday` is a subtype of the `LiturgicalDay`.
+
+The following functions generate a `LiturgicalSunday` or a Vector of `LiturgicalSunday`s for specific Sundays belonging either to a given liturgical year, or to a given year in the civil calendar.
 
 `advent` 
 
