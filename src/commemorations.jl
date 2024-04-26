@@ -42,16 +42,17 @@ $(SIGNATURES)
 function show(io::IO, comm::Commemoration)
   
     nm = name(comm)
-    
+  
     dt = civildate(comm)
+    
     if isnothing(dt)
        write(io, string(nm, " (no date)"))
     else
-        formatteddate = string(monthname(dt), " ",  dayofmonth(dt), ", ", year(dt))
-        write(io, nm * ", " * formatteddate)
+       # formatteddate = string(monthname(dt), " ",  dayofmonth(dt), ", ", year(dt))
+        #write(io, nm * ", " * formatteddate)
     end
-    
-   # write(io, "feast or fast")
+  
+     write(io, nm )
 end
 
 """Name of a commemoration in the liturgical calendar.
@@ -92,6 +93,15 @@ function precedence(comm::Commemoration)::Int
     end
 end
 
+
+"""True if the date of commemoration identified by a given ID is movable.
+$(SIGNATURES)
+"""
+function ismovable(commid::Int)::Bool
+    commid in MOVABLE
+end
+
+
 """True if date of commemoration is movable.
 $(SIGNATURES)
 """
@@ -103,6 +113,8 @@ end
 $(SIGNATURES)
 """
 function movabledate(comm::Commemoration)::Date
+
+    @info("for $(comm), id is $(comm.commemoration_id)")
     if comm.commemoration_id == FEAST_EASTER
         easter_sunday(comm.yr) |> civildate
     elseif comm.commemoration_id == FEAST_ASCENSION
@@ -114,18 +126,26 @@ function movabledate(comm::Commemoration)::Date
     elseif comm.commemoration_id == FEAST_THANKSGIVING_DAY
         thanksgiving(comm.yr)
 
-    elseif comm.commemoration_id == HOLY_WEEK_MONDAY
-        ash_wednesday_date(comm.yr)  - Dates.Day(2)   
-    elseif comm.commemoration_id == HOLY_WEEK_TUESDAY
-        ash_wednesday_date(comm.yr)  - Dates.Day(1)   
     elseif comm.commemoration_id == FAST_ASH_WEDNESDAY
-        ash_wednesday_date(comm.yr)
+        civildate(lent(1)) - Dates.Day(4)
+    elseif comm.commemoration_id == HOLY_WEEK_MONDAY
+        civildate(easter_sunday(comm.yr)) - Dates.Day(6)
+        
+    elseif comm.commemoration_id == HOLY_WEEK_TUESDAY
+        civildate(easter_sunday(comm.yr)) - Dates.Day(5)
+        
+    elseif comm.commemoration_id == HOLY_WEEK_WEDNESDAY
+        civildate(easter_sunday(comm.yr)) - Dates.Day(4)
+        
     elseif comm.commemoration_id == MAUNDY_THURSDAY
-        ash_wednesday_date(comm.yr) + Dates.Day(1)
+        civildate(easter_sunday(comm.yr)) - Dates.Day(3)
+        
     elseif comm.commemoration_id == FAST_GOOD_FRIDAY
-        ash_wednesday_date(comm.yr) + Dates.Day(2)
+        civildate(easter_sunday(comm.yr)) - Dates.Day(2)
+        
     elseif comm.commemoration_id == HOLY_SATURDAY
-        ash_wednesday_date(comm.yr) + Dates.Day(3)
+        civildate(easter_sunday(comm.yr)) - Dates.Day(1)
+        
 
     elseif comm.commemoration_id == EASTER_WEEK_MONDAY
         civildate(easter_sunday(comm.yr)) + Dates.Day(1)
@@ -160,6 +180,7 @@ julia> civildate(ash_wednesday())
 $(SIGNATURES)
 """
 function civildate(comm::Commemoration)::Date
+    @info("Find civildate for $(comm)")
     if ismovable(comm)
         movabledate(comm)
 

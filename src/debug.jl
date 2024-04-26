@@ -13,3 +13,12 @@ function calcheck(lityr::LiturgicalYear = LiturgicalYear())
 
     @info("$(epiph_cf)")
 end
+
+function debughw(lityr::LiturgicalYear = LiturgicalYear())
+    hw = holyweek(lityr)
+    @info(hw)
+    eastersun = easter_sunday(lityr)
+    @info("Easter is $(eastersun)")
+    @info("add one: $(civildate(eastersun) + Dates.Day(1))")
+    #datelist = civildate.(hw)
+end

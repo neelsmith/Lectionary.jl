@@ -201,10 +201,24 @@ function principal_feasts(lityear::LiturgicalYear = LiturgicalYear())
     [Commemoration(thefeast, lityear) for thefeast in PRINCIPAL_FEASTS]
 end
 
-function holy_days(lityear::LiturgicalYear = LiturgicalYear())
-    allholydays = vcat(HOLY_DAYS_1, HOLY_DAYS_2)
-    map(allholydays) do f
-        Commemoration(f, lityear)
+function holy_days(lityear::LiturgicalYear = LiturgicalYear(); src = :RCL)
+    if src == :BCP
+        allholydays = vcat(HOLY_DAYS_1, HOLY_DAYS_2)
+        map(allholydays) do f
+            Commemoration(f, lityear)
+        end
+    elseif src == :RCL
+        @debug("GET RCL feasts")
+        map(RCL_FEASTS) do fst
+            if fst == FEAST_THANKSGIVING_DAY
+                Commemoration(fst, lityear.ends_in)
+            else
+                Commemoration(fst, lityear.ends_in)
+            end
+        end
+    else
+        @warn("Unrecognized source: $(src) (function `holy_days`)")
+        nothing
     end
 end
 
@@ -216,15 +230,19 @@ $(SIGNATURES)
 function kalendar(lityr::LiturgicalYear = LiturgicalYear(); src = :RCL)
     events = LiturgicalDay[]
     allcommems = holy_days(lityr)
+    
     commems = if src == :BCP
-        allcommems
+        for ld in vcat(allcommems, sundays(lityr),principal_feasts(lityr))
+            push!(events, ld)
+        end
+        
     elseif src == :RCL
-        filter(allcommems) do litday
+        commems = filter(allcommems) do litday
             litday.commemoration_id in RCL_FEASTS
         end
-    end
-    for ld in vcat(commems, sundays(lityr), principal_feasts(lityr))
-        push!(events, ld)
+        for ld in vcat(commems, sundays(lityr))
+            push!(events, ld)
+        end
     end
     sort(events , by = litday -> civildate(litday))
     
@@ -233,7 +251,7 @@ end
 
 """Find Christmas Day for a given liturgical year.
 
-$(SEASONS)
+$(SIGNATURES)
 """
 function christmas_day(lityr::LiturgicalYear = LiturgicalYear())
     christmas_day(lityr.starts_in)
@@ -244,7 +262,7 @@ end
 
 """Find Christmas Day for a given year in the civil calendar.
 
-$(SEASONS)
+$(SIGNATURES)
 """
 function christmas_day(yr::Int)
     Commemoration(FEAST_CHRISTMAS, yr)

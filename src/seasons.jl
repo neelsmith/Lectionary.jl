@@ -103,7 +103,7 @@ julia> advent(1, LiturgicalYear(2023))
 the first Sunday of Advent, December 3, 2023
 ```
 """
-function advent(sunday::Int, lityr::LiturgicalYear = LiturgicalYear())::Sunday
+function advent(sunday::Int, lityr::LiturgicalYear = LiturgicalYear())::LiturgicalSunday
     advent(sunday, lityr.starts_in)
 end
 
@@ -118,7 +118,7 @@ the first Sunday of Advent, December 3, 2023
 
 $(SIGNATURES)
 """
-function advent(sunday::Int, yr::Int)::Sunday
+function advent(sunday::Int, yr::Int)::LiturgicalSunday
     sundaystofind = 5 - sunday
     @debug("Look back $(sundaystofind) Sundays")
     xmas = Date(yr, 12, 25)
@@ -133,7 +133,7 @@ function advent(sunday::Int, yr::Int)::Sunday
             sundaysfound = sundaysfound + 1
         end
     end
-    Sunday(prev, sunday)
+    LiturgicalSunday(prev, sunday)
 end
 
 """Find all Sundays of Advent in a given year of the civil calendar.
@@ -152,7 +152,7 @@ julia> advent_sundays(2023)
 
 $(SIGNATURES)
 """
-function advent_sundays(yr::Int)::Vector{Sunday}
+function advent_sundays(yr::Int)::Vector{LiturgicalSunday}
     advent_sundays(LiturgicalYear(yr))
 end
 
@@ -163,13 +163,13 @@ end
 
 ```julia-repl
 julia> advent_sundays()
-4-element Vector{Sunday}:
+4-element Vector{LiturgicalSunday}:
  the first Sunday of Advent, December 3, 2023
  the second Sunday of Advent, December 10, 2023
  the third Sunday of Advent, December 17, 2023
  the fourth Sunday of Advent, December 24, 2023
  julia> advent_sundays(LiturgicalYear(2023))
-4-element Vector{Sunday}:
+4-element Vector{LiturgicalSunday}:
  the first Sunday of Advent, December 3, 2023
  the second Sunday of Advent, December 10, 2023
  the third Sunday of Advent, December 17, 2023
@@ -178,7 +178,7 @@ julia> advent_sundays()
 
 $(SIGNATURES)
 """
-function advent_sundays(lityear::LiturgicalYear = LiturgicalYear())::Vector{Sunday}
+function advent_sundays(lityear::LiturgicalYear = LiturgicalYear())::Vector{LiturgicalSunday}
     [advent(sunday, lityear.starts_in) for sunday in 1:4] 
 end
 
@@ -193,16 +193,16 @@ end
 
 ```julia-repl
 julia> christmas_sundays()
-1-element Vector{Sunday}:
+1-element Vector{LiturgicalSunday}:
  the first Sunday after Christmas Day, December 31, 2023
  julia> christmas_sundays(LiturgicalYear(2023))
-1-element Vector{Sunday}:
+1-element Vector{LiturgicalSunday}:
  the first Sunday after Christmas Day, December 31, 2023
 ```
 
 $(SIGNATURES)
 """
-function christmas_sundays(lityr::LiturgicalYear = LiturgicalYear())::Vector{Sunday}
+function christmas_sundays(lityr::LiturgicalYear = LiturgicalYear())::Vector{LiturgicalSunday}
     epiphany = Date(lityr.ends_in, 1, 6)
     xmas = Date(lityr.starts_in, 12, 25)
     prev = epiphany
@@ -219,11 +219,11 @@ function christmas_sundays(lityr::LiturgicalYear = LiturgicalYear())::Vector{Sun
     end
     ordered = sundays |> reverse
     if length(ordered) == 2
-        [Sunday(ordered[1], CHRISTMAS_1),
-        Sunday(ordered[2], CHRISTMAS_2)
+        [LiturgicalSunday(ordered[1], CHRISTMAS_1),
+        LiturgicalSunday(ordered[2], CHRISTMAS_2)
         ]
     else
-        [Sunday(ordered[1], CHRISTMAS_1)]
+        [LiturgicalSunday(ordered[1], CHRISTMAS_1)]
     end
 
 end
@@ -234,13 +234,13 @@ end
 
 ```julia-repl
 julia> christmas_sundays(2023)
-1-element Vector{Sunday}:
+1-element Vector{LiturgicalSunday}:
  the first Sunday after Christmas Day, December 31, 2023
  ```
 
 $(SIGNATURES)
 """
-function christmas_sundays(yr::Int)::Vector{Sunday}
+function christmas_sundays(yr::Int)::Vector{LiturgicalSunday}
     christmas_sundays(LiturgicalYear(yr))
 end
 
@@ -255,7 +255,7 @@ the first Sunday after Christmas Day, December 31, 2023
 
 $(SIGNATURES)
 """
-function christmas(sunday::Int, yr::Int)::Sunday
+function christmas(sunday::Int, yr::Int)::LiturgicalSunday
     christmas(sunday, LiturgicalYear(yr))
 end
 
@@ -271,7 +271,7 @@ the first Sunday after Christmas Day, December 31, 2023
 
 $(SIGNATURES)
 """
-function christmas(sunday::Int, lityr::LiturgicalYear = LiturgicalYear())::Sunday
+function christmas(sunday::Int, lityr::LiturgicalYear = LiturgicalYear())::LiturgicalSunday
     sundays = christmas_sundays(lityr)
     sunday > length(sundays) ? nothing : sundays[sunday]
 end
@@ -341,7 +341,7 @@ function epiphany_sundays(yr::Int)::Vector{LiturgicalDay}
     sundaylist = LiturgicalDay[]
     predecessor  = EPIPHANY  # - 1
     for (i, sday) in enumerate(ordered[1:end-1])
-        push!(sundaylist, Sunday(sday, predecessor + i))
+        push!(sundaylist, LiturgicalSunday(sday, predecessor + i))
     end
     ##@debug("Added $(length(sundaylist))) Sundays; now add transfiguration for $(year(ordered[end]))")
     #xfig = Commemoration(FEAST_TRANSFIGURATION, year(ordered[end]))
@@ -474,7 +474,7 @@ the first Sunday in Lent, February 18, 2024
 
 $(SIGNATURES)
 """
-function lent(sunday::Int, lityr::LiturgicalYear = LiturgicalYear())::Sunday
+function lent(sunday::Int, lityr::LiturgicalYear = LiturgicalYear())::LiturgicalSunday
     lent(sunday, lityr.ends_in)
 end
 
@@ -488,12 +488,12 @@ the first Sunday in Lent, February 18, 2024
 ```
 $(SIGNATURES)
 """
-function lent(sunday::Int, yr::Int)::Sunday
+function lent(sunday::Int, yr::Int)::LiturgicalSunday
     sundaystofind = 7 - sunday
     sunday_date = easter_sunday(yr).dt - Dates.Day(sundaystofind * 7)
 
     predecessor = LENT_1 - 1
-    Sunday(sunday_date, predecessor + sunday)
+    LiturgicalSunday(sunday_date, predecessor + sunday)
 end
 
 
@@ -562,7 +562,9 @@ end
 $(SIGNATURES)
 """
 function holyweek(yr::Int)
-    dayids = [HOLY_WEEK_MONDAY,HOLY_WEEK_TUESDAY,FAST_ASH_WEDNESDAY,MAUNDY_THURSDAY,FAST_GOOD_FRIDAY,HOLY_SATURDAY]
+    @info("Find holy week in yr $(yr)")
+    dayids = [HOLY_WEEK_MONDAY,HOLY_WEEK_TUESDAY,HOLY_WEEK_WEDNESDAY, MAUNDY_THURSDAY,FAST_GOOD_FRIDAY,HOLY_SATURDAY]
+
     [Commemoration(id, yr) for id in dayids]
 end
 
@@ -577,7 +579,7 @@ Palm Sunday, March 24, 2024
 ```
 $(SIGNATURES)
 """
-function palm_sunday(lityr::LiturgicalYear = LiturgicalYear())::Sunday
+function palm_sunday(lityr::LiturgicalYear = LiturgicalYear())::LiturgicalSunday
     palm_sunday(lityr.ends_in)
 end
 
@@ -592,9 +594,9 @@ Palm Sunday, March 24, 2024
 
 $(SIGNATURES)
 """
-function palm_sunday(yr::Int)::Sunday
+function palm_sunday(yr::Int)::LiturgicalSunday
     dt = easter_sunday(yr).dt - Dates.Day(7)
-    Sunday(dt, PALM_SUNDAY)
+    LiturgicalSunday(dt, PALM_SUNDAY)
 end
 
 
@@ -614,7 +616,7 @@ Easter Day, March 31, 2024
 ```
 $(SIGNATURES)
 """
-function easter_sunday(lityr::LiturgicalYear = LiturgicalYear())::Sunday
+function easter_sunday(lityr::LiturgicalYear = LiturgicalYear())::LiturgicalSunday
     easter_sunday(lityr.ends_in)
 end
 
@@ -627,7 +629,7 @@ Easter Day, March 31, 2024
 ```
 $(SIGNATURES)
 """
-function easter_sunday(yr::Int)::Sunday
+function easter_sunday(yr::Int)::LiturgicalSunday
     hr = Dates.DateTime(yr, 3, 21)
     while mphase(jdcnv(hr)) < 0.99
         hr = hr + Dates.Hour(1)
@@ -637,7 +639,7 @@ function easter_sunday(yr::Int)::Sunday
     while dayname(nxtday) != "Sunday"
         nxtday = nxtday + Dates.Day(1)
     end
-    Sunday(nxtday, EASTER_SUNDAY)
+    LiturgicalSunday(nxtday, EASTER_SUNDAY)
 end
 
 
@@ -652,7 +654,7 @@ the second Sunday of Easter, April 7, 2024
 ```
 $(SIGNATURES)
 """
-function eastertide(sunday::Int, lityr::LiturgicalYear = LiturgicalYear())::Sunday
+function eastertide(sunday::Int, lityr::LiturgicalYear = LiturgicalYear())::LiturgicalSunday
     eastertide(sunday, lityr.ends_in)
 
 end
@@ -667,7 +669,7 @@ the second Sunday of Easter, April 7, 2024
 
 $(SIGNATURES)
 """
-function eastertide(sunday::Int, yr::Int)::Sunday
+function eastertide(sunday::Int, yr::Int)::LiturgicalSunday
     @assert sunday < 8 && sunday > 1
     #predecessor = easter_sunday(yr).dt - Dates.Day(1)
     @debug("Find sunday $(sunday) in $(yr)")
@@ -675,7 +677,7 @@ function eastertide(sunday::Int, yr::Int)::Sunday
     thesunday =  easter_sunday(yr).dt + Dates.Day((sunday - 1) * 7)
 
 
-    Sunday(thesunday, EASTER_SUNDAY + (sunday - 1))
+    LiturgicalSunday(thesunday, EASTER_SUNDAY + (sunday - 1))
 end
 
 
@@ -685,7 +687,7 @@ end
 **Examples**
 ```juliarepl
 julia> easter_sundays()
-6-element Vector{Lectionary.Sunday}:
+6-element Vector{LiturgicalSunday}:
  the second Sunday of Easter, April 7, 2024
  the third Sunday of Easter, April 14, 2024
  the fourth Sunday of Easter, April 21, 2024
@@ -693,7 +695,7 @@ julia> easter_sundays()
  the sixth Sunday of Easter, May 5, 2024
  the seventh Sunday of Easter, May 12, 2024
  julia> easter_sundays(LiturgicalYear(2023))
-6-element Vector{Lectionary.Sunday}:
+6-element Vector{LiturgicalSunday}:
  the second Sunday of Easter, April 7, 2024
  the third Sunday of Easter, April 14, 2024
  the fourth Sunday of Easter, April 21, 2024
@@ -704,7 +706,7 @@ julia> easter_sundays()
 
 $(SIGNATURES)
 """
-function easter_sundays(lityr::LiturgicalYear = LiturgicalYear())::Vector{Sunday}
+function easter_sundays(lityr::LiturgicalYear = LiturgicalYear())::Vector{LiturgicalSunday}
     easter_sundays(lityr.ends_in)
 end
 
@@ -715,7 +717,7 @@ end
 **Examples**
 ```juliarepl
 julia> easter_sundays(2024)
-6-element Vector{Lectionary.Sunday}:
+6-element Vector{LiturgicalSunday}:
  the second Sunday of Easter, April 7, 2024
  the third Sunday of Easter, April 14, 2024
  the fourth Sunday of Easter, April 21, 2024
@@ -727,7 +729,7 @@ julia> easter_sundays(2024)
 
 $(SIGNATURES)
 """
-function easter_sundays(yr::Int)::Vector{Sunday}
+function easter_sundays(yr::Int)::Vector{LiturgicalSunday}
     [eastertide(sunday, yr) for sunday in 2:7] 
 end
 
@@ -748,7 +750,7 @@ the day of Pentecost, May 19, 2024
 ```
 $(SIGNATURES)
 """
-function pentecost_day(lityr::LiturgicalYear = LiturgicalYear())::Sunday
+function pentecost_day(lityr::LiturgicalYear = LiturgicalYear())::LiturgicalSunday
     pentecost_day(lityr.ends_in)
 end
 
@@ -765,9 +767,9 @@ the day of Pentecost, May 19, 2024
 
 $(SIGNATURES)
 """
-function pentecost_day(yr::Int)::Sunday
+function pentecost_day(yr::Int)::LiturgicalSunday
     dt = easter_sundays(yr)[end].dt + Dates.Day(7)
-    Sunday(dt, PENTECOST)
+    LiturgicalSunday(dt, PENTECOST)
 end
 
 
@@ -784,7 +786,7 @@ Trinity Sunday, May 26, 2024
 
 $(SIGNATURES)
 """
-function trinity(lityr::LiturgicalYear = LiturgicalYear())::Sunday
+function trinity(lityr::LiturgicalYear = LiturgicalYear())::LiturgicalSunday
     trinity(lityr.ends_in)
 end
 
@@ -797,9 +799,9 @@ Trinity Sunday, May 26, 2024
 ```
 $(SIGNATURES)
 """
-function trinity(yr::Int)::Sunday
+function trinity(yr::Int)::LiturgicalSunday
     dt = pentecost_day(yr).dt + Dates.Day(7)
-    Sunday(dt, TRINITY_SUNDAY)
+    LiturgicalSunday(dt, TRINITY_SUNDAY)
 end
 
 
@@ -816,7 +818,7 @@ the third Sunday after Pentecost, June 9, 2024
 
 $(SIGNATURES)
 """
-function pentecost(sunday::Int, lityr::LiturgicalYear = LiturgicalYear())::Sunday
+function pentecost(sunday::Int, lityr::LiturgicalYear = LiturgicalYear())::LiturgicalSunday
     pentecost(sunday, lityr.ends_in)
 end
 
@@ -829,7 +831,7 @@ the third Sunday after Pentecost, June 9, 2024
 ```
 $(SIGNATURES)
 """
-function pentecost(sunday::Int, yr::Int)::Union{Sunday,Nothing}
+function pentecost(sunday::Int, yr::Int)::Union{LiturgicalSunday,Nothing}
     @assert sunday > 1 && sunday < 30
     endpoint = advent(1, yr).dt
     startpoint = trinity(yr).dt
@@ -852,7 +854,7 @@ function pentecost(sunday::Int, yr::Int)::Union{Sunday,Nothing}
 
     end
 
-    sundaysfound > 0 && prev < endpoint ? Sunday(prev, PENTECOST  + sunday) : nothing
+    sundaysfound > 0 && prev < endpoint ? LiturgicalSunday(prev, PENTECOST  + sunday) : nothing
 end
 
 
@@ -862,7 +864,7 @@ end
 ```julia-repl
 
 julia> pentecost_season()
-26-element Vector{Lectionary.Sunday}:
+26-element Vector{LiturgicalSunday}:
  the second Sunday after Pentecost, June 2, 2024
  the third Sunday after Pentecost, June 9, 2024
  the fourth Sunday after Pentecost, June 16, 2024
@@ -884,7 +886,7 @@ julia> pentecost_season()
  the twenty-sixth Sunday after Pentecost, November 17, 2024
  the twenty-seventh Sunday after Pentecost, November 24, 2024
  julia> pentecost_season(LiturgicalYear(2023))
-26-element Vector{Lectionary.Sunday}:
+26-element Vector{LiturgicalSunday}:
  the second Sunday after Pentecost, June 2, 2024
  the third Sunday after Pentecost, June 9, 2024
  the fourth Sunday after Pentecost, June 16, 2024
@@ -909,7 +911,7 @@ julia> pentecost_season()
 
 $(SIGNATURES)
 """
-function pentecost_season(lityr::LiturgicalYear = LiturgicalYear())::Vector{Sunday}
+function pentecost_season(lityr::LiturgicalYear = LiturgicalYear())::Vector{LiturgicalSunday}
     pentecost_season(lityr.ends_in)
 end
 
@@ -920,7 +922,7 @@ end
 **Example**
 ```julia-repl
 julia> pentecost_season(2024)
-26-element Vector{Lectionary.Sunday}:
+26-element Vector{LiturgicalSunday}:
  the second Sunday after Pentecost, June 2, 2024
  the third Sunday after Pentecost, June 9, 2024
  the fourth Sunday after Pentecost, June 16, 2024
@@ -946,7 +948,7 @@ julia> pentecost_season(2024)
 
 $(SIGNATURES)
 """
-function pentecost_season(yr::Int)::Vector{Sunday}
+function pentecost_season(yr::Int)::Vector{LiturgicalSunday}
     sundayslist = []
     for i in 2:28
         sunday = pentecost(i, yr)

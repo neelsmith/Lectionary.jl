@@ -18,8 +18,7 @@ export LiturgicalSeason
 export LiturgicalDay
 export name, civildate, weekday, readings, precedence
 export kalendar
-export Sunday, Commemoration,  OtherDay
-
+export LiturgicalSunday, Commemoration,  OtherDay
 
 
 export advent, advent_sundays
@@ -56,7 +55,6 @@ include("fixeddates.jl")
 include("days.jl")
 include("commemorations.jl")
 include("sunday.jl")
-include("holydays.jl")
 include("otherdays.jl")
 
 

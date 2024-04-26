@@ -1,12 +1,12 @@
 """A Sunday in the liturgical year.
 """
-struct Sunday <: LiturgicalDay
+struct LiturgicalSunday <: LiturgicalDay
     dt::Date
     calendar_day::Int
 end
 
 
-function Sunday(sundayid::Int, lityear::LiturgicalYear = LiturgicalYear())
+function LiturgicalSunday(sundayid::Int, lityear::LiturgicalYear = LiturgicalYear())
     matches = filter(sunday -> sunday.calendar_day == sundayid, sundays(lityear))
     if isempty(matches)
         @warn("No Sunday found with code: $(sundayid)")
@@ -19,7 +19,7 @@ end
 """Override `Base.==` for `Sunday`.
 $(SIGNATURES)
 """
-function ==(sday1::Sunday, sday2::Sunday)
+function ==(sday1::LiturgicalSunday, sday2::LiturgicalSunday)
     sday1.dt == sday2.dt &&
     sday1.calendar_day == sday1.calendar_day
 end
@@ -27,7 +27,7 @@ end
 """Override `Base.show` for `Sunday`.
 $(SIGNATURES)
 """
-function show(io::IO, sday::Sunday)
+function show(io::IO, sday::LiturgicalSunday)
     formatteddate = string(monthname(sday.dt), " ",  dayofmonth(sday.dt), ", ", year(sday.dt))
     write(io, name(sday) * ", " * formatteddate)
 end
@@ -44,7 +44,7 @@ julia> name(easter_sunday())
 
 $(SIGNATURES)
 """
-function name(sday::Sunday)
+function name(sday::LiturgicalSunday)
     sunday_names[sday.calendar_day]
 end
 
@@ -59,15 +59,15 @@ julia> civildate(easter_sunday())
 
 $(SIGNATURES)
 """
-function civildate(sday::Sunday)
+function civildate(sday::LiturgicalSunday)
     sday.dt
 end
 
-function precedence(sday::Sunday)
+function precedence(sday::LiturgicalSunday)
     SUNDAY
 end
 
-function sundayreadings(sday::Sunday, lectionaryyr::Char; as_urn = false) 
+function sundayreadings(sday::LiturgicalSunday, lectionaryyr::Char; as_urn = false) 
     if as_urn
         @warn("Support for URN references not implemented yet.")
     end
