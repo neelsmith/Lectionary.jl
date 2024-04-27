@@ -74,15 +74,31 @@ function readings(theday::T, yr::Char; as_urn = false, service = 1, track = 'A')
     #multireadings = [
     #    christmas_day()
     #]
-    @info("Get readings for day $(theday) in year $(yr)")
+    @debug("Get readings for day $(theday) in year $(yr)")
     if theday isa Commemoration
         @debug("Get readings for feast $(theday)")
-        feastreadings(theday, yr; as_urn = as_urn)
+        # Check for Christmas Day, which has
+        # readings for multiple services in RCL
+        if name(theday) == "Christmas Day"
+            @info("Need to check service for Christmas Day readings")
+        else
+            feastreadings(theday, yr; as_urn = as_urn)
+        end
 
     elseif theday isa LiturgicalSunday
+        # Palm Sunday, and Easter have
+        # readings for multiple services in RCL
         @debug("Get readings for sunday $(theday)")
-        sundayreadings(theday, yr; as_urn = as_urn)
+        if name(theday) == "Palm Sunday"
+            @info("Need to check service for Palm Sunday readings")
+        elseif name(theday)== "Easter Day"
+            @info("Need to check service for Easter readings")
+            
 
+        else
+        
+            sundayreadings(theday, yr; as_urn = as_urn)
+        end
     else
         @warn("Function civildate not implmented for LiturgicalDay type $(typeof(theday))")
         nothing
