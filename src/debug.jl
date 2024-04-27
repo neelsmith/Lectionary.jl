@@ -1,6 +1,6 @@
 
 function calcheck(lityr::LiturgicalYear = LiturgicalYear())
-    sundaylist = pentecost_season(lityr)[2:end]
+    
 
     epiph_cf = epiphany_sundays(lityr)
     @info("Easter $(easter_sunday(lityr) |> civildate)")
@@ -9,9 +9,10 @@ function calcheck(lityr::LiturgicalYear = LiturgicalYear())
     @info("Ascension Day $(ascension(lityr))")
     @info("Pentencost $(pentecost_day(lityr) |> civildate)")
     
+    sundaylist = pentecost_season(lityr)[2:end]
     @info("$(length(sundaylist)) Sundays in ordinary time")
-
-    @info("$(epiph_cf)")
+    @info("Advent 1 of next year: $(civildate(advent(1, lityr.ends_in)))")
+    
 end
 
 function debughw(lityr::LiturgicalYear = LiturgicalYear())

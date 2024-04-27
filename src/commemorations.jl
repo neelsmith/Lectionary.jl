@@ -123,8 +123,6 @@ end
 $(SIGNATURES)
 """
 function movabledate(comm::Commemoration)::Date
-
-    @debug("for $(comm),  $(comm.commemoration_id)")
     if comm.commemoration_id == FEAST_EASTER
         easter_sunday(comm.yr) |> civildate
     elseif comm.commemoration_id == FEAST_ASCENSION
@@ -137,7 +135,7 @@ function movabledate(comm::Commemoration)::Date
         thanksgiving(comm.yr)
 
     elseif comm.commemoration_id == FAST_ASH_WEDNESDAY
-        civildate(lent(1)) - Dates.Day(4)
+        civildate(lent(1, comm.yr)) - Dates.Day(4)
     elseif comm.commemoration_id == HOLY_WEEK_MONDAY
         civildate(easter_sunday(comm.yr)) - Dates.Day(6)
         
