@@ -71,9 +71,9 @@ $(SIGNATURES)
 """
 function readings(theday::T, yr::Char; as_urn = false, service = 1, track = 'A') where {T <: LiturgicalDay}
     
-    #multireadings = [
-    #    christmas_day()
-    #]
+    # Need to check if we're in ordinary time after Pentecost, and is so
+    # use propers selections
+    
     @debug("Get readings for day $(theday) in year $(yr)")
     if theday isa Commemoration
         @debug("Get readings for feast $(theday)")
