@@ -269,17 +269,3 @@ function christmas_day(yr::Int)
 end
 
 
-"""True if given Liturgical day falls within ordinary time following
-Pentecost.
-
-$(SIGNATURES)
-"""
-function in_pentecost(litday::LiturgicalDay)
-    thedate = civildate(litday)
-    yr = year(thedate)
-    endpoint = advent(1, yr) |> civildate
-    startpoint = pentecost_day(yr)  |> civildate
-    thedate > startpoint && thedate < endpoint
- 
- 
-end
