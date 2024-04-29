@@ -10,12 +10,8 @@ propersB = Dict(
         B = Readings("Deuteronomy 5.12-5.15","2_Corinthians 4.5-4.12","Mark 2.23—3.6","Psalm 81.1-81.10")
     ),
     5 => (A = Readings(  
-        "","","","1 Samuel 8:4-11 [12-15] 16-20 [11:14-15] Psalm 138
-        2 Corinthians 4:13—5:1
-        Mark 3:20-35"),
-        B = Readings("","","","Genesis 3:8-15
-        Psalm 130
-        2 Corinthians 4:13—5:1 Mark 3:20-35")
+        "1_Samuel 8.14-8.11, 1_Samuel 8.16-8.20 ; 1_Samuel 8.1-8.20","2_Corinthians 4.13—5.1","Mark 3.20-3.35","Psalm 138"),
+        B = Readings("Genesis 3.8-3.15","2_Corinthians 4.13—5.1","Mark 3.20-3.35","Psalm 130")
     ),
     6 => (A = Readings(  
         "1_Samuel 15.34—16.13", "2_Corinthians 5.6-5.10, 2_Corinthians 5.14-5.17; 2_Corinthians 5.6-5.17","Mark 4.26-4.34","Psalm 20"),
@@ -23,11 +19,8 @@ propersB = Dict(
         B = Readings("Ezekiel 17.22-17.24","2_Corinthians 5.6-5.10, 2_Corinthians 5.14-5.17; 2_Corinthians 5.6-5.17","Mark 4.26-4.34","Psalm 92.1-92.4, Psalm 92.12-92.15")
     ),
     7 => (A = Readings(  
-        "","","","1 Samuel 17:[1a, 4-11, 19-23] 32-49 or 1 Samuel 17:57—18:5, 10-16 Psalm 9:9-20 or Psalm 133
-        2 Corinthians 6:1-13
-        Mark 4:35-41"),
-        B = Readings("","","","Job 38:1-11
-        Psalm 107:1-3, 23-32 2 Corinthians 6:1-13 Mark 4:35-41")
+        "1_Samuel 17.32-17.38 ; 1_Samuel 17.1a, 1_Samuel 17.4-17.11, 1_Samuel 17.19-17.23, 1_Samuel 17.32-17.49 ; 1_Samuel 17.57—18.5, 1_Samuel 18.10-18.16","2_Corinthians 6.1-6.13","Mark 4.35-4.41","Psalm 9.9-9.20 ; Psalm 133"),
+        B = Readings("Job 38.1-38.11","2_Corinthians 6.1-6.13","Mark 4.35-4.41","Psalm 107.1-107.3, Psalm 107.23-107.32")
     ),
     8 => (A = Readings(  
         "","","","2 Samuel 1:1, 17-27 Psalm 130 2 Corinthians 8:7-15 Mark 5.21-5.23"),
@@ -37,9 +30,9 @@ propersB = Dict(
         Mark 5:21-43")
     ),
     9 => (A = Readings(  
-        "","","","2 Samuel 5:1-5, 9-10 Psalm 48
-        2 Corinthians 12:2-10 Mark 6:1-13"),
-        B = Readings("","","","Amos 7:7-15 Psalm 85:8-13 Ephesians 1:3-14 Mark 6:14-29")
+        "2_Samuel 5.1-5.5, 2_Samuel 5.9-5.10","2_Corinthians 12.2-12.10","Mark 6.1-6.13","Psalm 48"),
+
+        B = Readings("Amos 7.7-7.15","Ephesians 1.3-1.14","Mark 6.14-6.29","Psalm 85.8-85.13")
     ),
     10 => (A = Readings(  
         "","",""," Samuel 6:1-5, 12b-19 Psalm 24

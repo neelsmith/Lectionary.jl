@@ -111,7 +111,6 @@ sundayselectionsB = Dict(
     ),
     ADVENT_3 => Readings(
         "Isaiah 61.1-61.4, Isaiah 61.8-61.11",
-        
         "1_Thessalonians 5.16-5.24",
         "John 1.6-1.8, John 1.19-1.28",
         "Psalm 126; Luke 1.46b-1.55",
