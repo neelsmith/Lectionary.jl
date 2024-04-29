@@ -38,7 +38,7 @@ propersB = Dict(
         B = Readings("Amos 7.7-7.15","Ephesians 1:3-14","Mark 6.14-6.29"," Psalm 85.8-85.13")
     ),
     11 => (A = Readings(  
-        "2+Samuel 7.1-7.14a","Ephesians 2.11-2.22","Mark 6.30-6.34","Psalm 89.1:20-89.37, Psalm 89.53-89.56"),
+        "2_Samuel 7.1-7.14a","Ephesians 2.11-2.22","Mark 6.30-6.34","Psalm 89.1:20-89.37, Psalm 89.53-89.56"),
 
         B = Readings("Jeremiah 23.1-23.6","Ephesians 2.11-2.22","Mark 6.30-6.34, Mark 6.53-6.67","Psalm 23")
     ),
