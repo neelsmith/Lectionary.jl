@@ -1026,6 +1026,4 @@ function in_pentecost(litday::LiturgicalDay)
     endpoint = advent(1, yr) |> civildate
     startpoint = pentecost_day(yr)  |> civildate
     thedate > startpoint && thedate < endpoint
- 
- 
 end

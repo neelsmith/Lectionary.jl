@@ -23,3 +23,17 @@ function debughw(lityr::LiturgicalYear = LiturgicalYear())
     @info("add one: $(civildate(eastersun) + Dates.Day(1))")
     #datelist = civildate.(hw)
 end
+
+
+function debugreadings(lityr::LiturgicalYear = LiturgicalYear())
+    kal = kalendar(lityr)
+    failed = []
+    for dt in kal
+        rdg = readings(dt, lityr)
+        if isnothing(rdg)
+            push!(failed, dt)
+        end
+        println("===> On  day $(dt): $(rdg)")
+    end
+    failed
+end

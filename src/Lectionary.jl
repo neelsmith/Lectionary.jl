@@ -36,7 +36,7 @@ export thanksgiving
 export calendar_week, calendar_month, calendar_year
 export weekrange
 
-export Reading, readings, ot, nt, psalm, gospel
+export Readings, readings, ot, nt, psalm, gospel
 
 include("selections.jl")
 

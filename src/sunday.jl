@@ -71,6 +71,11 @@ function sundayreadings(sday::LiturgicalSunday, lectionaryyr::Char; as_urn = fal
     if as_urn
         @warn("Support for URN references not implemented yet.")
     end
+
+    
+    if in_pentecost(sday)
+        @info("Now we need to check for pentecost days")
+    end
     if lectionaryyr == 'A'
         if haskey(sundayselectionsA, sday.calendar_day)
             sundayselectionsA[sday.calendar_day]

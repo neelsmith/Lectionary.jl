@@ -1,4 +1,4 @@
-struct Reading
+struct Readings
     ot_string::String
     nt_string::String
     gospel_string::String
@@ -19,7 +19,7 @@ end
 """Get readings of Old Testament.
 $(SIGNATURES)
 """
-function ot(rdg::Reading; as_urn = false)
+function ot(rdg::Readings; as_urn = false)
     
     if as_urn
         @warn("URN translation not yet implemented")
@@ -30,7 +30,7 @@ end
 """Get readings of New Testament.
 $(SIGNATURES)
 """
-function nt(rdg::Reading; as_urn = false)
+function nt(rdg::Readings; as_urn = false)
     if as_urn
         @warn("URN translation not yet implemented")
     end
@@ -40,7 +40,7 @@ end
 """Get readings of Gospel.
 $(SIGNATURES)
 """
-function gospel(rdg::Reading; as_urn = false)
+function gospel(rdg::Readings; as_urn = false)
     if as_urn
         @warn("URN translation not yet implemented")
     end
@@ -50,7 +50,7 @@ end
 """Get readings of Psalm.
 $(SIGNATURES)
 """
-function psalm(rdg::Reading; as_urn = false)
+function psalm(rdg::Readings; as_urn = false)
     if as_urn
         @warn("URN translation not yet implemented")
     end

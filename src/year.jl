@@ -71,6 +71,13 @@ function date_range(yr::LiturgicalYear = LiturgicalYear())
 end
 
 
+"""Find correct liturgical year for a given liturgical day.
+$(SIGNATURES)
+"""
+function liturgical_year(litday::LiturgicalDay)
+    civildate(litday) |> liturgical_year
+end
+
 """Find correct liturgical year for a given date in the civil calendar.
 $(SIGNATURES)
 """
