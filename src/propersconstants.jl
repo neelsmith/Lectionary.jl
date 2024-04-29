@@ -1,114 +1,4 @@
 
-propersA = Dict(
-    3 => (A = Readings(  
-        "","","",""),
-        B = Readings("","","","")
-    ),
-    4 => (A = Readings(  
-        "","","",""),
-        B = Readings("","","","")
-    ),
-    5 => (A = Readings(  
-        "","","",""),
-        B = Readings("","","","")
-    ),
-    6 => (A = Readings(  
-        "","","",""),
-        B = Readings("","","","")
-    ),
-    7 => (A = Readings(  
-        "","","",""),
-        B = Readings("","","","")
-    ),
-    8 => (A = Readings(  
-        "","","",""),
-        B = Readings("","","","")
-    ),
-    9 => (A = Readings(  
-        "","","",""),
-        B = Readings("","","","")
-    ),
-    10 => (A = Readings(  
-        "","","",""),
-        B = Readings("","","","")
-    ),
-    11 => (A = Readings(  
-        "","","",""),
-        B = Readings("","","","")
-    ),
-    12 => (A = Readings(  
-        "","","",""),
-        B = Readings("","","","")
-    ),
-    13 => (A = Readings(  
-        "","","",""),
-        B = Readings("","","","")
-    ),
-    14 => (A = Readings(  
-        "","","",""),
-        B = Readings("","","","")
-    ),
-    15 => (A = Readings(  
-        "","","",""),
-        B = Readings("","","","")
-    ),
-    16 => (A = Readings(  
-        "","","",""),
-        B = Readings("","","","")
-    ),
-    17 => (A = Readings(  
-        "","","",""),
-        B = Readings("","","","")
-    ),
-    18 => (A = Readings(  
-        "","","",""),
-        B = Readings("","","","")
-    ),
-    19 => (A = Readings(  
-        "","","",""),
-        B = Readings("","","","")
-    ),
-    20 => (A = Readings(  
-        "","","",""),
-        B = Readings("","","","")
-    ),
-    21 => (A = Readings(  
-        "","","",""),
-        B = Readings("","","","")
-    ),
-    22 => (A = Readings(  
-        "","","",""),
-        B = Readings("","","","")
-    ),
-    23 => (A = Readings(  
-        "","","",""),
-        B = Readings("","","","")
-    ),
-    24 => (A = Readings(  
-        "","","",""),
-        B = Readings("","","","")
-    ),
-    25 => (A = Readings(  
-        "","","",""),
-        B = Readings("","","","")
-    ),
-    26 => (A = Readings(  
-        "","","",""),
-        B = Readings("","","","")
-    ),
-    27 => (A = Readings(  
-        "","","",""),
-        B = Readings("","","","")
-    ),
-    28 => (A = Readings(  
-        "","","",""),
-        B = Readings("","","","")
-    ),
-    29 => (A = Readings(  
-        "","","",""),
-        B = Readings("","","","")
-    ),
-)
 
 propersB = Dict(
     3 => (A = Readings(  
@@ -116,10 +6,8 @@ propersB = Dict(
         B = Readings("Hosea 2.14-2.20","2_Corinthians 3.1-3.6","Mark 2.13-2.22","")
     ),
     4 => (A = Readings(  
-        "","","","1 Samuel 3:1-10 [11-20] Psalm 139:1-6, 13-18
-        2 Corinthians 4:5-12 Mark 2:23—3:6"),
-        B = Readings("","","","Deuteronomy 5:12-15 Psalm 81:1-10
-        2 Corinthians 4:5-12 Mark 2:23—3:6")
+        "1_Samuel 3.1-3.10 ; 1_Samuel 3.1-3.20","2_Corinthians 4.5-4.12","Mark 2.23—3.6"," Psalm 139.1-139.6, 13-18"),
+        B = Readings("Deuteronomy 5.12-5.15","2_Corinthians 4.5-4.12","Mark 2.23—3.6","Psalm 81.1-81.10")
     ),
     5 => (A = Readings(  
         "","","","1 Samuel 8:4-11 [12-15] 16-20 [11:14-15] Psalm 138
@@ -130,12 +18,9 @@ propersB = Dict(
         2 Corinthians 4:13—5:1 Mark 3:20-35")
     ),
     6 => (A = Readings(  
-        "","","","1 Samuel 15:34—16:13
-        Psalm 20
-        2 Corinthians 5:6-10 [11-13] 14-17 Mark 4:26-34"),
-        B = Readings("","","","Ezekiel 17:22-24
-        Psalm 92:1-4, 12-15
-        2 Corinthians 5:6-10 [11-13] 14-17 Mark 4:26-34")
+        "1_Samuel 15.34—16.13", "2_Corinthians 5.6-5.10, 2_Corinthians 5.14-5.17; 2_Corinthians 5.6-5.17","Mark 4.26-4.34","Psalm 20"),
+
+        B = Readings("Ezekiel 17.22-17.24","2_Corinthians 5.6-5.10, 2_Corinthians 5.14-5.17; 2_Corinthians 5.6-5.17","Mark 4.26-4.34","Psalm 92.1-92.4, Psalm 92.12-92.15")
     ),
     7 => (A = Readings(  
         "","","","1 Samuel 17:[1a, 4-11, 19-23] 32-49 or 1 Samuel 17:57—18:5, 10-16 Psalm 9:9-20 or Psalm 133
@@ -282,6 +167,117 @@ Mark 7:1-8, 14-15, 21-23"),
     ),
 )
 
+
+propersA = Dict(
+    3 => (A = Readings(  
+        "","","",""),
+        B = Readings("","","","")
+    ),
+    4 => (A = Readings(  
+        "","","",""),
+        B = Readings("","","","")
+    ),
+    5 => (A = Readings(  
+        "","","",""),
+        B = Readings("","","","")
+    ),
+    6 => (A = Readings(  
+        "","","",""),
+        B = Readings("","","","")
+    ),
+    7 => (A = Readings(  
+        "","","",""),
+        B = Readings("","","","")
+    ),
+    8 => (A = Readings(  
+        "","","",""),
+        B = Readings("","","","")
+    ),
+    9 => (A = Readings(  
+        "","","",""),
+        B = Readings("","","","")
+    ),
+    10 => (A = Readings(  
+        "","","",""),
+        B = Readings("","","","")
+    ),
+    11 => (A = Readings(  
+        "","","",""),
+        B = Readings("","","","")
+    ),
+    12 => (A = Readings(  
+        "","","",""),
+        B = Readings("","","","")
+    ),
+    13 => (A = Readings(  
+        "","","",""),
+        B = Readings("","","","")
+    ),
+    14 => (A = Readings(  
+        "","","",""),
+        B = Readings("","","","")
+    ),
+    15 => (A = Readings(  
+        "","","",""),
+        B = Readings("","","","")
+    ),
+    16 => (A = Readings(  
+        "","","",""),
+        B = Readings("","","","")
+    ),
+    17 => (A = Readings(  
+        "","","",""),
+        B = Readings("","","","")
+    ),
+    18 => (A = Readings(  
+        "","","",""),
+        B = Readings("","","","")
+    ),
+    19 => (A = Readings(  
+        "","","",""),
+        B = Readings("","","","")
+    ),
+    20 => (A = Readings(  
+        "","","",""),
+        B = Readings("","","","")
+    ),
+    21 => (A = Readings(  
+        "","","",""),
+        B = Readings("","","","")
+    ),
+    22 => (A = Readings(  
+        "","","",""),
+        B = Readings("","","","")
+    ),
+    23 => (A = Readings(  
+        "","","",""),
+        B = Readings("","","","")
+    ),
+    24 => (A = Readings(  
+        "","","",""),
+        B = Readings("","","","")
+    ),
+    25 => (A = Readings(  
+        "","","",""),
+        B = Readings("","","","")
+    ),
+    26 => (A = Readings(  
+        "","","",""),
+        B = Readings("","","","")
+    ),
+    27 => (A = Readings(  
+        "","","",""),
+        B = Readings("","","","")
+    ),
+    28 => (A = Readings(  
+        "","","",""),
+        B = Readings("","","","")
+    ),
+    29 => (A = Readings(  
+        "","","",""),
+        B = Readings("","","","")
+    ),
+)
 
 propersC = Dict(
     3 => (A = Readings(  
