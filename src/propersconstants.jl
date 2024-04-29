@@ -56,10 +56,8 @@ propersB = Dict(
         B = Readings("1_Kings 19.4-19.8","Ephesians 4.25—5.2","John 6.35, 6.41-6.51","Psalm 34.1-34.8")
     ),
     15 => (
-        A = Readings("","","","1 Kings 2:10-12; 3:3-14 Psalm 111
-        Ephesians 5:15-20
-        John 6:51-58"),
-        B = Readings("","","","Proverbs 9:1-6 Psalm 34:9-14 Ephesians 5:15-20 John 6:51-58")
+        A = Readings("1_Kings 2.10-2.12,  1_Kings 3.3-3.14","Ephesians 5.15-5.20","John 6.51-6.58","Psalm 111"),
+        B = Readings("Proverbs 9.1-9.6","Ephesians 5.15-5.20","John 6.51-6.58","Psalm 34:9-14")
     ),
 
     16 => (A = Readings(  
@@ -70,19 +68,12 @@ propersB = Dict(
     ),
 
     17 => (A = Readings(  
-        "","","","Song of Solomon 2:8-13 Psalm 45:1-2, 6-9
-James 1:17-27
-Mark 7:1-8, 14-15, 21-23"),
-        B = Readings("","","","Deuteronomy 4:1-2, 6-9 Psalm 15
-        James 1:17-27
-        Mark 7:1-8, 14-15, 21-23")
+        "Song of Solomon 2:8-13","James 1.17-1.27","Mark 7.1-7.8, Mark 7.14-7.15, Mark 7.21-7.23","Psalm 45.1-45.2, Psalm 45.6-45.9"),
+        B = Readings("Deuteronomy 4.1-4.2","James 1.17-1.27", "Mark 7.1-7.8, Mark 7.14-7.15, Mark 7.21-7.23","Psalm 15")
     ),
     18 => (A = Readings(  
-        "","","","Proverbs 22:1-2, 8-9, 22-23 Psalm 125
-        James 2:1-10 [11-13] 14-17 Mark 7:24-37"),
-        B = Readings("","","","Isaiah 35:4-7a
-        Psalm 146
-        James 2:1-10 [11-13] 14-17 Mark 7:24-37")
+        "Proverbs 22:1-2, 8-9, 22-23","James 2.1-2.10, James 2.14-2.17; James 2.1-2.17","Mark 7.24-7.37","Psalm 125"),
+        B = Readings("Isaiah 35:4-7a","James 2.1-2.10, James 2.14-2.17; James 2.1-2.17","Mark 7.24-7.37","Psalm 146")
     ),
     19 => (A = Readings(  
         "","","","Proverbs 1:20-33
