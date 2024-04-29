@@ -327,9 +327,46 @@ feastselectionsB = Dict(
         "Ephesians 3.1-3.12",
         "Matthew 2.1-2.12",
         "Psalm 72.1-72.7, Psalm 72.10-72.14",
-    )
+    ), 
 
+
+    
 )
 
 
 feastselectionsC = Dict()
+
+#
+# Special liturgies
+# 
+
+const CHRISTMAS_PROPER_1 = 1
+const CHRISTMAS_PROPER_2 = 2
+const CHRISTMAS_PROPER_3 = 3
+
+xmasliturgies = Dict(
+    CHRISTMAS_PROPER_1 => Readings("","","",""),
+    CHRISTMAS_PROPER_2 => Readings("","","",""),
+    CHRISTMAS_PROPER_3 => Readings("","","",""),
+)
+
+const LITURGY_OF_WORD = 1
+const LITURGY_OF_PALMS = 2
+
+palmliturgies = Dict(
+    LITURGY_OF_WORD => Readings("","","",""),
+    LITURGY_OF_PALMS => Readings("","","",""),
+)
+
+const PRINICIPAL_SERVICE = 1
+const GREAT_VIGIL = 2
+const EARLY_SERVICE = 3
+const EVENING_SERVICE = 4
+
+
+easterliturgies = Dict(
+    PRINICIPAL_SERVICE => Readings("","","",""),
+    GREAT_VIGIL => Readings("","","",""),
+    EARLY_SERVICE => Readings("","","",""),
+    EVENING_SERVICE => Readings("","","",""),
+)

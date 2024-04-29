@@ -2,7 +2,12 @@
 title: "Readings from the RCL"
 ---
 
-
+```{julia}
+#| output: false
+#| echo: false
+#| warning: false
+using Lectionary
+```
 
 
 :::{.callout-caution}
@@ -10,3 +15,20 @@ Content TBA
 :::
 
 Introduce the `readings` function, and explain the data it returns.
+
+
+## Liturgical days with multiple services
+
+RCL lists separate readings for multiple services on:
+
+- Christmas Day: three propers of Christmas Day (Proper 1, Proper 2, Proper 3)
+- Palm Sunday: Liturgy of the Palms, Liturgy of the Word
+- Easter Day: Great Vigil, Early Service, Principal Service, Evening Service
+
+Readings for specific services on these days can be specified with the `service` parameter.
+
+```{julia}
+xmas = Commemoration(Lectionary.FEAST_CHRISTMAS, LiturgicalYear(2023))
+readings(xmas)
+```
+
