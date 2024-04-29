@@ -1,7 +1,5 @@
 
 function calcheck(lityr::LiturgicalYear = LiturgicalYear())
-    
-
     epiph_cf = epiphany_sundays(lityr)
     @info("Easter $(easter_sunday(lityr) |> civildate)")
     @info("$(length(epiph_cf)) Sundays after Epiphany") 

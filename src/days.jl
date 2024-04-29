@@ -15,4 +15,9 @@ function precedence(theday::T) where {T <: LiturgicalDay}
     nothing
 end
 
-
+"""Find correct liturgical year for a given liturgical day.
+$(SIGNATURES)
+"""
+function liturgical_year(litday::LiturgicalDay)
+    civildate(litday) |> liturgical_year
+end
