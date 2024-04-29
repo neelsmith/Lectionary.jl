@@ -34,6 +34,15 @@ function debugreadings(lityr::LiturgicalYear = LiturgicalYear())
             push!(failed, dt)
         end
         println("===> On  day $(dt): $(rdg)")
+
     end
     failed
+end
+
+function debugpropers(lityr::LiturgicalYear = LiturgicalYear())
+    for sday in pentecost_season()
+        println("++ $(sday) : $(readings(sday))")
+        println("")
+        
+    end
 end

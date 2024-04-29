@@ -26,7 +26,7 @@ function properreadings(lityr::LiturgicalYear = LiturgicalYear(), track = 'A')::
 
     ordinary_cf = length(pentecost_season(lityr))
 
-    @info("Easter on $(easter_sunday(lityr) |> civildate), $(ordinary_cf) Sundays in ordinary time:")
+    @debug("Easter on $(easter_sunday(lityr) |> civildate), $(ordinary_cf) Sundays in ordinary time:")
 
     readingsdict = propersdict(lityr)
     
@@ -34,7 +34,7 @@ function properreadings(lityr::LiturgicalYear = LiturgicalYear(), track = 'A')::
     for (i,sunday) in enumerate(sundaylist)
         
         idx = i + 2
-        #@info("Get proper $(idx)")
+        @debug("Get proper $(idx)")
         if track == 'A'
             push!(readingslist, readingsdict[idx].A)
         elseif track == 'B'
@@ -55,7 +55,7 @@ Then just index directly into sliced vector
     =#
 function properreadings(litday::LiturgicalDay, track = 'A')
     @info("Get proper readings for $(litday)")
-    maxreadings = 27
+    maxreadings = 28
     lityr = liturgical_year(litday)
     pent_sundays = pentecost_season(lityr)
     propers = properreadings(lityr, track)
