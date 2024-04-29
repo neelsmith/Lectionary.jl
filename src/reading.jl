@@ -1,5 +1,5 @@
 
-"""Dictionary of sequence of proper to readings.
+"""Get dictionary mapping sequence of proper to readings for a given liturgical year.
 $(SIGNATURES)
 """
 function propersdict(lityr::LiturgicalYear = LiturgicalYear())
@@ -45,7 +45,7 @@ function properreadings(lityr::LiturgicalYear = LiturgicalYear(), track = 'A')
     end
 end
 
-"""Find readings in RCL for a given liturgical year.
+"""Find all readings in RCL for a given liturgical year.
 $(SIGNATURES)
 """
 function readings(lityr::LiturgicalYear = LiturgicalYear(); 

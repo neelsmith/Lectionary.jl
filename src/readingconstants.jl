@@ -52,7 +52,79 @@ sundayselectionsB = Dict(
         "Ephesians 3.1-3.12",
         "Matthew 2.1-2.12",
         "Psalm 72.1-72.7, Psalm 72.10-72.14",
-    )
+    ),
+    EPIPHANY_1 => Reading(
+        "Genesis 1.1-1.5","Acts 19.1-19.7","Mark 1.4-1.11","Psalm 29"
+    ),  
+    EPIPHANY_2 => Reading(
+        "","","",""
+    ),
+    EPIPHANY_3 => Reading(
+        "","","",""
+    ),
+    EPIPHANY_4 => Reading(
+        "","","",""
+    ),
+    EPIPHANY_5 => Reading(
+        "","","",""
+    ),
+    EPIPHANY_6 => Reading(
+        "","","",""
+    ),
+    EPIPHANY_7 => Reading(
+        "","","",""
+    ),
+    EPIPHANY_8 => Reading(
+        "","","",""
+    ),
+
+    LENT_1 => Reading(
+        "","","",""
+    ),
+    LENT_2 => Reading(
+        "","","",""
+    ),
+    LENT_3 => Reading(
+        "","","",""
+    ),
+    LENT_4 => Reading(
+        "","","",""
+    ),
+    LENT_5 => Reading(
+        "","","",""
+    ),
+    PALM_SUNDAY => Reading(
+        "","","",""
+    ),
+
+    EASTER_SUNDAY => Reading(
+        "","","",""
+    ),
+    EASTER_2 => Reading(
+        "","","",""
+    ),
+    EASTER_3 => Reading(
+        "","","",""
+    ),
+    EASTER_4 => Reading(
+        "","","",""
+    ),
+    EASTER_5 => Reading(
+        "","","",""
+    ),
+    EASTER_6 => Reading(
+        "","","",""
+    ),
+    EASTER_7 => Reading(
+        "","","",""
+    ),
+    PENTECOST => Reading(
+        "","","",""
+    ),
+    TRINITY_SUNDAY  => Reading(
+        "","","",""
+    ),
+ 
 
 )
 sundayselectionsC = Dict()
