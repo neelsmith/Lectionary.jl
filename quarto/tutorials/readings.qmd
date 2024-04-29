@@ -29,6 +29,14 @@ Readings for specific services on these days can be specified with the `service`
 
 ```{julia}
 xmas = Commemoration(Lectionary.FEAST_CHRISTMAS, LiturgicalYear(2023))
-readings(xmas)
+readings(xmas; service = Lectionary.CHRISTMAS_PROPER_1)
 ```
 
+
+```{julia}
+readings(easter_sunday(LiturgicalYear(2023)); service = Lectionary.GREAT_VIGIL)
+```
+
+```{julia}
+readings(palm_sunday(LiturgicalYear(2023)); service = Lectionary.LITURGY_OF_PALMS)
+```
