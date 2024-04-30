@@ -313,14 +313,54 @@ sundayselectionsC = Dict(
 )
 
 
-
-
 #
 # Readings selections for feast days
 #
 feastselectionsA = Dict()
 
+
+# ALl these are RCL feast/fast days
 feastselectionsB = Dict(
+    FEAST_HOLY_NAME => Readings("","","","Numbers 6:22-27
+    Psalm 8
+    Galatians 4:4-7 or Philippians 2:5-11 Luke 2:15-21"),
+    FEAST_PRESENTATION => Readings("","","","Malachi 3:1-4
+    Psalm 84 or Psalm 24:7-10 Hebrews 2:14-18
+    Luke 2:22-40"),
+    FAST_ASH_WEDNESDAY => Readings("","","","Joel 2:1-2, 12-17 or Isaiah 58:1-12
+    Psalm 51:1-17
+    2 Corinthians 5:20b—6:10 Matthew 6:1-6, 16-21"),
+    FEAST_ANNUNCIATION => Readings("","","","Isaiah 7:10-14
+    Psalm 45 or Psalm 40:5-10 Hebrews 10:4-10
+    Luke 1:26-38"),
+    HOLY_WEEK_MONDAY => Readings("","","","Isaiah 42:1-9
+    Psalm 36:5-11 Hebrews 9:11-15 John 12:1-11"),
+    HOLY_WEEK_TUESDAY => Readings("","","","Isaiah 49:1-7
+    Psalm 71:1-14
+    1 Corinthians 1:18-31 John 12:20-36"),
+    HOLY_WEEK_WEDNESDAY => Readings("","","","Isaiah 50:4-9a
+    Psalm 70 Hebrews 12:1-3 John 13:21-32"),
+    MAUNDY_THURSDAY => Readings("","","","Exodus 12:1-4 [5-10] 11-14
+    Psalm 116:1-2, 12-19 1 Corinthians 11:23-26 John 13:1-17, 31b-35"),
+    FAST_GOOD_FRIDAY => Readings("","","","Isaiah 52:13—53:12
+    Psalm 22
+    Hebrews 10:16-25 or Hebrews 4:14-16; 5:7-9 John 18:1—19:42"),
+    HOLY_SATURDAY => Readings("","","","Job 14:1-14 or Lamentations 3:1-9, 19-24
+    Psalm 31:1-4, 15-16
+    1 Peter 4:1-8
+    Matthew 27:57-66 or John 19:38-42"),
+    FEAST_HOLY_CROSS => Readings("","","","Numbers 21:4b-9
+    Psalm 98:1-5 or Psalm 78:1-2, 34-38 1 Corinthians 1:18-24
+    John 3:13-17"),
+    FEAST_VISITATION => Readings("","","","
+    1 Samuel 2:1-10 Psalm 113 Romans 12:9-16b Luke 1:39-57"),
+    FEAST_ALL_SAINTS => Readings("","","","Wisdom of Solomon 3:1-9 or Isaiah 25:6-9 Psalm 24
+    Revelation 21:1-6a
+    John 11:32-44"),
+    FEAST_THANKSGIVING_DAY => Readings("","","","Joel 2:21-27 Psalm 126
+    1 Timothy 2:1-7 Matthew 6:25-33"),
+
+
     FEAST_EPIPHANY => Readings(  
         "Isaiah 60.1-60.6",
         "Ephesians 3.1-3.12",
@@ -344,17 +384,28 @@ const CHRISTMAS_PROPER_2 = 2
 const CHRISTMAS_PROPER_3 = 3
 
 xmasliturgies = Dict(
-    CHRISTMAS_PROPER_1 => Readings("","","",""),
-    CHRISTMAS_PROPER_2 => Readings("","","",""),
-    CHRISTMAS_PROPER_3 => Readings("","","",""),
+    CHRISTMAS_PROPER_1 => Readings("","","","Isaiah 9:2-7
+    Psalm 96
+    Titus 2:11-14
+    Luke 2:1-14 [15-20]"),
+    CHRISTMAS_PROPER_2 => Readings("","","","Isaiah 62:6-12
+    Psalm 97
+    Titus 3:4-7
+    Luke 2:[1-7] 8-20"),
+    CHRISTMAS_PROPER_3 => Readings("","","","Isaiah 52:7-10
+    Psalm 98
+    Hebrews 1:1-4 [5-12] John 1:1-14"),
 )
 
 const LITURGY_OF_WORD = 1
 const LITURGY_OF_PALMS = 2
 
 palmliturgies = Dict(
-    LITURGY_OF_WORD => Readings("","","",""),
-    LITURGY_OF_PALMS => Readings("","","",""),
+    LITURGY_OF_WORD => Readings("","","","Isaiah 50:4-9a Psalm 31:9-16
+    Philippians 2:5-11
+    Mark 14:1—15:47 or Mark 15:1-39 [40-47]"),
+    LITURGY_OF_PALMS => Readings("","","","Mark 11:1-11 or John 12:12-16
+    Psalm 118:1-2, 19-29"),
 )
 
 const PRINICIPAL_SERVICE = 1
@@ -364,8 +415,34 @@ const EVENING_SERVICE = 4
 
 
 easterliturgies = Dict(
-    PRINICIPAL_SERVICE => Readings("","","",""),
-    GREAT_VIGIL => Readings("","","",""),
-    EARLY_SERVICE => Readings("","","",""),
-    EVENING_SERVICE => Readings("","","",""),
+    PRINICIPAL_SERVICE => Readings("","","","Acts 10:34-43 or Isaiah 25:6-9
+    Psalm 118:1-2, 14-24
+    1 Corinthians 15:1-11 or Acts 10:34-43 John 20:1-18 or Mark 16:1-8"),
+    GREAT_VIGIL => Readings("","","","Genesis 1:1—2:4a
+    Psalm 136:1-9, 23-26
+    2
+    Genesis 7:1-5, 11-18; 8:6-18; 9:8-13 Psalm 46
+    3
+    Genesis 22:1-18 Psalm 16
+    4
+    Exodus 14:10-31; 15:20-21 Exodus 15:1b-13, 17-18
+    5
+    Isaiah 55:1-11 Isaiah 12:2-6
+    6
+    Baruch 3:9-15, 32—4:4 or Proverbs 8:1-8, 19-21; 9:4b-6 Psalm 19
+    7
+    Ezekiel 36:24-28 Psalm 42 and 43
+    8
+    Ezekiel 37:1-14 Psalm 143
+    9
+    Zephaniah 3:14-20 Psalm 98 New Testament Reading (A, B, C) Romans 6:3-11
+    Psalm 114
+    Gospel (B)
+    Mark 16:1-8"),
+    EARLY_SERVICE => Readings("","","","Romans 6:3-11
+    Matthew 28:1-10
+    Psalm 114"),
+    EVENING_SERVICE => Readings("","","","Isaiah 25:6-9
+    Psalm 114
+    1 Corinthians 5:6b-8 Luke 24:13-49"),
 )
