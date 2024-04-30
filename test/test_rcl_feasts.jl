@@ -24,8 +24,6 @@
 
     @test civildate(Commemoration(Lectionary.FEAST_THANKSGIVING_DAY, ly))  == Date(2024, 11, 28)
 
-
-
     @test civildate(Commemoration(Lectionary.HOLY_WEEK_MONDAY, ly)) == Date(2024, 3, 25)
     @test civildate(Commemoration(Lectionary.HOLY_WEEK_TUESDAY, ly)) == Date(2024, 3, 26)
     @test civildate(Commemoration(Lectionary.HOLY_WEEK_WEDNESDAY, ly)) == Date(2024, 3, 27)
@@ -35,7 +33,6 @@
     @test civildate(Commemoration(Lectionary.FAST_GOOD_FRIDAY, ly)) == Date(2024, 3, 29)
 
     @test civildate(Commemoration(Lectionary.HOLY_SATURDAY, ly)) == Date(2024, 3, 30)
-
 
     # Test this in a year where it doesn't collide with a Sunday:
     @test civildate(Commemoration(Lectionary.FEAST_ANNUNCIATION, LiturgicalYear(2022))) == Date(2023,3,25)
