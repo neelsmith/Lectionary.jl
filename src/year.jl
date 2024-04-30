@@ -211,8 +211,8 @@ function holy_days(lityear::LiturgicalYear = LiturgicalYear(); src = :RCL)
     elseif src == :RCL
         @debug("GET RCL feasts")
         map(RCL_FEASTS) do fst
-            if fst == FEAST_THANKSGIVING_DAY
-                Commemoration(fst, lityear.ends_in)
+            if fst == FEAST_CHRISTMAS
+                Commemoration(fst, lityear.starts_in)
             else
                 Commemoration(fst, lityear.ends_in)
             end

@@ -346,12 +346,14 @@ function epiphany_sundays(yr::Int)::Vector{LiturgicalDay}
     
     sundaylist = LiturgicalDay[]
     predecessor  = EPIPHANY  # - 1
-    for (i, sday) in enumerate(ordered[1:end-1])
+    for (i, sday) in enumerate(ordered[1:end - 1]) 
         push!(sundaylist, LiturgicalSunday(sday, predecessor + i))
     end
+    xfig = LiturgicalSunday(ordered[end], TRANSFIGURATION_SUNDAY)
+    push!(sundaylist, xfig)
     ##@debug("Added $(length(sundaylist))) Sundays; now add transfiguration for $(year(ordered[end]))")
-    #xfig = Commemoration(FEAST_TRANSFIGURATION, year(ordered[end]))
-    #push!(sundaylist, xfig)
+    
+    
     sundaylist
 end
 

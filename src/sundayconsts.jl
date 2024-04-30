@@ -18,6 +18,7 @@ const EPIPHANY_6 = 14
 const EPIPHANY_7 = 15
 const EPIPHANY_8 = 16
 
+
 const LENT_1 = 17
 const LENT_2 = 18
 const LENT_3 = 19
@@ -62,6 +63,7 @@ const PENTECOST_25 = 55
 const PENTECOST_26 = 56
 const PENTECOST_27 = 57
 const PENTECOST_28 = 58
+const TRANSFIGURATION_SUNDAY = 59
 
 const sunday_names = Dict(
 
@@ -83,6 +85,7 @@ const sunday_names = Dict(
     EPIPHANY_6 => "the sixth Sunday after the Epiphany",
     EPIPHANY_7 => "the seventh Sunday after the Epiphany",
     EPIPHANY_8 => "the eighth Sunday after the Epiphany",
+    TRANSFIGURATION_SUNDAY => "Transfiguration Sunday",
 
     LENT_1 => "the first Sunday in Lent",
     LENT_2 => "the second Sunday in Lent",

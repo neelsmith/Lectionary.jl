@@ -170,6 +170,8 @@ sundayselectionsB = Dict(
         "Hosea 2.14-2.20","2_Corinthians 3.1-3.6","Mark 2.13-2.22","Psalm 103.1-103.13, Psalm 103.22"
     ),
 
+    TRANSFIGURATION_SUNDAY => Readings("2_Kings 2.1-2.12","2_Corinthians 4.3-4.6"," Mark 9.2-9.9","Psalm 50.1-50.6"),
+
     LENT_1 => Readings(
         "Genesis 9.8-9.17","1_Peter 3.18-3.22","Mark 1.9-1.15","Psalm 25.1-25.10"
     ),

@@ -44,3 +44,11 @@ function debugpropers(lityr::LiturgicalYear = LiturgicalYear())
         
     end
 end
+
+
+function viewyear(lityr::LiturgicalYear = LiturgicalYear())
+    for theday in kalendar(lityr)
+        msg = string(civildate(theday), ": ", theday)
+        println(msg)
+    end
+end
