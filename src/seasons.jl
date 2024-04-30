@@ -561,6 +561,11 @@ function lent_season(lityear::LiturgicalYear = LiturgicalYear())::Vector{Liturgi
     vcat(start, holyweek(lityear))
 end
 
+
+function lent_sundays(lityear::LiturgicalYear = LiturgicalYear())
+    sundays = [lent(sunday, lityear.ends_in) for sunday in 1:5] 
+end
+
 """Add sig
 $(SIGNATURES)
 """

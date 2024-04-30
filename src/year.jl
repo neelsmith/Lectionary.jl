@@ -189,14 +189,13 @@ function sundays(lityear::LiturgicalYear = LiturgicalYear())
         advent_sundays(lityear), 
         christmas_sundays(lityear), 
         epiphany_sundays(lityear),
-        lent_season(lityear),
+        lent_sundays(lityear),
         [palm_sunday(lityear), easter_sunday(lityear)],
         easter_sundays(lityear),
         [pentecost_day(lityear), trinity(lityear)],
         pentecost_season(lityear)
     )
 end
-
 
 function principal_feasts(lityear::LiturgicalYear = LiturgicalYear())
     [Commemoration(thefeast, lityear) for thefeast in PRINCIPAL_FEASTS]
