@@ -23,7 +23,7 @@ export LiturgicalSunday, Commemoration,  OtherDay
 
 export advent, advent_sundays
 export christmas, christmas_day, christmas_sundays
-export epiphany_day, epiphany_sundays
+export epiphany_day, epiphany, epiphany_sundays
 export easter_sunday
 export ash_wednesday, lent, palm_sunday, holyweek, good_friday
 export ash_wednesday_date

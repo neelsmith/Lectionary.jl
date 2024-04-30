@@ -276,6 +276,13 @@ end
 #
 # Epiphany
 #
+"""Find a numbered Sunday of the ordinary time after Epiphany in a given liturgical year.
+"""
+function epiphany(sunday::Int,  lityr::LiturgicalYear = LiturgicalYear())
+    epiphany_sundays(lityr)[sunday]
+end
+
+
 """Find all Sundays of ordinary time after Epiphany in a given liturgical year.
 
 **Examples**
