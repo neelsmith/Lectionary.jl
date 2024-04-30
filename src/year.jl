@@ -229,6 +229,7 @@ this liturgical year.
 $(SIGNATURES)
 """
 function kalendar(lityr::LiturgicalYear = LiturgicalYear(); src = :RCL)
+    @info("kal for $(lityr), using src $(src)")
     events = LiturgicalDay[]
     allcommems = holy_days(lityr)
     
@@ -238,6 +239,7 @@ function kalendar(lityr::LiturgicalYear = LiturgicalYear(); src = :RCL)
         end
         
     elseif src == :RCL
+        @info("Filtering for RCL feasts..")
         commems = filter(allcommems) do litday
             litday.commemoration_id in RCL_FEASTS
         end
