@@ -55,15 +55,18 @@ Then just index directly into sliced vector
     =#
 function properreadings(litday::LiturgicalDay, track = 'A')
     @info("Get proper readings for $(litday)")
-    maxreadings = 28
+    maxreadings = 30
     lityr = liturgical_year(litday)
     pent_sundays = pentecost_season(lityr)
     propers = properreadings(lityr, track)
     @info("Compare $(length(pent_sundays)) Sundays with $(length(propers)) propers")
 
+
     starthere = maxreadings - length(pent_sundays)
     propers_slice = propers[starthere:end]
+    @info("Propers slice has $(length(propers_slice)) readings")
     idx = findfirst(sday -> sday == litday, pent_sundays)
+    @info("Index of reading is $(idx)")
     propers_slice[idx]
 end
 

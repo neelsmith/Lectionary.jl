@@ -128,6 +128,19 @@ propersB = Dict(
         "2_Samuel 23.1-23.7","Revelation 1.4b-1.8","John 18.33-18.37","Psalm 132.1-132.12; Psalm 132.1-132.18"),
         B = Readings("Daniel 7.9-7.10, Daniel 7.13-7.14","Revelation 1.4b-1.8","John 18.33-18.37","Psalm 93")
     ),
+    30 => (A = Readings("","","","1 Samuel 1:4-20
+    1 Samuel 2:1-10
+    Hebrews 10:11-14 [15-18] 19-25 Mark 13:1-8"),
+            B = Readings("","","","Daniel 12:1-3
+            Psalm 16
+            Hebrews 10:11-14 [15-18] 19-25 Mark 13:1-8")
+    ),
+    31 => (A = Readings("","","","2 Samuel 23:1-7
+    Psalm 132:1-12 [13-18] Revelation 1:4b-8
+    John 18:33-37"),
+        B = Readings("","","","Daniel 7:9-10, 13-14 Psalm 93
+        Revelation 1:4b-8 John 18:33-37")
+    )
 )
 
 
