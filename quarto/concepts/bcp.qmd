@@ -1,0 +1,14 @@
+---
+title: "The Episcopal Book of Common Prayer (BCP)"
+---
+
+:::{.callout-caution}
+Content TBA
+:::
+
+
+## Differences between CCT and BCP liturgical year
+
+BCP is basically a superset of CCT
+
+## Precedence of days

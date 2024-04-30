@@ -1,22 +1,38 @@
 ---
-title: "The Liturgical Year"
+title: "The Liturgical Year and the Civil Calendar"
 ---
 
 
-:::{.callout-caution}
-Content TBA
+::: {.callout-note}
+Many online sites explain the common features of the liturgical calendar that organizes the readings of the [Revised Common Lectionary](../rcl.qmd). This page summarizes the most important concept for working with the `Lectionary.jl` package.
 :::
 
-Lots of sites online will explain this but link to the RCL site.
 
 
+## Overview
 
-Key points:
+The liturgical year is organized in two cycles. One is anchored by the fixed date of Christmas on December 25; the second is anchored by the movable date of Easter. Each cycle has three liturgical seasons: a preparatory season, a celebratory season, and "ordniary time."
 
-- Christmas is fixed. The day of the week of Christmas Day gives the range of the Christmas cycle from Advent 1 to day before Epiphany.
+## The Christmas cycle
+
+The first season of the liturgical year is *Advent*. It begins four Sundays before Christmas Day (so in the range of November 27 to  December 3, depending on what day of the week Christmas Day falls on). *Christmastide* is the "twelve days of Christmas" that run from Christmas Day to Epiphany (January 6). The third season, *ordinary time after Epiphany*, runs until Lent begins on Ash Wednesday.
+
+## The Easter cycle
+
+- Lent
+- Easter tide
+- ordinary time
+
+Notes;
+
 - Easter varies.  The rest of the year is from Epiphany to Advent 1 of the following year. The date of Easter determines how it is subdivided into seasons. Ordinary time after Epiphany continues to Ash Wednesday, which in turn precedes Easter by 40 days. Eastertide lasts until Pentecost. Pentecost through the end of the liturgical year is ordinary time.
 
-## Determining the date of Easter
+
+
+## The Easter cycle
+
+
+### Determining the date of Easter
 
 - March 21 substitutes for astronomical equinox
 - following astronomical new moon
@@ -25,14 +41,7 @@ Key points:
 Earliest possible is March 22
 
 
-## Differnces between CCT and BCP liturgical year
-
-BCP is basically a superset of CCT
-
 ## Movable dates
-
-
-## Precedence of days
 
 
 
