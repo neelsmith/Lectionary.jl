@@ -140,6 +140,10 @@ propersB = Dict(
     John 18:33-37"),
         B = Readings("","","","Daniel 7:9-10, 13-14 Psalm 93
         Revelation 1:4b-8 John 18:33-37")
+    ),
+
+    CHRIST_THE_KING => (A = Readings("2_Samuel 23.1-23.7","Revelation 1.4b-1.8","John 18.33-18.37","Psalm 132.1-132.12; Psalm 132.1-132.18"),
+        B = Readings("Daniel 7.9-7.10, Daniel 7.13-7.14","Revelation 1.4b-1.8","John 18.33-18.37","Psalm 93")
     )
 )
 

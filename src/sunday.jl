@@ -55,8 +55,6 @@ end
 julia> civildate(easter_sunday())
 2024-03-31
 ```
-
-
 $(SIGNATURES)
 """
 function civildate(sday::LiturgicalSunday)

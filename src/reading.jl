@@ -54,20 +54,29 @@ Slice last n propers where n is lenght(sundays)
 Then just index directly into sliced vector
     =#
 function properreadings(litday::LiturgicalDay, track = 'A')
-    @info("Get proper readings for $(litday)")
-    maxreadings = 30
+    @debug("Get proper readings for $(litday)")
     lityr = liturgical_year(litday)
-    pent_sundays = pentecost_season(lityr)
     propers = properreadings(lityr, track)
-    @info("Compare $(length(pent_sundays)) Sundays with $(length(propers)) propers")
+
+    if name(litday) == "Christ the King"
+        propers[end]
+
+    else
+        maxreadings = 30
+        pent_sundays = pentecost_season(lityr)
+        
+        @info("Compare $(length(pent_sundays)) Sundays with $(length(propers)) propers")
 
 
-    starthere = maxreadings - length(pent_sundays)
-    propers_slice = propers[starthere:end]
-    @info("Propers slice has $(length(propers_slice)) readings")
-    idx = findfirst(sday -> sday == litday, pent_sundays)
-    @info("Index of reading is $(idx)")
-    propers_slice[idx]
+        starthere = maxreadings - length(pent_sundays)
+        propers_slice = propers[starthere:end]
+        @info("Propers slice has $(length(propers_slice)) readings")
+        @info("Find index for $(litday)")
+
+        idx = findfirst(sday -> sday == litday, pent_sundays)
+        @info("Index of reading is $(idx)")
+        propers_slice[idx]
+    end
 end
 
 # FIX THIS SO THERE'S NO Union{Nothing,...} !

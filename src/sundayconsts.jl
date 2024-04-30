@@ -64,6 +64,7 @@ const PENTECOST_26 = 56
 const PENTECOST_27 = 57
 const PENTECOST_28 = 58
 const TRANSFIGURATION_SUNDAY = 59
+const CHRIST_THE_KING = 60
 
 const sunday_names = Dict(
 
@@ -131,6 +132,7 @@ const sunday_names = Dict(
     PENTECOST_26 => "the twenty-sixth Sunday after Pentecost",
     PENTECOST_27 => "the twenty-seventh Sunday after Pentecost",
     PENTECOST_28 => "the twenty-eighth Sunday after Pentecost",
+    CHRIST_THE_KING => "Christ the King"
 )
 
 

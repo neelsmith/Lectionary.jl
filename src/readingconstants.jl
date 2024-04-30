@@ -218,7 +218,7 @@ sundayselectionsB = Dict(
     ),
     TRINITY_SUNDAY  => Readings(
         "Isaiah 6.1-6.8","Romans 8.12-8.17","John 3.1-3.17","Psalm 29"
-    ),
+    )
  
 
 )

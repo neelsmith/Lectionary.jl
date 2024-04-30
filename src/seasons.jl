@@ -972,8 +972,11 @@ function pentecost_season(yr::Int)::Vector{LiturgicalSunday}
             push!(sundayslist, sunday)
         end
     end
-
+    lastdate = sundayslist[end] |> civildate
+    lastsunday = LiturgicalSunday(lastdate, CHRIST_THE_KING)
+    sundayslist[end] = lastsunday
     # REPLACE LAST ONE WITH CHRIST THE KING
+
     sundayslist
 end
 
