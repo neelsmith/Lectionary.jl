@@ -3,43 +3,34 @@ title: "The Revised Common Lectionary (RCL)"
 ---
 
 ::: {.callout-note}
-From the Consultation on Common Texts:
+For authoritative information about the Revised Common Lectionary, see the [Consultation on Common Texts website](https://www.commontexts.org/rcl/), including:
 
-- read an [introduction to the RCL](https://www.commontexts.org/wp-content/uploads/2015/11/RCL_Introduction_Web.pdf) (PDF)
-- [download the lectionary](https://www.commontexts.org/rcl/download/) (PDFs for years A, B and C)
+- [an introduction to the RCL](https://www.commontexts.org/wp-content/uploads/2015/11/RCL_Introduction_Web.pdf) (PDF)
+- [downloadable lectionaries](https://www.commontexts.org/rcl/download/) (PDFs for years A, B and C)
 :::
 
 
 ## Overview
 
-A *lectionary* is a collection of Biblical readings arranged according to the calendar of [the liturgical year](./liturgicalyear/). The *Revised Common Lectionary*, or  *RCL*, is a product of two groups, the North American Consultation on Common Texts (CCT) and, later, the International English Language Liturgical Consultation (ELLC). Their work is documented online the [Consultation on Common Texts website](https://www.commontexts.org/rcl/).
+A *lectionary* is a collection of Biblical readings arranged according to the calendar of [the liturgical year](./liturgicalyear/). The *Revised Common Lectionary*, or  *RCL*, is a product of two groups, the North American Consultation on Common Texts (CCT) and, later, the International English Language Liturgical Consultation (ELLC). Their work is documented on the [Consultation on Common Texts website](https://www.commontexts.org/rcl/).
 
-The readings in the RCL are organized in a three-year cycle. The years in the cycle are identified as Year A, B or C. The cycle begins with Year A in years when the calendar year of the first Sunday of Advent is evenly divisible by three. The liturgical year 2022-2023, for example, was Year A because 2022 is evenly divisible by three (or, phrased differently, 2022 modulo 3 is 0).
+The readings in the RCL are organized in a cycle of three years referred to as Year A, B or C. The cycle begins with Year A when the calendar year of the first Sunday of Advent is evenly divisible by three. The liturgical year 2022-2023, for example, was Year A because 2022 is evenly divisible by three (or, phrased differently, 2022 modulo 3 is 0). The following liturgical year (2023-2024) is Year B; 2024-2025 will be Year C. In each year, the gospel readings systematically follow one of the three synoptic gospels (Matthew, Mark and Luke).
 
 ## Content of readings for a given liturgy
 
 
-The RCL lists four readings for each liturgy it includes. Most often, the first reading is taken from the Old Testament and the second reading from the New Testament, along with a reading from the Gospels and a reading from the Psalms. (The Easter Vigil is an exception to this rule.)
+The RCL lists four readings for each liturgy it includes. (The readings for the Easter Vigil are an exception to this rule.) Most often, the first reading is taken from the Old Testament and the second reading from the New Testament, accompanied by a reading from the Gospels and a reading from the Psalms. (During Eastertide, however, the first reading is regularly taken from *Acts*, so both readings are from the New Testament in that season.) Three days in the liturgical calendar of the RCL have readings for more than one service: Christmas Day, Palm Sunday and Easter Day.
 
-Three days in the liturgical calendar of the RCL have readings for more than one service: Christmas Day, Palm Sunday and Easter Day.
+Readings may include suggestions for shorter and longer selections of the same passage; they may also include alternative selections of completely different passages.
 
-
-
-
-
-- note that three days have multiple sets of readings designated
-
-## Cycle and Variation included in RCL
-
-- longer readings
-- alternate readings
-- systematic A,B tracks for OT in ordinary time after Epiphany
-
-
-## Multiple services, movable dates, and precedence of readings
+In the longest season of the year, ordinary time after Pentecost, the RCL defines two "tracks" for each Sunday after Trinity Sunday. In the first system, the first reading for each day follows a systematic selection of Old Testament passages; in the second system, the first reading is instead chosen for its connection to the gospel passage assigned for that liturgy. The first system functions to provide a three-year survey of the Old Testament in much the same way that the gospel selections provide a three-year survey of the synoptic gospels.
 
 
 
+## Movable dates and precedence of readings
+
+
+8 movable dates out of 17 other days
 
 
 ## Days in the liturgical year with RCL readings
@@ -67,11 +58,3 @@ The RCL includes readings for all Sundays in the the liturgical year and the fol
 
 
 
-
-## For more information
-
-
-From the Consultation on Common Texts:
-
-- read an [introduction to the RCL](https://www.commontexts.org/wp-content/uploads/2015/11/RCL_Introduction_Web.pdf) (PDF)
-- [download the lectionary](https://www.commontexts.org/rcl/download/) (PDFs for years A, B and C)

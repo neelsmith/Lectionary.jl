@@ -1,0 +1,15 @@
+---
+title: "Citation with URNs"
+---
+
+
+:::{.callout-caution}
+Content TBA
+:::
+
+
+- list URNs for all texts
+- identify RSV passage system used by RCL
+- identify all disrepancies with Complutensian URNs
+
+
