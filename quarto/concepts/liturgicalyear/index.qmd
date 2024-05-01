@@ -4,7 +4,7 @@ title: "The Liturgical Year and the Civil Calendar"
 
 
 ::: {.callout-note}
-Many online sites explain the liturgical calendar that organizes the readings of the [Revised Common Lectionary](../rcl.qmd). This page summarizes the most important concepts underlying the `Lectionary.jl` package.
+Many online sites explain the liturgical calendar that organizes the readings of the [Revised Common Lectionary](../rcl.qmd). This page summarizes the most important concepts underlying the calendrical functionality of the `Lectionary.jl` package.
 :::
 
 

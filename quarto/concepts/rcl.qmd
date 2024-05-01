@@ -2,19 +2,34 @@
 title: "The Revised Common Lectionary (RCL)"
 ---
 
-:::{.callout-caution}
-Content TBA
+::: {.callout-note}
+From the Consultation on Common Texts:
+
+- read an [introduction to the RCL](https://www.commontexts.org/wp-content/uploads/2015/11/RCL_Introduction_Web.pdf) (PDF)
+- [download the lectionary](https://www.commontexts.org/rcl/download/) (PDFs for years A, B and C)
 :::
 
 
-https://www.commontexts.org/rcl/
+## Overview
+
+A *lectionary* is a collection of Biblical readings arranged according to the calendar of [the liturgical year](./liturgicalyear/). The *Revised Common Lectionary*, or  *RCL*, is a product of two groups, the North American Consultation on Common Texts (CCT) and, later, the International English Language Liturgical Consultation (ELLC). Their work is documented online the [Consultation on Common Texts website](https://www.commontexts.org/rcl/).
+
+The readings in the RCL are organized in a three-year cycle. The years in the cycle are identified as Year A, B or C. The cycle begins with Year A in years when the calendar year of the first Sunday of Advent is evenly divisible by three. The liturgical year 2022-2023, for example, was Year A because 2022 is evenly divisible by three (or, phrased differently, 2022 modulo 3 is 0).
+
+## Content of readings for a given liturgy
 
 
-- what is a lectionary?
-- what is structure of a day's designated readings
+The RCL lists four readings for each liturgy it includes. Most often, the first reading is taken from the Old Testament and the second reading from the New Testament, along with a reading from the Gospels and a reading from the Psalms. (The Easter Vigil is an exception to this rule.)
+
+Three days in the liturgical calendar of the RCL have readings for more than one service: Christmas Day, Palm Sunday and Easter Day.
+
+
+
+
+
 - note that three days have multiple sets of readings designated
 
-## Variation included in RCL
+## Cycle and Variation included in RCL
 
 - longer readings
 - alternate readings
@@ -27,8 +42,36 @@ https://www.commontexts.org/rcl/
 
 
 
+## Days in the liturgical year with RCL readings
 
-Links to Consultation on Common Texts:
+The RCL includes readings for all Sundays in the the liturgical year and the following special days:
 
-- [introduction to the RCL](https://www.commontexts.org/wp-content/uploads/2015/11/RCL_Introduction_Web.pdf) (PDF)
+- Christmas Day (December 25)
+- Holy Name (January 1)
+- Epiphany (January 6)
+- The Presentation (February 2)
+- Ash Wednesday
+- Monday of Holy Week
+- Tuesday of Holy Week
+- Wednesday of Holy Week
+- Maundy Thursday 
+- Good Friday
+- Holy Saturday
+- Ascension
+- The Annunciation (March 25)
+- The Visitation (May 31)
+- The Holy Cross (September 14)
+- All Saints Day (November 1)
+- Thanksgiving Day
+
+
+
+
+
+## For more information
+
+
+From the Consultation on Common Texts:
+
+- read an [introduction to the RCL](https://www.commontexts.org/wp-content/uploads/2015/11/RCL_Introduction_Web.pdf) (PDF)
 - [download the lectionary](https://www.commontexts.org/rcl/download/) (PDFs for years A, B and C)
