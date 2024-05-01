@@ -211,7 +211,7 @@ sundayselectionsB = Dict(
         "Acts 10.44-10.48","1_John 5.1-5.6","John 15.9-15.17","Psalm 98"
     ),
     EASTER_7 => Readings(
-        "","","",""
+        "Acts 1.15-1.17, Acts 1.21-1.26","1_John 5.9-5.13","John 17.6-17.19","Psalm 1"
     ),
     PENTECOST => Readings(
         "Acts 2.1-2.21 ; Ezekiel 37.1-37.14","Romans 8.22-8.27 ;  Acts 2.1-2.21","John 15.26-15.27, John 16:4b-16.15","Psalm 104.24-104.34, Psalm 104.35b"
@@ -358,6 +358,7 @@ feastselectionsB = Dict(
         "Psalm 72.1-72.7, Psalm 72.10-72.14",
     ), 
 
+    FEAST_ASCENSION => Readings("Acts 1.1-1.11","Ephesians 1.15-1.23","Luke 24.44-24.53","Psalm 47 ; Psalm 93")
 
     
 )

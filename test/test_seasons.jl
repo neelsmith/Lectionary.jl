@@ -9,3 +9,12 @@
 
     
 end
+
+@testset "Test operations on whole year" begin
+    kal = kalendar(LiturgicalYear(2023))
+    @test length(kal) == 69
+
+    sundaylist = filter(day -> day isa LiturgicalSunday, kal)
+    @test length(sundaylist) == 52
+
+end
