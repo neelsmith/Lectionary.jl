@@ -130,12 +130,12 @@ sundayselectionsB = Dict(
         "Psalm 148"
     ),
 
-    #CHRISTMAS_2 => Readings(
-    #    "Isaiah 61:10-62:3",
-    #    "Galatians 4.4-4.7",
-    #    "Luke 2.22-2.40",
-    #    "Psalm 148"
-    #),
+    CHRISTMAS_2 => Readings(
+        "Isaiah 61:10-62:3",
+        "Galatians 4.4-4.7",
+        "Luke 2.22-2.40",
+        "Psalm 148"
+    ),
 
     EPIPHANY => Readings(
         "Isaiah 60.1-60.6",
