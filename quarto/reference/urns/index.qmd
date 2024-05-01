@@ -9,7 +9,7 @@ Content TBA
 
 
 - list URNs for all texts
-- identify RSV passage system used by RCL
+- identify RSV passage system used by RCL (New Revised Standard Version)
 - identify all disrepancies with Complutensian URNs
 
 
