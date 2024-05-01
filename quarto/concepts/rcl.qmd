@@ -29,13 +29,12 @@ In the longest season of the year, ordinary time after Pentecost, the RCL define
 
 ## Movable dates and precedence of readings
 
-
-8 movable dates out of 17 other days
+In addition to the regular cycle of Sundays in the liturgical year, the RCL defines readings for seventeen other days (listed below). Eight of those days have fixed dates that can, in some years, fall on a Sunday. The lectionary listings on the Consultation on Common Texts do not explicitly address which set of readings have priority in years when two sets of readings are defined for the same liturgy. `Lectionary.jl` follows the guidelines on pages 15-17 of *The Book of Common Prayer* of the Episcopal Church (PDF online [here](https://www.episcopalchurch.org/wp-content/uploads/sites/2/2021/02/book-of-common-prayer-2006.pdf)) to determine which readings should take precedence on days with multiple sets of readings.
 
 
 ## Days in the liturgical year with RCL readings
 
-The RCL includes readings for all Sundays in the the liturgical year and the following special days:
+The RCL includes readings for all Sundays in the the liturgical year and the additional special days listed here. Dates are included in parentheses for those days with fixed dates.
 
 - Christmas Day (December 25)
 - Holy Name (January 1)
