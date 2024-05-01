@@ -117,7 +117,7 @@ function readings(theday::T, yr::Char; as_urn = false, service = 1, track = 'A')
         # readings for multiple services in RCL
         if name(theday) == "Christmas Day"
            @assert service in 1:3
-           xmasliturgies[service]
+           xmasliturgiesB[service]
            
         else
             feastreadings(theday, yr; as_urn = as_urn)
@@ -134,12 +134,12 @@ function readings(theday::T, yr::Char; as_urn = false, service = 1, track = 'A')
         elseif name(theday) == "Palm Sunday"
             @debug("Need to check which service for Palm Sunday readings")
             @assert service in 1:2
-            palmliturgies[service]
+            palmliturgiesB[service]
 
         elseif name(theday)== "Easter Day"
             @debug("Need to check which service for Easter readings")
             @assert service in 1:4
-            easterliturgies[service]
+            easterliturgiesB[service]
             
         else
             sundayreadings(theday, yr; as_urn = as_urn)

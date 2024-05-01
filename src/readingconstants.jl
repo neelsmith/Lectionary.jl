@@ -323,45 +323,33 @@ feastselectionsA = Dict()
 
 # ALl these are RCL feast/fast days
 feastselectionsB = Dict(
-    FEAST_HOLY_NAME => Readings("","","","Numbers 6:22-27
-    Psalm 8
-    Galatians 4:4-7 or Philippians 2:5-11 Luke 2:15-21"),
-    FEAST_PRESENTATION => Readings("","","","Malachi 3:1-4
-    Psalm 84 or Psalm 24:7-10 Hebrews 2:14-18
-    Luke 2:22-40"),
-    FAST_ASH_WEDNESDAY => Readings("","","","Joel 2:1-2, 12-17 or Isaiah 58:1-12
-    Psalm 51:1-17
-    2 Corinthians 5:20b—6:10 Matthew 6:1-6, 16-21"),
-    FEAST_ANNUNCIATION => Readings("","","","Isaiah 7:10-14
-    Psalm 45 or Psalm 40:5-10 Hebrews 10:4-10
-    Luke 1:26-38"),
-    HOLY_WEEK_MONDAY => Readings("","","","Isaiah 42:1-9
-    Psalm 36:5-11 Hebrews 9:11-15 John 12:1-11"),
-    HOLY_WEEK_TUESDAY => Readings("","","","Isaiah 49:1-7
-    Psalm 71:1-14
-    1 Corinthians 1:18-31 John 12:20-36"),
-    HOLY_WEEK_WEDNESDAY => Readings("","","","Isaiah 50:4-9a
-    Psalm 70 Hebrews 12:1-3 John 13:21-32"),
-    MAUNDY_THURSDAY => Readings("","","","Exodus 12:1-4 [5-10] 11-14
-    Psalm 116:1-2, 12-19 1 Corinthians 11:23-26 John 13:1-17, 31b-35"),
-    FAST_GOOD_FRIDAY => Readings("","","","Isaiah 52:13—53:12
-    Psalm 22
-    Hebrews 10:16-25 or Hebrews 4:14-16; 5:7-9 John 18:1—19:42"),
-    HOLY_SATURDAY => Readings("","","","Job 14:1-14 or Lamentations 3:1-9, 19-24
-    Psalm 31:1-4, 15-16
-    1 Peter 4:1-8
-    Matthew 27:57-66 or John 19:38-42"),
-    FEAST_HOLY_CROSS => Readings("","","","Numbers 21:4b-9
-    Psalm 98:1-5 or Psalm 78:1-2, 34-38 1 Corinthians 1:18-24
-    John 3:13-17"),
-    FEAST_VISITATION => Readings("","","","
-    1 Samuel 2:1-10 Psalm 113 Romans 12:9-16b Luke 1:39-57"),
-    FEAST_ALL_SAINTS => Readings("","","","Wisdom of Solomon 3:1-9 or Isaiah 25:6-9 Psalm 24
-    Revelation 21:1-6a
-    John 11:32-44"),
-    FEAST_THANKSGIVING_DAY => Readings("","","","Joel 2:21-27 Psalm 126
-    1 Timothy 2:1-7 Matthew 6:25-33"),
+    FEAST_HOLY_NAME => Readings("Numbers 6.22-6.27","Galatians 4.4-4.7 ; Philippians 2.5-2.11","Luke 2.15-2.21","Psalm 8"),
 
+    FEAST_PRESENTATION => Readings("Malachi 3.1-3.4","Hebrews 2.14-2.18","Luke 2.22-2.40","Psalm 84 ; Psalm 24.7-24.10 "),
+
+    FAST_ASH_WEDNESDAY => Readings("Joel 2.1-2.2, Joel 2.12-2.17 ; Isaiah 58.1-58.12","2_Corinthians 5.20b—6.10","Matthew 6.1-6.6, Matthew 6.16-6.21","Psalm 51:1-17"),
+
+    FEAST_ANNUNCIATION => Readings("Isaiah 7.10-7.14","Hebrews 10.4-10.10","Luke 1.26-1.38","Psalm 45 ; Psalm 40.5-40.10"),
+
+    HOLY_WEEK_MONDAY => Readings("Isaiah 42.1-42.9","Hebrews 9.11-9.15","John 12.1-12.11","Psalm 36:5-11"),
+
+    HOLY_WEEK_TUESDAY => Readings("Isaiah 49.1-49.7","1_Corinthians 1.18-1.31","John 12.20-12.36","Psalm 71:1-14"),
+    
+    HOLY_WEEK_WEDNESDAY => Readings("Isaiah 50.4-50.9a","Hebrews 12.1-12.3","John 13.21-13.32","Psalm 70"),
+    
+    MAUNDY_THURSDAY => Readings("Exodus 12.1-12.4, Exodus] 12.11-12.14; Exodus 12.1-12.14","1_Corinthians 11.23-11.26","John 13.1-13.17, John 13.31b-13.35","Psalm 116.1-116.2, Psalm 116.12-116.19"),
+
+    FAST_GOOD_FRIDAY => Readings("Isaiah 52.13—53.12","Hebrews 10.16-10.25 ; Hebrews 4.14-4.16,  Hebrews 5.7-5.9","John 18.1—19.42","Psalm 22"),
+    
+    HOLY_SATURDAY => Readings("Job 14.1-14.14 ; Lamentations 3.1-3.9, Lamentations 3.19-3.24"," 1_Peter 4.1-4.8","Matthew 27.57-27.66 ;  John 19.38-19.42","Psalm 31.1-31.4, Psalm 31.15-31.16"),
+
+    FEAST_HOLY_CROSS => Readings("Numbers 21.4b-21.9","1_Corinthians 1.18-1.24","John 3.13-3.17","Psalm 98.1-98.5 ; Psalm 78.1-78.2, Psalm 78.34-78.38"),
+    
+    FEAST_VISITATION => Readings("1_Samuel 2.1-2.10","Romans 12.9-12.16b","Luke 1.39-1.57","Psalm 113"),
+
+    FEAST_ALL_SAINTS => Readings("Wisdom_of_Solomon 3.1-3.9 ; Isaiah 25.6-25.9","Revelation 21.1-21.6a","John 11.32-11.44","Psalm 24"),
+
+    FEAST_THANKSGIVING_DAY => Readings("Joel 2.21-2.27","1_Timothy 2.1-2.7","Matthew 6.25-6.33","Psalm 126"),
 
     FEAST_EPIPHANY => Readings(  
         "Isaiah 60.1-60.6",
@@ -378,73 +366,65 @@ feastselectionsB = Dict(
 feastselectionsC = Dict()
 
 #
-# Special liturgies
+# Days with multiple liturgies:
 # 
-
+# Christmas Day:
 const CHRISTMAS_PROPER_1 = 1
 const CHRISTMAS_PROPER_2 = 2
 const CHRISTMAS_PROPER_3 = 3
-
-xmasliturgies = Dict(
-    CHRISTMAS_PROPER_1 => Readings("","","","Isaiah 9:2-7
-    Psalm 96
-    Titus 2:11-14
-    Luke 2:1-14 [15-20]"),
-    CHRISTMAS_PROPER_2 => Readings("","","","Isaiah 62:6-12
-    Psalm 97
-    Titus 3:4-7
-    Luke 2:[1-7] 8-20"),
-    CHRISTMAS_PROPER_3 => Readings("","","","Isaiah 52:7-10
-    Psalm 98
-    Hebrews 1:1-4 [5-12] John 1:1-14"),
-)
-
+# Palm Sunday:
 const LITURGY_OF_WORD = 1
 const LITURGY_OF_PALMS = 2
-
-palmliturgies = Dict(
-    LITURGY_OF_WORD => Readings("","","","Isaiah 50:4-9a Psalm 31:9-16
-    Philippians 2:5-11
-    Mark 14:1—15:47 or Mark 15:1-39 [40-47]"),
-    LITURGY_OF_PALMS => Readings("","","","Mark 11:1-11 or John 12:12-16
-    Psalm 118:1-2, 19-29"),
-)
-
+# Easter Day:
 const PRINICIPAL_SERVICE = 1
 const GREAT_VIGIL = 2
 const EARLY_SERVICE = 3
 const EVENING_SERVICE = 4
 
 
-easterliturgies = Dict(
-    PRINICIPAL_SERVICE => Readings("","","","Acts 10:34-43 or Isaiah 25:6-9
-    Psalm 118:1-2, 14-24
-    1 Corinthians 15:1-11 or Acts 10:34-43 John 20:1-18 or Mark 16:1-8"),
-    GREAT_VIGIL => Readings("","","","Genesis 1:1—2:4a
-    Psalm 136:1-9, 23-26
-    2
-    Genesis 7:1-5, 11-18; 8:6-18; 9:8-13 Psalm 46
-    3
-    Genesis 22:1-18 Psalm 16
-    4
-    Exodus 14:10-31; 15:20-21 Exodus 15:1b-13, 17-18
-    5
-    Isaiah 55:1-11 Isaiah 12:2-6
-    6
-    Baruch 3:9-15, 32—4:4 or Proverbs 8:1-8, 19-21; 9:4b-6 Psalm 19
-    7
-    Ezekiel 36:24-28 Psalm 42 and 43
-    8
-    Ezekiel 37:1-14 Psalm 143
-    9
-    Zephaniah 3:14-20 Psalm 98 New Testament Reading (A, B, C) Romans 6:3-11
-    Psalm 114
-    Gospel (B)
-    Mark 16:1-8"),
-    EARLY_SERVICE => Readings("","","","Romans 6:3-11
-    Matthew 28:1-10
-    Psalm 114"),
-    EVENING_SERVICE => Readings("","","","Isaiah 25:6-9
-    Psalm 114
-    1 Corinthians 5:6b-8 Luke 24:13-49"),
+# Year B readings for days with multiple liturgies:
+xmasliturgiesB = Dict(
+    CHRISTMAS_PROPER_1 => Readings("Isaiah 9.2-9.7","Titus 2.11-2.14","Luke 2.1-1.14 ;  Luke 2.1-2.20","Psalm 96"),
+
+    CHRISTMAS_PROPER_2 => Readings("Isaiah 62.6-62.12","Titus 3.4-3.7","Luke 2.8-2.20; Luke 2.1-20","Psalm 97"),
+
+    CHRISTMAS_PROPER_3 => Readings("Isaiah 52.7-52.10","Hebrews 1.1-1.4; Hebrews 1.1-1.12","John 1.1-1.14","Psalm 98"),
+)
+
+palmliturgiesB = Dict(
+    LITURGY_OF_WORD => Readings("Isaiah 50.4-50.9a","Philippians 2.5-2.11","Mark 14.1—15.47 ; Mark 15.1-15.39 ; Mark 15.1-15.47","Psalm 31:9-16"),
+    LITURGY_OF_PALMS => Readings("","","Mark 11.1-11.11 ; John 12.12-12.16","Psalm 118.1-118.2, 118.19-118.29"),
+)
+
+easterliturgiesB = Dict(
+    PRINICIPAL_SERVICE => Readings("Acts 10.34-10.43 ; Isaiah 25.6-25.9","1_Corinthians 15.1-15.11 ; Acts 10.34-10.43","John 20.1-20.18 ; Mark 16.1-16.8","Psalm 118.1-118.2, 118.14-118.24"),
+
+    GREAT_VIGIL => Readings("
+    Genesis 1.1—2.4a, Psalm 136.1-136.9, Psalm 136.23-136.26,
+
+    Genesis 7.1-7.5, Genesis 7.11-7.18, Genesis  8.6-8.18, Genesis 9.8-9.13,  Psalm 46,
+
+    Genesis 22.1-22.18, Psalm 16,
+
+    Exodus 14.10-14.31; Exodus 15.20-15.21, Exodus 15.1b-15.13, Exodus 15.17-15.18,
+
+    
+    Isaiah 55.1-55.11, Isaiah 12.2-12.6,
+
+    Baruch 3.9-3.15, Baruch 3.32—4.4 ; Proverbs 8.1-8.8, Proverbs 8.19-8.21; Proverbs 9.4b-9.6, Psalm 19,
+
+    Ezekiel 36.24-36.28, Psalm 42, Psalm 43,
+    
+    Ezekiel 37.1-36.14, Psalm 143,
+    
+    Zephaniah 3.14-3.20, Psalm 98 ",
+
+    "Romans 6.3-6.11",
+    "Mark 16.1-16.8",
+    "Psalm 114"),
+
+
+    EARLY_SERVICE => Readings("","Romans 6.3-6.11","Matthew 28.1-28.10","Psalm 114"),
+
+    EVENING_SERVICE => Readings("Isaiah 25.6-25.9","1_Corinthians 5.6b-5.8","Luke 24.13-24.49","Psalm 114"),
 )
