@@ -28,11 +28,11 @@ In the RCL calendar, Easter is the Sunday following the first full moon that fal
 
 
 
-## Summary of possible dates for beginning of each liturgical season
+## Range of possible dates for the beginning of each liturgical season
 
 1. First Sunday of Advent: November 27 -  December 3
 2. Christmas Day: December 25
-3. Epiphany: January 6
+3. Epiphany: January 6 (ordinary time begins the following day)
 2. Ash Wednesday: February 4 - March 10
 3. Easter Day:  March 22 -  April 25
 4. Pentecost:  May 10 -  June 13
