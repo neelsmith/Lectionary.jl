@@ -6,6 +6,10 @@ title: "The Revised Common Lectionary (RCL)"
 Content TBA
 :::
 
+
+https://www.commontexts.org/rcl/
+
+
 - what is a lectionary?
 - what is structure of a day's designated readings
 - note that three days have multiple sets of readings designated

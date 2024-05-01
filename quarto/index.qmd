@@ -2,7 +2,7 @@
 title: "Lectionary.jl"
 ---
 
-`Lectionary.jl` is a Julia package that coordinates the liturgical calendar year with the Gregorian civil calendar and with the readings from the [Revised Common Lectionary](https://www.commontexts.org/rcl/) (RCL).
+`Lectionary.jl` is a Julia package that coordinates the [liturgical calendar year](./concepts/liturgicalyear/) with the Gregorian civil calendar and with the readings from the [Revised Common Lectionary](./concepts/rcl.qmd) (RCL).
 
 - learn [how the liturgical year and the RCL work](./concepts/) 
 - try a [tutorial](./tutorials/) to start using the `Lectionary` package
