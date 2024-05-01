@@ -16,10 +16,10 @@ function formatreadingstring(s)
 end
 
 # Format: colon delimited options; comma-separated for disjoint passages
-"""Get readings of Old Testament.
+"""Find first reading (normally Old Testament).
 $(SIGNATURES)
 """
-function ot(rdg::Readings; as_urn = false)
+function reading1(rdg::Readings; as_urn = false)
     
     if as_urn
         @warn("URN translation not yet implemented")
@@ -27,17 +27,17 @@ function ot(rdg::Readings; as_urn = false)
     formatreadingstring(rdg.ot_string)
 end
 
-"""Get readings of New Testament.
+"""Find second reading (normally New Testament).
 $(SIGNATURES)
 """
-function nt(rdg::Readings; as_urn = false)
+function reading2(rdg::Readings; as_urn = false)
     if as_urn
         @warn("URN translation not yet implemented")
     end
     formatreadingstring(rdg.nt_string)
 end
 
-"""Get readings of Gospel.
+"""Find Gospel selection.
 $(SIGNATURES)
 """
 function gospel(rdg::Readings; as_urn = false)
@@ -47,7 +47,7 @@ function gospel(rdg::Readings; as_urn = false)
     formatreadingstring(rdg.gospel_string)
 end
 
-"""Get readings of Psalm.
+"""Find Psalm selection.
 $(SIGNATURES)
 """
 function psalm(rdg::Readings; as_urn = false)
