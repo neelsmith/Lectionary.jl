@@ -15,17 +15,18 @@ The liturgical year is organized in two cycles. One is anchored by the fixed dat
 
 ## The Christmas cycle
 
-The first season of the liturgical year is *Advent*. It begins four Sundays before Christmas Day (so in the range of November 27 to  December 3, depending on what day of the week Christmas Day falls on). *Christmastide* is the "twelve days of Christmas" that run from Christmas Day to Epiphany (January 6). The third season, *ordinary time after Epiphany*, runs until Lent begins on Ash Wednesday.
+The seasons of the Christmas cycle are *Advent*, *Christmastide*, and *ordinary time after Epiphany*.
+Advent begins four Sundays before Christmas Day (so in the range of November 27 to  December 3, depending on what day of the week Christmas Day falls on). Christmastide is the "twelve days of Christmas" that run from Christmas Day through Epiphany (January 6). The third season, ordinary time after Epiphany, runs until Lent begins on Ash Wednesday.
 
 ## The Easter cycle
 
-*Lent* begins on Ash Wednesday, 46 days before Easter. Ash Wednesday can fall anytime from February 4 to March 10. *Eastertide* runs from Easter until Pentecost. Easter Day occurs between March 22 and April 25;  Pentecost is the Sunday 49 days after Easter. *Ordinary time after Pentecost* fills the rest of the liturgical until the beginning of Advent for the following year.
+The seasons of the Easter cycle are *Lent*, *Eastertide*, and *ordinary time after Pentecost*.
+Lent begins on Ash Wednesday, 46 days before Easter. Ash Wednesday can fall anytime from February 4 to March 10. Eastertide runs from Easter through Pentecost. Easter Day occurs between March 22 and April 25;  Pentecost is the Sunday 49 days after Easter. Ordinary time after Pentecost fills the rest of the liturgical until the beginning of Advent for the following year.
 
 
 ### Determining the date of Easter
 
-In the RCL calendar, Easter is the Sunday following the first full moon that falls on or after the spring equinox, but instead of the astronomical equinox, the liturgical year uses the fixed calendar of March 21. The date of Easter can therefore range from March 22 at the earliest to April 25 at the latest.
-
+In the RCL calendar, Easter is the Sunday following the first full moon that falls on or after the spring equinox, but instead of the astronomical equinox, the liturgical year uses the fixed calendar date of March 21. The date of Easter can therefore range from March 22 at the earliest to April 25 at the latest.
 
 
 ## Range of possible dates for the beginning of each liturgical season
@@ -35,4 +36,4 @@ In the RCL calendar, Easter is the Sunday following the first full moon that fal
 3. Epiphany: January 6 (ordinary time begins the following day)
 2. Ash Wednesday: February 4 - March 10
 3. Easter Day:  March 22 -  April 25
-4. Pentecost:  May 10 -  June 13
+4. Pentecost:  May 10 -  June 13 (ordinary time begins the following day)
