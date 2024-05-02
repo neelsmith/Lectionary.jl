@@ -120,9 +120,17 @@ using Lectionary
 #| warning: false
 @doc advent_season
 ```
-::
+:::
 
-advent_sundays
+`advent_sundays`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc advent_sundays
+```
+:::
 
 `christmastide`
 
@@ -134,8 +142,17 @@ advent_sundays
 ```
 :::
 
-christmas_sundays
+`christmas_sundays`
 
+
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc christmas_sundays
+```
+:::
 
 `epiphany_season`
 
@@ -147,7 +164,17 @@ christmas_sundays
 ```
 :::
 
-epiphany_sundays
+`epiphany_sundays`
+
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc epiphany_sundays
+```
+:::
+
 
 
 `lent_season`
@@ -160,8 +187,16 @@ epiphany_sundays
 ```
 :::
 
-lent_sundays
+`lent_sundays`
 
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc lent_sundays
+```
+:::
 
 `eastertide`
 
@@ -174,7 +209,16 @@ lent_sundays
 :::
 
 
-easter_sundays
+`easter_sundays`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc easter_sundays
+```
+:::
+
 
 `pentecost_season`
 
@@ -186,9 +230,16 @@ easter_sundays
 ```
 :::
 
-pentecost_sundays
+`pentecost_sundays`
 
 
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc pentecost_sundays
+```
+:::
 
 ## Liturgical days
 
@@ -272,14 +323,49 @@ pentecost_sundays
 
 `advent`
 
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc advent
+```
+:::
+
+
 `christmas_day`
+
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc christmas_day
+```
+:::
+
 
 `christmas`
 
 
 
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc christmas
+```
+:::
 
 `epiphany_day`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc epiphany_day
+```
+:::
 
 
 :::{.callout-note appearance="minimal"}
@@ -290,8 +376,16 @@ pentecost_sundays
 ```
 :::
 
-epiphany
+`epiphany`
 
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc epiphany
+```
+:::
 
 `ash_wednesday`
 
@@ -315,21 +409,87 @@ epiphany
 :::
 
 
-lent
-
-palm_sunday
-
-holyweek
+`lent`
 
 
-good_friday
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc lent
+```
+:::
 
 
-easter_sunday
+`palm_sunday`
 
-pentecost_day
 
-trinity
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc palm_sunday
+```
+:::
+
+
+`holyweek`
+
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc holyweek
+```
+:::
+
+
+`good_friday`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc good_friday
+```
+:::
+
+
+`easter_sunday`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc easter_sunday
+```
+:::
+
+
+`pentecost_day`
+
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc pentecost_day
+```
+:::
+
+`trinity`
+
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc trinity
+```
+:::
+
 
 `ascension`
 
