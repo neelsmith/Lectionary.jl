@@ -33,9 +33,9 @@ propersB = Dict(
         B = Readings("Amos 7.7-7.15","Ephesians 1.3-1.14","Mark 6.14-6.29","Psalm 85.8-85.13")
     ),
     10 => (A = Readings(  
-        "Samuel 6:1-5, 12b-19","Ephesians 1:3-14","Mark 6.14-6.29","Psalm 24"),
+        "Samuel 6.1-6.5, Samuel 6.12b-6.19","Ephesians 1:3-14","Mark 6.14-6.29","Psalm 24"),
 
-        B = Readings("Amos 7.7-7.15","Ephesians 1:3-14","Mark 6.14-6.29"," Psalm 85.8-85.13")
+        B = Readings("Amos 7.7-7.15","Ephesians 1.3-1.14","Mark 6.14-6.29"," Psalm 85.8-85.13")
     ),
     11 => (A = Readings(  
         "2_Samuel 7.1-7.14a","Ephesians 2.11-2.22","Mark 6.30-6.34","Psalm 89.1:20-89.37, Psalm 89.53-89.56"),
@@ -85,20 +85,18 @@ propersB = Dict(
         B = Readings("Wisdom_of_Solomon 1.16—2.1, Wisdom_of_Solomon 2.12-2.22 ; Jeremiah 11.18-11.20","James 3.13—4.3, James 4.7-4.8a","Mark 9.30-9.37", "Psalm 54")
     ),
     21 => (A = Readings(  
-        "","","","Esther 7:1-6, 9-10; 9:20-22 Psalm 124
-        James 5:13-20
-        Mark 9:38-50"),
-        B = Readings("","","","Numbers 11:4-6, 10-16, 24-29 Psalm 19:7-14
-        James 5:13-20
-        Mark 9:38-50")
+        "Esther 7.1-7.6, Esther 7.9-7.10, Esther 9.20-9.22","James 5.13-5.20","Mark 9.38-9.50","Psalm 124"),
+
+        B = Readings("Numbers 11.4-11.6, Numbers 11.10-11.16, Numbers 11.24-11.29","James 5.13-5.20"," Mark 9.38-9.50","Psalm 19:7-14")
     ),
     22 => (A = Readings(  
         "Job 1:1; 2:1-10","Hebrews 1.1-1.4,  Hebrews 2.5-2.12","Mark 10.2-10.16","Psalm 26"),
         B = Readings("Genesis 2:18-24","Hebrews 1.1-1.4,  Hebrews 2.5-2.12","Mark 10.2-10.16","Psalm 8")
     ),
     23 => (A = Readings(  
-        "","","","Job 23:1-9, 16-17 Psalm 22:1-15 Hebrews 4:12-16 Mark 10:17-31"),
-        B = Readings("","","","Amos 5:6-7, 10-15 Psalm 90:12-17 Hebrews 4:12-16 Mark 10:17-31")
+        "Job 23.1-23.9, Job 23.16-23.17","Hebrews 4.12-4.16","Mark 10.17-10.31","Psalm 22.1-22.15"),
+
+        B = Readings("Amos 5.6-5.7, Amos 5.10-5.15","Hebrews 4.12-4.16","Mark 10.17-10.31","Psalm 90.12-90.17")
     ),
     24 => (A = Readings(  
         "Job 38.1-38.7; Job 38.1-38.7, Job 38.34-38.41","Hebrews 5.1-5.10","Mark 10.35-10.45","Psalm 104.1-104.9, Psalm 104.24, Psalm 104.35b"),
@@ -128,16 +126,14 @@ propersB = Dict(
         "2_Samuel 23.1-23.7","Revelation 1.4b-1.8","John 18.33-18.37","Psalm 132.1-132.12; Psalm 132.1-132.18"),
         B = Readings("Daniel 7.9-7.10, Daniel 7.13-7.14","Revelation 1.4b-1.8","John 18.33-18.37","Psalm 93")
     ),
-    30 => (A = Readings("","","","1 Samuel 1:4-20
-    1 Samuel 2:1-10
-    Hebrews 10:11-14 [15-18] 19-25 Mark 13:1-8"),
-            B = Readings("","","","Daniel 12:1-3
-            Psalm 16
-            Hebrews 10:11-14 [15-18] 19-25 Mark 13:1-8")
+
+    30 => (
+        A = Readings("1_Samuel 1.4-1.20","Hebrews 10.11-10.14, Hebrews 10.19-10.25 ; Hebrews 10.11-10.25","Mark 13.1-13.8","1_Samuel 2.1-2.10"),
+
+        B = Readings("Daniel 12.1-12.3","Hebrews 10.11-10.14, Hebrews 10.19-10.25 ; Hebrews 10.11-10.25","Mark 13.1-13.8","Psalm 16")
     ),
-    31 => (A = Readings("","","","2 Samuel 23:1-7
-    Psalm 132:1-12 [13-18] Revelation 1:4b-8
-    John 18:33-37"),
+    
+    31 => (A = Readings("2_Samuel 23.1-23.7","Revelation 1.4b-1.8","John 18.33-18.37","Psalm 132.1-132.12 ; Psalm 132.1-132.18"),
         B = Readings("","","","Daniel 7:9-10, 13-14 Psalm 93
         Revelation 1:4b-8 John 18:33-37")
     ),

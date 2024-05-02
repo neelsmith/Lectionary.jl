@@ -22,9 +22,9 @@ using a given track for Old Testament selections.
 $(SIGNATURES)
 """
 function properreadings(lityr::LiturgicalYear = LiturgicalYear(), track = 'A')::Vector{Readings}
-    sundaylist = pentecost_season(lityr)[2:end]
+    sundaylist = pentecost_sundays(lityr)
 
-    ordinary_cf = length(pentecost_season(lityr))
+    ordinary_cf = length(pentecost_sundays(lityr))
 
     @debug("Easter on $(easter_sunday(lityr) |> civildate), $(ordinary_cf) Sundays in ordinary time:")
 
@@ -33,8 +33,8 @@ function properreadings(lityr::LiturgicalYear = LiturgicalYear(), track = 'A')::
     readingslist = Readings[]
     for (i,sunday) in enumerate(sundaylist)
         
-        idx = i + 2
-        @debug("Get proper $(idx)")
+        idx = i + 3
+        @debug("Get proper for Sunday with proper $(idx) on  $(civildate(sunday))")
         if track == 'A'
             push!(readingslist, readingsdict[idx].A)
         elseif track == 'B'
@@ -54,28 +54,23 @@ Slice last n propers where n is lenght(sundays)
 Then just index directly into sliced vector
     =#
 function properreadings(litday::LiturgicalDay, track = 'A')
-    @debug("Get proper readings for $(litday)")
+    @debug("\nGet proper readings for $(litday)\n")
     lityr = liturgical_year(litday)
     propers = properreadings(lityr, track)
-
+    @debug("\n\nFound $(length(propers)) reading selections for propers")
+    
     if name(litday) == "Christ the King"
         propers[end]
 
     else
-        maxreadings = 30
-        pent_sundays = pentecost_season(lityr)
+        pent_sundays = pentecost_sundays(lityr)
         
-        @info("Compare $(length(pent_sundays)) Sundays with $(length(propers)) propers")
-
-
-        starthere = maxreadings - length(pent_sundays)
-        propers_slice = propers[starthere:end]
-        @info("Propers slice has $(length(propers_slice)) readings")
-        @info("Find index for $(litday)")
-
+        @debug("\nCompare $(length(pent_sundays)) Sundays with $(length(propers)) propers\n")
         idx = findfirst(sday -> sday == litday, pent_sundays)
-        @info("Index of reading is $(idx)")
-        propers_slice[idx]
+
+        @debug("Index is $(idx)")
+        propers[idx]
+
     end
 end
 
@@ -84,14 +79,16 @@ end
 $(SIGNATURES)
 """
 function readings(lityr::LiturgicalYear = LiturgicalYear(); 
-    as_urn = false, track = 'A', service = 1)::Vector{Union{Nothing, Readings}}
+    as_urn = false, track = 'A', service = 1)::Vector{Readings} # ::Vector{Union{Nothing, Readings}}
     lectyear = lectionary_year(lityr)
 
     kal = kalendar(lityr)
     pentecostdate = civildate(pentecost_day(lityr))
-    dates1 = filter(theday -> civildate(theday) <= pentecostdate, kal)
+    dates1 = filter(theday -> civildate(theday) <= pentecostdate || ! isa(theday, LiturgicalSunday), kal)
+    @info("Get readings for $(length(dates1)) feasts")
     rdgs1 = [readings(theday, lectyear; as_urn = as_urn) for theday in dates1]
     rdgs2 = properreadings(lityr, track)
+    @info("Get readings for $(length(rdgs2)) propers")
     vcat(rdgs1, rdgs2)
 end
 

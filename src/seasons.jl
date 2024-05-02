@@ -526,7 +526,7 @@ julia> lent_season(2024)
 
 $(SIGNATURES)
 """
-function lent_season(yr::Int)::Vector{LiturgicalDay}
+function xlent_season(yr::Int)::Vector{LiturgicalDay}
     lent_season(LiturgicalYear(yr - 1))
 end
 
@@ -555,7 +555,7 @@ julia> lent_season(LiturgicalYear(2023))
 
 $(SIGNATURES)
 """
-function lent_season(lityear::LiturgicalYear = LiturgicalYear())::Vector{LiturgicalDay}
+function xlent_season(lityear::LiturgicalYear = LiturgicalYear())::Vector{LiturgicalDay}
     sundays = [lent(sunday, lityear.ends_in) for sunday in 1:5] 
     start = vcat([ash_wednesday()], sundays)
     vcat(start, holyweek(lityear))
@@ -927,8 +927,8 @@ julia> pentecost_season()
 
 $(SIGNATURES)
 """
-function pentecost_season(lityr::LiturgicalYear = LiturgicalYear())::Vector{LiturgicalSunday}
-    pentecost_season(lityr.ends_in)
+function pentecost_sundays(lityr::LiturgicalYear = LiturgicalYear())::Vector{LiturgicalSunday}
+    pentecost_sundays(lityr.ends_in)
 end
 
 
@@ -964,7 +964,7 @@ julia> pentecost_season(2024)
 
 $(SIGNATURES)
 """
-function pentecost_season(yr::Int)::Vector{LiturgicalSunday}
+function pentecost_sundays(yr::Int)::Vector{LiturgicalSunday}
     sundayslist = []
     for i in 2:28
         sunday = pentecost(i, yr)
@@ -1031,7 +1031,7 @@ $(SIGNATURES)
 function in_pentecost(sunday::LiturgicalSunday)
     thedate = civildate(sunday)
     yr = year(thedate)
-    sunday in pentecost_season(yr)
+    sunday in pentecost_sundays(yr)
 end
 
 """True if given Liturgical day falls within ordinary time following

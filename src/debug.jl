@@ -31,7 +31,7 @@ function debugreadings(lityr::LiturgicalYear = LiturgicalYear())
         if isnothing(rdg)
             push!(failed, dt)
         end
-        println("===> On  day $(dt): $(rdg)")
+        println("===> On  day $(dt): $(rdg)\n")
 
     end
     failed

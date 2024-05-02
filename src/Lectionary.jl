@@ -28,16 +28,22 @@ export easter_sunday
 export ash_wednesday, lent, palm_sunday, holyweek, good_friday
 export lent_sundays
 export ash_wednesday_date
-export lent_season, easter_sundays
+export easter_sundays
 export eastertide
 export ascension
-export pentecost, pentecost_day, trinity, pentecost_season
+export pentecost, pentecost_day, trinity
 export thanksgiving
+
+# Christmas cycle:
+export advent_season, christmastide, epiphany_season
+# Easter cycle:
+export lent_season, eastertide, pentecost_season
+
 
 export calendar_week, calendar_month, calendar_year
 export weekrange
 
-export Readings, readings, ot, nt, psalm, gospel
+export Readings, readings, reading1, reading1, psalm, gospel
 
 include("selections.jl")
 

@@ -193,7 +193,7 @@ function sundays(lityear::LiturgicalYear = LiturgicalYear())
         [palm_sunday(lityear), easter_sunday(lityear)],
         easter_sundays(lityear),
         [pentecost_day(lityear), trinity(lityear)],
-        pentecost_season(lityear)
+        pentecost_sundays(lityear)
     )
 end
 
@@ -228,7 +228,7 @@ this liturgical year.
 $(SIGNATURES)
 """
 function kalendar(lityr::LiturgicalYear = LiturgicalYear(); src = :RCL)
-    @info("kal for $(lityr), using src $(src)")
+    @debug("kal for $(lityr), using src $(src)")
     events = LiturgicalDay[]
     allcommems = holy_days(lityr)
     
@@ -238,7 +238,7 @@ function kalendar(lityr::LiturgicalYear = LiturgicalYear(); src = :RCL)
         end
         
     elseif src == :RCL
-        @info("Filtering for RCL feasts..")
+        @debug("Filtering for RCL feasts..")
         commems = filter(allcommems) do litday
             litday.commemoration_id in RCL_FEASTS
         end
@@ -271,3 +271,51 @@ function christmas_day(yr::Int)
 end
 
 
+
+function advent_season(lityr::LiturgicalYear = LiturgicalYear())
+    @info("Find advent")
+
+    filter(kalendar(lityr)) do theday
+        civildate(theday) >= civildate(advent(1, lityr)) &&
+        civildate(theday) < civildate(christmas_day(lityr))
+    end
+end
+
+
+function christmastide(lityr::LiturgicalYear = LiturgicalYear())
+    filter(kalendar(lityr)) do theday
+        civildate(theday) >= civildate(christmas_day(lityr)) &&
+        civildate(theday) <= civildate(epiphany_day(lityr))
+    end
+end
+
+
+function epiphany_season(lityr::LiturgicalYear = LiturgicalYear())
+    filter(kalendar(lityr)) do theday
+        civildate(theday) > civildate(epiphany_day(lityr)) &&
+        civildate(theday) < civildate(ash_wednesday(lityr))
+    end
+end
+
+
+function lent_season(lityr::LiturgicalYear = LiturgicalYear())
+    filter(kalendar(lityr)) do theday
+        civildate(theday) >= civildate(ash_wednesday(lityr)) &&
+        civildate(theday) < civildate(easter_sunday(lityr))
+    end
+end
+
+
+function eastertide(lityr::LiturgicalYear = LiturgicalYear())
+    filter(kalendar(lityr)) do theday
+        civildate(theday) >= civildate(easter_sunday(lityr)) &&
+        civildate(theday) <= civildate(pentecost_day(lityr))
+    end
+end
+
+function pentecost_season(lityr::LiturgicalYear = LiturgicalYear())
+    filter(kalendar(lityr)) do theday
+        civildate(theday) > civildate(pentecost_day(lityr)) &&
+        civildate(theday) < civildate(advent(1, lityr.ends_in))
+    end
+end
