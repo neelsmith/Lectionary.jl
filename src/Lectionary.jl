@@ -25,7 +25,7 @@ export advent, advent_sundays
 export christmas, christmas_day, christmas_sundays
 export epiphany_day, epiphany, epiphany_sundays
 export easter_sunday
-export ash_wednesday, lent, palm_sunday, holyweek, good_friday
+export ash_wednesday, lent, palm_sunday, holy_week, good_friday
 export lent_sundays
 export ash_wednesday_date
 export easter_sundays
@@ -43,7 +43,7 @@ export lent_season, eastertide, pentecost_season
 export calendar_week, calendar_month, calendar_year
 export weekrange
 
-export Readings, readings, reading1, reading1, psalm, gospel
+export Readings, readings, reading1, reading2, psalm, gospel
 
 include("selections.jl")
 

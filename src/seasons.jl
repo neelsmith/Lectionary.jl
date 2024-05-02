@@ -558,7 +558,7 @@ $(SIGNATURES)
 function xlent_season(lityear::LiturgicalYear = LiturgicalYear())::Vector{LiturgicalDay}
     sundays = [lent(sunday, lityear.ends_in) for sunday in 1:5] 
     start = vcat([ash_wednesday()], sundays)
-    vcat(start, holyweek(lityear))
+    vcat(start, holy_week(lityear))
 end
 
 
@@ -569,15 +569,15 @@ end
 """Add sig
 $(SIGNATURES)
 """
-function holyweek(lityr::LiturgicalYear = LiturgicalYear())
-    holyweek(lityr.ends_in)
+function holy_week(lityr::LiturgicalYear = LiturgicalYear())
+    holy_week(lityr.ends_in)
 end
 
 
 """Add sig
 $(SIGNATURES)
 """
-function holyweek(yr::Int)
+function holy_week(yr::Int)
     @debug("Find holy week in yr $(yr)")
     dayids = [HOLY_WEEK_MONDAY,HOLY_WEEK_TUESDAY,HOLY_WEEK_WEDNESDAY, MAUNDY_THURSDAY,FAST_GOOD_FRIDAY,HOLY_SATURDAY]
 

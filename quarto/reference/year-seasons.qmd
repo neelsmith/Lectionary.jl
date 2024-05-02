@@ -120,7 +120,9 @@ using Lectionary
 #| warning: false
 @doc advent_season
 ```
-:::
+::
+
+advent_sundays
 
 `christmastide`
 
@@ -132,6 +134,9 @@ using Lectionary
 ```
 :::
 
+christmas_sundays
+
+
 `epiphany_season`
 
 :::{.callout-note appearance="minimal"}
@@ -142,6 +147,9 @@ using Lectionary
 ```
 :::
 
+epiphany_sundays
+
+
 `lent_season`
 
 :::{.callout-note appearance="minimal"}
@@ -151,6 +159,8 @@ using Lectionary
 @doc lent_season
 ```
 :::
+
+lent_sundays
 
 
 `eastertide`
@@ -164,7 +174,7 @@ using Lectionary
 :::
 
 
-
+easter_sundays
 
 `pentecost_season`
 
@@ -175,6 +185,10 @@ using Lectionary
 @doc pentecost_season
 ```
 :::
+
+pentecost_sundays
+
+
 
 ## Liturgical days
 
@@ -256,8 +270,11 @@ using Lectionary
 ### Functions for constructing particular liturgical days
 
 
+`advent`
 
+`christmas_day`
 
+`christmas`
 
 
 
@@ -272,6 +289,9 @@ using Lectionary
 @doc epiphany_day
 ```
 :::
+
+epiphany
+
 
 `ash_wednesday`
 
@@ -294,6 +314,23 @@ using Lectionary
 ```
 :::
 
+
+lent
+
+palm_sunday
+
+holyweek
+
+
+good_friday
+
+
+easter_sunday
+
+pentecost_day
+
+trinity
+
 `ascension`
 
 
@@ -314,5 +351,4 @@ using Lectionary
 @doc thanksgiving
 ```
 :::
-
 

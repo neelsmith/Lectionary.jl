@@ -14,7 +14,7 @@ function calcheck(lityr::LiturgicalYear = LiturgicalYear())
 end
 
 function debughw(lityr::LiturgicalYear = LiturgicalYear())
-    hw = holyweek(lityr)
+    hw = holy_week(lityr)
     @info(hw)
     eastersun = easter_sunday(lityr)
     @info("Easter is $(eastersun)")
