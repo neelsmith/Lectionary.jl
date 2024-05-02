@@ -75,7 +75,7 @@ end
 
 
 
-"""Find correct liturgical year for a given date in the civil calendar.
+"""Find the correct liturgical year for a given date in the civil calendar.
 
 **Examples**
 
@@ -96,7 +96,14 @@ function liturgical_year(dt::Date = Date(Dates.now()))::LiturgicalYear
     end
 end
 
-"""Find correct liturgical day for a given date in the civil calendar.
+"""Find the correct liturgical day for a given date in the civil calendar.
+
+**Example**
+```{julia-repl}
+julia> liturgical_day(Date(2024,4,1))
+April 1, 2024, Monday following Easter Day
+```
+
 $(SIGNATURES)
 """
 function liturgical_day(dt::Date  = Date(Dates.now()))::LiturgicalDay
@@ -137,7 +144,7 @@ julia> lectionary_year(ly)
 
 $(SIGNATURES)
 """
-function lectionary_year(lityr::LiturgicalYear = LiturgicalYear())::Int
+function lectionary_year(lityr::LiturgicalYear = LiturgicalYear())::Char
     lectionary_year(lityr.starts_in)
 end
 
@@ -203,8 +210,7 @@ end
 
 $(SIGNATURES)
 """
-function sundays(lityear::LiturgicalYear = LiturgicalYear())::Vector{Sunday}
-    
+function sundays(lityear::LiturgicalYear = LiturgicalYear())::Vector{LiturgicalSunday}
    vcat(
         advent_sundays(lityear), 
         christmas_sundays(lityear), 
@@ -217,10 +223,88 @@ function sundays(lityear::LiturgicalYear = LiturgicalYear())::Vector{Sunday}
     )
 end
 
+
+
+"""Find the principal feasts for a given liturgical year. These seven feasts have priority 
+over all other days in the liturgical calendar.
+
+**Examples**
+```{julia-repl}
+julia> principal_feasts()
+7-element Vector{LiturgicalDay}:
+ Christmas Day in 2023
+ The Epiphany in 2024
+ Easter Day in 2024
+ Ascension Day in 2024
+ The Day of Pentecost in 2024
+ Trinity Sunday in 2024
+ All Saints' Day in 2024
+ julia> principal_feasts(LiturgicalYear(2023))
+7-element Vector{LiturgicalDay}:
+ Christmas Day in 2023
+ The Epiphany in 2024
+ Easter Day in 2024
+ Ascension Day in 2024
+ The Day of Pentecost in 2024
+ Trinity Sunday in 2024
+ All Saints' Day in 2024
+```
+$(SIGNATURES)
+"""
 function principal_feasts(lityear::LiturgicalYear = LiturgicalYear())::Vector{LiturgicalDay}
-    [Commemoration(thefeast, lityear) for thefeast in PRINCIPAL_FEASTS]
+    sort([Commemoration(thefeast, lityear) for thefeast in PRINCIPAL_FEASTS], by = fst -> civildate(fst))
 end
 
+
+
+"""For a given liturgical year, find the other seventeen major feasts and fasts defined in the BCP pp. 16-17 but not included in the principal feasts found by the `principal_feasts`  function.
+
+**Examples**
+```{julia-repl}
+
+julia> holy_days()
+17-element Vector{Commemoration}:
+ Christmas Day in 2023
+ The Holy Name in 2024
+ The Epiphany in 2024
+ The Presentation in 2024
+ The Annunciation in 2024
+ The Visitation in 2024
+ Holy Cross Day in 2024
+ All Saints' Day in 2024
+ Ascension Day in 2024
+ Thanksgiving Day in 2024
+ The First Day of Lent or Ash Wednesday in 2024
+ Monday of Holy Week in 2024
+ Tuesday of Holy Week in 2024
+ Wednesday of Holy Week in 2024
+ Holy Thursday in 2024
+ Good Friday in 2024
+ Holy Saturday in 2024
+
+julia> holy_days(LiturgicalYear(2023))
+17-element Vector{Commemoration}:
+ Christmas Day in 2023
+ The Holy Name in 2024
+ The Epiphany in 2024
+ The Presentation in 2024
+ The Annunciation in 2024
+ The Visitation in 2024
+ Holy Cross Day in 2024
+ All Saints' Day in 2024
+ Ascension Day in 2024
+ Thanksgiving Day in 2024
+ The First Day of Lent or Ash Wednesday in 2024
+ Monday of Holy Week in 2024
+ Tuesday of Holy Week in 2024
+ Wednesday of Holy Week in 2024
+ Holy Thursday in 2024
+ Good Friday in 2024
+ Holy Saturday in 2024
+ ```
+
+$(SIGNATURES)
+"""
 function holy_days(lityear::LiturgicalYear = LiturgicalYear(); src = :RCL)
     if src == :BCP
         allholydays = vcat(HOLY_DAYS_1, HOLY_DAYS_2)
@@ -295,7 +379,7 @@ end
 
 $(SIGNATURES)
 """
-function christmas_day(lityr::LiturgicalYear = LiturgicalYear())
+function christmas_day(lityr::LiturgicalYear = LiturgicalYear())::Commemoration
     christmas_day(lityr.starts_in)
     
 end
@@ -306,15 +390,31 @@ end
 
 $(SIGNATURES)
 """
-function christmas_day(yr::Int)
+function christmas_day(yr::Int)::Commemoration
     Commemoration(FEAST_CHRISTMAS, yr)
 end
 
 
+"""Find a vector of all liturgical days with assigned readings in Advent of a given liturgical year.
 
+**Examples**
+```{julia-repl}
+julia> advent_season()
+4-element Vector{LiturgicalDay}:
+ the first Sunday of Advent, December 3, 2023
+ the second Sunday of Advent, December 10, 2023
+ the third Sunday of Advent, December 17, 2023
+ the fourth Sunday of Advent, December 24, 2023
+ julia> advent_season(LiturgicalYear(2023))
+ 4-element Vector{LiturgicalDay}:
+  the first Sunday of Advent, December 3, 2023
+  the second Sunday of Advent, December 10, 2023
+  the third Sunday of Advent, December 17, 2023
+  the fourth Sunday of Advent, December 24, 2023
+```
+$(SIGNATURES)
+"""
 function advent_season(lityr::LiturgicalYear = LiturgicalYear())
-    @info("Find advent")
-
     filter(kalendar(lityr)) do theday
         civildate(theday) >= civildate(advent(1, lityr)) &&
         civildate(theday) < civildate(christmas_day(lityr))
@@ -322,6 +422,25 @@ function advent_season(lityr::LiturgicalYear = LiturgicalYear())
 end
 
 
+"""Find a vector of all liturgical days with assigned readings in Christmastide of a given liturgical year.
+
+**Examples**
+```{julia-repl}
+julia> christmastide()
+4-element Vector{LiturgicalDay}:
+ Christmas Day in 2023
+ the first Sunday after Christmas Day, December 31, 2023
+ The Holy Name in 2024
+ The Epiphany in 2024
+ julia> christmastide(LiturgicalYear(2023))
+4-element Vector{LiturgicalDay}:
+ Christmas Day in 2023
+ the first Sunday after Christmas Day, December 31, 2023
+ The Holy Name in 2024
+ The Epiphany in 2024
+```
+$(SIGNATURES)
+"""
 function christmastide(lityr::LiturgicalYear = LiturgicalYear())
     filter(kalendar(lityr)) do theday
         civildate(theday) >= civildate(christmas_day(lityr)) &&
@@ -330,6 +449,32 @@ function christmastide(lityr::LiturgicalYear = LiturgicalYear())
 end
 
 
+
+"""Find a vector of all liturgical days with assigned readings in ordinary time after Epiphany of a given liturgical year.
+
+**Examples**
+```{julia-repl}
+julia> epiphany_season()
+7-element Vector{LiturgicalDay}:
+ the first Sunday after the Epiphany, January 7, 2024
+ the second Sunday after the Epiphany, January 14, 2024
+ the third Sunday after the Epiphany, January 21, 2024
+ the fourth Sunday after the Epiphany, January 28, 2024
+ The Presentation in 2024
+ the fifth Sunday after the Epiphany, February 4, 2024
+ Transfiguration Sunday, February 11, 2024
+ julia> epiphany_season(LiturgicalYear(2023))
+7-element Vector{LiturgicalDay}:
+ the first Sunday after the Epiphany, January 7, 2024
+ the second Sunday after the Epiphany, January 14, 2024
+ the third Sunday after the Epiphany, January 21, 2024
+ the fourth Sunday after the Epiphany, January 28, 2024
+ The Presentation in 2024
+ the fifth Sunday after the Epiphany, February 4, 2024
+ Transfiguration Sunday, February 11, 2024
+```
+$(SIGNATURES)
+"""
 function epiphany_season(lityr::LiturgicalYear = LiturgicalYear())
     filter(kalendar(lityr)) do theday
         civildate(theday) > civildate(epiphany_day(lityr)) &&
@@ -338,6 +483,31 @@ function epiphany_season(lityr::LiturgicalYear = LiturgicalYear())
 end
 
 
+"""Find a vector of all liturgical days with assigned readings in Lent of a given liturgical year.
+
+**Examples**
+```{julia-repl}
+julia> lent_season()
+14-element Vector{LiturgicalDay}:
+ The First Day of Lent or Ash Wednesday in 2024
+ the first Sunday in Lent, February 18, 2024
+ the second Sunday in Lent, February 25, 2024
+ the third Sunday in Lent, March 3, 2024
+ the fourth Sunday in Lent, March 10, 2024
+ the fifth Sunday in Lent, March 17, 2024
+ Palm Sunday, March 24, 2024
+ The Annunciation in 2024
+ Monday of Holy Week in 2024
+ Tuesday of Holy Week in 2024
+ Wednesday of Holy Week in 2024
+ Holy Thursday in 2024
+ Good Friday in 2024
+ Holy Saturday in 2024
+ julia> lent_season(LiturgicalYear(2023)) == lent_season()
+ true
+```
+$(SIGNATURES)
+"""
 function lent_season(lityr::LiturgicalYear = LiturgicalYear())
     filter(kalendar(lityr)) do theday
         civildate(theday) >= civildate(ash_wednesday(lityr)) &&
@@ -346,6 +516,26 @@ function lent_season(lityr::LiturgicalYear = LiturgicalYear())
 end
 
 
+"""Find a vector of all liturgical days with assigned readings in Eastertide of a given liturgical year.
+
+**Examples**
+```{julia-repl}
+julia> eastertide()
+9-element Vector{LiturgicalDay}:
+ Easter Day, March 31, 2024
+ the second Sunday of Easter, April 7, 2024
+ the third Sunday of Easter, April 14, 2024
+ the fourth Sunday of Easter, April 21, 2024
+ the fifth Sunday of Easter, April 28, 2024
+ the sixth Sunday of Easter, May 5, 2024
+ Ascension Day in 2024
+ the seventh Sunday of Easter, May 12, 2024
+ the day of Pentecost, May 19, 2024
+julia> eastertide(LiturgicalYear(2023)) == eastertide()
+true
+```
+$(SIGNATURES)
+"""
 function eastertide(lityr::LiturgicalYear = LiturgicalYear())
     filter(kalendar(lityr)) do theday
         civildate(theday) >= civildate(easter_sunday(lityr)) &&
@@ -353,6 +543,39 @@ function eastertide(lityr::LiturgicalYear = LiturgicalYear())
     end
 end
 
+
+
+"""Find a vector of all liturgical days with assigned readings in ordinary time after Pentecost of a given liturgical year.
+
+**Examples**
+```{julia-repl}
+julia> pentecost_season()
+31-element Vector{LiturgicalDay}:
+ Trinity Sunday, May 26, 2024
+ The Visitation in 2024
+ the second Sunday after Pentecost, June 2, 2024
+ the third Sunday after Pentecost, June 9, 2024
+ the fourth Sunday after Pentecost, June 16, 2024
+ the fifth Sunday after Pentecost, June 23, 2024
+ the sixth Sunday after Pentecost, June 30, 2024
+ the seventh Sunday after Pentecost, July 7, 2024
+ the eighth Sunday after Pentecost, July 14, 2024
+ the ninth Sunday after Pentecost, July 21, 2024
+ ⋮
+ the twenty-first Sunday after Pentecost, October 13, 2024
+ the twenty-second Sunday after Pentecost, October 20, 2024
+ the twenty-third Sunday after Pentecost, October 27, 2024
+ All Saints' Day in 2024
+ the twenty-fourth Sunday after Pentecost, November 3, 2024
+ the twenty-fifth Sunday after Pentecost, November 10, 2024
+ the twenty-sixth Sunday after Pentecost, November 17, 2024
+ Christ the King, November 24, 2024
+ Thanksgiving Day in 2024
+julia> pentecost_season(LiturgicalYear(2023)) == pentecost_season()
+true
+```
+$(SIGNATURES)
+"""
 function pentecost_season(lityr::LiturgicalYear = LiturgicalYear())
     filter(kalendar(lityr)) do theday
         civildate(theday) > civildate(pentecost_day(lityr)) &&

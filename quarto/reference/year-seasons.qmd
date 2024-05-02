@@ -21,7 +21,7 @@ using Lectionary
 
 
 
-### Functions for working with years and seasons
+### Functions for working with liturgical years
 
 
 `liturgical_year`
@@ -68,19 +68,24 @@ using Lectionary
 ```
 :::
 
-
 `kalendar`
+
+```{julia}
+#| echo: false
+#| warning: false
+@doc kalendar
+```
 
 
 `sundays`
 
-:::{.callout-note appearance="minimal"}
 ```{julia}
 #| echo: false
 #| warning: false
 @doc sundays
 ```
-:::
+
+
 
 `principal_feasts`
 
@@ -102,7 +107,58 @@ using Lectionary
 ```
 :::
 
+### Functions for working with liturgical seasons
 
+
+`advent_season`
+```{julia}
+#| echo: false
+#| warning: false
+@doc advent_season
+```
+
+
+`christmastide`
+```{julia}
+#| echo: false
+#| warning: false
+@doc christmastide
+```
+
+
+`epiphany_season`
+```{julia}
+#| echo: false
+#| warning: false
+@doc epiphany_season
+```
+
+
+`lent_season`
+```{julia}
+#| echo: false
+#| warning: false
+@doc lent_season
+```
+
+
+
+`eastertide`
+```{julia}
+#| echo: false
+#| warning: false
+@doc eastertide
+```
+
+
+
+
+`pentecost_season`
+```{julia}
+#| echo: false
+#| warning: false
+@doc pentecost_season
+```
 
 ## Liturgical days
 
@@ -176,9 +232,6 @@ using Lectionary
 @doc weekday
 ```
 :::
-
-
-
 
 
 

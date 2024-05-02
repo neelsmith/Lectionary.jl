@@ -305,7 +305,7 @@ julia> epiphany_sundays(LiturgicalYear(2023))
 
 $(SIGNATURES)
 """
-function epiphany_sundays(lityr::LiturgicalYear = LiturgicalYear())::Vector{LiturgicalDay}
+function epiphany_sundays(lityr::LiturgicalYear = LiturgicalYear())::Vector{LiturgicalSunday}
     @debug("Find sundays in ordinary time after Epiphany for $(lityr.ends_in)")
     epiphany_sundays(lityr.ends_in)
 end
@@ -326,7 +326,7 @@ the fifth Sunday after the Epiphany, February 4, 2024
 ```
 $(SIGNATURES)
 """
-function epiphany_sundays(yr::Int)::Vector{LiturgicalDay}
+function epiphany_sundays(yr::Int)::Vector{LiturgicalSunday}
     
     endpoint = ash_wednesday(yr)
     @debug("Got ash wed for year $(yr): $(endpoint) with date $(civildate(endpoint))")

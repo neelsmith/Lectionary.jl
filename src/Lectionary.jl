@@ -31,7 +31,7 @@ export ash_wednesday_date
 export easter_sundays
 export eastertide
 export ascension
-export pentecost, pentecost_day, trinity
+export pentecost, pentecost_day, trinity, pentecost_sundays
 export thanksgiving
 
 # Christmas cycle:
