@@ -16,6 +16,13 @@ function precedence(theday::T) where {T <: LiturgicalDay}
 end
 
 """Find correct liturgical year for a given liturgical day.
+
+**Example**
+
+```{julia-repl}
+julia> liturgical_year(christmas_day())
+2023-2024
+```
 $(SIGNATURES)
 """
 function liturgical_year(litday::LiturgicalDay)

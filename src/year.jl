@@ -55,8 +55,11 @@ end
 
 """Find range of dates in the civil calendar for a liturgical year.
 
-**Example**
+**Examples**
 ```julia-repl
+julia> date_range()
+Date("2023-12-03"):Day(1):Date("2024-11-30")
+
 julia> ly = LiturgicalYear()
 2023-2024
 julia> date_range(ly)
@@ -73,6 +76,16 @@ end
 
 
 """Find correct liturgical year for a given date in the civil calendar.
+
+**Examples**
+
+```julia-rep
+julia> liturgical_year()
+2023-2024
+julia> liturgical_year(Date(2024,4,1))
+2023-2024
+```
+
 $(SIGNATURES)
 """
 function liturgical_year(dt::Date = Date(Dates.now()))::LiturgicalYear
@@ -124,7 +137,7 @@ julia> lectionary_year(ly)
 
 $(SIGNATURES)
 """
-function lectionary_year(lityr::LiturgicalYear = LiturgicalYear())
+function lectionary_year(lityr::LiturgicalYear = LiturgicalYear())::Int
     lectionary_year(lityr.starts_in)
 end
 
@@ -140,7 +153,7 @@ julia> lectionary_year(2023)
 
 $(SIGNATURES)
 """
-function lectionary_year(yr::Int)
+function lectionary_year(yr::Int)::Char
     remainder = mod(yr, 3)
     lectionary_year_dict[remainder]
 end
@@ -159,7 +172,7 @@ julia> daily_office_year(ly)
 
 $(SIGNATURES)
 """
-function daily_office_year(lityr::LiturgicalYear = LiturgicalYear())
+function daily_office_year(lityr::LiturgicalYear = LiturgicalYear())::Int
     daily_office_year(lityr.starts_in)
 end
 
@@ -174,16 +187,23 @@ julia> daily_office_year(2023)
 ```
 $(SIGNATURES)
 """
-function daily_office_year(yr::Int)
+function daily_office_year(yr::Int)::Int
     mod(yr, 2) + 1 
 end
 
 
 
-"""Find Sundays in a give liturgical year.
+"""Find Sundays in a given liturgical year.
+
+**Examples**
+
+```{julia-repl}
+
+```
+
 $(SIGNATURES)
 """
-function sundays(lityear::LiturgicalYear = LiturgicalYear())
+function sundays(lityear::LiturgicalYear = LiturgicalYear())::Vector{Sunday}
     
    vcat(
         advent_sundays(lityear), 
@@ -197,7 +217,7 @@ function sundays(lityear::LiturgicalYear = LiturgicalYear())
     )
 end
 
-function principal_feasts(lityear::LiturgicalYear = LiturgicalYear())
+function principal_feasts(lityear::LiturgicalYear = LiturgicalYear())::Vector{LiturgicalDay}
     [Commemoration(thefeast, lityear) for thefeast in PRINCIPAL_FEASTS]
 end
 
@@ -225,6 +245,26 @@ end
 
 """Find a vector of all liturgical days with assigned readings in 
 this liturgical year.
+
+**Examples**
+
+```{julia-repl}
+julia> kalendar() |> typeof
+Vector{LiturgicalDay} (alias for Array{LiturgicalDay, 1})
+julia> kalendar() |> length
+69
+
+julia> ly = LiturgicalYear(2023)
+2023-2024
+
+julia> kalendar(ly) |> typeof
+Vector{LiturgicalDay} (alias for Array{LiturgicalDay, 1})
+
+julia> kalendar(ly) |> length
+69
+
+```
+
 $(SIGNATURES)
 """
 function kalendar(lityr::LiturgicalYear = LiturgicalYear(); src = :RCL)

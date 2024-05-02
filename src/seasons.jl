@@ -1,3 +1,4 @@
+#=
 """A liturgical season in a specific liturgical year.
 
 **Example**
@@ -43,7 +44,6 @@ end
 
 
 
-
 function kalendar(s::LiturgicalSeason)
     yrkal = kalendar(s.lityr)
     filter(litday -> civildate(litday) in date_range(s),yrkal)
@@ -82,7 +82,7 @@ function liturgical_color(s::LiturgicalSeason)
     nothing
 end
 
-
+=#
 
 #
 # Advent

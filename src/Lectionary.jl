@@ -13,7 +13,7 @@ export LiturgicalYear, lectionary_year, daily_office_year
 export sundays, principal_feasts, holy_days
 export liturgical_year, liturgical_day, date_range
 
-export LiturgicalSeason
+#export LiturgicalSeason
 
 export LiturgicalDay
 export name, civildate, weekday, readings, precedence
