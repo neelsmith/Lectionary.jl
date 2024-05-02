@@ -11,20 +11,99 @@ In determining readings for days in the liturgical year,
 
 ## Type
 
- `Reading`
+ `Readings`
  
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+using Lectionary
+@doc Readings
+```
+:::
+
+
 ## Functions
 
 `readings`
 
+ 
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc readings
+```
+:::
+
+
+
 `reading1` 
+
+ 
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc reading1
+```
+:::
+
 
 `reading2` 
 
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc reading2
+```
+:::
+
+
 `psalm` 
+
+
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc psalm
+```
+:::
+
 
 `gospel`
 
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc gospel
+```
+:::
+
+
 `precedence`
 
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc precedence
+```
+:::
+
+
 `prioritize`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc prioritize
+```
+:::

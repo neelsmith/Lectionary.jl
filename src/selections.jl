@@ -1,9 +1,22 @@
+"""A set of readings for a single liturgy.
+$(SIGNATURES)
+"""
 struct Readings
     ot_string::String
     nt_string::String
     gospel_string::String
     psalm_string::String
 end
+
+#=
+"""A set of readings for a single liturgy.
+$(SIGNATURES)
+"""
+function Readings()
+    Readings("","","","")
+end
+=#
+
 
 # Returns a vector of choices for readings.
 # Each choice in turn is a vector of one or more passages.
