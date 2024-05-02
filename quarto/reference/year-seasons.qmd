@@ -70,21 +70,23 @@ using Lectionary
 
 `kalendar`
 
+:::{.callout-note appearance="minimal"}
 ```{julia}
 #| echo: false
 #| warning: false
 @doc kalendar
 ```
-
+:::
 
 `sundays`
 
+:::{.callout-note appearance="minimal"}
 ```{julia}
 #| echo: false
 #| warning: false
 @doc sundays
 ```
-
+:::
 
 
 `principal_feasts`
@@ -111,54 +113,68 @@ using Lectionary
 
 
 `advent_season`
+
+:::{.callout-note appearance="minimal"}
 ```{julia}
 #| echo: false
 #| warning: false
 @doc advent_season
 ```
-
+:::
 
 `christmastide`
+
+:::{.callout-note appearance="minimal"}
 ```{julia}
 #| echo: false
 #| warning: false
 @doc christmastide
 ```
-
+:::
 
 `epiphany_season`
+
+:::{.callout-note appearance="minimal"}
 ```{julia}
 #| echo: false
 #| warning: false
 @doc epiphany_season
 ```
-
+:::
 
 `lent_season`
+
+:::{.callout-note appearance="minimal"}
 ```{julia}
 #| echo: false
 #| warning: false
 @doc lent_season
 ```
-
+:::
 
 
 `eastertide`
+
+:::{.callout-note appearance="minimal"}
 ```{julia}
 #| echo: false
 #| warning: false
 @doc eastertide
 ```
+:::
 
 
 
 
 `pentecost_season`
+
+:::{.callout-note appearance="minimal"}
 ```{julia}
 #| echo: false
 #| warning: false
 @doc pentecost_season
 ```
+:::
 
 ## Liturgical days
 
