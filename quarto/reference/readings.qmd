@@ -17,9 +17,9 @@ In determining readings for days in the liturgical year,
 
 `readings`
 
-`ot` 
+`reading1` 
 
-`nt` 
+`reading2` 
 
 `psalm` 
 

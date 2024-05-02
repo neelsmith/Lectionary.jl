@@ -151,8 +151,18 @@ function calendar_month(lday::LiturgicalDay)::Vector{Vector{Union{Nothing, Litur
 end
 
 
-"""Construct a calendar of months ...
-$SIGNATURES
+"""Construct a vector of twelve elements with each element containing the output of the `calendar_month` function.
+
+
+**Examples**
+```julia-repl
+julia> calendar_year() |> typeof
+Vector{Vector{Vector{Union{Nothing, LiturgicalDay}}}} (alias for Array{Array{Array{Union{Nothing, LiturgicalDay}, 1}, 1}, 1})
+julia> calendar_year() == calendar_year(Date(2024, 4, 1))
+true
+```
+
+$(SIGNATURES)
 """
 function calendar_year(dt::Date = Date(Dates.now()))::Vector{Vector{Vector{Union{Nothing, LiturgicalDay}}}}
     ly = liturgical_year(dt)

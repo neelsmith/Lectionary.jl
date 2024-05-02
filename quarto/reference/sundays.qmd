@@ -167,12 +167,12 @@ using Lectionary
 ```
 :::
 
-`pentecost_season`
+`pentecost_sundays`
 
 :::{.callout-note appearance="minimal"}
 ```{julia}
 #| echo: false
 #| warning: false
-@doc pentecost_season
+@doc pentecost_sundays
 ```
 :::

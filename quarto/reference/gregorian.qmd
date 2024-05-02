@@ -1,6 +1,12 @@
 ---
 title: "API documentation: dates in the civil calendar"
 ---
+```{julia}
+#| echo: false
+#| warning: false
+#| output: false
+using Lectionary
+```
 
 `weekrange`
 
