@@ -30,8 +30,6 @@ function liturgical_year(litday::LiturgicalDay)
 end
 
 
-
-
 """Find first reading (normally Old Testament) for a given day.
 
 **Example**

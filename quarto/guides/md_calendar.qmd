@@ -3,7 +3,13 @@ title: "Formatting a calendar for markdown display"
 tbl-colwidths: [12,12,12,12,12,12,12]
 ---
 
-- environments like Pluto, VS Code, quarto publish
+:::{.callout-caution}
+Incomplete draft content.
+:::
+
+Notes:
+
+- works in environments like Pluto, VS Code, quarto publish
 - easy!
 
 

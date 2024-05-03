@@ -2,11 +2,14 @@
 title: "Recipes"
 ---
 
-A selection of recipes using `Lectionary.jl`.
 
 :::{.callout-caution}
-Content TBA
+Content in development.
 :::
 
-- making a Markdown display of a calendar
-- note Pluto notebook examples, too
+
+A selection of recipes using `Lectionary.jl`.
+
+
+- make a Markdown display of calendars by weeks, months or year
+- link to examples in Pluto notebooks

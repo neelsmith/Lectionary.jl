@@ -3,7 +3,7 @@ title: "The Liturgical Calendar"
 ---
 
 :::{.callout-caution}
-Incomplete draft
+Incomplete draft content.
 :::
 
 ## The `LiturgicalYear` type

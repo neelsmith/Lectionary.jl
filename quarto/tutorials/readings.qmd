@@ -9,9 +9,8 @@ title: "Readings from the RCL"
 using Lectionary
 ```
 
-
 :::{.callout-caution}
-Content TBA
+Incomplete draft content.
 :::
 
 Introduce the `readings` function, and explain the data it returns.

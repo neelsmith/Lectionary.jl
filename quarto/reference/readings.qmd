@@ -97,13 +97,3 @@ using Lectionary
 ```
 :::
 
-
-`prioritize`
-
-:::{.callout-note appearance="minimal"}
-```{julia}
-#| echo: false
-#| warning: false
-@doc prioritize
-```
-:::

@@ -48,7 +48,18 @@ function reading1(rdg::Readings; as_urn = false)::Vector{Vector{String}}
     formatreadingstring(rdg.ot_string)
 end
 
-"""Find second reading (normally New Testament).
+"""Find second reading (normally New Testament) from the assigned readings for a liturgy.
+
+**Example**
+
+```{julia-repl}
+julia> rdgs = readings(christmas_day())
+Readings("Isaiah 9.2-9.7", "Titus 2.11-2.14", "Luke 2.1-1.14 ;  Luke 2.1-2.20", "Psalm 96")
+julia> reading2(rdgs)
+1-element Vector{Vector{String}}:
+ ["Titus 2.11-2.14"]
+```
+
 $(SIGNATURES)
 """
 function reading2(rdg::Readings; as_urn = false)
@@ -58,7 +69,20 @@ function reading2(rdg::Readings; as_urn = false)
     formatreadingstring(rdg.nt_string)
 end
 
-"""Find Gospel selection.
+
+"""Find Gospel selection from the assigned readings for a liturgy.
+
+**Example**
+
+```{julia-repl}
+julia> rdgs = readings(christmas_day())
+Readings("Isaiah 9.2-9.7", "Titus 2.11-2.14", "Luke 2.1-1.14 ;  Luke 2.1-2.20", "Psalm 96")
+julia> gospel(rdgs)
+2-element Vector{Vector{String}}:
+ ["Luke 2.1-1.14"]
+ ["Luke 2.1-2.20"]
+```
+
 $(SIGNATURES)
 """
 function gospel(rdg::Readings; as_urn = false)
@@ -68,7 +92,20 @@ function gospel(rdg::Readings; as_urn = false)
     formatreadingstring(rdg.gospel_string)
 end
 
-"""Find Psalm selection.
+"""Find Psalm selection from the assigned readings for a liturgy.
+
+
+
+**Example**
+
+```{julia-repl}
+julia> rdgs = readings(christmas_day())
+Readings("Isaiah 9.2-9.7", "Titus 2.11-2.14", "Luke 2.1-1.14 ;  Luke 2.1-2.20", "Psalm 96")
+julia> gospel(rdgs)
+1-element Vector{Vector{String}}:
+ ["Psalm 96"]
+```
+
 $(SIGNATURES)
 """
 function psalm(rdg::Readings; as_urn = false)

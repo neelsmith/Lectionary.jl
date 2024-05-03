@@ -4,8 +4,9 @@ title: Tutorials
 
 
 :::{.callout-caution}
-Content TBA
+Content in development.
 :::
 
 
-Learn `Lectionary.jl`.
+
+Simple tutorials introducing the basics of `Lectionary.jl`.
