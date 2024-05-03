@@ -102,7 +102,7 @@ sundayselectionsA = Dict(
 sundayselectionsB = Dict(
     
     ADVENT_1 =>  Readings(
-               "Isaiah 64.1-64.9","1_Corinthians 1.3-1.9","Mark 13.24-13.37","Psalm 80:1-80.7, Psalm 80.16-80.18"),
+               "Isaiah 64.1-64.9","1_Corinthians 1.3-1.9","Mark 13.24-13.37","Psalm 80.1-80.7, Psalm 80.16-80.18"),
     ADVENT_2 => Readings(
         "Isaiah 40.1-40.11",
         "2_Peter 3.8-3.15a",
@@ -116,7 +116,7 @@ sundayselectionsB = Dict(
         "Psalm 126; Luke 1.46b-1.55",
     ),
     ADVENT_4 => Readings(
-        "2_Samuel 7.1-7.11, 2_ Samuel 7.16",
+        "2_Samuel 7.1-7.11, 2_Samuel 7.16",
         
         "Romans 16.25-16.27",
         "Luke 1.26-1.38",

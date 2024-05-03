@@ -85,10 +85,10 @@ function readings(lityr::LiturgicalYear = LiturgicalYear();
     kal = kalendar(lityr)
     pentecostdate = civildate(pentecost_day(lityr))
     dates1 = filter(theday -> civildate(theday) <= pentecostdate || ! isa(theday, LiturgicalSunday), kal)
-    @info("Get readings for $(length(dates1)) feasts")
+    @debug("Get readings for $(length(dates1)) feasts")
     rdgs1 = [readings(theday, lectyear; as_urn = as_urn) for theday in dates1]
     rdgs2 = properreadings(lityr, track)
-    @info("Get readings for $(length(rdgs2)) propers")
+    @debug("Get readings for $(length(rdgs2)) propers")
     vcat(rdgs1, rdgs2)
 end
 

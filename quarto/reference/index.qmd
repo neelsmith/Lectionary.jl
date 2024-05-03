@@ -27,6 +27,8 @@ title: "`Lectionary.jl`: reference"
 ### Readings
 
 [RCL readings](./readings.qmd)
+
+[Citing texts with URNs](./urns/)
 :::
 :::
 

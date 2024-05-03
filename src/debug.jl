@@ -52,3 +52,23 @@ function viewyear(lityr::LiturgicalYear = LiturgicalYear())
         println(msg)
     end
 end
+
+
+
+
+
+function get_urns(rlist)
+    urnlist = CtsUrn[]
+    #for rdg in readings()
+    for rdg in rlist
+        for psgvect in reading1(rdg)
+            for psg in psgvect
+                tidied = replace(psg, r"^([1-9]) " => s"\1_")
+                (bk, ref) = split(tidied)
+                ctsu = string(BASE_CTS_URN,".",lowercase(bk),":",ref) |> CtsUrn
+                push!(urnlist, ctsu)
+            end
+        end
+    end
+    urnlist
+end

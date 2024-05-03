@@ -1,12 +1,35 @@
 ---
-title: "Citation with URNs"
+title: "API documentation: citation with URNs"
 ---
+
+
+
+
+```{julia}
+#| echo: false
+#| output: false
+#| warning: false
+using Lectionary
+```
+
+
+`as_urn`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc as_urn
+```
+:::
+
 
 
 :::{.callout-caution}
 Content TBA
 :::
 
+CTS URNs are in the `urn:cts:compnov:` namespace, with texgroup `bible`.
 
 - list URNs for all texts
 - identify RSV passage system used by RCL (New Revised Standard Version)
