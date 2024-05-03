@@ -3,16 +3,36 @@ title: "`Lectionary.jl`: reference"
 ---
 
 
-## The liturgical year and the civil calendar
+## API documentation
 
-- API documentation: [years, seasons and days](year-seasons.qmd) of the liturgical year
-- API documentation: [Sundays](sundays.qmd) of the liturgical year
-- API documentation: [weeks, months and years](gregorian.qmd) in the civil calendar
-- Reference: [identifiers for commemorations](commemorations.qmd) in the liturgical year
+::: columns
 
 
-## Readings
+::: {.column width="40%"}
+### Calendar
 
-:::{.callout-caution}
-Documentation TBA
+[Years, seasons and days](year-seasons.qmd) of the liturgical year
+
+[Sundays](sundays.qmd) of the liturgical year
+
+[Weeks, months and years](gregorian.qmd) in the civil calendar
+
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="40%"}
+### Readings
+
+[RCL readings](./readings.qmd)
+:::
+:::
+
+::: {.column width="40%"}
+### Constants
+
+[Identifiers for days](commemorations.qmd) in the liturgical year
+
 :::

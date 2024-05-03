@@ -28,3 +28,67 @@ $(SIGNATURES)
 function liturgical_year(litday::LiturgicalDay)
     civildate(litday) |> liturgical_year
 end
+
+
+
+
+"""Find first reading (normally Old Testament) for a given day.
+
+**Example**
+```{julia-repl}
+julia> reading1(christmas_day())
+1-element Vector{Vector{String}}:
+ ["Isaiah 9.2-9.7"]
+ ```
+
+ $(SIGNATURES) 
+"""
+function reading1(theday::LiturgicalDay; as_urn = false)::Vector{Vector{String}}
+    readings(theday) |> reading1
+end
+
+"""Find second reading (normally New Testament) for a given day.
+
+**Example**
+```{julia-repl}
+julia> reading2(christmas_day())
+1-element Vector{Vector{String}}:
+ ["Titus 2.11-2.14"]]
+ ```
+$(SIGNATURES) 
+"""
+function reading2(theday::LiturgicalDay; as_urn = false)::Vector{Vector{String}}
+    readings(theday) |> reading2
+end
+
+
+
+"""Find second reading (normally New Testament) for a given day.
+
+**Example**
+```{julia-repl}
+julia> psalm(christmas_day())
+1-element Vector{Vector{String}}:
+ ["Psalm 96"]
+ ```
+$(SIGNATURES) 
+"""
+function psalm(theday::LiturgicalDay; as_urn = false)::Vector{Vector{String}}
+    readings(theday) |> psalm
+end
+
+
+"""Find second reading (normally New Testament) for a given day.
+
+**Example**
+```{julia-repl}
+julia> gospel(christmas_day())
+2-element Vector{Vector{String}}:
+ ["Luke 2.1-1.14"]
+ ["Luke 2.1-2.20"]
+ ```
+$(SIGNATURES) 
+"""
+function gospel(theday::LiturgicalDay; as_urn = false)::Vector{Vector{String}}
+    readings(theday) |> gospel
+end

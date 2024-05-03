@@ -8,18 +8,17 @@ struct Readings
     psalm_string::String
 end
 
-#=
-"""A set of readings for a single liturgy.
-$(SIGNATURES)
-"""
-function Readings()
-    Readings("","","","")
-end
-=#
 
 
 # Returns a vector of choices for readings.
 # Each choice in turn is a vector of one or more passages.
+"""Organize string values from RCL lists into structured vectors of readings
+(readings 1 and 2, psalm, gospel) where each reading in turn is a vector of one
+or more passage references.
+
+Colons delimit choices among different readings; commas separate references for disjoint passages of a single reading.
+$(SIGNATURES)
+"""
 function formatreadingstring(s)
     tidier = replace(s, "_" => " ")
     alternates = split(tidier, ";") .|> strip
@@ -28,11 +27,20 @@ function formatreadingstring(s)
     end
 end
 
-# Format: colon delimited options; comma-separated for disjoint passages
-"""Find first reading (normally Old Testament).
+
+"""Find first reading (normally Old Testament) from the assigned readings for a liturgy.
+
+**Example**
+```{julia-repl}
+julia> rdgs = readings(christmas_day())
+Readings("Isaiah 9.2-9.7", "Titus 2.11-2.14", "Luke 2.1-1.14 ;  Luke 2.1-2.20", "Psalm 96")
+julia> reading1(rdgs)
+1-element Vector{Vector{String}}:
+ ["Isaiah 9.2-9.7"]
+```
 $(SIGNATURES)
 """
-function reading1(rdg::Readings; as_urn = false)
+function reading1(rdg::Readings; as_urn = false)::Vector{Vector{String}}
     
     if as_urn
         @warn("URN translation not yet implemented")

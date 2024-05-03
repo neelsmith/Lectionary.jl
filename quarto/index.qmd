@@ -7,13 +7,56 @@ title: "Lectionary.jl"
 
 `Lectionary.jl` is a Julia package that coordinates the [liturgical calendar year](./concepts/liturgicalyear/) with the Gregorian civil calendar and with the readings from the [Revised Common Lectionary](./concepts/rcl.qmd) (RCL).
 
-
 ## Documentation
 
 | | Learning the package | Using the package |
 | --- | --- | --- |
 | **Hands-on** |  Try a [tutorial](./tutorials/) to start using  the package  | Find [recipes](./guides/) for specific tasks |
 | **Cognition** | Learn [how the liturgical year and the RCL work](./concepts/)   | See [reference information](./reference/) (including API documentation for all exported functions) |
+
+
+
+## Brief example
+
+*Construct a specific day in the calendar of a liturgical year*:
+
+```{julia}
+#| warning: false
+using Lectionary
+lityear = LiturgicalYear(2023)
+second_epiphany = epiphany(2, lityear)
+```
+
+*The RCL defines a single passage for each of the four readings for this day, but the first reading and the Psalm include discontinuous passages*:
+
+```{julia}
+#| warning: false
+reading1(second_epiphany)
+```
+
+```{julia}
+#| warning: false
+psalm(second_epiphany)
+```
+
+
+```{julia}
+#| warning: false
+reading2(second_epiphany)
+```
+
+```{julia}
+#| warning: false
+gospel(second_epiphany)
+```
+
+*The Gospel reading for Christmas Day offers a choice between two alternatives*:
+
+```{julia}
+christmas_day(lityear) |> gospel
+```
+
+
 
 ## Current status
 
