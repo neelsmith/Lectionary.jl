@@ -123,3 +123,16 @@ function psalm(rdg::Readings; urns = false)::Vector{Vector{Union{String, CtsUrn}
     urns ? as_urn(formatreadingstring(rdg.psalm_string)) : formatreadingstring(rdg.psalm_string)
 end
 
+
+function flatlist(tpl)
+    allurns = CtsUrn[]
+    @info("Parse a tuple!")
+    # each is a vecgtor of vectors
+
+
+    @info(tpl.reading1)
+end
+
+function flatlist(rdg::Readings)
+    as_urn(rdg) |> flatlist
+end
