@@ -5,7 +5,7 @@ theme: spacelab
 execute:
   freeze: auto
 date: last-modified  
-margin-header: "⚠️ *Pre-release documentation.*"
+margin-header: "Version: `0.1.0`"
 format:
   html: 
     toc: true
