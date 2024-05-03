@@ -17,7 +17,7 @@ sundayselectionsA = Dict(
         "","","",""),
 
     #CHRISTMAS_2 => Readings(
-    #    "Isaiah 61:10-62:3",
+    #    "Isaiah 61.10-62:3",
     #    "Galatians 4.4-4.7",
     #    "Luke 2.22-2.40",
     #    "Psalm 148"
@@ -120,18 +120,18 @@ sundayselectionsB = Dict(
         
         "Romans 16.25-16.27",
         "Luke 1.26-1.38",
-        "Luke 1:46b-1.55; Psalm 89.1-89.4, Psalm 89.19-89.26"
+        "Luke 1.46b-1.55; Psalm 89.1-89.4, Psalm 89.19-89.26"
     ),
 
     CHRISTMAS_1 => Readings(
-        "Isaiah 61:10-62:3",
+        "Isaiah 61.10-62.3",
         "Galatians 4.4-4.7",
         "Luke 2.22-2.40",
         "Psalm 148"
     ),
 
     CHRISTMAS_2 => Readings(
-        "Isaiah 61:10-62:3",
+        "Isaiah 61.10-62.3",
         "Galatians 4.4-4.7",
         "Luke 2.22-2.40",
         "Psalm 148"
@@ -214,7 +214,7 @@ sundayselectionsB = Dict(
         "Acts 1.15-1.17, Acts 1.21-1.26","1_John 5.9-5.13","John 17.6-17.19","Psalm 1"
     ),
     PENTECOST => Readings(
-        "Acts 2.1-2.21 ; Ezekiel 37.1-37.14","Romans 8.22-8.27 ;  Acts 2.1-2.21","John 15.26-15.27, John 16:4b-16.15","Psalm 104.24-104.34, Psalm 104.35b"
+        "Acts 2.1-2.21 ; Ezekiel 37.1-37.14","Romans 8.22-8.27 ;  Acts 2.1-2.21","John 15.26-15.27, John 16.4b-16.15","Psalm 104.24-104.34, Psalm 104.35b"
     ),
     TRINITY_SUNDAY  => Readings(
         "Isaiah 6.1-6.8","Romans 8.12-8.17","John 3.1-3.17","Psalm 29"
@@ -296,7 +296,7 @@ sundayselectionsC = Dict(
         "","","",""),
 
     #CHRISTMAS_2 => Readings(
-    #    "Isaiah 61:10-62:3",
+    #    "Isaiah 61.10-62:3",
     #    "Galatians 4.4-4.7",
     #    "Luke 2.22-2.40",
     #    "Psalm 148"
@@ -327,13 +327,13 @@ feastselectionsB = Dict(
 
     FEAST_PRESENTATION => Readings("Malachi 3.1-3.4","Hebrews 2.14-2.18","Luke 2.22-2.40","Psalm 84 ; Psalm 24.7-24.10 "),
 
-    FAST_ASH_WEDNESDAY => Readings("Joel 2.1-2.2, Joel 2.12-2.17 ; Isaiah 58.1-58.12","2_Corinthians 5.20b—6.10","Matthew 6.1-6.6, Matthew 6.16-6.21","Psalm 51:1-17"),
+    FAST_ASH_WEDNESDAY => Readings("Joel 2.1-2.2, Joel 2.12-2.17 ; Isaiah 58.1-58.12","2_Corinthians 5.20b—6.10","Matthew 6.1-6.6, Matthew 6.16-6.21","Psalm 51.1-17"),
 
     FEAST_ANNUNCIATION => Readings("Isaiah 7.10-7.14","Hebrews 10.4-10.10","Luke 1.26-1.38","Psalm 45 ; Psalm 40.5-40.10"),
 
-    HOLY_WEEK_MONDAY => Readings("Isaiah 42.1-42.9","Hebrews 9.11-9.15","John 12.1-12.11","Psalm 36:5-11"),
+    HOLY_WEEK_MONDAY => Readings("Isaiah 42.1-42.9","Hebrews 9.11-9.15","John 12.1-12.11","Psalm 36.5-11"),
 
-    HOLY_WEEK_TUESDAY => Readings("Isaiah 49.1-49.7","1_Corinthians 1.18-1.31","John 12.20-12.36","Psalm 71:1-14"),
+    HOLY_WEEK_TUESDAY => Readings("Isaiah 49.1-49.7","1_Corinthians 1.18-1.31","John 12.20-12.36","Psalm 71.1-14"),
     
     HOLY_WEEK_WEDNESDAY => Readings("Isaiah 50.4-50.9a","Hebrews 12.1-12.3","John 13.21-13.32","Psalm 70"),
     
@@ -393,7 +393,7 @@ xmasliturgiesB = Dict(
 )
 
 palmliturgiesB = Dict(
-    LITURGY_OF_WORD => Readings("Isaiah 50.4-50.9a","Philippians 2.5-2.11","Mark 14.1—15.47 ; Mark 15.1-15.39 ; Mark 15.1-15.47","Psalm 31:9-16"),
+    LITURGY_OF_WORD => Readings("Isaiah 50.4-50.9a","Philippians 2.5-2.11","Mark 14.1—15.47 ; Mark 15.1-15.39 ; Mark 15.1-15.47","Psalm 31.9-16"),
     LITURGY_OF_PALMS => Readings("","","Mark 11.1-11.11 ; John 12.12-12.16","Psalm 118.1-118.2, 118.19-118.29"),
 )
 

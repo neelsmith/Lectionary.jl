@@ -37,15 +37,14 @@ Readings("Isaiah 9.2-9.7", "Titus 2.11-2.14", "Luke 2.1-1.14 ;  Luke 2.1-2.20", 
 julia> reading1(rdgs)
 1-element Vector{Vector{String}}:
  ["Isaiah 9.2-9.7"]
+julia> reading1(rdgs, urns = true)
+1-element Vector{Vector{Union{CitableText.CtsUrn, String}}}:
+ [urn:cts:compnov:bible.isaiah:9.2-9.7]
 ```
 $(SIGNATURES)
 """
-function reading1(rdg::Readings; as_urn = false)::Vector{Vector{String}}
-    
-    if as_urn
-        @warn("URN translation not yet implemented")
-    end
-    formatreadingstring(rdg.ot_string)
+function reading1(rdg::Readings; urns = false)::Vector{Vector{Union{String, CtsUrn}}}
+    urns ?  as_urn(formatreadingstring(rdg.ot_string)) : formatreadingstring(rdg.ot_string)
 end
 
 """Find second reading (normally New Testament) from the assigned readings for a liturgy.
@@ -58,15 +57,15 @@ Readings("Isaiah 9.2-9.7", "Titus 2.11-2.14", "Luke 2.1-1.14 ;  Luke 2.1-2.20", 
 julia> reading2(rdgs)
 1-element Vector{Vector{String}}:
  ["Titus 2.11-2.14"]
+julia> reading2(rdgs, urns = true)
+1-element Vector{Vector{Union{CitableText.CtsUrn, String}}}:
+ [urn:cts:compnov:bible.titus:2.11-2.14] 
 ```
 
 $(SIGNATURES)
 """
-function reading2(rdg::Readings; as_urn = false)
-    if as_urn
-        @warn("URN translation not yet implemented")
-    end
-    formatreadingstring(rdg.nt_string)
+function reading2(rdg::Readings; urns = false)::Vector{Vector{Union{String, CtsUrn}}}
+    urns ? as_urn(formatreadingstring(rdg.nt_string)) : formatreadingstring(rdg.nt_string)
 end
 
 
@@ -81,15 +80,16 @@ julia> gospel(rdgs)
 2-element Vector{Vector{String}}:
  ["Luke 2.1-1.14"]
  ["Luke 2.1-2.20"]
+julia> gospel(rdgs, urns = true)
+2-element Vector{Vector{Union{CitableText.CtsUrn, String}}}:
+ [urn:cts:compnov:bible.luke:2.1-1.14]
+ [urn:cts:compnov:bible.luke:2.1-2.20]
 ```
 
 $(SIGNATURES)
 """
-function gospel(rdg::Readings; as_urn = false)
-    if as_urn
-        @warn("URN translation not yet implemented")
-    end
-    formatreadingstring(rdg.gospel_string)
+function gospel(rdg::Readings; urns = false)::Vector{Vector{Union{String, CtsUrn}}}
+    urns ? as_urn(formatreadingstring(rdg.gospel_string)) : formatreadingstring(rdg.gospel_string)
 end
 
 """Find Psalm selection from the assigned readings for a liturgy.
@@ -104,14 +104,14 @@ Readings("Isaiah 9.2-9.7", "Titus 2.11-2.14", "Luke 2.1-1.14 ;  Luke 2.1-2.20", 
 julia> gospel(rdgs)
 1-element Vector{Vector{String}}:
  ["Psalm 96"]
+julia> psalm(rdgs, urns = true)
+1-element Vector{Vector{Union{CitableText.CtsUrn, String}}}:
+ [urn:cts:compnov:bible.psalm:96] 
 ```
 
 $(SIGNATURES)
 """
-function psalm(rdg::Readings; as_urn = false)
-    if as_urn
-        @warn("URN translation not yet implemented")
-    end
-    formatreadingstring(rdg.psalm_string)
+function psalm(rdg::Readings; urns = false)::Vector{Vector{Union{String, CtsUrn}}}
+    urns ? as_urn(formatreadingstring(rdg.psalm_string)) : formatreadingstring(rdg.psalm_string)
 end
 

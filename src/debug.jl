@@ -58,17 +58,15 @@ end
 
 
 function get_urns(rlist)
-    urnlist = CtsUrn[]
-    #for rdg in readings()
+    rdgslist = []
+    
     for rdg in rlist
-        for psgvect in reading1(rdg)
-            for psg in psgvect
-                tidied = replace(psg, r"^([1-9]) " => s"\1_")
-                (bk, ref) = split(tidied)
-                ctsu = string(BASE_CTS_URN,".",lowercase(bk),":",ref) |> CtsUrn
-                push!(urnlist, ctsu)
-            end
-        end
+        record = []
+        push!(record, reading1(rdg, urns = true))
+        push!(record, reading2(rdg, urns = true))
+        push!(record, gospel(rdg, urns = true))
+        push!(record, psalm(rdg, urns = true))
+        push!(rdgslist, record)
     end
-    urnlist
+    rdgslist
 end

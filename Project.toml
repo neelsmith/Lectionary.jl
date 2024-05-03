@@ -1,7 +1,7 @@
 name = "Lectionary"
 uuid = "6244d477-9cf0-4e07-8f6b-f8ee26bc0292"
 authors = ["Neel Smith  <dnsmith.neel@gmail.com>"]
-version = "0.1.0"
+version = "0.2.0"
 
 [deps]
 AstroLib = "c7932e45-9af1-51e7-9da9-f004cd3a462b"
@@ -13,6 +13,7 @@ Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [compat]
 AstroLib = "0.4"
+CitableText = "0.16"
 DocStringExtensions = "0.9"
 Documenter = "1"
 julia = "1.10"
