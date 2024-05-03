@@ -147,7 +147,7 @@ sundayselectionsB = Dict(
         "Genesis 1.1-1.5","Acts 19.1-19.7","Mark 1.4-1.11","Psalm 29"
     ),  
     EPIPHANY_2 => Readings(
-        "1_Samuel 3.1-3.10, 1_Samuel 3.11-3.20","1_Corinthians 6.12-6.20","John 1.43-1.51","Psalm 139.1-139.6, Psalm 139.13-139.18"
+        "1_Samuel 3.1-3.10, 1_Samuel 3.11-3.20","1_Corinthians 6.12-6.20","John 1.43-1.51","Psalm 139.13-139.18"
     ),
   
     EPIPHANY_3 => Readings(
@@ -170,7 +170,7 @@ sundayselectionsB = Dict(
         "Hosea 2.14-2.20","2_Corinthians 3.1-3.6","Mark 2.13-2.22","Psalm 103.1-103.13, Psalm 103.22"
     ),
 
-    TRANSFIGURATION_SUNDAY => Readings("2_Kings 2.1-2.12","2_Corinthians 4.3-4.6"," Mark 9.2-9.9","Psalm 50.1-50.6"),
+    TRANSFIGURATION_SUNDAY => Readings("2_Kings 2.1-2.12","2_Corinthians 4.3-4.6","Mark 9.2-9.9","Psalm 50.1-50.6"),
 
     LENT_1 => Readings(
         "Genesis 9.8-9.17","1_Peter 3.18-3.22","Mark 1.9-1.15","Psalm 25.1-25.10"
@@ -341,7 +341,7 @@ feastselectionsB = Dict(
 
     FAST_GOOD_FRIDAY => Readings("Isaiah 52.13—53.12","Hebrews 10.16-10.25 ; Hebrews 4.14-4.16,  Hebrews 5.7-5.9","John 18.1—19.42","Psalm 22"),
     
-    HOLY_SATURDAY => Readings("Job 14.1-14.14 ; Lamentations 3.1-3.9, Lamentations 3.19-3.24"," 1_Peter 4.1-4.8","Matthew 27.57-27.66 ;  John 19.38-19.42","Psalm 31.1-31.4, Psalm 31.15-31.16"),
+    HOLY_SATURDAY => Readings("Job 14.1-14.14 ; Lamentations 3.1-3.9, Lamentations 3.19-3.24","1_Peter 4.1-4.8","Matthew 27.57-27.66 ;  John 19.38-19.42","Psalm 31.1-31.4, Psalm 31.15-31.16"),
 
     FEAST_HOLY_CROSS => Readings("Numbers 21.4b-21.9","1_Corinthians 1.18-1.24","John 3.13-3.17","Psalm 98.1-98.5 ; Psalm 78.1-78.2, Psalm 78.34-78.38"),
     
@@ -394,11 +394,11 @@ xmasliturgiesB = Dict(
 
 palmliturgiesB = Dict(
     LITURGY_OF_WORD => Readings("Isaiah 50.4-50.9a","Philippians 2.5-2.11","Mark 14.1—15.47 ; Mark 15.1-15.39 ; Mark 15.1-15.47","Psalm 31.9-16"),
-    LITURGY_OF_PALMS => Readings("","","Mark 11.1-11.11 ; John 12.12-12.16","Psalm 118.1-118.2, 118.19-118.29"),
+    LITURGY_OF_PALMS => Readings("","","Mark 11.1-11.11 ; John 12.12-12.16","Psalm 118.1-118.2, Psalm 118.19-118.29"),
 )
 
 easterliturgiesB = Dict(
-    PRINICIPAL_SERVICE => Readings("Acts 10.34-10.43 ; Isaiah 25.6-25.9","1_Corinthians 15.1-15.11 ; Acts 10.34-10.43","John 20.1-20.18 ; Mark 16.1-16.8","Psalm 118.1-118.2, 118.14-118.24"),
+    PRINICIPAL_SERVICE => Readings("Acts 10.34-10.43 ; Isaiah 25.6-25.9","1_Corinthians 15.1-15.11 ; Acts 10.34-10.43","John 20.1-20.18 ; Mark 16.1-16.8","Psalm 118.1-118.2, Psalm 118.14-118.24"),
 
     GREAT_VIGIL => Readings("
     Genesis 1.1—2.4a, Psalm 136.1-136.9, Psalm 136.23-136.26,

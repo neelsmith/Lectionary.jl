@@ -65,10 +65,8 @@ function precedence(sday::LiturgicalSunday)
     SUNDAY
 end
 
-function sundayreadings(sday::LiturgicalSunday, lectionaryyr::Char; as_urn = false) 
-    if as_urn
-        @warn("Support for URN references not implemented yet.")
-    end
+function sundayreadings(sday::LiturgicalSunday, lectionaryyr::Char) 
+    
 
     
     if in_pentecost(sday)

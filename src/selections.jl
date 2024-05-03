@@ -10,6 +10,14 @@ end
 
 
 
+function as_urn(rdgs::Readings)
+    (reading1 = reading1(rdgs; urns = true),
+     reading2 = reading1(rdgs; urns = true),
+     gospel = gospel(rdgs; urns = true),
+     psalm = psalm(rdgs; urns = true),
+    )
+end
+
 # Returns a vector of choices for readings.
 # Each choice in turn is a vector of one or more passages.
 """Organize string values from RCL lists into structured vectors of readings

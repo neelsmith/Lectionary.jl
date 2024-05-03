@@ -79,14 +79,14 @@ end
 $(SIGNATURES)
 """
 function readings(lityr::LiturgicalYear = LiturgicalYear(); 
-    urns = false, track = 'A', service = 1)::Vector{Readings} # ::Vector{Union{Nothing, Readings}}
+    track = 'A', service = 1)::Vector{Readings} # ::Vector{Union{Nothing, Readings}}
     lectyear = lectionary_year(lityr)
 
     kal = kalendar(lityr)
     pentecostdate = civildate(pentecost_day(lityr))
     dates1 = filter(theday -> civildate(theday) <= pentecostdate || ! isa(theday, LiturgicalSunday), kal)
     @debug("Get readings for $(length(dates1)) feasts")
-    rdgs1 = [readings(theday, lectyear; urns = urns) for theday in dates1]
+    rdgs1 = [readings(theday, lectyear) for theday in dates1]
     rdgs2 = properreadings(lityr, track)
     @debug("Get readings for $(length(rdgs2)) propers")
     vcat(rdgs1, rdgs2)
@@ -95,14 +95,14 @@ end
 """Find readings in RCL for a given day in a given liturgical year.
 $(SIGNATURES)
 """
-function readings(theday::T, lityr::LiturgicalYear = LiturgicalYear(); urns = false, track = 'A', service = 1) where {T <: LiturgicalDay}
-    readings(theday, lectionary_year(lityr); urns = urns, track = track, service  = service)
+function readings(theday::T, lityr::LiturgicalYear = LiturgicalYear() ; track = 'A', service = 1) where {T <: LiturgicalDay}
+    readings(theday, lectionary_year(lityr), track = track, service  = service)
 end
 
 """Find readings in RCL for a given day in a given year of the civil calendar.
 $(SIGNATURES)
 """
-function readings(theday::T, yr::Char; urns = false, service = 1, track = 'A') where {T <: LiturgicalDay} #::Union{Nothing, Readings} 
+function readings(theday::T, yr::Char; service = 1, track = 'A') where {T <: LiturgicalDay} #::Union{Nothing, Readings} 
     
     # Need to check if we're in ordinary time after Pentecost, and is so
     # use propers selections
@@ -117,7 +117,7 @@ function readings(theday::T, yr::Char; urns = false, service = 1, track = 'A') w
            xmasliturgiesB[service]
            
         else
-            feastreadings(theday, yr; as_urn = as_urn)
+            feastreadings(theday, yr)
         end
 
     elseif theday isa LiturgicalSunday
@@ -139,7 +139,7 @@ function readings(theday::T, yr::Char; urns = false, service = 1, track = 'A') w
             easterliturgiesB[service]
             
         else
-            sundayreadings(theday, yr; urns = urns)
+            sundayreadings(theday, yr)
         end
     
     else
