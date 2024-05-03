@@ -60,10 +60,9 @@ christmas_day(lityear) |> gospel
 
 ## Current status
 
-`Lectionary.jl` has not yet been registered on juliahub.  To work with the current pre-release version, you can add the package from the github repository at [https://github.com/neelsmith/Lectionary.jl](https://github.com/neelsmith/Lectionary.jl).  To follow the progress towards an initial release, you can see [this milestone](https://github.com/neelsmith/Lectionary.jl/milestone/1) on the project issue tracker.
+Version 0.1.0 of `Lectionary.jl` has has been submitted for registration on juliahub, and should be available on Monday, May 6.  To work with the current pre-release version or with development branches, you can add the package from the github repository at [https://github.com/neelsmith/Lectionary.jl](https://github.com/neelsmith/Lectionary.jl).
 
-
-The initial public release will include complete RCL readings for Year B.  Subsequent releases will add readings for Years A and C.
+The initial public release includes complete RCL readings for Year B.  Subsequent releases will add readings for Years A and C.
 
 
 
