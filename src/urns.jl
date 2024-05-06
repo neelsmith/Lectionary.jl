@@ -57,7 +57,8 @@ urn:cts:compnov:bible.isaiah:64.1-64.9
 $(SIGNATURES)
 """
 function as_urn(s::AbstractString)::CtsUrn
-    tidied = replace(s, r"^([1-9]) " => s"\1_")
+    spelled = replace(s, "Psalm " => "Psalms ")
+    tidied = replace(spelled, r"^([1-9]) " => s"\1_")
     (bk, ref) = split(tidied)
     string(BASE_CTS_URN,".",lowercase(bk),":",ref) |> CtsUrn
 end
