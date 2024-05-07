@@ -27,13 +27,17 @@ lityear = LiturgicalYear(2023)
 second_epiphany = epiphany(2, lityear)
 ```
 
-*The RCL defines a single passage for each of the four readings for this day, but the first reading and the Psalm include discontinuous passages*:
+*The RCL defines a single passage for each of the four readings for this day, but the first reading and the Psalm include options for shorter or longer selections of the passage*:
 
 ```{julia}
 #| warning: false
 reading1(second_epiphany)
 ```
 
+```{julia}
+#| warning: false
+reading1(second_epiphany, urns = true)
+```
 ```{julia}
 #| warning: false
 psalm(second_epiphany)
@@ -63,7 +67,7 @@ christmas_day(lityear) |> gospel
 
 
 
-The initial public release includes complete RCL readings for Year B.  Subsequent releases will add readings for Years A and C.
+The current release includes complete RCL readings for Year B.  Subsequent releases will add readings for Years A and C.
 
 
 
