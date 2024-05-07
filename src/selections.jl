@@ -52,7 +52,30 @@ julia> reading1(rdgs, urns = true)
 $(SIGNATURES)
 """
 function reading1(rdg::Readings; urns = false)::Vector{Vector{Union{String, CtsUrn}}}
-    urns ?  as_urn(formatreadingstring(rdg.ot_string)) : formatreadingstring(rdg.ot_string)
+    urns ? as_urn(formatreadingstring(rdg.ot_string)) : formatreadingstring(rdg.ot_string)
+    #=
+    @info("Get reading1 from readings")
+    if urns
+        vofv = formatreadingstring(rdg.ot_string)
+        #as_urn.(s)
+        rslt = Vector{CtsUrn}[]
+        for outerv in vofv
+            entry = CtsUrn[]
+            for v in outerv
+                @info("Convert $(v)")
+                @info(as_urn(v))
+                push!(entry, as_urn(v))
+            end
+            push!(rslt, entry)
+
+        end
+        rslt
+            
+    #urns ?  as_urn.() : 
+    else
+        formatreadingstring(rdg.ot_string)
+    end
+    =#
 end
 
 """Find second reading (normally New Testament) from the assigned readings for a liturgy.

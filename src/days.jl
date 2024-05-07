@@ -41,7 +41,7 @@ julia> reading1(christmas_day())
 
  $(SIGNATURES) 
 """
-function reading1(theday::LiturgicalDay; urns = false)::Vector{Vector{String}}
+function reading1(theday::LiturgicalDay; urns = false)::Vector{Vector{Union{String, CtsUrn}}}
     rdgs = readings(theday) 
     reading1(rdgs; urns = urns)
 end
@@ -56,7 +56,7 @@ julia> reading2(christmas_day())
  ```
 $(SIGNATURES) 
 """
-function reading2(theday::LiturgicalDay; urns = false)::Vector{Vector{String}}
+function reading2(theday::LiturgicalDay; urns = false)::Vector{Vector{Union{String, CtsUrn}}}
     rdgs = readings(theday)
     reading2(rdgs; urns = urns)
 end
@@ -73,7 +73,7 @@ julia> psalm(christmas_day())
  ```
 $(SIGNATURES) 
 """
-function psalm(theday::LiturgicalDay; urns = false)::Vector{Vector{String}}
+function psalm(theday::LiturgicalDay; urns = false)::Vector{Vector{Union{String, CtsUrn}}}
     rdgs = readings(theday)  
     psalm(rdgs; urns = urns)
 end
@@ -90,7 +90,7 @@ julia> gospel(christmas_day())
  ```
 $(SIGNATURES) 
 """
-function gospel(theday::LiturgicalDay; urns = false)::Vector{Vector{String}}
+function gospel(theday::LiturgicalDay; urns = false)::Vector{Vector{Union{String, CtsUrn}}}
     rdgs = readings(theday)
     gospel(rdgs; urns = urns)
 end
