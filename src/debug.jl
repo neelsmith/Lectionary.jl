@@ -52,3 +52,21 @@ function viewyear(lityr::LiturgicalYear = LiturgicalYear())
         println(msg)
     end
 end
+
+
+
+
+
+function get_urns(rlist)
+    rdgslist = []
+    
+    for rdg in rlist
+        record = []
+        push!(record, reading1(rdg, urns = true))
+        push!(record, reading2(rdg, urns = true))
+        push!(record, gospel(rdg, urns = true))
+        push!(record, psalm(rdg, urns = true))
+        push!(rdgslist, record)
+    end
+    rdgslist
+end

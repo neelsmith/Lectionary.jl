@@ -221,8 +221,8 @@ end
 """Find readings for feast.
 $(SIGNATURES)
 """
-function feastreadings(feast::Commemoration, lectionaryyr::Char; as_urn = false) 
-    if as_urn
+function feastreadings(feast::Commemoration, lectionaryyr::Char; urns = false) 
+    if urns
         @warn("Support for URN references not implemented yet.")
     end
     if lectionaryyr == 'A'

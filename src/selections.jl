@@ -10,6 +10,14 @@ end
 
 
 
+function as_urn(rdgs::Readings)
+    (reading1 = reading1(rdgs; urns = true),
+     reading2 = reading1(rdgs; urns = true),
+     gospel = gospel(rdgs; urns = true),
+     psalm = psalm(rdgs; urns = true),
+    )
+end
+
 # Returns a vector of choices for readings.
 # Each choice in turn is a vector of one or more passages.
 """Organize string values from RCL lists into structured vectors of readings
@@ -37,15 +45,37 @@ Readings("Isaiah 9.2-9.7", "Titus 2.11-2.14", "Luke 2.1-1.14 ;  Luke 2.1-2.20", 
 julia> reading1(rdgs)
 1-element Vector{Vector{String}}:
  ["Isaiah 9.2-9.7"]
+julia> reading1(rdgs, urns = true)
+1-element Vector{Vector{Union{CitableText.CtsUrn, String}}}:
+ [urn:cts:compnov:bible.isaiah:9.2-9.7]
 ```
 $(SIGNATURES)
 """
-function reading1(rdg::Readings; as_urn = false)::Vector{Vector{String}}
-    
-    if as_urn
-        @warn("URN translation not yet implemented")
+function reading1(rdg::Readings; urns = false)::Vector{Vector{Union{String, CtsUrn}}}
+    urns ? as_urn(formatreadingstring(rdg.ot_string)) : formatreadingstring(rdg.ot_string)
+    #=
+    @info("Get reading1 from readings")
+    if urns
+        vofv = formatreadingstring(rdg.ot_string)
+        #as_urn.(s)
+        rslt = Vector{CtsUrn}[]
+        for outerv in vofv
+            entry = CtsUrn[]
+            for v in outerv
+                @info("Convert $(v)")
+                @info(as_urn(v))
+                push!(entry, as_urn(v))
+            end
+            push!(rslt, entry)
+
+        end
+        rslt
+            
+    #urns ?  as_urn.() : 
+    else
+        formatreadingstring(rdg.ot_string)
     end
-    formatreadingstring(rdg.ot_string)
+    =#
 end
 
 """Find second reading (normally New Testament) from the assigned readings for a liturgy.
@@ -58,15 +88,15 @@ Readings("Isaiah 9.2-9.7", "Titus 2.11-2.14", "Luke 2.1-1.14 ;  Luke 2.1-2.20", 
 julia> reading2(rdgs)
 1-element Vector{Vector{String}}:
  ["Titus 2.11-2.14"]
+julia> reading2(rdgs, urns = true)
+1-element Vector{Vector{Union{CitableText.CtsUrn, String}}}:
+ [urn:cts:compnov:bible.titus:2.11-2.14] 
 ```
 
 $(SIGNATURES)
 """
-function reading2(rdg::Readings; as_urn = false)
-    if as_urn
-        @warn("URN translation not yet implemented")
-    end
-    formatreadingstring(rdg.nt_string)
+function reading2(rdg::Readings; urns = false)::Vector{Vector{Union{String, CtsUrn}}}
+    urns ? as_urn(formatreadingstring(rdg.nt_string)) : formatreadingstring(rdg.nt_string)
 end
 
 
@@ -81,15 +111,16 @@ julia> gospel(rdgs)
 2-element Vector{Vector{String}}:
  ["Luke 2.1-1.14"]
  ["Luke 2.1-2.20"]
+julia> gospel(rdgs, urns = true)
+2-element Vector{Vector{Union{CitableText.CtsUrn, String}}}:
+ [urn:cts:compnov:bible.luke:2.1-1.14]
+ [urn:cts:compnov:bible.luke:2.1-2.20]
 ```
 
 $(SIGNATURES)
 """
-function gospel(rdg::Readings; as_urn = false)
-    if as_urn
-        @warn("URN translation not yet implemented")
-    end
-    formatreadingstring(rdg.gospel_string)
+function gospel(rdg::Readings; urns = false)::Vector{Vector{Union{String, CtsUrn}}}
+    urns ? as_urn(formatreadingstring(rdg.gospel_string)) : formatreadingstring(rdg.gospel_string)
 end
 
 """Find Psalm selection from the assigned readings for a liturgy.
@@ -104,14 +135,27 @@ Readings("Isaiah 9.2-9.7", "Titus 2.11-2.14", "Luke 2.1-1.14 ;  Luke 2.1-2.20", 
 julia> gospel(rdgs)
 1-element Vector{Vector{String}}:
  ["Psalm 96"]
+julia> psalm(rdgs, urns = true)
+1-element Vector{Vector{Union{CitableText.CtsUrn, String}}}:
+ [urn:cts:compnov:bible.psalm:96] 
 ```
 
 $(SIGNATURES)
 """
-function psalm(rdg::Readings; as_urn = false)
-    if as_urn
-        @warn("URN translation not yet implemented")
-    end
-    formatreadingstring(rdg.psalm_string)
+function psalm(rdg::Readings; urns = false)::Vector{Vector{Union{String, CtsUrn}}}
+    urns ? as_urn(formatreadingstring(rdg.psalm_string)) : formatreadingstring(rdg.psalm_string)
 end
 
+
+function flatlist(tpl)
+    allurns = CtsUrn[]
+    @info("Parse a tuple!")
+    # each is a vecgtor of vectors
+
+
+    @info(tpl.reading1)
+end
+
+function flatlist(rdg::Readings)
+    as_urn(rdg) |> flatlist
+end

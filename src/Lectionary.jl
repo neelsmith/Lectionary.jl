@@ -2,12 +2,14 @@ module Lectionary
 
 using Dates
 using AstroLib
+using CitableText
 using Documenter, DocStringExtensions
 
 import Base: show
 import Base: ==
 
 
+export as_urn
 
 export LiturgicalYear, lectionary_year, daily_office_year
 export sundays, principal_feasts, holy_days
@@ -44,6 +46,9 @@ export calendar_week, calendar_month, calendar_year
 export weekrange
 
 export Readings, readings, reading1, reading2, psalm, gospel
+
+
+include("urns.jl")
 
 include("selections.jl")
 
